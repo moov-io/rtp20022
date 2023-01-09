@@ -1,5 +1,9 @@
 package pacs_008_001_06
 
-func (msg *FIToFICustomerCreditTransferV06) Validate() error {
+func (d Document) Validate() error {
+	return d.FIToFICstmrCdtTrf.Validate()
+}
+
+func (c FIToFICustomerCreditTransferV06) Validate() error {
 	return nil // TODO(adam):
 }
