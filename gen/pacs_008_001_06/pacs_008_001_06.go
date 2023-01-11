@@ -137,7 +137,7 @@ type CreditTransferTransaction25 struct {
 	IntrmyAgt2Acct   CashAccount24                                `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 IntrmyAgt2Acct,omitempty"`
 	IntrmyAgt3       BranchAndFinancialInstitutionIdentification5 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 IntrmyAgt3,omitempty"`
 	IntrmyAgt3Acct   CashAccount24                                `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 IntrmyAgt3Acct,omitempty"`
-	UltmtDbtr        PartyIdentification43                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 UltmtDbtr,omitempty"`
+	UltmtDbtr        *PartyIdentification43                       `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 UltmtDbtr,omitempty"`
 	InitgPty         PartyIdentification43                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 InitgPty,omitempty"`
 	Dbtr             PartyIdentification43                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 Dbtr"`
 	DbtrAcct         CashAccount24                                `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 DbtrAcct,omitempty"`
