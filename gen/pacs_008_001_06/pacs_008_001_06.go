@@ -280,6 +280,8 @@ type ExternalServiceLevel1Code string
 type ExternalTaxAmountType1Code string
 
 type FIToFICustomerCreditTransferV06 struct {
+	Attr []xml.Attr `xml:",attr"`
+
 	GrpHdr      GroupHeader70                 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 GrpHdr"`
 	CdtTrfTxInf []CreditTransferTransaction25 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 CdtTrfTxInf"`
 	SplmtryData []SupplementaryData1          `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 SplmtryData,omitempty"`
@@ -352,7 +354,7 @@ type GroupHeader70 struct {
 	TtlIntrBkSttlmAmt ActiveCurrencyAndAmount                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 TtlIntrBkSttlmAmt,omitempty"`
 	IntrBkSttlmDt     ISODate                                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 IntrBkSttlmDt,omitempty"`
 	SttlmInf          SettlementInstruction4                       `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 SttlmInf"`
-	PmtTpInf          PaymentTypeInformation21                     `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 PmtTpInf,omitempty"`
+	PmtTpInf          *PaymentTypeInformation21                    `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 PmtTpInf,omitempty"`
 	InstgAgt          BranchAndFinancialInstitutionIdentification5 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 InstgAgt,omitempty"`
 	InstdAgt          BranchAndFinancialInstitutionIdentification5 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 InstdAgt,omitempty"`
 }
@@ -688,7 +690,7 @@ type TaxInformation3 struct {
 type TaxInformation4 struct {
 	Cdtr            TaxParty1                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 Cdtr,omitempty"`
 	Dbtr            TaxParty2                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 Dbtr,omitempty"`
-	UltmtDbtr       TaxParty2                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 UltmtDbtr,omitempty"`
+	UltmtDbtr       *TaxParty2                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 UltmtDbtr,omitempty"`
 	AdmstnZone      Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 AdmstnZone,omitempty"`
 	RefNb           Max140Text                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 RefNb,omitempty"`
 	Mtd             Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 Mtd,omitempty"`
