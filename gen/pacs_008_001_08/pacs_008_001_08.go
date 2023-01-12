@@ -302,7 +302,7 @@ type ExternalServiceLevel1Code string
 type ExternalTaxAmountType1Code string
 
 type FIToFICustomerCreditTransferV08 struct {
-	Attr xml.Attr `xml:",attr"`
+	Attr []xml.Attr `xml:",attr"`
 
 	GrpHdr      GroupHeader93                 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 GrpHdr"`
 	CdtTrfTxInf []CreditTransferTransaction39 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CdtTrfTxInf"`
