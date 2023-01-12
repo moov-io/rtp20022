@@ -19,7 +19,6 @@
 [![Repo Size](https://img.shields.io/github/languages/code-size/moov-io/rtp20022?label=project%20size)](https://github.com/moov-io/rtp20022)
 [![Apache 2 License](https://img.shields.io/badge/license-Apache2-blue.svg)](https://raw.githubusercontent.com/moov-io/rtp20022/master/LICENSE)
 [![Slack Channel](https://slack.moov.io/badge.svg?bg=e01563&fgColor=fffff)](https://slack.moov.io/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/moov/rtp20022)](https://hub.docker.com/r/moov/rtp20022)
 [![GitHub Stars](https://img.shields.io/github/stars/moov-io/rtp20022)](https://github.com/moov-io/rtp20022)
 [![Twitter](https://img.shields.io/twitter/follow/moov?style=social)](https://twitter.com/moov?lang=en)
 
