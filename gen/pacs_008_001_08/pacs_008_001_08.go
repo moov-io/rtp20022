@@ -3,9 +3,9 @@
 package pacs_008_001_08
 
 import (
-	"bytes"
 	"encoding/xml"
-	"time"
+
+	"github.com/moov-io/rtp20022/pkg/dt"
 )
 
 type AccountIdentification4Choice struct {
@@ -129,12 +129,12 @@ type CreditTransferTransaction39 struct {
 	PmtId             PaymentIdentification7                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 PmtId"`
 	PmtTpInf          *PaymentTypeInformation28                     `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 PmtTpInf,omitempty"`
 	IntrBkSttlmAmt    ActiveCurrencyAndAmount                       `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 IntrBkSttlmAmt"`
-	IntrBkSttlmDt     *ISODate                                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 IntrBkSttlmDt,omitempty"`
+	IntrBkSttlmDt     *dt.ISODate                                   `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 IntrBkSttlmDt,omitempty"`
 	SttlmPrty         *Priority3Code                                `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 SttlmPrty,omitempty"`
 	SttlmTmIndctn     *SettlementDateTimeIndication1                `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 SttlmTmIndctn,omitempty"`
 	SttlmTmReq        *SettlementTimeRequest2                       `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 SttlmTmReq,omitempty"`
-	AccptncDtTm       *ISODateTime                                  `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 AccptncDtTm,omitempty"`
-	PoolgAdjstmntDt   *ISODate                                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 PoolgAdjstmntDt,omitempty"`
+	AccptncDtTm       *dt.ISODateTime                               `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 AccptncDtTm,omitempty"`
+	PoolgAdjstmntDt   *dt.ISODate                                   `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 PoolgAdjstmntDt,omitempty"`
 	InstdAmt          *ActiveOrHistoricCurrencyAndAmount            `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 InstdAmt,omitempty"`
 	XchgRate          *float64                                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 XchgRate,omitempty"`
 	ChrgBr            ChargeBearerType1Code                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 ChrgBr"`
@@ -190,15 +190,15 @@ type CreditorReferenceType2 struct {
 }
 
 type DateAndPlaceOfBirth1 struct {
-	BirthDt     ISODate     `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 BirthDt"`
+	BirthDt     dt.ISODate  `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 BirthDt"`
 	PrvcOfBirth *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 PrvcOfBirth,omitempty"`
 	CityOfBirth Max35Text   `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CityOfBirth"`
 	CtryOfBirth CountryCode `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CtryOfBirth"`
 }
 
 type DatePeriod2 struct {
-	FrDt ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 FrDt"`
-	ToDt ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 ToDt"`
+	FrDt dt.ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 FrDt"`
+	ToDt dt.ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 ToDt"`
 }
 
 type DiscountAmountAndType1 struct {
@@ -225,7 +225,7 @@ type DocumentAdjustment1 struct {
 type DocumentLineIdentification1 struct {
 	Tp     *DocumentLineType1 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Tp,omitempty"`
 	Nb     *Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Nb,omitempty"`
-	RltdDt *ISODate           `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 RltdDt,omitempty"`
+	RltdDt *dt.ISODate        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 RltdDt,omitempty"`
 }
 
 type DocumentLineInformation1 struct {
@@ -326,7 +326,7 @@ type Garnishment3 struct {
 	Grnshee           *PartyIdentification135            `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Grnshee,omitempty"`
 	GrnshmtAdmstr     *PartyIdentification135            `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 GrnshmtAdmstr,omitempty"`
 	RefNb             *Max140Text                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 RefNb,omitempty"`
-	Dt                *ISODate                           `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Dt,omitempty"`
+	Dt                *dt.ISODate                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Dt,omitempty"`
 	RmtdAmt           *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 RmtdAmt,omitempty"`
 	FmlyMdclInsrncInd *bool                              `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 FmlyMdclInsrncInd,omitempty"`
 	MplyeeTermntnInd  *bool                              `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 MplyeeTermntnInd,omitempty"`
@@ -374,12 +374,12 @@ type GenericPersonIdentification1 struct {
 
 type GroupHeader93 struct {
 	MsgId             Max35Text                                     `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 MsgId"`
-	CreDtTm           ISODateTime                                   `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CreDtTm"`
+	CreDtTm           dt.ISODateTime                                `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CreDtTm"`
 	BtchBookg         *bool                                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 BtchBookg,omitempty"`
 	NbOfTxs           Max15NumericText                              `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 NbOfTxs"`
 	CtrlSum           *float64                                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CtrlSum,omitempty"`
 	TtlIntrBkSttlmAmt *ActiveCurrencyAndAmount                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 TtlIntrBkSttlmAmt,omitempty"`
-	IntrBkSttlmDt     *ISODate                                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 IntrBkSttlmDt,omitempty"`
+	IntrBkSttlmDt     *dt.ISODate                                   `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 IntrBkSttlmDt,omitempty"`
 	SttlmInf          SettlementInstruction7                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 SttlmInf"`
 	PmtTpInf          *PaymentTypeInformation28                     `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 PmtTpInf,omitempty"`
 	InstgAgt          *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 InstgAgt,omitempty"`
@@ -388,33 +388,6 @@ type GroupHeader93 struct {
 
 // Must match the pattern [A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}
 type IBAN2007Identifier string
-
-type ISODate time.Time
-
-func (t *ISODate) UnmarshalText(text []byte) error {
-	return (*xsdDate)(t).UnmarshalText(text)
-}
-func (t ISODate) MarshalText() ([]byte, error) {
-	return xsdDate(t).MarshalText()
-}
-
-type ISODateTime time.Time
-
-func (t *ISODateTime) UnmarshalText(text []byte) error {
-	return (*xsdDateTime)(t).UnmarshalText(text)
-}
-func (t ISODateTime) MarshalText() ([]byte, error) {
-	return xsdDateTime(t).MarshalText()
-}
-
-type ISOTime time.Time
-
-func (t *ISOTime) UnmarshalText(text []byte) error {
-	return (*xsdTime)(t).UnmarshalText(text)
-}
-func (t ISOTime) MarshalText() ([]byte, error) {
-	return xsdTime(t).MarshalText()
-}
 
 // May be one of CHQB, HOLD, PHOB, TELB
 type Instruction3Code string
@@ -585,7 +558,7 @@ type Purpose2Choice struct {
 type ReferredDocumentInformation7 struct {
 	Tp       *ReferredDocumentType4      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Tp,omitempty"`
 	Nb       *Max35Text                  `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Nb,omitempty"`
-	RltdDt   *ISODate                    `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 RltdDt,omitempty"`
+	RltdDt   *dt.ISODate                 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 RltdDt,omitempty"`
 	LineDtls []*DocumentLineInformation1 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 LineDtls,omitempty"`
 }
 
@@ -656,8 +629,8 @@ type ServiceLevel8Choice struct {
 }
 
 type SettlementDateTimeIndication1 struct {
-	DbtDtTm *ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 DbtDtTm,omitempty"`
-	CdtDtTm *ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CdtDtTm,omitempty"`
+	DbtDtTm *dt.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 DbtDtTm,omitempty"`
+	CdtDtTm *dt.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CdtDtTm,omitempty"`
 }
 
 type SettlementInstruction7 struct {
@@ -676,15 +649,15 @@ type SettlementInstruction7 struct {
 type SettlementMethod1Code string
 
 type SettlementTimeRequest2 struct {
-	CLSTm  *ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CLSTm,omitempty"`
-	TillTm *ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 TillTm,omitempty"`
-	FrTm   *ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 FrTm,omitempty"`
-	RjctTm *ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 RjctTm,omitempty"`
+	CLSTm  *dt.ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 CLSTm,omitempty"`
+	TillTm *dt.ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 TillTm,omitempty"`
+	FrTm   *dt.ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 FrTm,omitempty"`
+	RjctTm *dt.ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 RjctTm,omitempty"`
 }
 
 type StructuredRegulatoryReporting3 struct {
 	Tp   *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Tp,omitempty"`
-	Dt   *ISODate                           `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Dt,omitempty"`
+	Dt   *dt.ISODate                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Dt,omitempty"`
 	Ctry *CountryCode                       `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Ctry,omitempty"`
 	Cd   *Max10Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Cd,omitempty"`
 	Amt  *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Amt,omitempty"`
@@ -742,7 +715,7 @@ type TaxInformation7 struct {
 	Mtd             *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Mtd,omitempty"`
 	TtlTaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 TtlTaxblBaseAmt,omitempty"`
 	TtlTaxAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 TtlTaxAmt,omitempty"`
-	Dt              *ISODate                           `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Dt,omitempty"`
+	Dt              *dt.ISODate                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Dt,omitempty"`
 	SeqNb           *float64                           `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 SeqNb,omitempty"`
 	Rcrd            []*TaxRecord2                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Rcrd,omitempty"`
 }
@@ -755,7 +728,7 @@ type TaxInformation8 struct {
 	Mtd             *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Mtd,omitempty"`
 	TtlTaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 TtlTaxblBaseAmt,omitempty"`
 	TtlTaxAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 TtlTaxAmt,omitempty"`
-	Dt              *ISODate                           `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Dt,omitempty"`
+	Dt              *dt.ISODate                        `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Dt,omitempty"`
 	SeqNb           *float64                           `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 SeqNb,omitempty"`
 	Rcrd            []*TaxRecord2                      `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Rcrd,omitempty"`
 }
@@ -774,7 +747,7 @@ type TaxParty2 struct {
 }
 
 type TaxPeriod2 struct {
-	Yr     *ISODate              `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Yr,omitempty"`
+	Yr     *dt.ISODate           `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Yr,omitempty"`
 	Tp     *TaxRecordPeriod1Code `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 Tp,omitempty"`
 	FrToDt *DatePeriod2          `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 FrToDt,omitempty"`
 }
@@ -801,92 +774,3 @@ type TaxRecordPeriod1Code string
 
 // Must match the pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}
 type UUIDv4Identifier string
-
-type xsdDate time.Time
-
-func (t *xsdDate) UnmarshalText(text []byte) error {
-	return _unmarshalTime(text, (*time.Time)(t), "2006-01-02")
-}
-func (t xsdDate) MarshalText() ([]byte, error) {
-	return _marshalTime((time.Time)(t), "2006-01-02")
-}
-func (t xsdDate) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	if (time.Time)(t).IsZero() {
-		return nil
-	}
-	m, err := t.MarshalText()
-	if err != nil {
-		return err
-	}
-	return e.EncodeElement(m, start)
-}
-func (t xsdDate) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
-	if (time.Time)(t).IsZero() {
-		return xml.Attr{}, nil
-	}
-	m, err := t.MarshalText()
-	return xml.Attr{Name: name, Value: string(m)}, err
-}
-func _unmarshalTime(text []byte, t *time.Time, format string) (err error) {
-	s := string(bytes.TrimSpace(text))
-	*t, err = time.Parse(format, s)
-	if _, ok := err.(*time.ParseError); ok {
-		*t, err = time.Parse(format+"Z07:00", s)
-	}
-	return err
-}
-func _marshalTime(t time.Time, format string) ([]byte, error) {
-	return []byte(t.Format(format + "Z07:00")), nil
-}
-
-type xsdDateTime time.Time
-
-func (t *xsdDateTime) UnmarshalText(text []byte) error {
-	return _unmarshalTime(text, (*time.Time)(t), "2006-01-02T15:04:05.999999999")
-}
-func (t xsdDateTime) MarshalText() ([]byte, error) {
-	return _marshalTime((time.Time)(t), "2006-01-02T15:04:05.999999999")
-}
-func (t xsdDateTime) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	if (time.Time)(t).IsZero() {
-		return nil
-	}
-	m, err := t.MarshalText()
-	if err != nil {
-		return err
-	}
-	return e.EncodeElement(m, start)
-}
-func (t xsdDateTime) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
-	if (time.Time)(t).IsZero() {
-		return xml.Attr{}, nil
-	}
-	m, err := t.MarshalText()
-	return xml.Attr{Name: name, Value: string(m)}, err
-}
-
-type xsdTime time.Time
-
-func (t *xsdTime) UnmarshalText(text []byte) error {
-	return _unmarshalTime(text, (*time.Time)(t), "15:04:05.999999999")
-}
-func (t xsdTime) MarshalText() ([]byte, error) {
-	return _marshalTime((time.Time)(t), "15:04:05.999999999")
-}
-func (t xsdTime) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	if (time.Time)(t).IsZero() {
-		return nil
-	}
-	m, err := t.MarshalText()
-	if err != nil {
-		return err
-	}
-	return e.EncodeElement(m, start)
-}
-func (t xsdTime) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
-	if (time.Time)(t).IsZero() {
-		return xml.Attr{}, nil
-	}
-	m, err := t.MarshalText()
-	return xml.Attr{Name: name, Value: string(m)}, err
-}
