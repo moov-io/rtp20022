@@ -5,7 +5,6 @@ package pacs_008_001_06
 import (
 	"bytes"
 	"encoding/xml"
-	"sync"
 	"time"
 )
 
@@ -281,8 +280,6 @@ type ExternalServiceLevel1Code string
 type ExternalTaxAmountType1Code string
 
 type FIToFICustomerCreditTransferV06 struct {
-	Attr []xml.Attr `xml:",attr"`
-
 	GrpHdr      GroupHeader70                 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 GrpHdr"`
 	CdtTrfTxInf []CreditTransferTransaction25 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 CdtTrfTxInf"`
 	SplmtryData []*SupplementaryData1         `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.06 SplmtryData,omitempty"`
@@ -766,40 +763,25 @@ func (t xsdDate) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 	m, err := t.MarshalText()
 	return xml.Attr{Name: name, Value: string(m)}, err
 }
-
-var (
-	eastern       *time.Location
-	locationSetup sync.Once
-)
-
 func _unmarshalTime(text []byte, t *time.Time, format string) (err error) {
-	// RTP specifies that all timestamps are in Eastern (Daylight or Standard)
-	// so we will need to use this *time.Location many times. Rather than load
-	// it every time we are going to lazy cache it when needed.
-	locationSetup.Do(func() {
-		eastern, err = time.LoadLocation("America/New_York")
-	})
-	if err != nil {
-		return
-	}
 	s := string(bytes.TrimSpace(text))
-	*t, err = time.ParseInLocation(format, s, eastern)
+	*t, err = time.Parse(format, s)
 	if _, ok := err.(*time.ParseError); ok {
-		*t, err = time.ParseInLocation(format+"-07:00", s, eastern)
+		*t, err = time.Parse(format+"Z07:00", s)
 	}
 	return err
 }
 func _marshalTime(t time.Time, format string) ([]byte, error) {
-	return []byte(t.Format(format)), nil
+	return []byte(t.Format(format + "Z07:00")), nil
 }
 
 type xsdDateTime time.Time
 
 func (t *xsdDateTime) UnmarshalText(text []byte) error {
-	return _unmarshalTime(text, (*time.Time)(t), "2006-01-02T15:04:05")
+	return _unmarshalTime(text, (*time.Time)(t), "2006-01-02T15:04:05.999999999")
 }
 func (t xsdDateTime) MarshalText() ([]byte, error) {
-	return _marshalTime((time.Time)(t), "2006-01-02T15:04:05")
+	return _marshalTime((time.Time)(t), "2006-01-02T15:04:05.999999999")
 }
 func (t xsdDateTime) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	if (time.Time)(t).IsZero() {
