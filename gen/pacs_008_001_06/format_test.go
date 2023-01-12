@@ -22,6 +22,7 @@ func TestISODateFormat(t *testing.T) {
 
 	var read ISODate
 	err = xml.Unmarshal([]byte("<ISODate>2019-03-21</ISODate>"), &read)
+	require.NoError(t, err)
 	require.True(t, when.Equal(time.Time(read)))
 }
 
@@ -39,5 +40,6 @@ func TestISODateTimeFormat(t *testing.T) {
 
 	var read ISODateTime
 	err = xml.Unmarshal([]byte("<ISODateTime>2019-03-21T10:36:19</ISODateTime>"), &read)
+	require.NoError(t, err)
 	require.True(t, when.Equal(time.Time(read)))
 }
