@@ -32,6 +32,8 @@ This repository contains a subset of ISO 20022 messages for RTP payments. ISO 20
 
 Go code is [generated with `xsdgen`](https://pkg.go.dev/aqwari.net/xml/cmd/xsdgen) inside the `gen/` folder. Please star the project if you are interested in its progress. Feedback on this early version of ISO 20022 is appreciated and vital to its success. Please let us know if you encounter any bugs/unclear documentation or have feature suggestions by opening up an issue. Thanks!
 
+This project is used to generate messages and pass certification of 2.9 and 3.0 RTP/TCH releases.
+
 ## Usage
 
 ### Go Library
