@@ -1,4 +1,4 @@
-## pacs.008.001.08
+## admi.004.001.02
 
 This package is generated from a WSDL file from the `xsd/` directory with the same name.
 
