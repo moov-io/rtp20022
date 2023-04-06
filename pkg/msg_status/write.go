@@ -94,13 +94,13 @@ type WriteParams struct {
 }
 
 const (
-	DocumentPacs00200110NameSpace = "urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10"
+	Namespace = "urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10"
 )
 
 func NewWriter(params WriteParams) Writer {
 	headAttr := xml.Attr{
 		Name:  xml.Name{Local: "xmlns:ps"},
-		Value: DocumentPacs00200110NameSpace,
+		Value: Namespace,
 	}
 
 	w := Writer{}
