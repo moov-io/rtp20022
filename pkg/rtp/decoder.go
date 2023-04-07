@@ -20,7 +20,7 @@ var (
 	ErrUnmatchedDocument = errors.New("exceeded max number of decode attempts")
 )
 
-func decodeXML[H any](data []byte, head H, factories map[string]rtp20022.Document) (H, rtp20022.Document, error) {
+func DecodeXML[H any](data []byte, head H, factories map[string]rtp20022.Document) (H, rtp20022.Document, error) {
 	var body rtp20022.Document
 
 	var start *xml.StartElement

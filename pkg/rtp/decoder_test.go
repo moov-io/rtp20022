@@ -15,7 +15,7 @@ import (
 )
 
 func parse(data []byte) (*tch.Reader, error) {
-	head, body, err := decodeXML(data, header.Reader{}, map[string]rtp20022.Document{
+	head, body, err := DecodeXML(data, header.Reader{}, map[string]rtp20022.Document{
 		"MessageStatusReport": &msg_status.Reader{},
 	})
 	r := tch.NewReader(head, body)
