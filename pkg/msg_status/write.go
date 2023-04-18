@@ -32,10 +32,19 @@ type TxInfAndSts struct {
 	OrgnlInstrId pacs_002_001_10.Max35Text                             `xml:"ps:OrgnlInstrId"`
 	OrgnlTxId    pacs_002_001_10.Max35Text                             `xml:"ps:OrgnlTxId"`
 	TxSts        pacs_002_001_10.ExternalPaymentTransactionStatus1Code `xml:"ps:TxSts,omitempty"`
+	StsRsnInf    []StsRsnInf                                           `xml:"ps:StsRsnInf,omitempty"`
 	AccptncDtTm  dt.ISODateTime                                        `xml:"ps:AccptncDtTm"`
 	InstgAgt     BranchAndFinancialInstitutionIdentification6          `xml:"ps:InstgAgt"`
 	InstdAgt     BranchAndFinancialInstitutionIdentification6          `xml:"ps:InstdAgt"`
 	OrgnlTxRef   *OriginalTransactionReference28                       `xml:"ps:OrgnlTxRef,omitempty"`
+}
+
+type StsRsnInf struct {
+	Rsn StatusReason6Choice `xml:"ps:Rsn"`
+}
+
+type StatusReason6Choice struct {
+	Cd pacs_002_001_10.ExternalStatusReason1Code `xml:"ps:Cd"`
 }
 
 type BranchAndFinancialInstitutionIdentification6 struct {
@@ -88,6 +97,7 @@ type WriteParams struct {
 	OriginalCreatedOn            time.Time
 	OriginalNumberOfTransactions int
 	TxSts                        TransactionStatus
+	StsRsnCd                     string
 	AcceptanceDateTime           time.Time
 	InterbankSettlementAmount    *float64
 	InterbankSettlementDate      *time.Time
@@ -145,6 +155,15 @@ func NewWriter(params WriteParams) Writer {
 		},
 		OrgnlTxRef: originalTransactionReference,
 	})
+
+	// Include status reason code if transaction was rejected
+	if params.TxSts == TxStatusRejected {
+		w.FIToFIPmtStsRpt.TxInfAndSts[0].StsRsnInf = append(w.FIToFIPmtStsRpt.TxInfAndSts[0].StsRsnInf, StsRsnInf{
+			Rsn: StatusReason6Choice{
+				Cd: pacs_002_001_10.ExternalStatusReason1Code(params.StsRsnCd),
+			},
+		})
+	}
 
 	w.FIToFIPmtStsRpt.OrgnlGrpInfAndSts = append(w.FIToFIPmtStsRpt.OrgnlGrpInfAndSts, OrgnlGrpInfAndSts{
 		Head:         headAttr.Value,
