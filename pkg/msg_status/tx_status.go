@@ -16,3 +16,10 @@ const (
 	TxStatusReceived TransactionStatus = "RCVD"
 	TxStatusRejected TransactionStatus = "RJCT"
 )
+
+type StatusReasonCode string
+
+const (
+	// StsReasonCreditorInvalid is the "Creditor account number invalid or missing" status reason code
+	StsReasonCreditorInvalid = "AC03"
+)
