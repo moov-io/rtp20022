@@ -287,6 +287,8 @@ type ExternalStatusReason1Code string
 type ExternalTaxAmountType1Code string
 
 type FIToFIPaymentStatusReportV10 struct {
+	Attr []xml.Attr `xml:",attr"`
+
 	GrpHdr            GroupHeader91           `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10 GrpHdr"`
 	OrgnlGrpInfAndSts []OriginalGroupHeader17 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10 OrgnlGrpInfAndSts,omitempty"`
 	TxInfAndSts       []PaymentTransaction110 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10 TxInfAndSts,omitempty"`
