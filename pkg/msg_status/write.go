@@ -34,7 +34,7 @@ type TxInfAndSts struct {
 	TxSts        pacs_002_001_10.ExternalPaymentTransactionStatus1Code `xml:"ps:TxSts,omitempty"`
 	StsRsnInf    []StsRsnInf                                           `xml:"ps:StsRsnInf,omitempty"`
 	AccptncDtTm  dt.ISODateTime                                        `xml:"ps:AccptncDtTm"`
-	ClrSysRef    string                                                `xml:"ps:ClrSysRef"`
+	ClrSysRef    string                                                `xml:"ps:ClrSysRef,omitempty"`
 	InstgAgt     BranchAndFinancialInstitutionIdentification6          `xml:"ps:InstgAgt"`
 	InstdAgt     BranchAndFinancialInstitutionIdentification6          `xml:"ps:InstdAgt"`
 	OrgnlTxRef   *OriginalTransactionReference28                       `xml:"ps:OrgnlTxRef,omitempty"`
