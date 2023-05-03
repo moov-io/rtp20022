@@ -11,7 +11,7 @@ DEV_VERSION := dev-${COMMIT_HASH}
 USERID := $(shell id -u $$USER)
 GROUPID:= $(shell id -g $$USER)
 
-all: install update build
+all: install build
 
 .PHONY: install
 install:
