@@ -34,6 +34,7 @@ type TxInfAndSts struct {
 	TxSts        pacs_002_001_10.ExternalPaymentTransactionStatus1Code `xml:"ps:TxSts,omitempty"`
 	StsRsnInf    []StsRsnInf                                           `xml:"ps:StsRsnInf,omitempty"`
 	AccptncDtTm  dt.ISODateTime                                        `xml:"ps:AccptncDtTm"`
+	ClrSysRef    string                                                `xml:"ps:ClrSysRef,omitempty"`
 	InstgAgt     BranchAndFinancialInstitutionIdentification6          `xml:"ps:InstgAgt"`
 	InstdAgt     BranchAndFinancialInstitutionIdentification6          `xml:"ps:InstdAgt"`
 	OrgnlTxRef   *OriginalTransactionReference28                       `xml:"ps:OrgnlTxRef,omitempty"`
@@ -97,9 +98,11 @@ type WriteParams struct {
 	OriginalCreatedOn            time.Time
 	OriginalNumberOfTransactions int
 	TxSts                        TransactionStatus
+	ClrSysRef                    string
 	StsRsnCd                     string
 	AcceptanceDateTime           time.Time
-	InterbankSettlementAmount    *float64
+	InterbankSettlementAmount    *int64
+	InterbankSettlementAmountCcy string
 	InterbankSettlementDate      *time.Time
 }
 
@@ -126,8 +129,8 @@ func NewWriter(params WriteParams) Writer {
 	if params.InterbankSettlementAmount != nil && params.InterbankSettlementDate != nil {
 		originalTransactionReference = &OriginalTransactionReference28{
 			IntrBkSttlmAmt: ActiveOrHistoricCurrencyAndAmount{
-				Value: *params.InterbankSettlementAmount,
-				Ccy:   ActiveOrHistoricCurrencyCode("USD"),
+				Value: float64(*params.InterbankSettlementAmount),
+				Ccy:   ActiveOrHistoricCurrencyCode(params.InterbankSettlementAmountCcy),
 			},
 			IntrBkSttlmDt: dt.ISODate(*params.InterbankSettlementDate),
 		}
@@ -138,6 +141,7 @@ func NewWriter(params WriteParams) Writer {
 		OrgnlInstrId: pacs_002_001_10.Max35Text(params.OriginalInstructionId),
 		OrgnlTxId:    pacs_002_001_10.Max35Text(params.OriginalTxId),
 		TxSts:        pacs_002_001_10.ExternalPaymentTransactionStatus1Code(string(params.TxSts)),
+		ClrSysRef:    params.ClrSysRef,
 		AccptncDtTm:  dt.ISODateTime(params.AcceptanceDateTime),
 		InstgAgt: BranchAndFinancialInstitutionIdentification6{
 			FinancialInstitutionIdentification18{
