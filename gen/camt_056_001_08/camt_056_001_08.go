@@ -47,17 +47,17 @@ type Case5TCH struct {
 }
 
 type CaseAssignment5 struct {
-	Id      Max35Text        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Id"`
-	Assgnr  Party40Choice    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Assgnr"`
-	Assgne  Party40Choice    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Assgne"`
-	CreDtTm dt.ISODateTime   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 CreDtTm"`
+	Id      Max35Text      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Id"`
+	Assgnr  Party40Choice  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Assgnr"`
+	Assgne  Party40Choice  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Assgne"`
+	CreDtTm dt.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 CreDtTm"`
 }
 
 type CaseAssignment5TCH struct {
-	Id      Max35TextTCH       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Id"`
-	Assgnr  Party40ChoiceTCH   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Assgnr"`
-	Assgne  Party40ChoiceTCH   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Assgne"`
-	CreDtTm dt.ISODateTime     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 CreDtTm"`
+	Id      Max35TextTCH     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Id"`
+	Assgnr  Party40ChoiceTCH `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Assgnr"`
+	Assgne  Party40ChoiceTCH `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 Assgne"`
+	CreDtTm dt.ISODateTime   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 CreDtTm"`
 }
 
 type ClearingSystemMemberIdentification2 struct {
