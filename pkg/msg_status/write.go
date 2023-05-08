@@ -101,7 +101,7 @@ type WriteParams struct {
 	ClrSysRef                    string
 	StsRsnCd                     string
 	AcceptanceDateTime           time.Time
-	InterbankSettlementAmount    *int64
+	InterbankSettlementAmount    *float64
 	InterbankSettlementAmountCcy string
 	InterbankSettlementDate      *time.Time
 }
@@ -129,7 +129,7 @@ func NewWriter(params WriteParams) Writer {
 	if params.InterbankSettlementAmount != nil && params.InterbankSettlementDate != nil {
 		originalTransactionReference = &OriginalTransactionReference28{
 			IntrBkSttlmAmt: ActiveOrHistoricCurrencyAndAmount{
-				Value: float64(*params.InterbankSettlementAmount),
+				Value: *params.InterbankSettlementAmount,
 				Ccy:   ActiveOrHistoricCurrencyCode(params.InterbankSettlementAmountCcy),
 			},
 			IntrBkSttlmDt: dt.ISODate(*params.InterbankSettlementDate),
