@@ -3,7 +3,7 @@ module github.com/moov-io/rtp20022
 go 1.19
 
 require (
-	github.com/moov-io/base v0.43.0
+	github.com/moov-io/base v0.44.0
 	github.com/stretchr/testify v1.8.4
 )
 
