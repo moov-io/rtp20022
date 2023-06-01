@@ -1,6 +1,6 @@
 ## pacs.008.001.08
 
-This package is generated from a WSDL file from the `xsd/` directory with the same name.
+This package is generated from a XSD file from the `xsd/` directory with the same name.
 
 ## Manual Changes
 
