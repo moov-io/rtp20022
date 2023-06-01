@@ -4,6 +4,7 @@ package admi_002_001_01
 
 import (
 	"github.com/moov-io/rtp20022/pkg/dt"
+	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
 type Admi00200101 struct {
@@ -14,9 +15,6 @@ type Admi00200101 struct {
 type Document struct {
 	Admi00200101 Admi00200101 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 admi.002.001.01"`
 }
-
-// May be no more than 20000 items long
-type Max20000Text string
 
 // May be no more than 350 items long
 type Max350Text string
@@ -33,5 +31,5 @@ type RejectionReason2 struct {
 	RjctnDtTm   *dt.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 RjctnDtTm,omitempty"`
 	ErrLctn     *Max350Text     `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 ErrLctn,omitempty"`
 	RsnDesc     *Max350Text     `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 RsnDesc,omitempty"`
-	AddtlData   *Max20000Text   `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 AddtlData,omitempty"`
+	AddtlData   *rtp.Cdata      `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 AddtlData,omitempty"`
 }
