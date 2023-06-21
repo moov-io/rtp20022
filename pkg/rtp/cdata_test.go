@@ -21,7 +21,7 @@ type TestStructNamespace struct {
 }
 
 func TestCdata_write(t *testing.T) {
-	input := TestStruct{AddtlData: &rtp.Cdata{Max20000Text: rtp.Max20000Text(cdataText)}}
+	input := TestStruct{AddtlData: &rtp.Cdata{CDataString: cdataText}}
 
 	output, err := xml.Marshal(input)
 	require.NoError(t, err)
@@ -30,7 +30,7 @@ func TestCdata_write(t *testing.T) {
 }
 
 func TestCdata_write_withNamespace(t *testing.T) {
-	input := TestStructNamespace{AddtlData: &rtp.Cdata{Max20000Text: rtp.Max20000Text(cdataText)}}
+	input := TestStructNamespace{AddtlData: &rtp.Cdata{CDataString: cdataText}}
 
 	output, err := xml.Marshal(input)
 	require.NoError(t, err)
@@ -45,7 +45,7 @@ func TestCdata_read(t *testing.T) {
 	err := xml.Unmarshal([]byte(input), &output)
 	require.NoError(t, err)
 
-	assert.Equal(t, &TestStruct{AddtlData: &rtp.Cdata{Max20000Text: rtp.Max20000Text(cdataText)}}, output)
+	assert.Equal(t, &TestStruct{AddtlData: &rtp.Cdata{CDataString: cdataText}}, output)
 }
 
 func TestCdata_read_withNamespace(t *testing.T) {
@@ -58,5 +58,5 @@ func TestCdata_read_withNamespace(t *testing.T) {
 	err := xml.Unmarshal([]byte(input), output)
 	require.NoError(t, err)
 
-	assert.Equal(t, &TestStruct{AddtlData: &rtp.Cdata{Max20000Text: rtp.Max20000Text(cdataText)}}, output)
+	assert.Equal(t, &TestStruct{AddtlData: &rtp.Cdata{CDataString: cdataText}}, output)
 }

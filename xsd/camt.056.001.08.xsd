@@ -4,6 +4,7 @@
     xmlns:gefeg="http://www.gefeg.com/public"
     targetNamespace="urn:iso:std:iso:20022:tech:xsd:camt.056.001.08"
     elementFormDefault="qualified">
+  <xs:element name="Document" type="Document"/>
   <xs:complexType name="ActiveOrHistoricCurrencyAndAmount">
     <xs:simpleContent>
       <xs:extension base="rt:ActiveOrHistoricCurrencyAndAmount_SimpleType">

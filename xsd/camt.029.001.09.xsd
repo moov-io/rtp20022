@@ -4,6 +4,7 @@
     xmlns:gefeg="http://www.gefeg.com/public"
     targetNamespace="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09"
     elementFormDefault="qualified">
+  <xs:element name="Document" type="Document"/>
   <xs:complexType name="ActiveOrHistoricCurrencyAndAmount">
     <xs:simpleContent>
       <xs:extension base="tr:ActiveOrHistoricCurrencyAndAmount_SimpleType">
@@ -132,13 +133,6 @@
   </xs:simpleType>
   <xs:simpleType name="ExternalPaymentCancellationRejection1Code">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="AC04"/>
-      <xs:enumeration value="AM04"/>
-      <xs:enumeration value="ARDT"/>
-      <xs:enumeration value="CUST"/>
-      <xs:enumeration value="LEGL"/>
-      <xs:enumeration value="NOAS"/>
-      <xs:enumeration value="NOOR"/>
       <xs:enumeration value="AC04"/>
       <xs:enumeration value="AM04"/>
       <xs:enumeration value="ARDT"/>

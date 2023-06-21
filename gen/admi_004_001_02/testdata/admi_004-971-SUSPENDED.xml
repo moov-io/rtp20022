@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns:ne="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" p3:schemaLocation="urn:tch messages.xsd" xmlns:p3="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:tch">
+  <AppHdr>
+    <head:Fr>
+      <head:FIId>
+        <head:FinInstnId>
+          <head:ClrSysMmbId>
+            <head:MmbId>990000001T1</head:MmbId>
+          </head:ClrSysMmbId>
+        </head:FinInstnId>
+      </head:FIId>
+    </head:Fr>
+    <head:To>
+      <head:FIId>
+        <head:FinInstnId>
+          <head:ClrSysMmbId>
+            <head:MmbId>0BROADCAST0</head:MmbId>
+          </head:ClrSysMmbId>
+        </head:FinInstnId>
+      </head:FIId>
+    </head:To>
+    <head:BizMsgIdr>B20230118990000001T1HOTS00503561541</head:BizMsgIdr>
+    <head:MsgDefIdr>admi.004.001.02</head:MsgDefIdr>
+    <head:CreDt>2023-01-18T10:52:21</head:CreDt>
+  </AppHdr>
+  <SystemNotificationEvent>
+    <ne:SysEvtNtfctn>
+      <ne:EvtInf>
+        <ne:EvtCd>971</ne:EvtCd>
+        <ne:EvtParam>202301181052210BROADCAST00503561541</ne:EvtParam>
+        <ne:EvtParam>Broadcast</ne:EvtParam>
+        <ne:EvtParam>SUSPENDED</ne:EvtParam>
+        <ne:EvtTm>2023-01-18T10:52:21</ne:EvtTm>
+      </ne:EvtInf>
+    </ne:SysEvtNtfctn>
+  </SystemNotificationEvent>
+</Message>

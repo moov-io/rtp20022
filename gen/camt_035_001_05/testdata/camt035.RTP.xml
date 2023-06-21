@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ac="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <Acknowledgement>
+        <ac:PrtryFrmtInvstgtn>
+            <ac:Assgnmt>
+                <ac:Id>M20210701000000032A1B00000008088595</ac:Id>
+                <ac:Assgnr>
+                    <ac:Agt>
+                        <ac:FinInstnId>
+                            <ac:ClrSysMmbId>
+                                <ac:MmbId>000000032</ac:MmbId>
+                            </ac:ClrSysMmbId>
+                        </ac:FinInstnId>
+                    </ac:Agt>
+                </ac:Assgnr>
+                <ac:Assgne>
+                    <ac:Agt>
+                        <ac:FinInstnId>
+                            <ac:ClrSysMmbId>
+                                <ac:MmbId>000000010</ac:MmbId>
+                            </ac:ClrSysMmbId>
+                        </ac:FinInstnId>
+                    </ac:Agt>
+                </ac:Assgne>
+                <ac:CreDtTm>2021-07-01T11:07:14</ac:CreDtTm>
+            </ac:Assgnmt>
+            <ac:Case>
+                <ac:Id>M20210701000000032A1B00000008088595</ac:Id>
+                <ac:Cretr>
+                    <ac:Pty>
+                        <ac:Nm>TCH</ac:Nm>
+                    </ac:Pty>
+                </ac:Cretr>
+            </ac:Case>
+            <ac:PrtryData>
+                <ac:Tp>ACK</ac:Tp>
+                <ac:Data>
+                    <ac:Ustrd>Information to the ACK</ac:Ustrd>
+                    <ac:OrigRefs>
+                        <ac:InstrId>20210701000000032A1B000000000047075</ac:InstrId>
+                        <ac:EndToEndId>E2E-Ref001</ac:EndToEndId>
+                        <ac:TxId>20210701000000032A1B000000000047075</ac:TxId>
+                    </ac:OrigRefs>
+                </ac:Data>
+            </ac:PrtryData>
+        </ac:PrtryFrmtInvstgtn>
+    </Acknowledgement>
+</Message>

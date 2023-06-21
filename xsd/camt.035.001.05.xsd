@@ -4,6 +4,7 @@
     xmlns:gefeg="http://www.gefeg.com/public"
     targetNamespace="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05"
     elementFormDefault="qualified">
+  <xs:element name="Document" type="Document"/>
   <xs:complexType name="BranchAndFinancialInstitutionIdentification6">
     <xs:sequence>
       <xs:element name="FinInstnId" type="ac:FinancialInstitutionIdentification18"/>

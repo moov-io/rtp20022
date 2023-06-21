@@ -18,10 +18,6 @@ install:
 	go mod tidy
 	go mod vendor
 
-install-generator:
-	go get -u aqwari.net/xml/cmd/xsdgen
-	go install aqwari.net/xml/cmd/xsdgen
-
 generate:
 	./scripts/generate.sh
 
