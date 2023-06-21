@@ -95,7 +95,7 @@ func TestReadHead001_signature(t *testing.T) {
 	err = xml.Unmarshal(input, head001)
 	require.NoError(t, err)
 
-	expected := NewMessage()
+	expected := messages.NewPacs008Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -114,7 +114,7 @@ func TestReadHead001_nosignature(t *testing.T) {
 	err = xml.Unmarshal(input, head001)
 	require.NoError(t, err)
 
-	expected := NewMessage()
+	expected := messages.NewPacs008Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -125,7 +125,7 @@ func TestReadHead001_nosignature(t *testing.T) {
 }
 
 func TestWriteHead001_signature(t *testing.T) {
-	input := NewMessage()
+	input := messages.NewPacs008Message()
 	input.AppHdr = head001Constant
 	input.AppHdr.Sgntr = head001Signature
 
@@ -139,7 +139,7 @@ func TestWriteHead001_signature(t *testing.T) {
 }
 
 func TestWriteHead001_nosignature(t *testing.T) {
-	input := NewMessage()
+	input := messages.NewPacs008Message()
 	input.AppHdr = head001Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")

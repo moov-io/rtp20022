@@ -73,7 +73,7 @@ func TestReadCamt029(t *testing.T) {
 	err = xml.Unmarshal(input, camt029)
 	require.NoError(t, err)
 
-	expected := NewCamt029Message()
+	expected := messages.NewCamt029Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -89,7 +89,7 @@ func TestReadCamt029(t *testing.T) {
 }
 
 func TestWriteCamt029(t *testing.T) {
-	input := NewCamt029Message()
+	input := messages.NewCamt029Message()
 	input.ResponseReturnOfFunds = camt029Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")

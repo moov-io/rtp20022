@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01">
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ct="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08">
     <AppHdr>
         <head:Fr>
             <head:FIId>

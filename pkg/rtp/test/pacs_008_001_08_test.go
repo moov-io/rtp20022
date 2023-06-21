@@ -165,7 +165,7 @@ func TestReadPacs008(t *testing.T) {
 	err = xml.Unmarshal(input, pacs008)
 	require.NoError(t, err)
 
-	expected := NewPacs008Message()
+	expected := messages.NewPacs008Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -181,7 +181,7 @@ func TestReadPacs008(t *testing.T) {
 }
 
 func TestWritePacs008(t *testing.T) {
-	input := NewPacs008Message()
+	input := messages.NewPacs008Message()
 	input.CreditTransfer = pacs008Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")

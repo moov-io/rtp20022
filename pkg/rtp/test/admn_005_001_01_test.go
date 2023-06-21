@@ -51,7 +51,7 @@ func TestReadAdmn005(t *testing.T) {
 	err = xml.Unmarshal(input, admn005)
 	require.NoError(t, err)
 
-	expected := NewAdmn005Message()
+	expected := messages.NewAdmn005Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -67,7 +67,7 @@ func TestReadAdmn005(t *testing.T) {
 }
 
 func TestWriteAdmn005(t *testing.T) {
-	input := NewAdmn005Message()
+	input := messages.NewAdmn005Message()
 	input.EchoRequest = admn005Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")

@@ -143,7 +143,7 @@ func TestReadPain013(t *testing.T) {
 	err = xml.Unmarshal(input, pain013)
 	require.NoError(t, err)
 
-	expected := NewPain013Message()
+	expected := messages.NewPain013Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -159,7 +159,7 @@ func TestReadPain013(t *testing.T) {
 }
 
 func TestWritePain013(t *testing.T) {
-	input := NewPain013Message()
+	input := messages.NewPain013Message()
 	input.PaymentRequest = pain013Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")

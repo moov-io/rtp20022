@@ -40,7 +40,7 @@ func TestReadAdmi004(t *testing.T) {
 	err = xml.Unmarshal(input, admi004)
 	require.NoError(t, err)
 
-	expected := NewAdmi004Message()
+	expected := messages.NewAdmi004Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -56,7 +56,7 @@ func TestReadAdmi004(t *testing.T) {
 }
 
 func TestWriteAdmi004(t *testing.T) {
-	input := NewAdmi004Message()
+	input := messages.NewAdmi004Message()
 	input.SystemNotificationEvent = admi004Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")
@@ -100,7 +100,7 @@ func readSystemEventNotification(t *testing.T, filename string) admi_004_001_02.
 	bs, err := os.ReadFile(filepath.Join("testdata", filename))
 	require.NoError(t, err)
 
-	message := NewAdmi004Message()
+	message := messages.NewAdmi004Message()
 	err = xml.Unmarshal(bs, &message)
 	require.NoError(t, err)
 	require.NotNil(t, message)
