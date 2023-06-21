@@ -30,7 +30,7 @@ do
 
     mkdir -p gen/${name}
 
-    ../xsd2go/moovfinancial_xsd2go convert \
+    ../xsd2go/gocomply_xsd2go convert \
        --xsd-file=${xsdFile} \
        --output-dir=gen/${name} \
        --output-file=${name}.go \
