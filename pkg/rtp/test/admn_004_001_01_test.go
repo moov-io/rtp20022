@@ -1,4 +1,4 @@
-package admn_004_001_01_test
+package test
 
 import (
 	"encoding/xml"
@@ -51,7 +51,7 @@ func TestReadAdmn004(t *testing.T) {
 	err = xml.Unmarshal(input, admn004)
 	require.NoError(t, err)
 
-	expected := messages.NewAdmn004Message()
+	expected := NewAdmn004Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -67,7 +67,7 @@ func TestReadAdmn004(t *testing.T) {
 }
 
 func TestWriteAdmn004(t *testing.T) {
-	input := messages.NewAdmn004Message()
+	input := NewAdmn004Message()
 	input.SignOffResponse = admn004Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")

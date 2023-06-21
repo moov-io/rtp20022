@@ -1,4 +1,4 @@
-package camt_056_001_08_test
+package test
 
 import (
 	"encoding/xml"
@@ -96,7 +96,7 @@ func TestReadCamt056(t *testing.T) {
 	err = xml.Unmarshal(input, camt056)
 	require.NoError(t, err)
 
-	expected := messages.NewCamt056Message()
+	expected := NewCamt056Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -112,7 +112,7 @@ func TestReadCamt056(t *testing.T) {
 }
 
 func TestWriteCamt056(t *testing.T) {
-	input := messages.NewCamt056Message()
+	input := NewCamt056Message()
 	input.ReturnOfFunds = camt056Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")

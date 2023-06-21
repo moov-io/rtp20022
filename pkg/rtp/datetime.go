@@ -2,7 +2,6 @@ package rtp
 
 import (
 	"bytes"
-	"encoding/xml"
 	"time"
 )
 
@@ -74,23 +73,6 @@ func (t *xsdDate) UnmarshalText(text []byte) error {
 func (t xsdDate) MarshalText() ([]byte, error) {
 	return _marshalTime((time.Time)(t), "2006-01-02")
 }
-func (t xsdDate) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	if (time.Time)(t).IsZero() {
-		return nil
-	}
-	m, err := t.MarshalText()
-	if err != nil {
-		return err
-	}
-	return e.EncodeElement(m, start)
-}
-func (t xsdDate) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
-	if (time.Time)(t).IsZero() {
-		return xml.Attr{}, nil
-	}
-	m, err := t.MarshalText()
-	return xml.Attr{Name: name, Value: string(m)}, err
-}
 func _unmarshalTime(text []byte, t *time.Time, format string) (err error) {
 	s := string(bytes.TrimSpace(text))
 	*t, err = time.ParseInLocation(format, s, Eastern())
@@ -111,23 +93,6 @@ func (t *xsdDateTime) UnmarshalText(text []byte) error {
 func (t xsdDateTime) MarshalText() ([]byte, error) {
 	return _marshalTime((time.Time)(t), "2006-01-02T15:04:05")
 }
-func (t xsdDateTime) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	if (time.Time)(t).IsZero() {
-		return nil
-	}
-	m, err := t.MarshalText()
-	if err != nil {
-		return err
-	}
-	return e.EncodeElement(m, start)
-}
-func (t xsdDateTime) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
-	if (time.Time)(t).IsZero() {
-		return xml.Attr{}, nil
-	}
-	m, err := t.MarshalText()
-	return xml.Attr{Name: name, Value: string(m)}, err
-}
 
 type xsdTime time.Time
 
@@ -136,21 +101,4 @@ func (t *xsdTime) UnmarshalText(text []byte) error {
 }
 func (t xsdTime) MarshalText() ([]byte, error) {
 	return _marshalTime((time.Time)(t), "15:04:05.999999999")
-}
-func (t xsdTime) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	if (time.Time)(t).IsZero() {
-		return nil
-	}
-	m, err := t.MarshalText()
-	if err != nil {
-		return err
-	}
-	return e.EncodeElement(m, start)
-}
-func (t xsdTime) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
-	if (time.Time)(t).IsZero() {
-		return xml.Attr{}, nil
-	}
-	m, err := t.MarshalText()
-	return xml.Attr{Name: name, Value: string(m)}, err
 }

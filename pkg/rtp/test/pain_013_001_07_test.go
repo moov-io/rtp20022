@@ -1,4 +1,4 @@
-package pain_013_001_07_test
+package test
 
 import (
 	"encoding/xml"
@@ -143,7 +143,7 @@ func TestReadPain013(t *testing.T) {
 	err = xml.Unmarshal(input, pain013)
 	require.NoError(t, err)
 
-	expected := messages.NewPain013Message()
+	expected := NewPain013Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -159,7 +159,7 @@ func TestReadPain013(t *testing.T) {
 }
 
 func TestWritePain013(t *testing.T) {
-	input := messages.NewPain013Message()
+	input := NewPain013Message()
 	input.PaymentRequest = pain013Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")

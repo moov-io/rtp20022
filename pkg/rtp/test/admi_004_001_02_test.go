@@ -1,4 +1,4 @@
-package admi_004_001_02_test
+package test
 
 import (
 	"encoding/xml"
@@ -40,7 +40,7 @@ func TestReadAdmi004(t *testing.T) {
 	err = xml.Unmarshal(input, admi004)
 	require.NoError(t, err)
 
-	expected := messages.NewAdmi004Message()
+	expected := NewAdmi004Message()
 	expected.XMLName = xml.Name{
 		Space: "urn:tch",
 		Local: "Message",
@@ -56,7 +56,7 @@ func TestReadAdmi004(t *testing.T) {
 }
 
 func TestWriteAdmi004(t *testing.T) {
-	input := messages.NewAdmi004Message()
+	input := NewAdmi004Message()
 	input.SystemNotificationEvent = admi004Constant
 
 	output, err := xml.MarshalIndent(input, "", "    ")
@@ -76,22 +76,22 @@ func TestParse_Admi004(t *testing.T) {
 	require.Equal(t, "2023-01-18T10:54:48-05:00", time.Time(*doc.EvtInf.EvtTm).Format(time.RFC3339))
 
 	sysEvent := readSystemEventNotification(t, "admi_004-960-UNAVAILABLE.xml")
-	require.Equal(t, "960", sysEvent.Code())
-	require.Equal(t, "UNAVAILABLE", sysEvent.Parameters()[4])
-	require.Equal(t, "", sysEvent.Description())
-	require.Equal(t, "2023-01-18T10:54:43-05:00", sysEvent.Time().Format(time.RFC3339))
+	require.Equal(t, "960", string(sysEvent.EvtInf.EvtCd))
+	require.Equal(t, "UNAVAILABLE", string(*sysEvent.EvtInf.EvtParam[4]))
+	require.Nil(t, sysEvent.EvtInf.EvtDesc)
+	require.Equal(t, "2023-01-18T10:54:43-05:00", time.Time(*sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
 
 	sysEvent = readSystemEventNotification(t, "admi_004-971-SUSPENDED.xml")
-	require.Equal(t, "971", sysEvent.Code())
-	require.Equal(t, "SUSPENDED", sysEvent.Parameters()[2])
-	require.Equal(t, "", sysEvent.Description())
-	require.Equal(t, "2023-01-18T10:52:21-05:00", sysEvent.Time().Format(time.RFC3339))
+	require.Equal(t, "971", string(sysEvent.EvtInf.EvtCd))
+	require.Equal(t, "SUSPENDED", string(*sysEvent.EvtInf.EvtParam[2]))
+	require.Nil(t, sysEvent.EvtInf.EvtDesc)
+	require.Equal(t, "2023-01-18T10:52:21-05:00", time.Time(*sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
 
 	sysEvent = readSystemEventNotification(t, "admi_004_971-NORMAL.xml")
-	require.Equal(t, "971", sysEvent.Code())
-	require.Equal(t, "NORMAL", sysEvent.Parameters()[2])
-	require.Equal(t, "", sysEvent.Description())
-	require.Equal(t, "2023-01-18T10:52:26-05:00", sysEvent.Time().Format(time.RFC3339))
+	require.Equal(t, "971", string(sysEvent.EvtInf.EvtCd))
+	require.Equal(t, "NORMAL", string(*sysEvent.EvtInf.EvtParam[2]))
+	require.Nil(t, sysEvent.EvtInf.EvtDesc)
+	require.Equal(t, "2023-01-18T10:52:26-05:00", time.Time(*sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
 }
 
 func readSystemEventNotification(t *testing.T, filename string) admi_004_001_02.SystemEventNotificationV02 {
@@ -100,7 +100,7 @@ func readSystemEventNotification(t *testing.T, filename string) admi_004_001_02.
 	bs, err := os.ReadFile(filepath.Join("testdata", filename))
 	require.NoError(t, err)
 
-	message := messages.NewAdmi004Message()
+	message := NewAdmi004Message()
 	err = xml.Unmarshal(bs, &message)
 	require.NoError(t, err)
 	require.NotNil(t, message)

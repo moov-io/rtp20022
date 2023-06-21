@@ -1,31 +1,14 @@
-package messages
+package test
 
 import (
 	"encoding/xml"
 
 	"github.com/moov-io/rtp20022/gen/head_001_001_01"
+	"github.com/moov-io/rtp20022/gen/messages"
 )
 
-var NamespacePrefixMap = map[string]string{
-	"urn:iso:std:iso:20022:tech:xsd:head.001.001.01": "head",
-	"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01": "mr",
-	"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02": "ne",
-	"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01": "sr",
-	"urn:iso:std:iso:20022:tech:xsd:admn.002.001.01": "rs",
-	"urn:iso:std:iso:20022:tech:xsd:admn.003.001.01": "fr",
-	"urn:iso:std:iso:20022:tech:xsd:admn.004.001.01": "rf",
-	"urn:iso:std:iso:20022:tech:xsd:admn.005.001.01": "er",
-	"urn:iso:std:iso:20022:tech:xsd:admn.006.001.01": "re",
-	"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09": "tr",
-	"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05": "ac",
-	"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08": "rt",
-	"urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10": "ps",
-	"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08": "ct",
-	"urn:iso:std:iso:20022:tech:xsd:pain.013.001.07": "pr",
-}
-
-func NewMessage() *HdrAndData {
-	message := &HdrAndData{}
+func NewMessage() *messages.HdrAndData {
+	message := &messages.HdrAndData{}
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
 			Local: "xmlns",
@@ -81,7 +64,7 @@ func NewSignature() *head_001_001_01.Sgntr {
 	return sgntr
 }
 
-func NewAdmi002Message() *HdrAndData {
+func NewAdmi002Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -92,7 +75,7 @@ func NewAdmi002Message() *HdrAndData {
 	return message
 }
 
-func NewAdmi004Message() *HdrAndData {
+func NewAdmi004Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -103,7 +86,7 @@ func NewAdmi004Message() *HdrAndData {
 	return message
 }
 
-func NewCamt029Message() *HdrAndData {
+func NewCamt029Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -114,7 +97,7 @@ func NewCamt029Message() *HdrAndData {
 	return message
 }
 
-func NewCamt035Message() *HdrAndData {
+func NewCamt035Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -125,7 +108,7 @@ func NewCamt035Message() *HdrAndData {
 	return message
 }
 
-func NewCamt056Message() *HdrAndData {
+func NewCamt056Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -136,7 +119,7 @@ func NewCamt056Message() *HdrAndData {
 	return message
 }
 
-func NewPacs002Message() *HdrAndData {
+func NewPacs002Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -147,7 +130,7 @@ func NewPacs002Message() *HdrAndData {
 	return message
 }
 
-func NewPacs008Message() *HdrAndData {
+func NewPacs008Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -158,7 +141,7 @@ func NewPacs008Message() *HdrAndData {
 	return message
 }
 
-func NewPain013Message() *HdrAndData {
+func NewPain013Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -169,7 +152,7 @@ func NewPain013Message() *HdrAndData {
 	return message
 }
 
-func NewAdmn001Message() *HdrAndData {
+func NewAdmn001Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -180,7 +163,7 @@ func NewAdmn001Message() *HdrAndData {
 	return message
 }
 
-func NewAdmn002Message() *HdrAndData {
+func NewAdmn002Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -191,7 +174,7 @@ func NewAdmn002Message() *HdrAndData {
 	return message
 }
 
-func NewAdmn003Message() *HdrAndData {
+func NewAdmn003Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -202,7 +185,7 @@ func NewAdmn003Message() *HdrAndData {
 	return message
 }
 
-func NewAdmn004Message() *HdrAndData {
+func NewAdmn004Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -213,7 +196,7 @@ func NewAdmn004Message() *HdrAndData {
 	return message
 }
 
-func NewAdmn005Message() *HdrAndData {
+func NewAdmn005Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{
@@ -224,7 +207,7 @@ func NewAdmn005Message() *HdrAndData {
 	return message
 }
 
-func NewAdmn006Message() *HdrAndData {
+func NewAdmn006Message() *messages.HdrAndData {
 	message := NewMessage()
 	message.Xmlns = append(message.Xmlns, xml.Attr{
 		Name: xml.Name{

@@ -22,6 +22,24 @@ import (
 	"github.com/moov-io/rtp20022/gen/pain_013_001_07"
 )
 
+var NamespacePrefixMap = map[string]string{
+	"urn:iso:std:iso:20022:tech:xsd:head.001.001.01": "head",
+	"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01": "mr",
+	"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02": "ne",
+	"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01": "sr",
+	"urn:iso:std:iso:20022:tech:xsd:admn.002.001.01": "rs",
+	"urn:iso:std:iso:20022:tech:xsd:admn.003.001.01": "fr",
+	"urn:iso:std:iso:20022:tech:xsd:admn.004.001.01": "rf",
+	"urn:iso:std:iso:20022:tech:xsd:admn.005.001.01": "er",
+	"urn:iso:std:iso:20022:tech:xsd:admn.006.001.01": "re",
+	"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09": "tr",
+	"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05": "ac",
+	"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08": "rt",
+	"urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10": "ps",
+	"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08": "ct",
+	"urn:iso:std:iso:20022:tech:xsd:pain.013.001.07": "pr",
+}
+
 // XSD ComplexType declarations
 
 type HdrAndData struct {

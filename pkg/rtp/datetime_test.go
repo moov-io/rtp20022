@@ -14,6 +14,8 @@ func TestISODateFormat(t *testing.T) {
 	loc, _ := time.LoadLocation("America/New_York")
 	when := time.Date(2019, time.March, 21, 0, 0, 0, 0, loc)
 
+	require.Equal(t, rtp.ISODate(when), rtp.UnmarshalISODate("2019-03-21"))
+
 	out, err := rtp.ISODate(when).MarshalText()
 	require.NoError(t, err)
 	require.Equal(t, "2019-03-21", string(out))
@@ -31,6 +33,8 @@ func TestISODateFormat(t *testing.T) {
 func TestISODateTimeFormat(t *testing.T) {
 	loc, _ := time.LoadLocation("America/New_York")
 	when := time.Date(2019, time.March, 21, 10, 36, 19, 0, loc)
+
+	require.Equal(t, rtp.ISODateTime(when), rtp.UnmarshalISODateTime("2019-03-21T10:36:19"))
 
 	out, err := rtp.ISODateTime(when).MarshalText()
 	require.NoError(t, err)
@@ -50,6 +54,8 @@ func TestISOTimeFormat(t *testing.T) {
 	loc, _ := time.LoadLocation("America/New_York")
 	when := time.Date(0, time.January, 1, 10, 36, 19, 0, loc)
 
+	require.Equal(t, rtp.ISOTime(when), rtp.UnmarshalISOTime("10:36:19"))
+
 	out, err := rtp.ISOTime(when).MarshalText()
 	require.NoError(t, err)
 	require.Equal(t, "10:36:19", string(out))
@@ -67,6 +73,8 @@ func TestISOTimeFormat(t *testing.T) {
 func TestISONormalisedDateTimeFormat(t *testing.T) {
 	loc, _ := time.LoadLocation("America/New_York")
 	when := time.Date(2019, time.March, 21, 10, 36, 19, 0, loc)
+
+	require.Equal(t, rtp.ISONormalisedDateTime(when), rtp.UnmarshalISONormalisedDateTime("2019-03-21T10:36:19"))
 
 	out, err := rtp.ISONormalisedDateTime(when).MarshalText()
 	require.NoError(t, err)
