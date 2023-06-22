@@ -128,3 +128,7 @@ func (v *HdrAndData) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 	type vv HdrAndData
 	return d.DecodeElement((*vv)(v), &start)
 }
+
+func (v *HdrAndData) Validate() error {
+	return nil
+}
