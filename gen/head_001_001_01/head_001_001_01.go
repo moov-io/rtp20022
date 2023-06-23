@@ -158,8 +158,8 @@ func (v Party9ChoiceBAHTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) e
 	return nil
 }
 
-type SignatureEnvelope struct {
-	Item string `xml:",any"`
+type Sgntr struct {
+	Signature *Signature
 }
 
 // XSD SimpleType declarations

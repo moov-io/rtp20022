@@ -139,7 +139,7 @@ func TestReadPain013(t *testing.T) {
 	input, err := os.ReadFile(filepath.Join("testdata", "pain013.RTP.xml"))
 	require.NoError(t, err)
 
-	pain013 := &messages.HdrAndData{}
+	pain013 := &messages.Message{}
 	err = xml.Unmarshal(input, pain013)
 	require.NoError(t, err)
 

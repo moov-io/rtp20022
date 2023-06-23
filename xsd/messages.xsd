@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="urn:tch"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:mr="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01"
-    xmlns:ne="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02"
-    xmlns:sr="urn:iso:std:iso:20022:tech:xsd:admn.001.001.01"
-    xmlns:rs="urn:iso:std:iso:20022:tech:xsd:admn.002.001.01"
-    xmlns:fr="urn:iso:std:iso:20022:tech:xsd:admn.003.001.01"
-    xmlns:rf="urn:iso:std:iso:20022:tech:xsd:admn.004.001.01"
-    xmlns:er="urn:iso:std:iso:20022:tech:xsd:admn.005.001.01"
-    xmlns:re="urn:iso:std:iso:20022:tech:xsd:admn.006.001.01"
-    xmlns:tr="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09"
-    xmlns:ac="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05"
-    xmlns:rt="urn:iso:std:iso:20022:tech:xsd:camt.056.001.08"
-    xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01"
-    xmlns:ps="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10"
-    xmlns:ct="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08"
-    xmlns:pr="urn:iso:std:iso:20022:tech:xsd:pain.013.001.07"
-    xmlns:gefeg="http://www.gefeg.com/public"
-    targetNamespace="urn:tch"
-    elementFormDefault="qualified"
-    attributeFormDefault="qualified">
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:mr="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01"
+           xmlns:ne="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02"
+           xmlns:sr="urn:iso:std:iso:20022:tech:xsd:admn.001.001.01"
+           xmlns:rs="urn:iso:std:iso:20022:tech:xsd:admn.002.001.01"
+           xmlns:fr="urn:iso:std:iso:20022:tech:xsd:admn.003.001.01"
+           xmlns:rf="urn:iso:std:iso:20022:tech:xsd:admn.004.001.01"
+           xmlns:er="urn:iso:std:iso:20022:tech:xsd:admn.005.001.01"
+           xmlns:re="urn:iso:std:iso:20022:tech:xsd:admn.006.001.01"
+           xmlns:tr="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09"
+           xmlns:ac="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05"
+           xmlns:rt="urn:iso:std:iso:20022:tech:xsd:camt.056.001.08"
+           xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01"
+           xmlns:ps="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10"
+           xmlns:ct="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08"
+           xmlns:pr="urn:iso:std:iso:20022:tech:xsd:pain.013.001.07"
+           xmlns:gefeg="http://www.gefeg.com/public"
+           targetNamespace="urn:tch"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified">
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01" schemaLocation="admi.002.001.01.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02" schemaLocation="admi.004.001.02.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admn.001.001.01" schemaLocation="admn.001.001.01.xsd"/>
@@ -44,7 +44,7 @@
       <xs:documentation gefeg:label="ChangeNote">change of namespace and schemaLocation for admn.007 and admn.008</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="AppHdr" type="head:BusinessApplicationHeaderV01" minOccurs="0"/>
+      <xs:element name="AppHdr" type="head:BusinessApplicationHeaderV01"/>
       <xs:choice>
         <xs:element name="CreditTransfer" type="ct:Document"/>
         <xs:element name="MessageStatusReport" type="ps:Document"/>
@@ -60,33 +60,6 @@
         <xs:element name="SignOnResponse" type="rs:Document"/>
         <xs:element name="SystemNotificationEvent" type="ne:Document"/>
         <xs:element name="MessageReject" type="mr:Document"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="HdrAndData_TCH">
-    <xs:annotation>
-      <xs:documentation gefeg:label="ChangeId">XSD Changes</xs:documentation>
-      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
-      <xs:documentation gefeg:label="ChangeDate">05/05/2020</xs:documentation>
-      <xs:documentation gefeg:label="ChangeNote">change of namespace and schemaLocation for admn.007 and admn.008</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="AppHdr" type="head:BusinessApplicationHeaderV01_TCH"/>
-      <xs:choice>
-        <xs:element name="CreditTransfer" type="ct:Document_TCH"/>
-        <xs:element name="MessageStatusReport" type="ps:Document_TCH"/>
-        <xs:element name="Acknowledgement" type="ac:Document_TCH"/>
-        <xs:element name="ReturnOfFunds" type="rt:Document_TCH"/>
-        <xs:element name="PaymentRequest" type="pr:Document_TCH"/>
-        <xs:element name="ResponseReturnOfFunds" type="tr:Document_TCH"/>
-        <xs:element name="EchoRequest" type="er:Document_TCH"/>
-        <xs:element name="EchoResponse" type="re:Document_TCH"/>
-        <xs:element name="SignOffRequest" type="fr:Document_TCH"/>
-        <xs:element name="SignOffResponse" type="rf:Document_TCH"/>
-        <xs:element name="SignOnRequest" type="sr:Document_TCH"/>
-        <xs:element name="SignOnResponse" type="rs:Document_TCH"/>
-        <xs:element name="SystemNotificationEvent" type="ne:Document_TCH"/>
-        <xs:element name="MessageReject" type="mr:Document_TCH"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>

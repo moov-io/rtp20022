@@ -91,7 +91,7 @@ func TestReadHead001_signature(t *testing.T) {
 	input, err := os.ReadFile(filepath.Join("testdata", "head001.RTP.signature.xml"))
 	require.NoError(t, err)
 
-	head001 := &messages.HdrAndData{}
+	head001 := &messages.Message{}
 	err = xml.Unmarshal(input, head001)
 	require.NoError(t, err)
 
@@ -110,7 +110,7 @@ func TestReadHead001_nosignature(t *testing.T) {
 	input, err := os.ReadFile(filepath.Join("testdata", "head001.RTP.nosignature.xml"))
 	require.NoError(t, err)
 
-	head001 := &messages.HdrAndData{}
+	head001 := &messages.Message{}
 	err = xml.Unmarshal(input, head001)
 	require.NoError(t, err)
 

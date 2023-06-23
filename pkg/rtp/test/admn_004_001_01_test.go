@@ -47,7 +47,7 @@ func TestReadAdmn004(t *testing.T) {
 	input, err := os.ReadFile(filepath.Join("testdata", "admn004.RTP.xml"))
 	require.NoError(t, err)
 
-	admn004 := &messages.HdrAndData{}
+	admn004 := &messages.Message{}
 	err = xml.Unmarshal(input, admn004)
 	require.NoError(t, err)
 

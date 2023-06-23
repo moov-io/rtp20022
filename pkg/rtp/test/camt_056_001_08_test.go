@@ -92,7 +92,7 @@ func TestReadCamt056(t *testing.T) {
 	input, err := os.ReadFile(filepath.Join("testdata", "camt056.RTP.xml"))
 	require.NoError(t, err)
 
-	camt056 := &messages.HdrAndData{}
+	camt056 := &messages.Message{}
 	err = xml.Unmarshal(input, camt056)
 	require.NoError(t, err)
 
