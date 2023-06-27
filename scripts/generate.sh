@@ -9,8 +9,8 @@ set -e
 #   --template-package=rtp
 
 ../xsd2go/gocomply_xsd2go convert \
-   --xsd-file=xsd/messages.xsd \
-   --output-dir=gen \
-   --go-module-import=github.com/moov-io/rtp20022 \
+   xsd/messages.xsd \
+   github.com/moov-io/rtp20022 \
+   gen \
    --template-package=internal/templates/rtp20022 \
    --template-name=messages.tmpl

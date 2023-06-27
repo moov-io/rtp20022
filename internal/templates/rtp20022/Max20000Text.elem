@@ -1,1 +1,0 @@
-{{ .GoFieldName }} {{ if .Array }}[]{{ end }}{{ if eq .MinOccurs "0" }}*{{ end }}rtp.Cdata `xml:"{{ .TargetNamespace }} {{ .XmlName }}{{ if eq .MinOccurs "0" }},omitempty{{ end }}"`
