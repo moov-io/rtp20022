@@ -12,5 +12,5 @@ set -e
    --xsd-file=xsd/messages.xsd \
    --output-dir=gen \
    --go-module-import=github.com/moov-io/rtp20022 \
-   --template-package=rtp \
-   --template-name=element.tmpl
+   --template-package=internal/templates/rtp20022 \
+   --template-name=messages.tmpl

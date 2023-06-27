@@ -1,0 +1,4 @@
+
+type Sgntr struct {
+	Signature *Signature
+}
