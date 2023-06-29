@@ -8,7 +8,7 @@ set -e
 #   --go-package=head_001_001_01 \
 #   --template-package=rtp
 
-../xsd2go/gocomply_xsd2go convert \
+../xsd2go/moovio_xsd2go convert \
    xsd/messages.xsd \
    github.com/moov-io/rtp20022 \
    gen \

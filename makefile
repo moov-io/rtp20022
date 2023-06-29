@@ -11,12 +11,16 @@ DEV_VERSION := dev-${COMMIT_HASH}
 USERID := $(shell id -u $$USER)
 GROUPID:= $(shell id -g $$USER)
 
-all: install generate check
+all: install-generator install generate check
 
 .PHONY: install
 install:
 	go mod tidy
 	go mod vendor
+
+install-generator:
+	go get -u github.com/moov-io/xsd2go@239-moovio-xsd2go
+	go install github.com/moov-io/xsd2go
 
 generate:
 	./scripts/generate.sh
