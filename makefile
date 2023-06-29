@@ -20,7 +20,6 @@ install:
 
 install-generator:
 	go get -u -v github.com/moov-io/xsd2go/cli/moovio_xsd2go@239-moovio-xsd2go
-	#go install github.com/moov-io/xsd2go
 
 generate:
 	./scripts/generate.sh
