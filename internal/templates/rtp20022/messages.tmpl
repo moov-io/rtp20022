@@ -3,11 +3,11 @@
 package {{ .GoPackageName }}
 
 import (
+	"fmt"
+    "github.com/moov-io/rtp20022/pkg/rtp"
     {{- range .GoImportsNeeded }}
         "{{ . }}"
     {{- end }}
-
-    "github.com/moov-io/rtp20022/pkg/rtp"
 )
 
 {{ if .ExportableElements -}}
