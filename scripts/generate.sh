@@ -12,8 +12,7 @@ moovio_xsd2go convert \
    xsd/messages.xsd \
    github.com/moov-io/rtp20022 \
    gen \
-   --template-package=internal/templates/rtp20022 \
-   --template-name=messages.tmpl \
+   --template-name=internal/templates/rtp20022/messages.tmpl \
    --xmlns-override="urn:iso:std:iso:20022:tech:xsd:head.001.001.01=head_001_001_01" \
    --xmlns-override="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01=admi_002_001_01" \
    --xmlns-override="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02=admi_004_001_02" \
@@ -29,3 +28,11 @@ moovio_xsd2go convert \
    --xmlns-override="urn:iso:std:iso:20022:tech:xsd:admn.004.001.01=admn_004_001_01" \
    --xmlns-override="urn:iso:std:iso:20022:tech:xsd:admn.003.001.01=admn_003_001_01" \
    --xmlns-override="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08=pacs_008_001_08"
+
+# run go fmt and goimports for every generated file
+files=($(find ./gen -name '*.go'))
+for file in "${files[@]}"
+do
+    gofmt -w $file
+    goimports -w $file
+done
