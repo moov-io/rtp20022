@@ -12,8 +12,15 @@ func (r BusinessApplicationHeaderV01) Context() map[string]log.Valuer {
 		"business_message_id":   log.String(string(r.BizMsgIdr)),
 		"message_definition_id": log.String(string(r.MsgDefIdr)),
 		"creation_date":         log.String(string(creDt)),
-		"duplicate":             log.String(string(*r.CpyDplct)),
+		"duplicate":             log.String(r.CopyDuplicateCode()),
 	}
+}
+
+func (r BusinessApplicationHeaderV01) CopyDuplicateCode() string {
+	if r.CpyDplct != nil {
+		return string(*r.CpyDplct)
+	}
+	return ""
 }
 
 func (r BusinessApplicationHeaderV01) FromMemberID() string {
