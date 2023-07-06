@@ -1,3 +1,47 @@
+## v0.7.0 (Released 2023-07-06)
+
+ADDITIONS
+
+This release includes a reworked version of the XML structs and related code for rtp20022 schemas based on a new generator. This release of rtp20022 has been verified to comply with TCH testing and verification processes.
+
+- feat: add CDATA support
+- feat: update XML struct generation
+- feat: add `admn.001.001.01`
+- feat: add `admn.002.001.01`
+- feat: add `admn.003.001.01`
+- feat: add `admn.004.001.01`
+- feat: add `admn.005.001.01`
+- feat: add `admn.006.001.01`
+- feat: add `head.001.001.01`
+
+BUILD
+
+- fix(deps): update module github.com/moov-io/base to v0.45.0
+- fix(deps): update module github.com/stretchr/testify to v1.8.4
+
+## v0.6.0 (Released 2023-05-17)
+
+ADDITIONS
+
+- feat: response return of funds writer
+
+## v0.5.0 (Released 2023-05-09)
+
+ADDITIONS
+
+- feat: Changes for rtp-test-harness
+- feat: camt.056.001.08
+- feat: camt.029.001.09
+
+BUILD
+
+- fix(deps): update module github.com/moov-io/base to v0.42.0
+- fix(deps): update module github.com/go-logfmt/logfmt to v0.6.0
+
+## v0.4.0 (Released 2023-04-19)
+
+- feat: status reason
+
 ## v0.3.0 (Released 2023-04-07)
 
 ADDITIONS
