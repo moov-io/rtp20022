@@ -11,7 +11,7 @@ DEV_VERSION := dev-${COMMIT_HASH}
 USERID := $(shell id -u $$USER)
 GROUPID:= $(shell id -g $$USER)
 
-all: install
+all: install-generator install generate check
 
 .PHONY: install
 install:
@@ -19,8 +19,8 @@ install:
 	go mod vendor
 
 install-generator:
-	go get -u aqwari.net/xml/cmd/xsdgen
-	go install aqwari.net/xml/cmd/xsdgen
+	go install golang.org/x/tools/cmd/goimports@latest
+	go install github.com/moov-io/xsd2go/cli/moovio_xsd2go@239-moovio-xsd2go
 
 generate:
 	./scripts/generate.sh

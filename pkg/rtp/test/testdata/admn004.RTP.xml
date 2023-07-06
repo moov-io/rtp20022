@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:rf="urn:iso:std:iso:20022:tech:xsd:admn.004.001.01">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <SignOffResponse>
+        <rf:AdmnSignOffResp>
+            <rf:GrpHdr>
+                <rf:MsgId>20230113125830990000001T11296198522</rf:MsgId>
+                <rf:CreDtTm>2023-01-13T12:58:30</rf:CreDtTm>
+            </rf:GrpHdr>
+            <rf:SignOffResp>
+                <rf:OrgnlInstrId>20230113200000057A1B123862501723637</rf:OrgnlInstrId>
+                <rf:InstgAgt>
+                    <rf:FinInstnId>
+                        <rf:ClrSysMmbId>
+                            <rf:MmbId>990000001T1</rf:MmbId>
+                        </rf:ClrSysMmbId>
+                    </rf:FinInstnId>
+                </rf:InstgAgt>
+                <rf:InstdAgt>
+                    <rf:FinInstnId>
+                        <rf:ClrSysMmbId>
+                            <rf:MmbId>990000001T1</rf:MmbId>
+                        </rf:ClrSysMmbId>
+                    </rf:FinInstnId>
+                </rf:InstdAgt>
+                <rf:Sts>ACTC</rf:Sts>
+            </rf:SignOffResp>
+        </rf:AdmnSignOffResp>
+    </SignOffResponse>
+</Message>

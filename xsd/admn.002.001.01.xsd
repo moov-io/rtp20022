@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:rs="urn:iso:std:iso:20022:tech:xsd:admn.002.001.01"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:iso:20022:tech:xsd:admn.002.001.01"
+    elementFormDefault="qualified">
+  <xs:element name="Document" type="Document"/>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification4ADMN">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="rs:FinancialInstitutionIdentification7ADMN"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2ADMN">
+    <xs:sequence>
+      <xs:element name="MmbId" type="rs:Min11Max11Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="AdmnSignOnResp" type="rs:SignOnResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document_TCH">
+    <xs:sequence>
+      <xs:element name="AdmnSignOnResp" type="rs:SignOnResponse_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification7ADMN">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="rs:ClearingSystemMemberIdentification2ADMN"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrpHdr">
+    <xs:sequence>
+      <xs:element name="MsgId" type="rs:Max35Text"/>
+      <xs:element name="CreDtTm" type="rs:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrpHdr_TCH">
+    <xs:sequence>
+      <xs:element name="MsgId" type="rs:Max35Text">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.1</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CreDtTm" type="rs:ISODateTime">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.2</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Min11Max11Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="11"/>
+      <xs:maxLength value="11"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ProprietaryReasonCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="9946"/>
+      <xs:enumeration value="9948"/>
+      <xs:enumeration value="9964"/>
+      <xs:enumeration value="DS0H"/>
+      <xs:enumeration value="RC02"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SignOnResp">
+    <xs:sequence>
+      <xs:element name="OrgnlInstrId" type="rs:Max35Text"/>
+      <xs:element name="InstgAgt" type="rs:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="InstdAgt" type="rs:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="Sts" type="rs:TransactionGroupStatus3Code_Admin"/>
+      <xs:element name="StsRsnInf" type="rs:StatusReasonInformation8" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SignOnResponse">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Updates according to Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="rs:GrpHdr">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SignOnResp" type="rs:SignOnResp">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SignOnResponse_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Updates according to Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="rs:GrpHdr_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SignOnResp" type="rs:SignOnResp_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SignOnResp_TCH">
+    <xs:sequence>
+      <xs:element name="OrgnlInstrId" type="rs:Max35Text"/>
+      <xs:element name="InstgAgt" type="rs:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="InstdAgt" type="rs:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="Sts" type="rs:TransactionGroupStatus3Code_Admin"/>
+      <xs:element name="StsRsnInf" type="rs:StatusReasonInformation8_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatusReason6Choice">
+    <xs:choice>
+      <xs:element name="Prtry" type="rs:ProprietaryReasonCode"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="StatusReasonInformation8">
+    <xs:sequence>
+      <xs:element name="Rsn" type="rs:StatusReason6Choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatusReasonInformation8_TCH">
+    <xs:sequence>
+      <xs:element name="Rsn" type="rs:StatusReason6Choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="TransactionGroupStatus3Code_Admin">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTC"/>
+      <xs:enumeration value="RJCT"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

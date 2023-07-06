@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:iso:20022:tech:xsd:head.001.001.01"
+    elementFormDefault="qualified">
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification5BAH">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="head:FinancialInstitutionIdentification8BAH"/>
+      <xs:element name="BrnchId" type="head:BranchData2BAH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification5BAH_TCH">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="head:FinancialInstitutionIdentification8BAH"/>
+      <xs:element name="BrnchId" type="head:BranchData2BAH_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchData2BAH">
+    <xs:sequence>
+      <xs:element name="Id" type="head:Min11Max11Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchData2BAH_TCH">
+    <xs:sequence>
+      <xs:element name="Id" type="head:Min11Max11Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessApplicationHeaderV01">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9 / Correction BAH Fr/To Member Id</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Fr" type="head:Party9ChoiceBAH"/>
+      <xs:element name="To" type="head:Party9ChoiceBAH"/>
+      <xs:element name="BizMsgIdr" type="head:Max35Text"/>
+      <xs:element name="MsgDefIdr" type="head:OrigMsgName"/>
+      <xs:element name="CreDt" type="head:ISONormalisedDateTime"/>
+      <xs:element name="CpyDplct" type="head:CopyDuplicate1Code" minOccurs="0"/>
+      <xs:element name="Sgntr" type="head:SignatureEnvelope" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessApplicationHeaderV01_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9 / Correction BAH Fr/To Member Id</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Fr" type="head:Party9ChoiceBAH_TCH"/>
+      <xs:element name="To" type="head:Party9ChoiceBAH_TCH"/>
+      <xs:element name="BizMsgIdr" type="head:Max35Text_TCH"/>
+      <xs:element name="MsgDefIdr" type="head:OrigMsgName"/>
+      <xs:element name="CreDt" type="head:ISONormalisedDateTime"/>
+      <xs:element name="CpyDplct" type="head:CopyDuplicate1Code" minOccurs="0"/>
+      <xs:element name="Sgntr" type="head:SignatureEnvelope" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2ADMN">
+    <xs:sequence>
+      <xs:element name="MmbId" type="head:Min11Max11Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="CopyDuplicate1Code">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="COPY"/>
+      <xs:enumeration value="DUPL"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="FinancialInstitutionIdentification8BAH">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="head:ClearingSystemMemberIdentification2ADMN"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ISONormalisedDateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+      <xs:pattern value="B[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Min11Max11Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="11"/>
+      <xs:maxLength value="11"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OrigMsgName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="acmt.022.001.02"/>
+      <xs:enumeration value="admi.002.001.01"/>
+      <xs:enumeration value="admi.004.001.02"/>
+      <xs:enumeration value="admn.001.001.01"/>
+      <xs:enumeration value="admn.002.001.01"/>
+      <xs:enumeration value="admn.003.001.01"/>
+      <xs:enumeration value="admn.004.001.01"/>
+      <xs:enumeration value="admn.005.001.01"/>
+      <xs:enumeration value="admn.006.001.01"/>
+      <xs:enumeration value="admn.007.001.01"/>
+      <xs:enumeration value="admn.008.001.01"/>
+      <xs:enumeration value="camt.026.001.07"/>
+      <xs:enumeration value="camt.028.001.09"/>
+      <xs:enumeration value="camt.029.001.09"/>
+      <xs:enumeration value="camt.035.001.05"/>
+      <xs:enumeration value="camt.056.001.08"/>
+      <xs:enumeration value="pacs.002.001.10"/>
+      <xs:enumeration value="pacs.008.001.08"/>
+      <xs:enumeration value="pacs.009.001.08"/>
+      <xs:enumeration value="pacs.028.001.03"/>
+      <xs:enumeration value="pain.013.001.07"/>
+      <xs:enumeration value="pain.014.001.07"/>
+      <xs:enumeration value="remt.001.001.04"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Party9ChoiceBAH">
+    <xs:choice>
+      <xs:element name="FIId" type="head:BranchAndFinancialInstitutionIdentification5BAH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party9ChoiceBAH_TCH">
+    <xs:choice>
+      <xs:element name="FIId" type="head:BranchAndFinancialInstitutionIdentification5BAH_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="SignatureEnvelope">
+    <xs:sequence>
+      <xs:any namespace="http://www.w3.org/2000/09/xmldsig#" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
