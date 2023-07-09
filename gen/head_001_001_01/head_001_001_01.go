@@ -5,6 +5,7 @@ package head_001_001_01
 import (
 	"encoding/xml"
 
+	"github.com/moov-io/rtp20022/gen/xmldsig"
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
@@ -159,7 +160,7 @@ func (v Party9ChoiceBAHTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) e
 }
 
 type Sgntr struct {
-	Signature *Signature
+	Signature *xmldsig.Signature
 }
 
 // XSD SimpleType declarations

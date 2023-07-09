@@ -40,11 +40,11 @@
                 <SignatureValue>GFkk2bhGHd7kbsRBa+s8HvADwsUTm6N2Mro06O2yCJxl7SkXp/l5OY8QBYw/NlRjBHQsQzpymoNz5+p7OPTu/YGZ5s29iYD8gCA55rbQjr+K+m4dzVAcZQoLs7vSe3QoqQlUugkzFlMwjAGLW0WHZQA9PvJFbVAMVbZk+mMIJH8pyP1kSd+iu3sccav5d9qkG/ESBXUzCzQwrg9OTwBZXop5bs2SIAlG90III0J31l6ARq4eUtzbHaDGKDlbcHkkwnKdev/uYkvvjx1yr/XzMuVvpwbbOfhmcgTlAxKsKpx7sM1Pxq5Jx66Vt7k9AzKX0W/PSPDdRJjQfolEW1Aptg==</SignatureValue>
                 <KeyInfo>
                     <X509Data>
-                        <X509SubjectName>CN=demo.tchbt.tchrtp.org,OU=Technology Integration Management,O=The Clearing House Payments Company LLC,L=New York,S=New York,C=US</X509SubjectName>
                         <X509IssuerSerial>
                             <X509IssuerName>CN=The Clearing House Enterprise Issuing CA 1, O=The Clearing House Payments Company, C=US</X509IssuerName>
                             <X509SerialNumber>303111756915795778601924</X509SerialNumber>
                         </X509IssuerSerial>
+                        <X509SubjectName>CN=demo.tchbt.tchrtp.org,OU=Technology Integration Management,O=The Clearing House Payments Company LLC,L=New York,S=New York,C=US</X509SubjectName>
                     </X509Data>
                 </KeyInfo>
             </Signature>
