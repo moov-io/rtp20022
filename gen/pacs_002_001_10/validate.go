@@ -15,52 +15,29 @@ func (d Document) MsgId() string {
 }
 
 func (d Document) OrgnlMsgId() string {
-	for i := range d.FIToFIPmtStsRpt.OrgnlGrpInfAndSts {
-		return string(d.FIToFIPmtStsRpt.OrgnlGrpInfAndSts[i].OrgnlMsgId)
-	}
-	return ""
+	return string(d.FIToFIPmtStsRpt.OrgnlGrpInfAndSts.OrgnlMsgId)
 }
 
 func (d Document) OrgnlInstrId() string {
-	for i := range d.FIToFIPmtStsRpt.TxInfAndSts {
-		return string(*d.FIToFIPmtStsRpt.TxInfAndSts[i].OrgnlInstrId)
-	}
-	return ""
+	return string(d.FIToFIPmtStsRpt.TxInfAndSts.OrgnlInstrId)
 }
 
 func (d Document) OrgnlTxId() string {
-	for i := range d.FIToFIPmtStsRpt.TxInfAndSts {
-		return string(*d.FIToFIPmtStsRpt.TxInfAndSts[i].OrgnlTxId)
-	}
-	return ""
+	return string(*d.FIToFIPmtStsRpt.TxInfAndSts.OrgnlTxId)
 }
 
 func (d Document) TxSts() string {
-	for i := range d.FIToFIPmtStsRpt.TxInfAndSts {
-		return string(*d.FIToFIPmtStsRpt.TxInfAndSts[i].TxSts)
-	}
-	return ""
+	return string(d.FIToFIPmtStsRpt.TxInfAndSts.TxSts)
 }
 
 func (d Document) StsRsn() string {
-	for i := range d.FIToFIPmtStsRpt.TxInfAndSts {
-		for j := range d.FIToFIPmtStsRpt.TxInfAndSts[i].StsRsnInf {
-			return string(*d.FIToFIPmtStsRpt.TxInfAndSts[i].StsRsnInf[j].Rsn.Cd)
-		}
-	}
-	return ""
+	return string(*d.FIToFIPmtStsRpt.TxInfAndSts.StsRsnInf.Rsn.Cd)
 }
 
 func (d Document) IntrBkSttlmAmt() float64 {
-	for i := range d.FIToFIPmtStsRpt.TxInfAndSts {
-		return float64(d.FIToFIPmtStsRpt.TxInfAndSts[i].OrgnlTxRef.IntrBkSttlmAmt.Value)
-	}
-	return 0.0
+	return float64(d.FIToFIPmtStsRpt.TxInfAndSts.OrgnlTxRef.IntrBkSttlmAmt.Value)
 }
 
 func (d Document) IntrBkSttlmDt() time.Time {
-	for i := range d.FIToFIPmtStsRpt.TxInfAndSts {
-		return time.Time(*d.FIToFIPmtStsRpt.TxInfAndSts[i].OrgnlTxRef.IntrBkSttlmDt)
-	}
-	return time.Time{}
+	return time.Time(*d.FIToFIPmtStsRpt.TxInfAndSts.OrgnlTxRef.IntrBkSttlmDt)
 }

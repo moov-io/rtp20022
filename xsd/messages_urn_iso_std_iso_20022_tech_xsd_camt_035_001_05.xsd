@@ -4,7 +4,6 @@
     xmlns:gefeg="http://www.gefeg.com/public"
     targetNamespace="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05"
     elementFormDefault="qualified">
-  <xs:element name="Document" type="Document"/>
   <xs:complexType name="BranchAndFinancialInstitutionIdentification6">
     <xs:sequence>
       <xs:element name="FinInstnId" type="ac:FinancialInstitutionIdentification18"/>
@@ -211,6 +210,7 @@
       <xs:element name="InstrId" type="ac:Max35Text"/>
       <xs:element name="EndToEndId" type="ac:Max35Text"/>
       <xs:element name="TxId" type="ac:Max35Text"/>
+      <xs:element name="UETR" type="ac:UUIDv4Identifier" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TransactionReferences8_reduced_TCH">
@@ -218,6 +218,12 @@
       <xs:element name="InstrId" type="ac:Max35Text"/>
       <xs:element name="EndToEndId" type="ac:Max35Text"/>
       <xs:element name="TxId" type="ac:Max35Text"/>
+      <xs:element name="UETR" type="ac:UUIDv4Identifier" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:simpleType name="UUIDv4Identifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>

@@ -16,18 +16,18 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-var admi004Constant = &admi_004_001_02.Document{
-	SysEvtNtfctn: admi_004_001_02.SystemEventNotificationV02{
-		EvtInf: admi_004_001_02.Event2{
+var admi004Constant = &admi_004_001_02.DocumentTCH{
+	SysEvtNtfctn: admi_004_001_02.SystemEventNotificationV02TCH{
+		EvtInf: admi_004_001_02.Event2TCH{
 			EvtCd: "960",
-			EvtParam: []*admi_004_001_02.Max35Text{
-				rtp.Ptr(admi_004_001_02.Max35Text("202301181054430BROADCAST01104022138")),
-				rtp.Ptr(admi_004_001_02.Max35Text("Broadcast")),
-				rtp.Ptr(admi_004_001_02.Max35Text("123456789T1")),
-				rtp.Ptr(admi_004_001_02.Max35Text("1234567890101")),
-				rtp.Ptr(admi_004_001_02.Max35Text("AVAILABLE")),
+			EvtParam: []admi_004_001_02.Max35Text{
+				admi_004_001_02.Max35Text("202301181054430BROADCAST01104022138"),
+				admi_004_001_02.Max35Text("Broadcast"),
+				admi_004_001_02.Max35Text("123456789T1"),
+				admi_004_001_02.Max35Text("1234567890101"),
+				admi_004_001_02.Max35Text("AVAILABLE"),
 			},
-			EvtTm: rtp.Ptr(rtp.UnmarshalISODateTime("2023-01-18T10:54:48")),
+			EvtTm: rtp.UnmarshalISODateTime("2023-01-18T10:54:48"),
 		},
 	},
 }
@@ -71,30 +71,30 @@ func TestWriteAdmi004(t *testing.T) {
 func TestParse_Admi004(t *testing.T) {
 	doc := readSystemEventNotification(t, "admi_004-960-AVAILABLE.xml")
 	require.Equal(t, "960", string(doc.EvtInf.EvtCd))
-	require.Equal(t, "Broadcast", string(*doc.EvtInf.EvtParam[1]))
+	require.Equal(t, "Broadcast", string(doc.EvtInf.EvtParam[1]))
 	require.Nil(t, doc.EvtInf.EvtDesc)
-	require.Equal(t, "2023-01-18T10:54:48-05:00", time.Time(*doc.EvtInf.EvtTm).Format(time.RFC3339))
+	require.Equal(t, "2023-01-18T10:54:48-05:00", time.Time(doc.EvtInf.EvtTm).Format(time.RFC3339))
 
 	sysEvent := readSystemEventNotification(t, "admi_004-960-UNAVAILABLE.xml")
 	require.Equal(t, "960", string(sysEvent.EvtInf.EvtCd))
-	require.Equal(t, "UNAVAILABLE", string(*sysEvent.EvtInf.EvtParam[4]))
+	require.Equal(t, "UNAVAILABLE", string(sysEvent.EvtInf.EvtParam[4]))
 	require.Nil(t, sysEvent.EvtInf.EvtDesc)
-	require.Equal(t, "2023-01-18T10:54:43-05:00", time.Time(*sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+	require.Equal(t, "2023-01-18T10:54:43-05:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
 
 	sysEvent = readSystemEventNotification(t, "admi_004-971-SUSPENDED.xml")
 	require.Equal(t, "971", string(sysEvent.EvtInf.EvtCd))
-	require.Equal(t, "SUSPENDED", string(*sysEvent.EvtInf.EvtParam[2]))
+	require.Equal(t, "SUSPENDED", string(sysEvent.EvtInf.EvtParam[2]))
 	require.Nil(t, sysEvent.EvtInf.EvtDesc)
-	require.Equal(t, "2023-01-18T10:52:21-05:00", time.Time(*sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+	require.Equal(t, "2023-01-18T10:52:21-05:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
 
 	sysEvent = readSystemEventNotification(t, "admi_004_971-NORMAL.xml")
 	require.Equal(t, "971", string(sysEvent.EvtInf.EvtCd))
-	require.Equal(t, "NORMAL", string(*sysEvent.EvtInf.EvtParam[2]))
+	require.Equal(t, "NORMAL", string(sysEvent.EvtInf.EvtParam[2]))
 	require.Nil(t, sysEvent.EvtInf.EvtDesc)
-	require.Equal(t, "2023-01-18T10:52:26-05:00", time.Time(*sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+	require.Equal(t, "2023-01-18T10:52:26-05:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
 }
 
-func readSystemEventNotification(t *testing.T, filename string) admi_004_001_02.SystemEventNotificationV02 {
+func readSystemEventNotification(t *testing.T, filename string) admi_004_001_02.SystemEventNotificationV02TCH {
 	t.Helper()
 
 	bs, err := os.ReadFile(filepath.Join("testdata", filename))

@@ -16,23 +16,23 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-var camt029Constant = &camt_029_001_09.Document{
-	RsltnOfInvstgtn: camt_029_001_09.ResolutionOfInvestigationV09{
-		Assgnmt: camt_029_001_09.CaseAssignment5{
+var camt029Constant = &camt_029_001_09.DocumentTCH{
+	RsltnOfInvstgtn: camt_029_001_09.ResolutionOfInvestigationV09TCH{
+		Assgnmt: camt_029_001_09.CaseAssignment5TCH{
 			Id: "M20210701000000032A1B00000008088704",
-			Assgnr: camt_029_001_09.Party40Choice{
-				Agt: &camt_029_001_09.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: camt_029_001_09.FinancialInstitutionIdentification18{
-						ClrSysMmbId: camt_029_001_09.ClearingSystemMemberIdentification2{
+			Assgnr: camt_029_001_09.Party40ChoiceTCH{
+				Agt: &camt_029_001_09.BranchAndFinancialInstitutionIdentification6TCH{
+					FinInstnId: camt_029_001_09.FinancialInstitutionIdentification18TCH{
+						ClrSysMmbId: camt_029_001_09.ClearingSystemMemberIdentification2TCH{
 							MmbId: "000000032",
 						},
 					},
 				},
 			},
-			Assgne: camt_029_001_09.Party40Choice{
-				Agt: &camt_029_001_09.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: camt_029_001_09.FinancialInstitutionIdentification18{
-						ClrSysMmbId: camt_029_001_09.ClearingSystemMemberIdentification2{
+			Assgne: camt_029_001_09.Party40ChoiceTCH{
+				Agt: &camt_029_001_09.BranchAndFinancialInstitutionIdentification6TCH{
+					FinInstnId: camt_029_001_09.FinancialInstitutionIdentification18TCH{
+						ClrSysMmbId: camt_029_001_09.ClearingSystemMemberIdentification2TCH{
 							MmbId: "000000010",
 						},
 					},
@@ -41,16 +41,16 @@ var camt029Constant = &camt_029_001_09.Document{
 			CreDtTm: rtp.UnmarshalISODateTime("2021-07-01T11:09:58"),
 		},
 		Sts: camt_029_001_09.InvestigationStatus5Choice{
-			Conf: rtp.Ptr(camt_029_001_09.ExternalInvestigationExecutionConfirmation1Code("IPAY")),
+			Conf: rtp.Ptr(camt_029_001_09.ExternalInvestigationExecutionConfirmation1CodeIpay),
 		},
-		CxlDtls: camt_029_001_09.UnderlyingTransaction22{
-			OrgnlGrpInfAndSts: camt_029_001_09.OriginalGroupHeader14{
-				RslvdCase: camt_029_001_09.Case5{
+		CxlDtls: camt_029_001_09.UnderlyingTransaction22TCH{
+			OrgnlGrpInfAndSts: camt_029_001_09.OriginalGroupHeader14TCH{
+				RslvdCase: camt_029_001_09.Case5TCH{
 					Id: "M20210701000000010B1B00000008088677",
-					Cretr: camt_029_001_09.Party40Choice{
-						Agt: &camt_029_001_09.BranchAndFinancialInstitutionIdentification6{
-							FinInstnId: camt_029_001_09.FinancialInstitutionIdentification18{
-								ClrSysMmbId: camt_029_001_09.ClearingSystemMemberIdentification2{
+					Cretr: camt_029_001_09.Party40ChoiceTCH{
+						Agt: &camt_029_001_09.BranchAndFinancialInstitutionIdentification6TCH{
+							FinInstnId: camt_029_001_09.FinancialInstitutionIdentification18TCH{
+								ClrSysMmbId: camt_029_001_09.ClearingSystemMemberIdentification2TCH{
 									MmbId: "000000010",
 								},
 							},

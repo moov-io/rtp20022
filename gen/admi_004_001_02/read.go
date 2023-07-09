@@ -11,7 +11,7 @@ func (s SystemEventNotificationV02) Code() string {
 func (s SystemEventNotificationV02) Parameters() []string {
 	var out []string
 	for i := range s.EvtInf.EvtParam {
-		out = append(out, string(*s.EvtInf.EvtParam[i]))
+		out = append(out, string(s.EvtInf.EvtParam[i]))
 	}
 	return out
 }
@@ -24,8 +24,5 @@ func (s SystemEventNotificationV02) Description() string {
 }
 
 func (s SystemEventNotificationV02) Time() time.Time {
-	if s.EvtInf.EvtTm != nil {
-		return time.Time(*s.EvtInf.EvtTm)
-	}
-	return time.Time{}
+	return time.Time(s.EvtInf.EvtTm)
 }

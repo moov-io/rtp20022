@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="urn:tch"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:mr="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01"
-           xmlns:ne="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02"
-           xmlns:sr="urn:iso:std:iso:20022:tech:xsd:admn.001.001.01"
-           xmlns:rs="urn:iso:std:iso:20022:tech:xsd:admn.002.001.01"
-           xmlns:fr="urn:iso:std:iso:20022:tech:xsd:admn.003.001.01"
-           xmlns:rf="urn:iso:std:iso:20022:tech:xsd:admn.004.001.01"
-           xmlns:er="urn:iso:std:iso:20022:tech:xsd:admn.005.001.01"
-           xmlns:re="urn:iso:std:iso:20022:tech:xsd:admn.006.001.01"
-           xmlns:tr="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09"
-           xmlns:ac="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05"
-           xmlns:rt="urn:iso:std:iso:20022:tech:xsd:camt.056.001.08"
-           xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01"
-           xmlns:ps="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10"
-           xmlns:ct="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08"
-           xmlns:pr="urn:iso:std:iso:20022:tech:xsd:pain.013.001.07"
-           xmlns:gefeg="http://www.gefeg.com/public"
-           targetNamespace="urn:tch"
-           elementFormDefault="qualified"
-           attributeFormDefault="qualified">
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:ut="urn:iso:std:ma:20022:tech:xsd:admn.007.001.01"
+    xmlns:tu="urn:iso:std:ma:20022:tech:xsd:admn.008.001.01"
+    xmlns:a2="urn:iso:std:iso:20022:tech:xsd:acmt.022.001.02"
+    xmlns:mr="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01"
+    xmlns:ne="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02"
+    xmlns:sr="urn:iso:std:iso:20022:tech:xsd:admn.001.001.01"
+    xmlns:rs="urn:iso:std:iso:20022:tech:xsd:admn.002.001.01"
+    xmlns:fr="urn:iso:std:iso:20022:tech:xsd:admn.003.001.01"
+    xmlns:rf="urn:iso:std:iso:20022:tech:xsd:admn.004.001.01"
+    xmlns:er="urn:iso:std:iso:20022:tech:xsd:admn.005.001.01"
+    xmlns:re="urn:iso:std:iso:20022:tech:xsd:admn.006.001.01"
+    xmlns:fi="urn:iso:std:iso:20022:tech:xsd:camt.026.001.07"
+    xmlns:if="urn:iso:std:iso:20022:tech:xsd:camt.028.001.09"
+    xmlns:tr="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09"
+    xmlns:ac="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05"
+    xmlns:rt="urn:iso:std:iso:20022:tech:xsd:camt.056.001.08"
+    xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01"
+    xmlns:ps="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10"
+    xmlns:ct="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08"
+    xmlns:c9="urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08"
+    xmlns:s8="urn:iso:std:iso:20022:tech:xsd:pacs.028.001.03"
+    xmlns:pr="urn:iso:std:iso:20022:tech:xsd:pain.013.001.07"
+    xmlns:rp="urn:iso:std:iso:20022:tech:xsd:pain.014.001.07"
+    xmlns:ar="urn:iso:std:iso:20022:tech:xsd:remt.001.001.04"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:tch"
+    elementFormDefault="qualified"
+    attributeFormDefault="qualified">
+  <xs:import namespace="urn:iso:std:ma:20022:tech:xsd:admn.007.001.01" schemaLocation="messages_urn_iso_std_ma_20022_tech_xsd_admn_007_001_01.xsd"/>
+  <xs:import namespace="urn:iso:std:ma:20022:tech:xsd:admn.008.001.01" schemaLocation="messages_urn_iso_std_ma_20022_tech_xsd_admn_008_001_01.xsd"/>
+  <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:acmt.022.001.02" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_acmt_022_001_02.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_admi_002_001_01.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_admi_004_001_02.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admn.001.001.01" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_admn_001_001_01.xsd"/>
@@ -28,14 +40,20 @@
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admn.004.001.01" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_admn_004_001_01.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admn.005.001.01" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_admn_005_001_01.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admn.006.001.01" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_admn_006_001_01.xsd"/>
+  <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.026.001.07" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_camt_026_001_07.xsd"/>
+  <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.028.001.09" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_camt_028_001_09.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_camt_029_001_09.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_camt_035_001_05.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.056.001.08" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_camt_056_001_08.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_head_001_001_01.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_pacs_002_001_10.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_pacs_008_001_08.xsd"/>
+  <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_pacs_009_001_08.xsd"/>
+  <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pacs.028.001.03" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_pacs_028_001_03.xsd"/>
   <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pain.013.001.07" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_pain_013_001_07.xsd"/>
-  <xs:element name="Message" type="HdrAndData"/>
+  <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pain.014.001.07" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_pain_014_001_07.xsd"/>
+  <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:remt.001.001.04" schemaLocation="messages_urn_iso_std_iso_20022_tech_xsd_remt_001_001_04.xsd"/>
+  <xs:element name="Message" type="HdrAndData_TCH"/>
   <xs:complexType name="HdrAndData">
     <xs:annotation>
       <xs:documentation gefeg:label="ChangeId">XSD Changes</xs:documentation>
@@ -48,9 +66,13 @@
       <xs:choice>
         <xs:element name="CreditTransfer" type="ct:Document"/>
         <xs:element name="MessageStatusReport" type="ps:Document"/>
+        <xs:element name="FICreditTransfer" type="c9:Document"/>
         <xs:element name="Acknowledgement" type="ac:Document"/>
+        <xs:element name="ResponseRequestForInformation" type="if:Document"/>
+        <xs:element name="RequestForInformation" type="fi:Document"/>
         <xs:element name="ReturnOfFunds" type="rt:Document"/>
         <xs:element name="PaymentRequest" type="pr:Document"/>
+        <xs:element name="ResponsePaymentRequest" type="rp:Document"/>
         <xs:element name="ResponseReturnOfFunds" type="tr:Document"/>
         <xs:element name="EchoRequest" type="er:Document"/>
         <xs:element name="EchoResponse" type="re:Document"/>
@@ -58,8 +80,49 @@
         <xs:element name="SignOffResponse" type="rf:Document"/>
         <xs:element name="SignOnRequest" type="sr:Document"/>
         <xs:element name="SignOnResponse" type="rs:Document"/>
+        <xs:element name="StandaloneRemittance" type="ar:Document"/>
         <xs:element name="SystemNotificationEvent" type="ne:Document"/>
         <xs:element name="MessageReject" type="mr:Document"/>
+        <xs:element name="TokenIdentification" type="a2:Document"/>
+        <xs:element name="ParticipantReport" type="ut:Document"/>
+        <xs:element name="ParticipantReportResponse" type="tu:Document"/>
+        <xs:element name="PaymentStatusRequest" type="s8:Document"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HdrAndData_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">XSD Changes</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">05/05/2020</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">change of namespace and schemaLocation for admn.007 and admn.008</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AppHdr" type="head:BusinessApplicationHeaderV01_TCH"/>
+      <xs:choice>
+        <xs:element name="CreditTransfer" type="ct:Document_TCH"/>
+        <xs:element name="MessageStatusReport" type="ps:Document_TCH"/>
+        <xs:element name="FICreditTransfer" type="c9:Document_TCH"/>
+        <xs:element name="Acknowledgement" type="ac:Document_TCH"/>
+        <xs:element name="ResponseRequestForInformation" type="if:Document_TCH"/>
+        <xs:element name="RequestForInformation" type="fi:Document_TCH"/>
+        <xs:element name="ReturnOfFunds" type="rt:Document_TCH"/>
+        <xs:element name="PaymentRequest" type="pr:Document_TCH"/>
+        <xs:element name="ResponsePaymentRequest" type="rp:Document_TCH"/>
+        <xs:element name="ResponseReturnOfFunds" type="tr:Document_TCH"/>
+        <xs:element name="EchoRequest" type="er:Document_TCH"/>
+        <xs:element name="EchoResponse" type="re:Document_TCH"/>
+        <xs:element name="SignOffRequest" type="fr:Document_TCH"/>
+        <xs:element name="SignOffResponse" type="rf:Document_TCH"/>
+        <xs:element name="SignOnRequest" type="sr:Document_TCH"/>
+        <xs:element name="SignOnResponse" type="rs:Document_TCH"/>
+        <xs:element name="StandaloneRemittance" type="ar:Document_TCH"/>
+        <xs:element name="SystemNotificationEvent" type="ne:Document_TCH"/>
+        <xs:element name="MessageReject" type="mr:Document_TCH"/>
+        <xs:element name="TokenIdentification" type="a2:Document_TCH"/>
+        <xs:element name="ParticipantReport" type="ut:Document_TCH"/>
+        <xs:element name="ParticipantReportResponse" type="tu:Document_TCH"/>
+        <xs:element name="PaymentStatusRequest" type="s8:Document_TCH"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>

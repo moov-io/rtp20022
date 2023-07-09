@@ -16,23 +16,23 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-var camt035Constant = &camt_035_001_05.Document{
-	PrtryFrmtInvstgtn: camt_035_001_05.ProprietaryFormatInvestigationV05{
-		Assgnmt: camt_035_001_05.CaseAssignment5{
+var camt035Constant = &camt_035_001_05.DocumentTCH{
+	PrtryFrmtInvstgtn: camt_035_001_05.ProprietaryFormatInvestigationV05TCH{
+		Assgnmt: camt_035_001_05.CaseAssignment5TCH{
 			Id: "M20210701000000032A1B00000008088595",
-			Assgnr: camt_035_001_05.Party40Choice{
-				Agt: &camt_035_001_05.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: camt_035_001_05.FinancialInstitutionIdentification18{
-						ClrSysMmbId: camt_035_001_05.ClearingSystemMemberIdentification2{
+			Assgnr: camt_035_001_05.Party40ChoiceTCH{
+				Agt: &camt_035_001_05.BranchAndFinancialInstitutionIdentification6TCH{
+					FinInstnId: camt_035_001_05.FinancialInstitutionIdentification18TCH{
+						ClrSysMmbId: camt_035_001_05.ClearingSystemMemberIdentification2TCH{
 							MmbId: "000000032",
 						},
 					},
 				},
 			},
-			Assgne: camt_035_001_05.Party40Choice{
-				Agt: &camt_035_001_05.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: camt_035_001_05.FinancialInstitutionIdentification18{
-						ClrSysMmbId: camt_035_001_05.ClearingSystemMemberIdentification2{
+			Assgne: camt_035_001_05.Party40ChoiceTCH{
+				Agt: &camt_035_001_05.BranchAndFinancialInstitutionIdentification6TCH{
+					FinInstnId: camt_035_001_05.FinancialInstitutionIdentification18TCH{
+						ClrSysMmbId: camt_035_001_05.ClearingSystemMemberIdentification2TCH{
 							MmbId: "000000010",
 						},
 					},
@@ -40,19 +40,19 @@ var camt035Constant = &camt_035_001_05.Document{
 			},
 			CreDtTm: rtp.UnmarshalISODateTime("2021-07-01T11:07:14"),
 		},
-		Case: camt_035_001_05.Case5{
+		Case: camt_035_001_05.Case5TCH{
 			Id: "M20210701000000032A1B00000008088595",
-			Cretr: camt_035_001_05.Party40Choice{
-				Pty: &camt_035_001_05.PartyIdentification135{
+			Cretr: camt_035_001_05.Party40ChoiceTCH2{
+				Pty: &camt_035_001_05.PartyIdentification135TCH{
 					Nm: "TCH",
 				},
 			},
 		},
-		PrtryData: camt_035_001_05.ProprietaryData7TCH{
-			Tp: camt_035_001_05.Max35Text(camt_035_001_05.Max35TextTCH3Ack),
-			Data: camt_035_001_05.ProprietaryData6Reduced{
+		PrtryData: camt_035_001_05.ProprietaryData7TCHTCH{
+			Tp: camt_035_001_05.Max35TextTCH3Ack,
+			Data: camt_035_001_05.ProprietaryData6ReducedTCH{
 				Ustrd: rtp.Ptr(camt_035_001_05.Max140Text("Information to the ACK")),
-				OrigRefs: camt_035_001_05.TransactionReferences8Reduced{
+				OrigRefs: camt_035_001_05.TransactionReferences8ReducedTCH{
 					InstrId:    "20210701000000032A1B000000000047075",
 					EndToEndId: "E2E-Ref001",
 					TxId:       "20210701000000032A1B000000000047075",

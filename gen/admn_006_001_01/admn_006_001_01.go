@@ -8,21 +8,6 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-// XSD Elements
-
-type Document struct {
-	XMLName      xml.Name
-	AdmnEchoResp EchoResponse `xml:"urn:iso:std:iso:20022:tech:xsd:admn.006.001.01 AdmnEchoResp"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.AdmnEchoResp, xml.StartElement{Name: xml.Name{Local: "re:AdmnEchoResp"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 // XSD ComplexType declarations
 
 type BranchAndFinancialInstitutionIdentification4ADMN struct {
@@ -49,7 +34,21 @@ func (v ClearingSystemMemberIdentification2ADMN) MarshalXML(e *xml.Encoder, star
 	return nil
 }
 
+type Document struct {
+	XMLName      xml.Name
+	AdmnEchoResp EchoResponse `xml:"urn:iso:std:iso:20022:tech:xsd:admn.006.001.01 AdmnEchoResp"`
+}
+
+// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
+func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
+	e.EncodeElement(v.AdmnEchoResp, xml.StartElement{Name: xml.Name{Local: "re:AdmnEchoResp"}})
+	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
+	return nil
+}
+
 type DocumentTCH struct {
+	XMLName      xml.Name
 	AdmnEchoResp EchoResponseTCH `xml:"urn:iso:std:iso:20022:tech:xsd:admn.006.001.01 AdmnEchoResp"`
 }
 

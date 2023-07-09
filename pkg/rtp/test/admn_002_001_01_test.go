@@ -16,13 +16,13 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-var admn002Constant = &admn_002_001_01.Document{
-	AdmnSignOnResp: admn_002_001_01.SignOnResponse{
-		GrpHdr: admn_002_001_01.GrpHdr{
+var admn002Constant = &admn_002_001_01.DocumentTCH{
+	AdmnSignOnResp: admn_002_001_01.SignOnResponseTCH{
+		GrpHdr: admn_002_001_01.GrpHdrTCH{
 			MsgId:   "20230110163014990000001T11084940492",
 			CreDtTm: rtp.UnmarshalISODateTime("2023-01-10T16:30:14"),
 		},
-		SignOnResp: admn_002_001_01.SignOnResp{
+		SignOnResp: admn_002_001_01.SignOnRespTCH{
 			OrgnlInstrId: "20230110200000057A1B1238MD3QGUJMED3",
 			InstgAgt: admn_002_001_01.BranchAndFinancialInstitutionIdentification4ADMN{
 				FinInstnId: admn_002_001_01.FinancialInstitutionIdentification7ADMN{

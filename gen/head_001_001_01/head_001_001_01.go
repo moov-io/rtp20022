@@ -67,6 +67,7 @@ type BusinessApplicationHeaderV01 struct {
 	To        Party9ChoiceBAH           `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 To"`
 	BizMsgIdr Max35Text                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizMsgIdr"`
 	MsgDefIdr OrigMsgName               `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 MsgDefIdr"`
+	BizSvc    *Max35Text                `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizSvc,omitempty"`
 	CreDt     rtp.ISONormalisedDateTime `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CreDt"`
 	CpyDplct  *CopyDuplicate1Code       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CpyDplct,omitempty"`
 	Sgntr     *Sgntr                    `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Sgntr,omitempty"`
@@ -79,6 +80,7 @@ func (v BusinessApplicationHeaderV01) MarshalXML(e *xml.Encoder, start xml.Start
 	e.EncodeElement(v.To, xml.StartElement{Name: xml.Name{Local: "head:To"}})
 	e.EncodeElement(v.BizMsgIdr, xml.StartElement{Name: xml.Name{Local: "head:BizMsgIdr"}})
 	e.EncodeElement(v.MsgDefIdr, xml.StartElement{Name: xml.Name{Local: "head:MsgDefIdr"}})
+	e.EncodeElement(v.BizSvc, xml.StartElement{Name: xml.Name{Local: "head:BizSvc"}})
 	e.EncodeElement(v.CreDt, xml.StartElement{Name: xml.Name{Local: "head:CreDt"}})
 	e.EncodeElement(v.CpyDplct, xml.StartElement{Name: xml.Name{Local: "head:CpyDplct"}})
 	e.EncodeElement(v.Sgntr, xml.StartElement{Name: xml.Name{Local: "head:Sgntr"}})
@@ -91,6 +93,7 @@ type BusinessApplicationHeaderV01TCH struct {
 	To        Party9ChoiceBAHTCH        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 To"`
 	BizMsgIdr Max35TextTCH              `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizMsgIdr"`
 	MsgDefIdr OrigMsgName               `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 MsgDefIdr"`
+	BizSvc    *Max35Text                `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizSvc,omitempty"`
 	CreDt     rtp.ISONormalisedDateTime `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CreDt"`
 	CpyDplct  *CopyDuplicate1Code       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CpyDplct,omitempty"`
 	Sgntr     *Sgntr                    `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Sgntr,omitempty"`
@@ -103,6 +106,7 @@ func (v BusinessApplicationHeaderV01TCH) MarshalXML(e *xml.Encoder, start xml.St
 	e.EncodeElement(v.To, xml.StartElement{Name: xml.Name{Local: "head:To"}})
 	e.EncodeElement(v.BizMsgIdr, xml.StartElement{Name: xml.Name{Local: "head:BizMsgIdr"}})
 	e.EncodeElement(v.MsgDefIdr, xml.StartElement{Name: xml.Name{Local: "head:MsgDefIdr"}})
+	e.EncodeElement(v.BizSvc, xml.StartElement{Name: xml.Name{Local: "head:BizSvc"}})
 	e.EncodeElement(v.CreDt, xml.StartElement{Name: xml.Name{Local: "head:CreDt"}})
 	e.EncodeElement(v.CpyDplct, xml.StartElement{Name: xml.Name{Local: "head:CpyDplct"}})
 	e.EncodeElement(v.Sgntr, xml.StartElement{Name: xml.Name{Local: "head:Sgntr"}})

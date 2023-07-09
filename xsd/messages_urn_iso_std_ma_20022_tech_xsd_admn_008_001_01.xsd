@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tu="urn:iso:std:ma:20022:tech:xsd:admn.008.001.01"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:ma:20022:tech:xsd:admn.008.001.01"
+    elementFormDefault="qualified">
+  <xs:complexType name="AvailabilityParticipant">
+    <xs:sequence>
+      <xs:element name="PtcptSgnOff" type="tu:ParticipantSignOff" minOccurs="0"/>
+      <xs:element name="PtcptSspd" type="tu:ParticipantSuspended" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AvailabilityParticipant_TCH">
+    <xs:sequence>
+      <xs:element name="PtcptSgnOff" type="tu:ParticipantSignOff_TCH" minOccurs="0"/>
+      <xs:element name="PtcptSspd" type="tu:ParticipantSuspended_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AvailabilityReport">
+    <xs:sequence>
+      <xs:element name="Cnnctn" type="tu:Connection" minOccurs="0"/>
+      <xs:element name="AvlbtyPtcpt" type="tu:AvailabilityParticipant" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AvailabilityReport_TCH">
+    <xs:sequence>
+      <xs:element name="Cnnctn" type="tu:Connection_TCH" minOccurs="0"/>
+      <xs:element name="AvlbtyPtcpt" type="tu:AvailabilityParticipant_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification4ADMN">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="tu:FinancialInstitutionIdentification7ADMN"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2ADMN">
+    <xs:sequence>
+      <xs:element name="MmbId" type="tu:Min11Max11Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Connection">
+    <xs:sequence>
+      <xs:element name="CnnctnId" type="tu:Max20AlphaNumericText" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Connection_TCH">
+    <xs:sequence>
+      <xs:element name="CnnctnId" type="tu:Max20AlphaNumericText" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DatabaseAvailabilityReport">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">New Message Type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="tu:GrpHdr">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DBRptRspn" type="tu:DatabaseReportReponse">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AvlbtyRpt" type="tu:AvailabilityReport">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DatabaseAvailabilityReport_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">New Message Type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="tu:GrpHdr">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DBRptRspn" type="tu:DatabaseReportReponse_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AvlbtyRpt" type="tu:AvailabilityReport_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DatabaseReportReponse">
+    <xs:sequence>
+      <xs:element name="OrgnlInstrId" type="tu:Max35Text"/>
+      <xs:element name="RptCd" type="tu:ReportCode"/>
+      <xs:element name="InstgAgt" type="tu:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="InstdAgt" type="tu:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="TxSts" type="tu:TransactionIndividualStatus3Code_Echo"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DatabaseReportReponse_TCH">
+    <xs:sequence>
+      <xs:element name="OrgnlInstrId" type="tu:Max35Text"/>
+      <xs:element name="RptCd" type="tu:ReportCode_TCH"/>
+      <xs:element name="InstgAgt" type="tu:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="InstdAgt" type="tu:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="TxSts" type="tu:TransactionIndividualStatus3Code_Echo"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="DBAvlbtyRpt" type="tu:DatabaseAvailabilityReport"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document_TCH">
+    <xs:sequence>
+      <xs:element name="DBAvlbtyRpt" type="tu:DatabaseAvailabilityReport_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification7ADMN">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="tu:ClearingSystemMemberIdentification2ADMN"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrpHdr">
+    <xs:sequence>
+      <xs:element name="MsgId" type="tu:Max35Text"/>
+      <xs:element name="CreDtTm" type="tu:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="Max20AlphaNumericText">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+      <xs:pattern value="[a-zA-Z0-9]{1,20}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Min11Max11Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="11"/>
+      <xs:maxLength value="11"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ParticipantSignOff">
+    <xs:sequence>
+      <xs:element name="PtcptId" type="tu:Min11Max11Text" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantSignOff_TCH">
+    <xs:sequence>
+      <xs:element name="PtcptId" type="tu:Min11Max11Text" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantSuspended">
+    <xs:sequence>
+      <xs:element name="PtcptId" type="tu:Min11Max11Text" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantSuspended_TCH">
+    <xs:sequence>
+      <xs:element name="PtcptId" type="tu:Min11Max11Text" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ReportCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AVLBTY"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ReportCode_TCH">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AVLBTY"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TransactionIndividualStatus3Code_Echo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTC"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

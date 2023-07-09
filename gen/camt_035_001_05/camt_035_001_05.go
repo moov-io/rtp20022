@@ -8,21 +8,6 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-// XSD Elements
-
-type Document struct {
-	XMLName           xml.Name
-	PrtryFrmtInvstgtn ProprietaryFormatInvestigationV05 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 PrtryFrmtInvstgtn"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.PrtryFrmtInvstgtn, xml.StartElement{Name: xml.Name{Local: "ac:PrtryFrmtInvstgtn"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 // XSD ComplexType declarations
 
 type BranchAndFinancialInstitutionIdentification6 struct {
@@ -137,7 +122,21 @@ func (v ClearingSystemMemberIdentification2TCH) MarshalXML(e *xml.Encoder, start
 	return nil
 }
 
+type Document struct {
+	XMLName           xml.Name
+	PrtryFrmtInvstgtn ProprietaryFormatInvestigationV05 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 PrtryFrmtInvstgtn"`
+}
+
+// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
+func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
+	e.EncodeElement(v.PrtryFrmtInvstgtn, xml.StartElement{Name: xml.Name{Local: "ac:PrtryFrmtInvstgtn"}})
+	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
+	return nil
+}
+
 type DocumentTCH struct {
+	XMLName           xml.Name
 	PrtryFrmtInvstgtn ProprietaryFormatInvestigationV05TCH `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 PrtryFrmtInvstgtn"`
 }
 
@@ -326,9 +325,10 @@ func (v ProprietaryFormatInvestigationV05TCH) MarshalXML(e *xml.Encoder, start x
 }
 
 type TransactionReferences8Reduced struct {
-	InstrId    Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 InstrId"`
-	EndToEndId Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 EndToEndId"`
-	TxId       Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 TxId"`
+	InstrId    Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 InstrId"`
+	EndToEndId Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 EndToEndId"`
+	TxId       Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 TxId"`
+	UETR       *UUIDv4Identifier `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 UETR,omitempty"`
 }
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
@@ -337,14 +337,16 @@ func (v TransactionReferences8Reduced) MarshalXML(e *xml.Encoder, start xml.Star
 	e.EncodeElement(v.InstrId, xml.StartElement{Name: xml.Name{Local: "ac:InstrId"}})
 	e.EncodeElement(v.EndToEndId, xml.StartElement{Name: xml.Name{Local: "ac:EndToEndId"}})
 	e.EncodeElement(v.TxId, xml.StartElement{Name: xml.Name{Local: "ac:TxId"}})
+	e.EncodeElement(v.UETR, xml.StartElement{Name: xml.Name{Local: "ac:UETR"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
 	return nil
 }
 
 type TransactionReferences8ReducedTCH struct {
-	InstrId    Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 InstrId"`
-	EndToEndId Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 EndToEndId"`
-	TxId       Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 TxId"`
+	InstrId    Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 InstrId"`
+	EndToEndId Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 EndToEndId"`
+	TxId       Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 TxId"`
+	UETR       *UUIDv4Identifier `xml:"urn:iso:std:iso:20022:tech:xsd:camt.035.001.05 UETR,omitempty"`
 }
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
@@ -353,6 +355,7 @@ func (v TransactionReferences8ReducedTCH) MarshalXML(e *xml.Encoder, start xml.S
 	e.EncodeElement(v.InstrId, xml.StartElement{Name: xml.Name{Local: "ac:InstrId"}})
 	e.EncodeElement(v.EndToEndId, xml.StartElement{Name: xml.Name{Local: "ac:EndToEndId"}})
 	e.EncodeElement(v.TxId, xml.StartElement{Name: xml.Name{Local: "ac:TxId"}})
+	e.EncodeElement(v.UETR, xml.StartElement{Name: xml.Name{Local: "ac:UETR"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
 	return nil
 }
@@ -371,3 +374,5 @@ type Max35TextTCH3 string
 
 const Max35TextTCH3Ack Max35TextTCH3 = "ACK"
 const Max35TextTCH3Acwp Max35TextTCH3 = "ACWP"
+
+type UUIDv4Identifier string

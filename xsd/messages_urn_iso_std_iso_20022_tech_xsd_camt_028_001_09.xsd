@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:if="urn:iso:std:iso:20022:tech:xsd:camt.028.001.09"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:iso:20022:tech:xsd:camt.028.001.09"
+    elementFormDefault="qualified">
+  <xs:complexType name="ActiveOrHistoricCurrencyAndAmount">
+    <xs:simpleContent>
+      <xs:extension base="if:ActiveOrHistoricCurrencyAndAmount_SimpleType">
+        <xs:attribute name="Ccy" type="if:ActiveOrHistoricCurrencyCode" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ActiveOrHistoricCurrencyAndAmount_SimpleType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.01"/>
+      <xs:totalDigits value="18"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ActiveOrHistoricCurrencyCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="USD"/>
+      <xs:pattern value="[A-Z]{3,3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AdditionalPaymentInformationV09">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Assgnmt" type="if:CaseAssignment5">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Case" type="if:Case5">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Undrlyg" type="if:UnderlyingTransaction5Choice">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Inf" type="if:PaymentComplementaryInformation8">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">4.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AdditionalPaymentInformationV09_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Assgnmt" type="if:CaseAssignment5_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Case" type="if:Case5_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Undrlyg" type="if:UnderlyingTransaction5Choice_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Inf" type="if:PaymentComplementaryInformation8_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">4.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification6">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="if:FinancialInstitutionIdentification18"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification6_TCH">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="if:FinancialInstitutionIdentification18_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Case5">
+    <xs:sequence>
+      <xs:element name="Id" type="if:Max35Text"/>
+      <xs:element name="Cretr" type="if:Party40Choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Case5_TCH">
+    <xs:sequence>
+      <xs:element name="Id" type="if:Max35Text"/>
+      <xs:element name="Cretr" type="if:Party40Choice_TCH_2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CaseAssignment5">
+    <xs:sequence>
+      <xs:element name="Id" type="if:Max35Text"/>
+      <xs:element name="Assgnr" type="if:Party40Choice"/>
+      <xs:element name="Assgne" type="if:Party40Choice"/>
+      <xs:element name="CreDtTm" type="if:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CaseAssignment5_TCH">
+    <xs:sequence>
+      <xs:element name="Id" type="if:Max35Text_TCH"/>
+      <xs:element name="Assgnr" type="if:Party40Choice_TCH"/>
+      <xs:element name="Assgne" type="if:Party40Choice_TCH"/>
+      <xs:element name="CreDtTm" type="if:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2">
+    <xs:sequence>
+      <xs:element name="MmbId" type="if:Max35Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2_TCH">
+    <xs:sequence>
+      <xs:element name="MmbId" type="if:Max35Text_TCH_2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Contact4">
+    <xs:sequence>
+      <xs:element name="PhneNb" type="if:PhoneNumber" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="CountryCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AD"/>
+      <xs:enumeration value="AE"/>
+      <xs:enumeration value="AF"/>
+      <xs:enumeration value="AG"/>
+      <xs:enumeration value="AI"/>
+      <xs:enumeration value="AL"/>
+      <xs:enumeration value="AM"/>
+      <xs:enumeration value="AO"/>
+      <xs:enumeration value="AQ"/>
+      <xs:enumeration value="AR"/>
+      <xs:enumeration value="AS"/>
+      <xs:enumeration value="AT"/>
+      <xs:enumeration value="AU"/>
+      <xs:enumeration value="AW"/>
+      <xs:enumeration value="AX"/>
+      <xs:enumeration value="AZ"/>
+      <xs:enumeration value="BA"/>
+      <xs:enumeration value="BB"/>
+      <xs:enumeration value="BD"/>
+      <xs:enumeration value="BE"/>
+      <xs:enumeration value="BF"/>
+      <xs:enumeration value="BG"/>
+      <xs:enumeration value="BH"/>
+      <xs:enumeration value="BI"/>
+      <xs:enumeration value="BJ"/>
+      <xs:enumeration value="BL"/>
+      <xs:enumeration value="BM"/>
+      <xs:enumeration value="BN"/>
+      <xs:enumeration value="BO"/>
+      <xs:enumeration value="BQ"/>
+      <xs:enumeration value="BR"/>
+      <xs:enumeration value="BS"/>
+      <xs:enumeration value="BT"/>
+      <xs:enumeration value="BV"/>
+      <xs:enumeration value="BW"/>
+      <xs:enumeration value="BY"/>
+      <xs:enumeration value="BZ"/>
+      <xs:enumeration value="CA"/>
+      <xs:enumeration value="CC"/>
+      <xs:enumeration value="CD"/>
+      <xs:enumeration value="CF"/>
+      <xs:enumeration value="CG"/>
+      <xs:enumeration value="CH"/>
+      <xs:enumeration value="CI"/>
+      <xs:enumeration value="CK"/>
+      <xs:enumeration value="CL"/>
+      <xs:enumeration value="CM"/>
+      <xs:enumeration value="CN"/>
+      <xs:enumeration value="CO"/>
+      <xs:enumeration value="CR"/>
+      <xs:enumeration value="CU"/>
+      <xs:enumeration value="CV"/>
+      <xs:enumeration value="CW"/>
+      <xs:enumeration value="CX"/>
+      <xs:enumeration value="CY"/>
+      <xs:enumeration value="CZ"/>
+      <xs:enumeration value="DE"/>
+      <xs:enumeration value="DJ"/>
+      <xs:enumeration value="DK"/>
+      <xs:enumeration value="DM"/>
+      <xs:enumeration value="DO"/>
+      <xs:enumeration value="DZ"/>
+      <xs:enumeration value="EC"/>
+      <xs:enumeration value="EE"/>
+      <xs:enumeration value="EG"/>
+      <xs:enumeration value="EH"/>
+      <xs:enumeration value="ER"/>
+      <xs:enumeration value="ES"/>
+      <xs:enumeration value="ET"/>
+      <xs:enumeration value="FI"/>
+      <xs:enumeration value="FJ"/>
+      <xs:enumeration value="FK"/>
+      <xs:enumeration value="FM"/>
+      <xs:enumeration value="FO"/>
+      <xs:enumeration value="FR"/>
+      <xs:enumeration value="GA"/>
+      <xs:enumeration value="GB"/>
+      <xs:enumeration value="GD"/>
+      <xs:enumeration value="GE"/>
+      <xs:enumeration value="GF"/>
+      <xs:enumeration value="GG"/>
+      <xs:enumeration value="GH"/>
+      <xs:enumeration value="GI"/>
+      <xs:enumeration value="GL"/>
+      <xs:enumeration value="GM"/>
+      <xs:enumeration value="GN"/>
+      <xs:enumeration value="GP"/>
+      <xs:enumeration value="GQ"/>
+      <xs:enumeration value="GR"/>
+      <xs:enumeration value="GS"/>
+      <xs:enumeration value="GT"/>
+      <xs:enumeration value="GU"/>
+      <xs:enumeration value="GW"/>
+      <xs:enumeration value="GY"/>
+      <xs:enumeration value="HK"/>
+      <xs:enumeration value="HM"/>
+      <xs:enumeration value="HN"/>
+      <xs:enumeration value="HR"/>
+      <xs:enumeration value="HT"/>
+      <xs:enumeration value="HU"/>
+      <xs:enumeration value="ID"/>
+      <xs:enumeration value="IE"/>
+      <xs:enumeration value="IL"/>
+      <xs:enumeration value="IM"/>
+      <xs:enumeration value="IN"/>
+      <xs:enumeration value="IO"/>
+      <xs:enumeration value="IQ"/>
+      <xs:enumeration value="IR"/>
+      <xs:enumeration value="IS"/>
+      <xs:enumeration value="IT"/>
+      <xs:enumeration value="JE"/>
+      <xs:enumeration value="JM"/>
+      <xs:enumeration value="JO"/>
+      <xs:enumeration value="JP"/>
+      <xs:enumeration value="KE"/>
+      <xs:enumeration value="KG"/>
+      <xs:enumeration value="KH"/>
+      <xs:enumeration value="KI"/>
+      <xs:enumeration value="KM"/>
+      <xs:enumeration value="KN"/>
+      <xs:enumeration value="KP"/>
+      <xs:enumeration value="KR"/>
+      <xs:enumeration value="KW"/>
+      <xs:enumeration value="KY"/>
+      <xs:enumeration value="KZ"/>
+      <xs:enumeration value="LA"/>
+      <xs:enumeration value="LB"/>
+      <xs:enumeration value="LC"/>
+      <xs:enumeration value="LI"/>
+      <xs:enumeration value="LK"/>
+      <xs:enumeration value="LR"/>
+      <xs:enumeration value="LS"/>
+      <xs:enumeration value="LT"/>
+      <xs:enumeration value="LU"/>
+      <xs:enumeration value="LV"/>
+      <xs:enumeration value="LY"/>
+      <xs:enumeration value="MA"/>
+      <xs:enumeration value="MC"/>
+      <xs:enumeration value="MD"/>
+      <xs:enumeration value="ME"/>
+      <xs:enumeration value="MF"/>
+      <xs:enumeration value="MG"/>
+      <xs:enumeration value="MH"/>
+      <xs:enumeration value="MK"/>
+      <xs:enumeration value="ML"/>
+      <xs:enumeration value="MM"/>
+      <xs:enumeration value="MN"/>
+      <xs:enumeration value="MO"/>
+      <xs:enumeration value="MP"/>
+      <xs:enumeration value="MQ"/>
+      <xs:enumeration value="MR"/>
+      <xs:enumeration value="MS"/>
+      <xs:enumeration value="MT"/>
+      <xs:enumeration value="MU"/>
+      <xs:enumeration value="MV"/>
+      <xs:enumeration value="MW"/>
+      <xs:enumeration value="MX"/>
+      <xs:enumeration value="MY"/>
+      <xs:enumeration value="MZ"/>
+      <xs:enumeration value="NA"/>
+      <xs:enumeration value="NC"/>
+      <xs:enumeration value="NE"/>
+      <xs:enumeration value="NF"/>
+      <xs:enumeration value="NG"/>
+      <xs:enumeration value="NI"/>
+      <xs:enumeration value="NL"/>
+      <xs:enumeration value="NO"/>
+      <xs:enumeration value="NP"/>
+      <xs:enumeration value="NR"/>
+      <xs:enumeration value="NU"/>
+      <xs:enumeration value="NZ"/>
+      <xs:enumeration value="OM"/>
+      <xs:enumeration value="PA"/>
+      <xs:enumeration value="PE"/>
+      <xs:enumeration value="PF"/>
+      <xs:enumeration value="PG"/>
+      <xs:enumeration value="PH"/>
+      <xs:enumeration value="PK"/>
+      <xs:enumeration value="PL"/>
+      <xs:enumeration value="PM"/>
+      <xs:enumeration value="PN"/>
+      <xs:enumeration value="PR"/>
+      <xs:enumeration value="PS"/>
+      <xs:enumeration value="PT"/>
+      <xs:enumeration value="PW"/>
+      <xs:enumeration value="PY"/>
+      <xs:enumeration value="QA"/>
+      <xs:enumeration value="RE"/>
+      <xs:enumeration value="RO"/>
+      <xs:enumeration value="RS"/>
+      <xs:enumeration value="RU"/>
+      <xs:enumeration value="RW"/>
+      <xs:enumeration value="SA"/>
+      <xs:enumeration value="SB"/>
+      <xs:enumeration value="SC"/>
+      <xs:enumeration value="SD"/>
+      <xs:enumeration value="SE"/>
+      <xs:enumeration value="SG"/>
+      <xs:enumeration value="SH"/>
+      <xs:enumeration value="SI"/>
+      <xs:enumeration value="SJ"/>
+      <xs:enumeration value="SK"/>
+      <xs:enumeration value="SL"/>
+      <xs:enumeration value="SM"/>
+      <xs:enumeration value="SN"/>
+      <xs:enumeration value="SO"/>
+      <xs:enumeration value="SR"/>
+      <xs:enumeration value="SS"/>
+      <xs:enumeration value="ST"/>
+      <xs:enumeration value="SV"/>
+      <xs:enumeration value="SX"/>
+      <xs:enumeration value="SY"/>
+      <xs:enumeration value="SZ"/>
+      <xs:enumeration value="TC"/>
+      <xs:enumeration value="TD"/>
+      <xs:enumeration value="TF"/>
+      <xs:enumeration value="TG"/>
+      <xs:enumeration value="TH"/>
+      <xs:enumeration value="TJ"/>
+      <xs:enumeration value="TK"/>
+      <xs:enumeration value="TL"/>
+      <xs:enumeration value="TM"/>
+      <xs:enumeration value="TN"/>
+      <xs:enumeration value="TO"/>
+      <xs:enumeration value="TR"/>
+      <xs:enumeration value="TT"/>
+      <xs:enumeration value="TV"/>
+      <xs:enumeration value="TW"/>
+      <xs:enumeration value="TZ"/>
+      <xs:enumeration value="UA"/>
+      <xs:enumeration value="UG"/>
+      <xs:enumeration value="UM"/>
+      <xs:enumeration value="US"/>
+      <xs:enumeration value="UY"/>
+      <xs:enumeration value="UZ"/>
+      <xs:enumeration value="VA"/>
+      <xs:enumeration value="VC"/>
+      <xs:enumeration value="VE"/>
+      <xs:enumeration value="VG"/>
+      <xs:enumeration value="VI"/>
+      <xs:enumeration value="VN"/>
+      <xs:enumeration value="VU"/>
+      <xs:enumeration value="WF"/>
+      <xs:enumeration value="WS"/>
+      <xs:enumeration value="YE"/>
+      <xs:enumeration value="YT"/>
+      <xs:enumeration value="ZA"/>
+      <xs:enumeration value="ZM"/>
+      <xs:enumeration value="ZW"/>
+      <xs:pattern value="[A-Z]{2,2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DateAndDateTime2Choice">
+    <xs:choice>
+      <xs:element name="Dt" type="if:ISODate"/>
+      <xs:element name="DtTm" type="if:ISODateTime"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="DateAndPlaceOfBirth1">
+    <xs:sequence>
+      <xs:element name="BirthDt" type="if:ISODate"/>
+      <xs:element name="CityOfBirth" type="if:Max35Text"/>
+      <xs:element name="CtryOfBirth" type="if:CountryCode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DiscountAmountAndType1">
+    <xs:sequence>
+      <xs:element name="Tp" type="if:DiscountAmountType1Choice"/>
+      <xs:element name="Amt" type="if:ActiveOrHistoricCurrencyAndAmount"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DiscountAmountAndType1_TCH">
+    <xs:sequence>
+      <xs:element name="Tp" type="if:DiscountAmountType1Choice_TCH"/>
+      <xs:element name="Amt" type="if:ActiveOrHistoricCurrencyAndAmount"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DiscountAmountType1Choice">
+    <xs:choice>
+      <xs:element name="Prtry" type="if:Max35Text"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="DiscountAmountType1Choice_TCH">
+    <xs:choice>
+      <xs:element name="Prtry" type="if:Max35Text_TCH_3"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="AddtlPmtInf" type="if:AdditionalPaymentInformationV09"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document_TCH">
+    <xs:sequence>
+      <xs:element name="AddtlPmtInf" type="if:AdditionalPaymentInformationV09_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification18">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="if:ClearingSystemMemberIdentification2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification18_TCH">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="if:ClearingSystemMemberIdentification2_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenericPersonIdentification1">
+    <xs:sequence>
+      <xs:element name="Id" type="if:Max35Text"/>
+      <xs:element name="SchmeNm" type="if:PersonIdentificationSchemeName1Choice" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ISODate">
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="LEIIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z0-9]{18,18}[0-9]{2,2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max140Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="140"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max16Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="16"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+      <xs:pattern value="M[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH_2">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="9"/>
+      <xs:maxLength value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH_3">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DSCT"/>
+      <xs:enumeration value="FULL"/>
+      <xs:enumeration value="ORIG"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max70Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="70"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OrganisationIdentification29">
+    <xs:sequence>
+      <xs:element name="LEI" type="if:LEIIdentifier" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrganisationIdentification29_TCH">
+    <xs:sequence>
+      <xs:element name="LEI" type="if:LEIIdentifier"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrganisationIdentification30">
+    <xs:sequence>
+      <xs:element name="LEI" type="if:LEIIdentifier" minOccurs="0"/>
+      <xs:element name="Othr" type="if:GenericOrganisationIdentification1" minOccurs="0" maxOccurs="5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrganisationIdentification30_TCH">
+    <xs:sequence>
+      <xs:element name="LEI" type="if:LEIIdentifier" minOccurs="0"/>
+      <xs:element name="Othr" type="if:GenericOrganisationIdentification1_TCH" minOccurs="0" maxOccurs="5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenericOrganisationIdentification1">
+    <xs:sequence>
+      <xs:element name="Id" type="if:Max35Text"/>
+      <xs:element name="SchmeNm" type="if:OrganisationIdentificationSchemeName1Choice" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenericOrganisationIdentification1_TCH">
+    <xs:sequence>
+      <xs:element name="Id" type="if:Max35Text"/>
+      <xs:element name="SchmeNm" type="if:OrganisationIdentificationSchemeName1Choice_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrganisationIdentificationSchemeName1Choice">
+    <xs:choice>
+      <xs:element name="Prtry" type="if:Max35Text"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="OrganisationIdentificationSchemeName1Choice_TCH">
+    <xs:choice>
+      <xs:element name="Prtry" type="if:Max35Text"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="PersonIdentificationSchemeName1Choice">
+    <xs:choice>
+      <xs:element name="Prtry" type="if:Max35Text"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="OrigMsgName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pacs.008.001.06"/>
+      <xs:enumeration value="pacs.008.001.08"/>
+      <xs:enumeration value="pain.013.001.07"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OrigMsgName_TCH">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pain.013.001.07"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OrigMsgName_TCH_2">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pacs.008.001.06"/>
+      <xs:enumeration value="pacs.008.001.08"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Party38Choice">
+    <xs:choice>
+      <xs:element name="OrgId" type="if:OrganisationIdentification30"/>
+      <xs:element name="PrvtId" type="if:PersonIdentification13"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party38Choice_TCH">
+    <xs:choice>
+      <xs:element name="OrgId" type="if:OrganisationIdentification30_TCH"/>
+      <xs:element name="PrvtId" type="if:PersonIdentification13_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party38Choice_TCH_2">
+    <xs:choice>
+      <xs:element name="OrgId" type="if:OrganisationIdentification29_TCH"/>
+      <xs:element name="PrvtId" type="if:PersonIdentification13_TCH_2"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party38Choice_TCH_3">
+    <xs:choice>
+      <xs:element name="OrgId" type="if:OrganisationIdentification29_TCH"/>
+      <xs:element name="PrvtId" type="if:PersonIdentification13_TCH_2"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party38Choice_TCH_4">
+    <xs:choice>
+      <xs:element name="OrgId" type="if:OrganisationIdentification29_TCH"/>
+      <xs:element name="PrvtId" type="if:PersonIdentification13_TCH_3"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party40Choice">
+    <xs:choice>
+      <xs:element name="Pty" type="if:PartyIdentification135"/>
+      <xs:element name="Agt" type="if:BranchAndFinancialInstitutionIdentification6"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party40Choice_TCH">
+    <xs:choice>
+      <xs:element name="Agt" type="if:BranchAndFinancialInstitutionIdentification6_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party40Choice_TCH_2">
+    <xs:choice>
+      <xs:element name="Pty" type="if:PartyIdentification135_TCH"/>
+      <xs:element name="Agt" type="if:BranchAndFinancialInstitutionIdentification6_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification135">
+    <xs:sequence>
+      <xs:element name="Nm" type="if:Max140Text" minOccurs="0"/>
+      <xs:element name="PstlAdr" type="if:PostalAddress24" minOccurs="0"/>
+      <xs:element name="Id" type="if:Party38Choice" minOccurs="0"/>
+      <xs:element name="CtctDtls" type="if:Contact4" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification135_TCH">
+    <xs:sequence>
+      <xs:element name="Nm" type="if:Max140Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification135_TCH_2">
+    <xs:sequence>
+      <xs:element name="Nm" type="if:Max140Text" minOccurs="0"/>
+      <xs:element name="PstlAdr" type="if:PostalAddress24_TCH" minOccurs="0"/>
+      <xs:element name="Id" type="if:Party38Choice_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification135_TCH_3">
+    <xs:sequence>
+      <xs:element name="Nm" type="if:Max140Text" minOccurs="0"/>
+      <xs:element name="PstlAdr" type="if:PostalAddress24_TCH" minOccurs="0"/>
+      <xs:element name="Id" type="if:Party38Choice_TCH_2" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification135_TCH_4">
+    <xs:sequence>
+      <xs:element name="Nm" type="if:Max140Text" minOccurs="0"/>
+      <xs:element name="PstlAdr" type="if:PostalAddress24_TCH" minOccurs="0"/>
+      <xs:element name="Id" type="if:Party38Choice_TCH_3" minOccurs="0"/>
+      <xs:element name="CtctDtls" type="if:Contact4" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification135_TCH_5">
+    <xs:sequence>
+      <xs:element name="Nm" type="if:Max140Text" minOccurs="0"/>
+      <xs:element name="PstlAdr" type="if:PostalAddress24_TCH" minOccurs="0"/>
+      <xs:element name="Id" type="if:Party38Choice_TCH_4" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentComplementaryInformation8">
+    <xs:sequence>
+      <xs:element name="InstrId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="EndToEndId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="TxId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="UltmtDbtr" type="if:PartyIdentification135" minOccurs="0"/>
+      <xs:element name="Dbtr" type="if:PartyIdentification135" minOccurs="0"/>
+      <xs:element name="Cdtr" type="if:PartyIdentification135" minOccurs="0"/>
+      <xs:element name="UltmtCdtr" type="if:PartyIdentification135" minOccurs="0"/>
+      <xs:element name="RmtInf" type="if:RemittanceInformation16" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentComplementaryInformation8_TCH">
+    <xs:sequence>
+      <xs:element name="InstrId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="EndToEndId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="TxId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="UltmtDbtr" type="if:PartyIdentification135_TCH_2" minOccurs="0"/>
+      <xs:element name="Dbtr" type="if:PartyIdentification135_TCH_3" minOccurs="0"/>
+      <xs:element name="Cdtr" type="if:PartyIdentification135_TCH_4" minOccurs="0"/>
+      <xs:element name="UltmtCdtr" type="if:PartyIdentification135_TCH_2" minOccurs="0"/>
+      <xs:element name="RmtInf" type="if:RemittanceInformation16_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonIdentification13">
+    <xs:sequence>
+      <xs:element name="DtAndPlcOfBirth" type="if:DateAndPlaceOfBirth1" minOccurs="0"/>
+      <xs:element name="Othr" type="if:GenericPersonIdentification1" minOccurs="0" maxOccurs="5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonIdentification13_TCH">
+    <xs:sequence>
+      <xs:element name="DtAndPlcOfBirth" type="if:DateAndPlaceOfBirth1" minOccurs="0"/>
+      <xs:element name="Othr" type="if:GenericPersonIdentification1" minOccurs="0" maxOccurs="5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonIdentification13_TCH_2">
+    <xs:sequence>
+      <xs:element name="DtAndPlcOfBirth" type="if:DateAndPlaceOfBirth1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonIdentification13_TCH_3">
+    <xs:sequence>
+      <xs:element name="Othr" type="if:GenericPersonIdentification1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="PhoneNumber">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\+[0-9]{1,3}-[0-9()+\-]{1,30}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PostalAddress24">
+    <xs:sequence>
+      <xs:element name="StrtNm" type="if:Max70Text"/>
+      <xs:element name="BldgNb" type="if:Max16Text" minOccurs="0"/>
+      <xs:element name="PstCd" type="if:Max16Text"/>
+      <xs:element name="TwnNm" type="if:Max35Text"/>
+      <xs:element name="CtrySubDvsn" type="if:Max35Text"/>
+      <xs:element name="Ctry" type="if:CountryCode"/>
+      <xs:element name="AdrLine" type="if:Max70Text" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PostalAddress24_TCH">
+    <xs:sequence>
+      <xs:element name="StrtNm" type="if:Max70Text"/>
+      <xs:element name="BldgNb" type="if:Max16Text" minOccurs="0"/>
+      <xs:element name="PstCd" type="if:Max16Text"/>
+      <xs:element name="TwnNm" type="if:Max35Text"/>
+      <xs:element name="CtrySubDvsn" type="if:Max35Text"/>
+      <xs:element name="Ctry" type="if:CountryCode"/>
+      <xs:element name="AdrLine" type="if:Max70Text" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RemittanceAmount2">
+    <xs:sequence>
+      <xs:element name="DscntApldAmt" type="if:DiscountAmountAndType1" minOccurs="0" maxOccurs="3"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RemittanceAmount2_TCH">
+    <xs:sequence>
+      <xs:element name="DscntApldAmt" type="if:DiscountAmountAndType1_TCH" minOccurs="0" maxOccurs="3"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RemittanceInformation16">
+    <xs:sequence>
+      <xs:element name="Ustrd" type="if:Max140Text" minOccurs="0" maxOccurs="20"/>
+      <xs:element name="Strd" type="if:StructuredRemittanceInformation16" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RemittanceInformation16_TCH">
+    <xs:sequence>
+      <xs:element name="Ustrd" type="if:Max140Text" minOccurs="0" maxOccurs="20"/>
+      <xs:element name="Strd" type="if:StructuredRemittanceInformation16_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StructuredRemittanceInformation16">
+    <xs:sequence>
+      <xs:element name="RfrdDocAmt" type="if:RemittanceAmount2" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StructuredRemittanceInformation16_TCH">
+    <xs:sequence>
+      <xs:element name="RfrdDocAmt" type="if:RemittanceAmount2_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingGroupInformation1">
+    <xs:sequence>
+      <xs:element name="OrgnlMsgId" type="if:Max35Text"/>
+      <xs:element name="OrgnlMsgNmId" type="if:OrigMsgName"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingGroupInformation1_TCH">
+    <xs:sequence>
+      <xs:element name="OrgnlMsgId" type="if:Max35Text"/>
+      <xs:element name="OrgnlMsgNmId" type="if:OrigMsgName_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingGroupInformation1_TCH_2">
+    <xs:sequence>
+      <xs:element name="OrgnlMsgId" type="if:Max35Text"/>
+      <xs:element name="OrgnlMsgNmId" type="if:OrigMsgName_TCH_2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingPaymentInstruction5">
+    <xs:sequence>
+      <xs:element name="OrgnlGrpInf" type="if:UnderlyingGroupInformation1"/>
+      <xs:element name="OrgnlPmtInfId" type="if:Max35Text"/>
+      <xs:element name="OrgnlEndToEndId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="OrgnlUETR" type="if:UUIDv4Identifier" minOccurs="0"/>
+      <xs:element name="OrgnlInstdAmt" type="if:ActiveOrHistoricCurrencyAndAmount"/>
+      <xs:element name="ReqdExctnDt" type="if:DateAndDateTime2Choice" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingPaymentInstruction5_TCH">
+    <xs:sequence>
+      <xs:element name="OrgnlGrpInf" type="if:UnderlyingGroupInformation1_TCH"/>
+      <xs:element name="OrgnlPmtInfId" type="if:Max35Text"/>
+      <xs:element name="OrgnlEndToEndId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="OrgnlUETR" type="if:UUIDv4Identifier" minOccurs="0"/>
+      <xs:element name="OrgnlInstdAmt" type="if:ActiveOrHistoricCurrencyAndAmount"/>
+      <xs:element name="ReqdExctnDt" type="if:DateAndDateTime2Choice" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingPaymentTransaction4">
+    <xs:sequence>
+      <xs:element name="OrgnlGrpInf" type="if:UnderlyingGroupInformation1"/>
+      <xs:element name="OrgnlInstrId" type="if:Max35Text"/>
+      <xs:element name="OrgnlEndToEndId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="OrgnlTxId" type="if:Max35Text"/>
+      <xs:element name="OrgnlUETR" type="if:UUIDv4Identifier" minOccurs="0"/>
+      <xs:element name="OrgnlIntrBkSttlmAmt" type="if:ActiveOrHistoricCurrencyAndAmount"/>
+      <xs:element name="OrgnlIntrBkSttlmDt" type="if:ISODate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingPaymentTransaction4_TCH">
+    <xs:sequence>
+      <xs:element name="OrgnlGrpInf" type="if:UnderlyingGroupInformation1_TCH_2"/>
+      <xs:element name="OrgnlInstrId" type="if:Max35Text"/>
+      <xs:element name="OrgnlEndToEndId" type="if:Max35Text" minOccurs="0"/>
+      <xs:element name="OrgnlTxId" type="if:Max35Text"/>
+      <xs:element name="OrgnlUETR" type="if:UUIDv4Identifier" minOccurs="0"/>
+      <xs:element name="OrgnlIntrBkSttlmAmt" type="if:ActiveOrHistoricCurrencyAndAmount"/>
+      <xs:element name="OrgnlIntrBkSttlmDt" type="if:ISODate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingTransaction5Choice">
+    <xs:choice>
+      <xs:element name="Initn" type="if:UnderlyingPaymentInstruction5"/>
+      <xs:element name="IntrBk" type="if:UnderlyingPaymentTransaction4"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingTransaction5Choice_TCH">
+    <xs:choice>
+      <xs:element name="Initn" type="if:UnderlyingPaymentInstruction5_TCH"/>
+      <xs:element name="IntrBk" type="if:UnderlyingPaymentTransaction4_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="UUIDv4Identifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

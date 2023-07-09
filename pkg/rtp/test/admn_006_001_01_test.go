@@ -16,9 +16,9 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-var admn006Constant = &admn_006_001_01.Document{
-	AdmnEchoResp: admn_006_001_01.EchoResponse{
-		GrpHdr: admn_006_001_01.GrpHdr{
+var admn006Constant = &admn_006_001_01.DocumentTCH{
+	AdmnEchoResp: admn_006_001_01.EchoResponseTCH{
+		GrpHdr: admn_006_001_01.GrpHdrTCH{
 			MsgId:   "20230125125943990000001T10589310786",
 			CreDtTm: rtp.UnmarshalISODateTime("2023-01-25T12:59:43"),
 		},
