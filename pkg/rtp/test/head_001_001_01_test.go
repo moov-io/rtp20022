@@ -42,9 +42,13 @@ var head001Constant = head_001_001_01.BusinessApplicationHeaderV01{
 }
 var head001Signature = &head_001_001_01.Sgntr{
 	Signature: &xmldsig.Signature{
-		XMLName: xml.Name{
-			Space: "http://www.w3.org/2000/09/xmldsig#",
-			Local: "Signature",
+		Xmlns: []xml.Attr{
+			{
+				Name: xml.Name{
+					Local: "xmlns:ds",
+				},
+				Value: "http://www.w3.org/2000/09/xmldsig#",
+			},
 		},
 		SignedInfo: xmldsig.SignedInfoType{
 			CanonicalizationMethod: xmldsig.CanonicalizationMethodType{

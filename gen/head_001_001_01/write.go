@@ -10,9 +10,13 @@ import (
 func NewSignature() *Sgntr {
 	sgntr := &Sgntr{
 		Signature: &xmldsig.Signature{
-			XMLName: xml.Name{
-				Space: "http://www.w3.org/2000/09/xmldsig#",
-				Local: "Signature",
+			Xmlns: []xml.Attr{
+				{
+					Name: xml.Name{
+						Local: "xmlns:ds",
+					},
+					Value: "http://www.w3.org/2000/09/xmldsig#",
+				},
 			},
 			SignedInfo: xmldsig.SignedInfoType{
 				CanonicalizationMethod: xmldsig.CanonicalizationMethodType{

@@ -19,7 +19,7 @@ import (
 {{ range .ExportableElements }}
 	{{- if eq .GoName "Signature" }}
 		type {{ .GoName }} struct {
-			XMLName xml.Name `xml:"{{ $targetNS }} Signature"`
+			Xmlns []xml.Attr `xml:",attr"`
 			{{- range .Attributes }}
 				{{ .GoName }} {{ if eq .Use "optional" }}*{{ end }}{{ .GoForeignModule }}{{ .GoType }} `xml:"{{ .XmlName }},attr{{ if eq .Use "optional" }},omitempty{{ end }}"`
 			{{- end }}
@@ -30,6 +30,52 @@ import (
 				Data {{ .GoForeignModule }}{{ .GoTypeName }} `xml:",chardata"`
 			{{- end }}
 		}
+
+		// UnmarshalXML is a custom unmarshaller that allows us to capture the xmlns attributes
+		func (v *Signature) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+			for _, attr := range start.Attr {
+				if (attr.Name.Space == "" && attr.Name.Local == "xmlns") || (attr.Name.Space == "xmlns") {
+					newAttr := xml.Attr{}
+					newAttr.Value = attr.Value
+					newAttr.Name = xml.Name{}
+					if attr.Name.Space == "" {
+						newAttr.Name.Local = attr.Name.Local
+					} else {
+						newAttr.Name.Local = fmt.Sprintf("%s:%s", attr.Name.Space, attr.Name.Local)
+					}
+					v.Xmlns = append(v.Xmlns, newAttr)
+				}
+			}
+
+			// Go on with unmarshalling.
+			type vv Signature
+			return d.DecodeElement((*vv)(v), &start)
+		}
+
+		{{ $elemLen := len .Elements }}{{ if gt $elemLen 0 }}
+			// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
+			func (v {{ .GoName }}) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+				var attr = v.Xmlns
+				{{- range .Attributes }}
+				{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
+					attr = append(attr, xml.Attr{Name: xml.Name{Local: "{{ .XmlName }}"}, Value: {{ if eq .Use "optional" }}*{{ end }}v.{{ .GoName }}},)
+				{{ if eq .Use "optional" }} } {{ end }}
+				{{- end }}
+				e.EncodeToken(xml.StartElement{
+					Name: xml.Name{Local: start.Name.Local},
+					Attr: attr,
+				})
+				{{- range .Elements }}
+					{{- $xmlTagName := .Name -}}
+					{{- if .Ref }}
+						{{- $xmlTagName = .Ref.Name -}}
+					{{- end }}
+					e.EncodeElement(v.{{ .GoFieldName }}, xml.StartElement{Name: xml.Name{Local: "{{ $nsPrefix }}:{{ $xmlTagName }}"}})
+				{{- end }}
+				e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
+				return nil
+			}
+		{{ end }}
 	{{- end }}
 {{ end }}
 
@@ -62,6 +108,31 @@ import (
 				{{- end }}
 			{{- end }}
 		}
+
+		{{ $elemLen := len .Elements }}{{ if gt $elemLen 0 }}
+			// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
+			func (v {{ .GoName }}) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+				var attr = []xml.Attr{}
+				{{- range .Attributes }}
+				{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
+					attr = append(attr, xml.Attr{Name: xml.Name{Local: "{{ .XmlName }}"}, Value: {{ if eq .Use "optional" }}*{{ end }}v.{{ .GoName }}},)
+				{{ if eq .Use "optional" }} } {{ end }}
+				{{- end }}
+				e.EncodeToken(xml.StartElement{
+					Name: xml.Name{Local: start.Name.Local},
+					Attr: attr,
+				})
+				{{- range .Elements }}
+					{{- $xmlTagName := .Name -}}
+					{{- if .Ref }}
+						{{- $xmlTagName = .Ref.Name -}}
+					{{- end }}
+					e.EncodeElement(v.{{ .GoFieldName }}, xml.StartElement{Name: xml.Name{Local: "{{ $nsPrefix }}:{{ $xmlTagName }}"}})
+				{{- end }}
+				e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
+				return nil
+			}
+		{{ end }}
 	{{- end }}
 {{ end }}
 
