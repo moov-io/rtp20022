@@ -75,9 +75,10 @@ import (
     {{ if eq .GoName "SignatureEnvelope" }}
         {{ template "SignatureEnvelope" . }}
     {{ else if eq .GoName "HdrAndData" }}
+    {{ else if eq .GoName "Document" }}
     {{ else }}
         type {{ .GoName }} struct {
-            {{- if or (eq .GoName "Document") (eq .GoName "DocumentTCH") }}
+            {{- if eq .GoName "DocumentTCH" }}
                 XMLName xml.Name
             {{- end }}
             {{- if .ContainsText }}

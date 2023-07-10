@@ -10,19 +10,6 @@ import (
 
 // XSD ComplexType declarations
 
-type Document struct {
-	XMLName      xml.Name
-	SysEvtNtfctn SystemEventNotificationV02 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02 SysEvtNtfctn"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.SysEvtNtfctn, xml.StartElement{Name: xml.Name{Local: "ne:SysEvtNtfctn"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName      xml.Name
 	SysEvtNtfctn SystemEventNotificationV02TCH `xml:"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02 SysEvtNtfctn"`

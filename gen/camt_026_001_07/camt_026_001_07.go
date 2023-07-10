@@ -165,19 +165,6 @@ func (v DateAndDateTime2Choice) MarshalXML(e *xml.Encoder, start xml.StartElemen
 	return nil
 }
 
-type Document struct {
-	XMLName    xml.Name
-	UblToApply UnableToApplyV07 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.026.001.07 UblToApply"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.UblToApply, xml.StartElement{Name: xml.Name{Local: "fi:UblToApply"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName    xml.Name
 	UblToApply UnableToApplyV07TCH `xml:"urn:iso:std:iso:20022:tech:xsd:camt.026.001.07 UblToApply"`

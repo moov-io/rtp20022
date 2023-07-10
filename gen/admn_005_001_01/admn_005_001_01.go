@@ -34,19 +34,6 @@ func (v ClearingSystemMemberIdentification2ADMN) MarshalXML(e *xml.Encoder, star
 	return nil
 }
 
-type Document struct {
-	XMLName     xml.Name
-	AdmnEchoReq EchoRequest `xml:"urn:iso:std:iso:20022:tech:xsd:admn.005.001.01 AdmnEchoReq"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.AdmnEchoReq, xml.StartElement{Name: xml.Name{Local: "er:AdmnEchoReq"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName     xml.Name
 	AdmnEchoReq EchoRequestTCH `xml:"urn:iso:std:iso:20022:tech:xsd:admn.005.001.01 AdmnEchoReq"`

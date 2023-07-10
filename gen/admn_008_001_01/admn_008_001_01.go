@@ -186,19 +186,6 @@ func (v DatabaseReportReponseTCH) MarshalXML(e *xml.Encoder, start xml.StartElem
 	return nil
 }
 
-type Document struct {
-	XMLName     xml.Name
-	DBAvlbtyRpt DatabaseAvailabilityReport `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 DBAvlbtyRpt"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.DBAvlbtyRpt, xml.StartElement{Name: xml.Name{Local: "tu:DBAvlbtyRpt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName     xml.Name
 	DBAvlbtyRpt DatabaseAvailabilityReportTCH `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 DBAvlbtyRpt"`

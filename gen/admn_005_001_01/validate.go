@@ -1,6 +1,6 @@
 package admn_005_001_01
 
-func (d Document) Validate() error {
+func (d DocumentTCH) Validate() error {
 	return nil
 }
 

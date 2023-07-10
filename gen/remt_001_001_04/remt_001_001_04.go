@@ -247,19 +247,6 @@ func (v DiscountAmountType1Choice) MarshalXML(e *xml.Encoder, start xml.StartEle
 	return nil
 }
 
-type Document struct {
-	XMLName xml.Name
-	RmtAdvc RemittanceAdviceV04 `xml:"urn:iso:std:iso:20022:tech:xsd:remt.001.001.04 RmtAdvc"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.RmtAdvc, xml.StartElement{Name: xml.Name{Local: "ar:RmtAdvc"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentAdjustment1 struct {
 	Amt       ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:remt.001.001.04 Amt"`
 	CdtDbtInd *CreditDebitCode                  `xml:"urn:iso:std:iso:20022:tech:xsd:remt.001.001.04 CdtDbtInd,omitempty"`

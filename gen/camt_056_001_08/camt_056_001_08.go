@@ -183,19 +183,6 @@ func (v DateAndPlaceOfBirth1) MarshalXML(e *xml.Encoder, start xml.StartElement)
 	return nil
 }
 
-type Document struct {
-	XMLName         xml.Name
-	FIToFIPmtCxlReq FIToFIPaymentCancellationRequestV08 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 FIToFIPmtCxlReq"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.FIToFIPmtCxlReq, xml.StartElement{Name: xml.Name{Local: "rt:FIToFIPmtCxlReq"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName         xml.Name
 	FIToFIPmtCxlReq FIToFIPaymentCancellationRequestV08TCH `xml:"urn:iso:std:iso:20022:tech:xsd:camt.056.001.08 FIToFIPmtCxlReq"`

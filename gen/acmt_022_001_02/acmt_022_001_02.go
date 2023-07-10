@@ -70,19 +70,6 @@ func (v ClearingSystemMemberIdentification2TCH) MarshalXML(e *xml.Encoder, start
 	return nil
 }
 
-type Document struct {
-	XMLName   xml.Name
-	IdModAdvc IdentificationModificationAdviceV02 `xml:"urn:iso:std:iso:20022:tech:xsd:acmt.022.001.02 IdModAdvc"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.IdModAdvc, xml.StartElement{Name: xml.Name{Local: "a2:IdModAdvc"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName   xml.Name
 	IdModAdvc IdentificationModificationAdviceV02TCH `xml:"urn:iso:std:iso:20022:tech:xsd:acmt.022.001.02 IdModAdvc"`

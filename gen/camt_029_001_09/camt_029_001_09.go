@@ -203,19 +203,6 @@ func (v ClearingSystemMemberIdentification2TCH) MarshalXML(e *xml.Encoder, start
 	return nil
 }
 
-type Document struct {
-	XMLName         xml.Name
-	RsltnOfInvstgtn ResolutionOfInvestigationV09 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 RsltnOfInvstgtn"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.RsltnOfInvstgtn, xml.StartElement{Name: xml.Name{Local: "tr:RsltnOfInvstgtn"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName         xml.Name
 	RsltnOfInvstgtn ResolutionOfInvestigationV09TCH `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 RsltnOfInvstgtn"`

@@ -159,19 +159,6 @@ func (v CreditTransferTransaction36TCH) MarshalXML(e *xml.Encoder, start xml.Sta
 	return nil
 }
 
-type Document struct {
-	XMLName  xml.Name
-	FICdtTrf FinancialInstitutionCreditTransferV08 `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 FICdtTrf"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.FICdtTrf, xml.StartElement{Name: xml.Name{Local: "c9:FICdtTrf"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName  xml.Name
 	FICdtTrf FinancialInstitutionCreditTransferV08TCH `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 FICdtTrf"`
