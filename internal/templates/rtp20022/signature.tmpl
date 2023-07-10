@@ -112,16 +112,20 @@ import (
 		{{ $elemLen := len .Elements }}{{ if gt $elemLen 0 }}
 			// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 			func (v {{ .GoName }}) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-				var attr = []xml.Attr{}
-				{{- range .Attributes }}
-				{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
-					attr = append(attr, xml.Attr{Name: xml.Name{Local: "{{ .XmlName }}"}, Value: {{ if eq .Use "optional" }}*{{ end }}v.{{ .GoName }}},)
-				{{ if eq .Use "optional" }} } {{ end }}
+				{{- if .Attributes }}
+					var attr = []xml.Attr{}
+					{{- range .Attributes }}
+					{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
+						attr = append(attr, xml.Attr{Name: xml.Name{Local: "{{ .XmlName }}"}, Value: {{ if eq .Use "optional" }}*{{ end }}v.{{ .GoName }}},)
+					{{ if eq .Use "optional" }} } {{ end }}
+					{{- end }}
+					e.EncodeToken(xml.StartElement{
+						Name: xml.Name{Local: start.Name.Local},
+						Attr: attr,
+					})
+				{{- else }}
+					e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 				{{- end }}
-				e.EncodeToken(xml.StartElement{
-					Name: xml.Name{Local: start.Name.Local},
-					Attr: attr,
-				})
 				{{- range .Elements }}
 					{{- $xmlTagName := .Name -}}
 					{{- if .Ref }}

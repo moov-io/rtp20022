@@ -36,7 +36,20 @@ import (
     {{ $elemLen := len .Elements }}{{ if gt $elemLen 0 }}{{ if ne $nsPrefix "" }}
         // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
         func (v {{ .GoName }}) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-            e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
+			{{- if .Attributes }}
+				var attr = []xml.Attr{}
+				{{- range .Attributes }}
+				{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
+					attr = append(attr, xml.Attr{Name: xml.Name{Local: "{{ .XmlName }}"}, Value: {{ if eq .Use "optional" }}*{{ end }}v.{{ .GoName }}},)
+				{{ if eq .Use "optional" }} } {{ end }}
+				{{- end }}
+				e.EncodeToken(xml.StartElement{
+					Name: xml.Name{Local: start.Name.Local},
+					Attr: attr,
+				})
+			{{- else }}
+				e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
+			{{- end }}
             {{- range .Elements }}
                 e.EncodeElement(v.{{ .GoFieldName }}, xml.StartElement{Name: xml.Name{Local: "{{ $nsPrefix }}:{{ .Name }}"}})
             {{- end }}
@@ -117,7 +130,20 @@ import (
         {{ $elemLen := len .Elements }}{{ if gt $elemLen 0 }}{{ if ne $nsPrefix "" }}
             // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
             func (v {{ .GoName }}) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-                e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
+				{{- if .Attributes }}
+					var attr = []xml.Attr{}
+					{{- range .Attributes }}
+					{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
+						attr = append(attr, xml.Attr{Name: xml.Name{Local: "{{ .XmlName }}"}, Value: {{ if eq .Use "optional" }}*{{ end }}v.{{ .GoName }}},)
+					{{ if eq .Use "optional" }} } {{ end }}
+					{{- end }}
+					e.EncodeToken(xml.StartElement{
+						Name: xml.Name{Local: start.Name.Local},
+						Attr: attr,
+					})
+				{{- else }}
+					e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
+				{{- end }}
                 {{- range .Elements }}
                     e.EncodeElement(v.{{ .GoFieldName }}, xml.StartElement{Name: xml.Name{Local: "{{ $nsPrefix }}:{{ .Name }}"}})
                 {{- end }}

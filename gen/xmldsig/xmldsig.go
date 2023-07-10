@@ -152,11 +152,7 @@ type TransformsType struct {
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 func (v TransformsType) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	var attr = []xml.Attr{}
-	e.EncodeToken(xml.StartElement{
-		Name: xml.Name{Local: start.Name.Local},
-		Attr: attr,
-	})
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.Transform, xml.StartElement{Name: xml.Name{Local: "ds:Transform"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
 	return nil
@@ -226,11 +222,7 @@ type KeyValueType struct {
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 func (v KeyValueType) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	var attr = []xml.Attr{}
-	e.EncodeToken(xml.StartElement{
-		Name: xml.Name{Local: start.Name.Local},
-		Attr: attr,
-	})
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.DSAKeyValue, xml.StartElement{Name: xml.Name{Local: "ds:DSAKeyValue"}})
 	e.EncodeElement(v.RSAKeyValue, xml.StartElement{Name: xml.Name{Local: "ds:RSAKeyValue"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
@@ -271,11 +263,7 @@ type X509DataType struct {
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 func (v X509DataType) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	var attr = []xml.Attr{}
-	e.EncodeToken(xml.StartElement{
-		Name: xml.Name{Local: start.Name.Local},
-		Attr: attr,
-	})
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.X509IssuerSerial, xml.StartElement{Name: xml.Name{Local: "ds:X509IssuerSerial"}})
 	e.EncodeElement(v.X509SKI, xml.StartElement{Name: xml.Name{Local: "ds:X509SKI"}})
 	e.EncodeElement(v.X509SubjectName, xml.StartElement{Name: xml.Name{Local: "ds:X509SubjectName"}})
@@ -292,11 +280,7 @@ type X509IssuerSerialType struct {
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 func (v X509IssuerSerialType) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	var attr = []xml.Attr{}
-	e.EncodeToken(xml.StartElement{
-		Name: xml.Name{Local: start.Name.Local},
-		Attr: attr,
-	})
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.X509IssuerName, xml.StartElement{Name: xml.Name{Local: "ds:X509IssuerName"}})
 	e.EncodeElement(v.X509SerialNumber, xml.StartElement{Name: xml.Name{Local: "ds:X509SerialNumber"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
@@ -310,11 +294,7 @@ type PGPDataType struct {
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 func (v PGPDataType) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	var attr = []xml.Attr{}
-	e.EncodeToken(xml.StartElement{
-		Name: xml.Name{Local: start.Name.Local},
-		Attr: attr,
-	})
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.PGPKeyID, xml.StartElement{Name: xml.Name{Local: "ds:PGPKeyID"}})
 	e.EncodeElement(v.PGPKeyPacket, xml.StartElement{Name: xml.Name{Local: "ds:PGPKeyPacket"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
@@ -328,11 +308,7 @@ type SPKIDataType struct {
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 func (v SPKIDataType) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	var attr = []xml.Attr{}
-	e.EncodeToken(xml.StartElement{
-		Name: xml.Name{Local: start.Name.Local},
-		Attr: attr,
-	})
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.SPKISexp, xml.StartElement{Name: xml.Name{Local: "ds:SPKISexp"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
 	return nil
@@ -398,11 +374,7 @@ type DSAKeyValueType struct {
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 func (v DSAKeyValueType) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	var attr = []xml.Attr{}
-	e.EncodeToken(xml.StartElement{
-		Name: xml.Name{Local: start.Name.Local},
-		Attr: attr,
-	})
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.G, xml.StartElement{Name: xml.Name{Local: "ds:G"}})
 	e.EncodeElement(v.Y, xml.StartElement{Name: xml.Name{Local: "ds:Y"}})
 	e.EncodeElement(v.J, xml.StartElement{Name: xml.Name{Local: "ds:J"}})
@@ -417,11 +389,7 @@ type RSAKeyValueType struct {
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 func (v RSAKeyValueType) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	var attr = []xml.Attr{}
-	e.EncodeToken(xml.StartElement{
-		Name: xml.Name{Local: start.Name.Local},
-		Attr: attr,
-	})
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.Modulus, xml.StartElement{Name: xml.Name{Local: "ds:Modulus"}})
 	e.EncodeElement(v.Exponent, xml.StartElement{Name: xml.Name{Local: "ds:Exponent"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
