@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-../xsd2go/moovio_xsd2go convert \
+moovio_xsd2go convert \
    xsd/xmldsig-core-schema.xsd \
    github.com/moov-io/rtp20022 \
    gen \
