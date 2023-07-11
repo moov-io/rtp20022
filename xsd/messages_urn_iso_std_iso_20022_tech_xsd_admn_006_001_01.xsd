@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:re="urn:iso:std:iso:20022:tech:xsd:admn.006.001.01"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:iso:20022:tech:xsd:admn.006.001.01"
+    elementFormDefault="qualified">
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification4ADMN">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="re:FinancialInstitutionIdentification7ADMN"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2ADMN">
+    <xs:sequence>
+      <xs:element name="MmbId" type="re:Min11Max11Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="AdmnEchoResp" type="re:EchoResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document_TCH">
+    <xs:sequence>
+      <xs:element name="AdmnEchoResp" type="re:EchoResponse_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="EchoCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="731"/>
+      <xs:pattern value="[0-9]{1,3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="EchoResp">
+    <xs:sequence>
+      <xs:element name="InstgAgt" type="re:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="InstdAgt" type="re:BranchAndFinancialInstitutionIdentification4ADMN"/>
+      <xs:element name="OrgnlInstrId" type="re:Max35Text"/>
+      <xs:element name="FnctnCd" type="re:EchoCode"/>
+      <xs:element name="TxSts" type="re:TransactionIndividualStatus3Code_Echo"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EchoResponse">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">20180201 - Reverse of the change EchoResponse to EchoResp from August 2016 as updated schemas never used for TCH</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Updates according to Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="re:GrpHdr">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EchoResponse" type="re:EchoResp">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EchoResponse_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">20180201 - Reverse of the change EchoResponse to EchoResp from August 2016 as updated schemas never used for TCH</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Updates according to Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="re:GrpHdr_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EchoResponse" type="re:EchoResp">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification7ADMN">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="re:ClearingSystemMemberIdentification2ADMN"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrpHdr">
+    <xs:sequence>
+      <xs:element name="MsgId" type="re:Max35Text"/>
+      <xs:element name="CreDtTm" type="re:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrpHdr_TCH">
+    <xs:sequence>
+      <xs:element name="MsgId" type="re:Max35Text_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.1</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CreDtTm" type="re:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+      <xs:pattern value="[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))((([0-1][0-9])|(2[0-3]))(([0-5][0-9])){2})[A-Z0-9]{11}.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Min11Max11Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="11"/>
+      <xs:maxLength value="11"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TransactionIndividualStatus3Code_Echo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTC"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

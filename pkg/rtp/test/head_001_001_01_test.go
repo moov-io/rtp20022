@@ -16,9 +16,9 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-var head001Constant = head_001_001_01.BusinessApplicationHeaderV01{
-	Fr: head_001_001_01.Party9ChoiceBAH{
-		FIId: &head_001_001_01.BranchAndFinancialInstitutionIdentification5BAH{
+var head001Constant = head_001_001_01.BusinessApplicationHeaderV01TCH{
+	Fr: head_001_001_01.Party9ChoiceBAHTCH{
+		FIId: &head_001_001_01.BranchAndFinancialInstitutionIdentification5BAHTCH{
 			FinInstnId: head_001_001_01.FinancialInstitutionIdentification8BAH{
 				ClrSysMmbId: head_001_001_01.ClearingSystemMemberIdentification2ADMN{
 					MmbId: "990000001T1",
@@ -26,8 +26,8 @@ var head001Constant = head_001_001_01.BusinessApplicationHeaderV01{
 			},
 		},
 	},
-	To: head_001_001_01.Party9ChoiceBAH{
-		FIId: &head_001_001_01.BranchAndFinancialInstitutionIdentification5BAH{
+	To: head_001_001_01.Party9ChoiceBAHTCH{
+		FIId: &head_001_001_01.BranchAndFinancialInstitutionIdentification5BAHTCH{
 			FinInstnId: head_001_001_01.FinancialInstitutionIdentification8BAH{
 				ClrSysMmbId: head_001_001_01.ClearingSystemMemberIdentification2ADMN{
 					MmbId: "200000057A1",

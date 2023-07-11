@@ -8,21 +8,6 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-// XSD Elements
-
-type Document struct {
-	XMLName       xml.Name
-	AdmnSignOnReq SignOnRequest `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 AdmnSignOnReq"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.AdmnSignOnReq, xml.StartElement{Name: xml.Name{Local: "sr:AdmnSignOnReq"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 // XSD ComplexType declarations
 
 type BranchAndFinancialInstitutionIdentification4ADMN struct {
@@ -50,6 +35,7 @@ func (v ClearingSystemMemberIdentification2ADMN) MarshalXML(e *xml.Encoder, star
 }
 
 type DocumentTCH struct {
+	XMLName       xml.Name
 	AdmnSignOnReq SignOnRequestTCH `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 AdmnSignOnReq"`
 }
 

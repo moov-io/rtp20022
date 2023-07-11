@@ -16,23 +16,23 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-var camt056Constant = &camt_056_001_08.Document{
-	FIToFIPmtCxlReq: camt_056_001_08.FIToFIPaymentCancellationRequestV08{
-		Assgnmt: camt_056_001_08.CaseAssignment5{
+var camt056Constant = &camt_056_001_08.DocumentTCH{
+	FIToFIPmtCxlReq: camt_056_001_08.FIToFIPaymentCancellationRequestV08TCH{
+		Assgnmt: camt_056_001_08.CaseAssignment5TCH{
 			Id: "M20210701000000010B1B00000008088677",
-			Assgnr: camt_056_001_08.Party40Choice{
-				Agt: &camt_056_001_08.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: camt_056_001_08.FinancialInstitutionIdentification18{
-						ClrSysMmbId: camt_056_001_08.ClearingSystemMemberIdentification2{
+			Assgnr: camt_056_001_08.Party40ChoiceTCH{
+				Agt: &camt_056_001_08.BranchAndFinancialInstitutionIdentification6TCH{
+					FinInstnId: camt_056_001_08.FinancialInstitutionIdentification18TCH{
+						ClrSysMmbId: camt_056_001_08.ClearingSystemMemberIdentification2TCH{
 							MmbId: "000000010",
 						},
 					},
 				},
 			},
-			Assgne: camt_056_001_08.Party40Choice{
-				Agt: &camt_056_001_08.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: camt_056_001_08.FinancialInstitutionIdentification18{
-						ClrSysMmbId: camt_056_001_08.ClearingSystemMemberIdentification2{
+			Assgne: camt_056_001_08.Party40ChoiceTCH{
+				Agt: &camt_056_001_08.BranchAndFinancialInstitutionIdentification6TCH{
+					FinInstnId: camt_056_001_08.FinancialInstitutionIdentification18TCH{
+						ClrSysMmbId: camt_056_001_08.ClearingSystemMemberIdentification2TCH{
 							MmbId: "000000032",
 						},
 					},
@@ -40,25 +40,25 @@ var camt056Constant = &camt_056_001_08.Document{
 			},
 			CreDtTm: rtp.UnmarshalISODateTime("2021-07-01T11:09:04"),
 		},
-		Case: camt_056_001_08.Case5{
+		Case: camt_056_001_08.Case5TCH{
 			Id: "M20210701000000010B1B00000008088677",
-			Cretr: camt_056_001_08.Party40Choice{
-				Agt: &camt_056_001_08.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: camt_056_001_08.FinancialInstitutionIdentification18{
-						ClrSysMmbId: camt_056_001_08.ClearingSystemMemberIdentification2{
+			Cretr: camt_056_001_08.Party40ChoiceTCH{
+				Agt: &camt_056_001_08.BranchAndFinancialInstitutionIdentification6TCH{
+					FinInstnId: camt_056_001_08.FinancialInstitutionIdentification18TCH{
+						ClrSysMmbId: camt_056_001_08.ClearingSystemMemberIdentification2TCH{
 							MmbId: "000000010",
 						},
 					},
 				},
 			},
 		},
-		Undrlyg: camt_056_001_08.UnderlyingTransaction23{
+		Undrlyg: camt_056_001_08.UnderlyingTransaction23TCH{
 			OrgnlGrpInfAndCxl: camt_056_001_08.OriginalGroupHeader15{
 				OrgnlMsgId:   "M20210701000000032A1B00000008088224",
 				OrgnlMsgNmId: camt_056_001_08.OrigMsgNamePacs00800108,
 				OrgnlCreDtTm: rtp.Ptr(rtp.UnmarshalISODateTime("2021-06-21T11:09:04")),
 			},
-			TxInf: camt_056_001_08.PaymentTransaction106{
+			TxInf: camt_056_001_08.PaymentTransaction106TCH{
 				OrgnlInstrId:    "20210701000000032A1B000000000047075",
 				OrgnlEndToEndId: rtp.Ptr(camt_056_001_08.Max35Text("MYREF123")),
 				OrgnlTxId:       "20210701000000032A1B000000000047075",
@@ -68,18 +68,18 @@ var camt056Constant = &camt_056_001_08.Document{
 					Ccy:   camt_056_001_08.ActiveOrHistoricCurrencyCodeUsd,
 				},
 				OrgnlIntrBkSttlmDt: rtp.UnmarshalISODate("2021-07-01"),
-				CxlRsnInf: camt_056_001_08.PaymentCancellationReason5{
-					Orgtr: &camt_056_001_08.PartyIdentification135{
-						Id: &camt_056_001_08.Party38Choice{
-							OrgId: &camt_056_001_08.OrganisationIdentification29{
-								Othr: &camt_056_001_08.GenericOrganisationIdentification1{
+				CxlRsnInf: camt_056_001_08.PaymentCancellationReason5TCH{
+					Orgtr: &camt_056_001_08.PartyIdentification135TCH{
+						Id: &camt_056_001_08.Party38ChoiceTCH{
+							OrgId: &camt_056_001_08.OrganisationIdentification29TCH{
+								Othr: camt_056_001_08.GenericOrganisationIdentification1TCH{
 									Id: "000000010",
 								},
 							},
 						},
 					},
-					Rsn: camt_056_001_08.CancellationReason33Choice{
-						Cd: rtp.Ptr(camt_056_001_08.ExternalCancellationReason1Code(camt_056_001_08.ExternalCancellationReason1CodeCust)),
+					Rsn: camt_056_001_08.CancellationReason33ChoiceTCH{
+						Cd: rtp.Ptr(camt_056_001_08.ExternalCancellationReason1CodeCust),
 					},
 					AddtlInf: rtp.Ptr(camt_056_001_08.Max105Text("CUST")),
 				},

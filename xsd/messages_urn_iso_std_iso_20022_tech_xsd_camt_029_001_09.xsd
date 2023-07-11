@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tr="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09"
+    elementFormDefault="qualified">
+  <xs:complexType name="ActiveOrHistoricCurrencyAndAmount">
+    <xs:simpleContent>
+      <xs:extension base="tr:ActiveOrHistoricCurrencyAndAmount_SimpleType">
+        <xs:attribute name="Ccy" type="tr:ActiveOrHistoricCurrencyCode" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ActiveOrHistoricCurrencyAndAmount_SimpleType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.01"/>
+      <xs:totalDigits value="18"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ActiveOrHistoricCurrencyCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="USD"/>
+      <xs:pattern value="[A-Z]{3,3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification6">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="tr:FinancialInstitutionIdentification18"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification6_TCH">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="tr:FinancialInstitutionIdentification18_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CancellationStatusReason3Choice">
+    <xs:choice>
+      <xs:element name="Cd" type="tr:ExternalPaymentCancellationRejection1Code"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="CancellationStatusReason3Choice_TCH">
+    <xs:choice>
+      <xs:element name="Cd" type="tr:ExternalPaymentCancellationRejection1Code_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="CancellationStatusReason4">
+    <xs:sequence>
+      <xs:element name="Rsn" type="tr:CancellationStatusReason3Choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CancellationStatusReason4_TCH">
+    <xs:sequence>
+      <xs:element name="Rsn" type="tr:CancellationStatusReason3Choice_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Case5">
+    <xs:sequence>
+      <xs:element name="Id" type="tr:Max35Text"/>
+      <xs:element name="Cretr" type="tr:Party40Choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Case5_TCH">
+    <xs:sequence>
+      <xs:element name="Id" type="tr:Max35Text"/>
+      <xs:element name="Cretr" type="tr:Party40Choice_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CaseAssignment5">
+    <xs:sequence>
+      <xs:element name="Id" type="tr:Max35Text"/>
+      <xs:element name="Assgnr" type="tr:Party40Choice"/>
+      <xs:element name="Assgne" type="tr:Party40Choice"/>
+      <xs:element name="CreDtTm" type="tr:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CaseAssignment5_TCH">
+    <xs:sequence>
+      <xs:element name="Id" type="tr:Max35Text_TCH"/>
+      <xs:element name="Assgnr" type="tr:Party40Choice_TCH"/>
+      <xs:element name="Assgne" type="tr:Party40Choice_TCH"/>
+      <xs:element name="CreDtTm" type="tr:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Charges7">
+    <xs:sequence>
+      <xs:element name="Amt" type="tr:ActiveOrHistoricCurrencyAndAmount"/>
+      <xs:element name="Agt" type="tr:BranchAndFinancialInstitutionIdentification6"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Charges7_TCH">
+    <xs:sequence>
+      <xs:element name="Amt" type="tr:ActiveOrHistoricCurrencyAndAmount"/>
+      <xs:element name="Agt" type="tr:BranchAndFinancialInstitutionIdentification6_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ClearingChannel2Code">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MPNS"/>
+      <xs:enumeration value="RTGS"/>
+      <xs:enumeration value="RTNS"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ClearingSystemMemberIdentification2">
+    <xs:sequence>
+      <xs:element name="MmbId" type="tr:Max35Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2_TCH">
+    <xs:sequence>
+      <xs:element name="MmbId" type="tr:Max35Text_TCH_2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="RsltnOfInvstgtn" type="tr:ResolutionOfInvestigationV09"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document_TCH">
+    <xs:sequence>
+      <xs:element name="RsltnOfInvstgtn" type="tr:ResolutionOfInvestigationV09_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ExternalInvestigationExecutionConfirmation1Code">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IPAY"/>
+      <xs:enumeration value="PECR"/>
+      <xs:enumeration value="RJCR"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ExternalPaymentCancellationRejection1Code">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AC04"/>
+      <xs:enumeration value="AM04"/>
+      <xs:enumeration value="ARDT"/>
+      <xs:enumeration value="CUST"/>
+      <xs:enumeration value="LEGL"/>
+      <xs:enumeration value="NOAS"/>
+      <xs:enumeration value="NOOR"/>
+      <!-- comment out duplicate values -->
+      <!-- <xs:enumeration value="AC04"/>-->
+      <!-- <xs:enumeration value="AM04"/>-->
+      <!-- <xs:enumeration value="ARDT"/>-->
+      <!-- <xs:enumeration value="CUST"/>-->
+      <!-- <xs:enumeration value="LEGL"/>-->
+      <!-- <xs:enumeration value="NOAS"/>-->
+      <!-- <xs:enumeration value="NOOR"/>-->
+      <xs:minLength value="1"/>
+      <xs:maxLength value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ExternalPaymentCancellationRejection1Code_TCH">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AC04"/>
+      <xs:enumeration value="AM04"/>
+      <xs:enumeration value="ARDT"/>
+      <xs:enumeration value="CUST"/>
+      <xs:enumeration value="LEGL"/>
+      <xs:enumeration value="NOAS"/>
+      <xs:enumeration value="NOOR"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="FinancialInstitutionIdentification18">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="tr:ClearingSystemMemberIdentification2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification18_TCH">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="tr:ClearingSystemMemberIdentification2_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InvestigationStatus5Choice">
+    <xs:choice>
+      <xs:element name="Conf" type="tr:ExternalInvestigationExecutionConfirmation1Code"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="ISODate">
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+      <xs:pattern value="M[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH_2">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="9"/>
+      <xs:maxLength value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OriginalGroupHeader14">
+    <xs:sequence>
+      <xs:element name="RslvdCase" type="tr:Case5"/>
+      <xs:element name="OrgnlMsgId" type="tr:Max35Text"/>
+      <xs:element name="OrgnlMsgNmId" type="tr:OrigMsgName"/>
+      <xs:element name="OrgnlCreDtTm" type="tr:ISODateTime"/>
+      <xs:element name="CxlStsRsnInf" type="tr:CancellationStatusReason4" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OriginalGroupHeader14_TCH">
+    <xs:sequence>
+      <xs:element name="RslvdCase" type="tr:Case5_TCH"/>
+      <xs:element name="OrgnlMsgId" type="tr:Max35Text"/>
+      <xs:element name="OrgnlMsgNmId" type="tr:OrigMsgName"/>
+      <xs:element name="OrgnlCreDtTm" type="tr:ISODateTime"/>
+      <xs:element name="CxlStsRsnInf" type="tr:CancellationStatusReason4_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="OrigMsgName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="camt.056.001.05"/>
+      <xs:enumeration value="camt.056.001.08"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Party40Choice">
+    <xs:choice>
+      <xs:element name="Agt" type="tr:BranchAndFinancialInstitutionIdentification6"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party40Choice_TCH">
+    <xs:choice>
+      <xs:element name="Agt" type="tr:BranchAndFinancialInstitutionIdentification6_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="PaymentTransaction102">
+    <xs:sequence>
+      <xs:element name="CxlStsId" type="tr:Max35Text" minOccurs="0"/>
+      <xs:element name="OrgnlUETR" type="tr:UUIDv4Identifier" minOccurs="0"/>
+      <xs:element name="RsltnRltdInf" type="tr:ResolutionData1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentTransaction102_TCH">
+    <xs:sequence>
+      <xs:element name="CxlStsId" type="tr:Max35Text" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation gefeg:label="ChangeNote">Additonal note for the unique identifier</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="OrgnlUETR" type="tr:UUIDv4Identifier" minOccurs="0"/>
+      <xs:element name="RsltnRltdInf" type="tr:ResolutionData1_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResolutionData1">
+    <xs:sequence>
+      <xs:element name="IntrBkSttlmAmt" type="tr:ActiveOrHistoricCurrencyAndAmount"/>
+      <xs:element name="IntrBkSttlmDt" type="tr:ISODate" minOccurs="0"/>
+      <xs:element name="ClrChanl" type="tr:ClearingChannel2Code" minOccurs="0"/>
+      <xs:element name="Chrgs" type="tr:Charges7" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResolutionData1_TCH">
+    <xs:sequence>
+      <xs:element name="IntrBkSttlmAmt" type="tr:ActiveOrHistoricCurrencyAndAmount"/>
+      <xs:element name="IntrBkSttlmDt" type="tr:ISODate" minOccurs="0"/>
+      <xs:element name="ClrChanl" type="tr:ClearingChannel2Code" minOccurs="0"/>
+      <xs:element name="Chrgs" type="tr:Charges7_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResolutionOfInvestigationV09">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Assgnmt" type="tr:CaseAssignment5">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Sts" type="tr:InvestigationStatus5Choice">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CxlDtls" type="tr:UnderlyingTransaction22">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">4.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResolutionOfInvestigationV09_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Assgnmt" type="tr:CaseAssignment5_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Sts" type="tr:InvestigationStatus5Choice">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CxlDtls" type="tr:UnderlyingTransaction22_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">4.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingTransaction22">
+    <xs:sequence>
+      <xs:element name="OrgnlGrpInfAndSts" type="tr:OriginalGroupHeader14"/>
+      <xs:element name="TxInfAndSts" type="tr:PaymentTransaction102" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnderlyingTransaction22_TCH">
+    <xs:sequence>
+      <xs:element name="OrgnlGrpInfAndSts" type="tr:OriginalGroupHeader14_TCH"/>
+      <xs:element name="TxInfAndSts" type="tr:PaymentTransaction102_TCH" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="UUIDv4Identifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

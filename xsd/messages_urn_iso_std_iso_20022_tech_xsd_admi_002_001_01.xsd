@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:mr="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01"
+    elementFormDefault="qualified">
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="admi.002.001.01" type="mr:MessageRejectV01"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document_TCH">
+    <xs:sequence>
+      <xs:element name="admi.002.001.01" type="mr:MessageRejectV01_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max20000Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+      <xs:pattern value="[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))((([0-1][0-9])|(2[0-3]))(([0-5][0-9])){2})[A-Z0-9]{11}.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="MessageReference">
+    <xs:sequence>
+      <xs:element name="Ref" type="mr:Max35Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageReference_TCH">
+    <xs:sequence>
+      <xs:element name="Ref" type="mr:Max35Text_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.1</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageRejectV01">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Updates according to Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RltdRef" type="mr:MessageReference">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Rsn" type="mr:RejectionReason2">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageRejectV01_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Updates according to Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RltdRef" type="mr:MessageReference_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Rsn" type="mr:RejectionReason2_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RejectionReason2">
+    <xs:sequence>
+      <xs:element name="RjctgPtyRsn" type="mr:Max35Text"/>
+      <xs:element name="AddtlData" type="mr:Max20000Text" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RejectionReason2_TCH">
+    <xs:sequence>
+      <xs:element name="RjctgPtyRsn" type="mr:Max35Text">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.1</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AddtlData" type="mr:Max20000Text" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.5</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

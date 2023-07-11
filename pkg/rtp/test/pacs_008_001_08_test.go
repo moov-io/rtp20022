@@ -16,142 +16,138 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-var pacs008Constant = &pacs_008_001_08.Document{
-	FIToFICstmrCdtTrf: pacs_008_001_08.FIToFICustomerCreditTransferV08{
-		GrpHdr: pacs_008_001_08.GroupHeader93{
+var pacs008Constant = &pacs_008_001_08.DocumentTCH{
+	FIToFICstmrCdtTrf: pacs_008_001_08.FIToFICustomerCreditTransferV08TCH{
+		GrpHdr: pacs_008_001_08.GroupHeader93TCH{
 			MsgId:   "M20210701000000032A1B00000008088224",
 			CreDtTm: rtp.UnmarshalISODateTime("2021-07-01T10:51:00"),
 			NbOfTxs: "1",
-			TtlIntrBkSttlmAmt: &pacs_008_001_08.ActiveCurrencyAndAmount{
+			TtlIntrBkSttlmAmt: pacs_008_001_08.ActiveCurrencyAndAmount{
 				Value: 10.00,
-				Ccy:   "USD",
+				Ccy:   pacs_008_001_08.ActiveCurrencyCodeUsd,
 			},
-			IntrBkSttlmDt: rtp.Ptr(rtp.UnmarshalISODate("2021-07-01")),
-			SttlmInf: pacs_008_001_08.SettlementInstruction7{
+			IntrBkSttlmDt: rtp.UnmarshalISODate("2021-07-01"),
+			SttlmInf: pacs_008_001_08.SettlementInstruction7TCH{
 				SttlmMtd: pacs_008_001_08.SettlementMethod1CodeClrg,
-				ClrSys: &pacs_008_001_08.ClearingSystemIdentification3Choice{
-					Cd: rtp.Ptr(pacs_008_001_08.ExternalCashClearingSystem1Code("TCH")),
+				ClrSys: pacs_008_001_08.ClearingSystemIdentification3Choice{
+					Cd: rtp.Ptr(pacs_008_001_08.ExternalCashClearingSystem1CodeTch),
 				},
 			},
 		},
-		CdtTrfTxInf: []pacs_008_001_08.CreditTransferTransaction39{
-			{
-				PmtId: pacs_008_001_08.PaymentIdentification7{
-					InstrId:    rtp.Ptr(pacs_008_001_08.Max35Text("20210701000000032A1B000000000047075")),
-					EndToEndId: "MYREF123",
-					TxId:       rtp.Ptr(pacs_008_001_08.Max35Text("20210701000000032A1B000000000047075")),
-					ClrSysRef:  rtp.Ptr(pacs_008_001_08.Max35Text("002")),
+		CdtTrfTxInf: pacs_008_001_08.CreditTransferTransaction39TCH{
+			PmtId: pacs_008_001_08.PaymentIdentification7TCH{
+				InstrId:    pacs_008_001_08.Max35TextTCH2("20210701000000032A1B000000000047075"),
+				EndToEndId: "MYREF123",
+				TxId:       pacs_008_001_08.Max35Text("20210701000000032A1B000000000047075"),
+				ClrSysRef:  rtp.Ptr(pacs_008_001_08.Max35Text("002")),
+			},
+			PmtTpInf: pacs_008_001_08.PaymentTypeInformation28TCH{
+				SvcLvl: pacs_008_001_08.ServiceLevel8Choice{
+					Cd: rtp.Ptr(pacs_008_001_08.ExternalServiceLevel1CodeSdva),
 				},
-				PmtTpInf: &pacs_008_001_08.PaymentTypeInformation28{
-					SvcLvl: []*pacs_008_001_08.ServiceLevel8Choice{
-						{
-							Cd: rtp.Ptr(pacs_008_001_08.ExternalServiceLevel1Code("SDVA")),
-						},
-					},
-					LclInstrm: &pacs_008_001_08.LocalInstrument2Choice{
-						Prtry: rtp.Ptr(pacs_008_001_08.Max35Text("STANDARD")),
-					},
-					CtgyPurp: &pacs_008_001_08.CategoryPurpose1Choice{
-						Prtry: rtp.Ptr(pacs_008_001_08.Max35Text("BUSINESS")),
-					},
+				LclInstrm: pacs_008_001_08.LocalInstrument2Choice{
+					Prtry: rtp.Ptr(pacs_008_001_08.LocalPropStandard),
 				},
-				IntrBkSttlmAmt: pacs_008_001_08.ActiveCurrencyAndAmount{
-					Value: 10.00,
-					Ccy:   "USD",
+				CtgyPurp: pacs_008_001_08.CategoryPurpose1Choice{
+					Prtry: rtp.Ptr(pacs_008_001_08.CatePurpPropBusiness),
 				},
-				ChrgBr: pacs_008_001_08.ChargeBearerType1CodeSlev,
-				InstgAgt: &pacs_008_001_08.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: pacs_008_001_08.FinancialInstitutionIdentification18{
-						ClrSysMmbId: &pacs_008_001_08.ClearingSystemMemberIdentification2{
-							MmbId: "000000032",
-						},
+			},
+			IntrBkSttlmAmt: pacs_008_001_08.ActiveCurrencyAndAmount{
+				Value: 10.00,
+				Ccy:   pacs_008_001_08.ActiveCurrencyCodeUsd,
+			},
+			ChrgBr: pacs_008_001_08.ChargeBearerType1CodeSlev,
+			InstgAgt: pacs_008_001_08.BranchAndFinancialInstitutionIdentification6TCH{
+				FinInstnId: pacs_008_001_08.FinancialInstitutionIdentification18TCH{
+					ClrSysMmbId: pacs_008_001_08.ClearingSystemMemberIdentification2TCH{
+						MmbId: "000000032",
 					},
 				},
-				InstdAgt: &pacs_008_001_08.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: pacs_008_001_08.FinancialInstitutionIdentification18{
-						ClrSysMmbId: &pacs_008_001_08.ClearingSystemMemberIdentification2{
-							MmbId: "000000010",
-						},
+			},
+			InstdAgt: pacs_008_001_08.BranchAndFinancialInstitutionIdentification6TCH{
+				FinInstnId: pacs_008_001_08.FinancialInstitutionIdentification18TCH{
+					ClrSysMmbId: pacs_008_001_08.ClearingSystemMemberIdentification2TCH{
+						MmbId: "000000010",
 					},
 				},
-				InitgPty: &pacs_008_001_08.PartyIdentification135{
-					Nm: rtp.Ptr(pacs_008_001_08.Max140Text("1234")),
+			},
+			InitgPty: &pacs_008_001_08.PartyIdentification135TCH2{
+				Nm: pacs_008_001_08.Max140Text("1234"),
+			},
+			Dbtr: pacs_008_001_08.PartyIdentification135TCH3{
+				Nm: pacs_008_001_08.Max140Text("000000032"),
+				PstlAdr: &pacs_008_001_08.PostalAddress24TCH{
+					StrtNm:      pacs_008_001_08.Max70Text("Route"),
+					BldgNb:      rtp.Ptr(pacs_008_001_08.Max16Text("66")),
+					PstCd:       pacs_008_001_08.Max16Text("123456"),
+					TwnNm:       pacs_008_001_08.Max35Text("LA"),
+					CtrySubDvsn: pacs_008_001_08.Max35Text("NY"),
+					Ctry:        pacs_008_001_08.CountryCode("US"),
 				},
-				Dbtr: pacs_008_001_08.PartyIdentification135{
-					Nm: rtp.Ptr(pacs_008_001_08.Max140Text("000000032")),
-					PstlAdr: &pacs_008_001_08.PostalAddress24{
-						StrtNm:      rtp.Ptr(pacs_008_001_08.Max70Text("Route")),
-						BldgNb:      rtp.Ptr(pacs_008_001_08.Max16Text("66")),
-						PstCd:       rtp.Ptr(pacs_008_001_08.Max16Text("123456")),
-						TwnNm:       rtp.Ptr(pacs_008_001_08.Max35Text("LA")),
-						CtrySubDvsn: rtp.Ptr(pacs_008_001_08.Max35Text("NY")),
-						Ctry:        rtp.Ptr(pacs_008_001_08.CountryCode("US")),
-					},
-					Id: &pacs_008_001_08.Party38Choice{
-						PrvtId: &pacs_008_001_08.PersonIdentification13{
-							DtAndPlcOfBirth: &pacs_008_001_08.DateAndPlaceOfBirth1{
-								BirthDt:     rtp.UnmarshalISODate("1980-12-06"),
-								CityOfBirth: "NY",
-								CtryOfBirth: "US",
-							},
+				Id: &pacs_008_001_08.Party38ChoiceTCH3{
+					PrvtId: &pacs_008_001_08.PersonIdentification13TCH2{
+						DtAndPlcOfBirth: pacs_008_001_08.DateAndPlaceOfBirth1{
+							BirthDt:     rtp.UnmarshalISODate("1980-12-06"),
+							CityOfBirth: "NY",
+							CtryOfBirth: "US",
 						},
 					},
 				},
-				DbtrAcct: &pacs_008_001_08.CashAccount38{
-					Id: pacs_008_001_08.AccountIdentification4Choice{
-						Othr: &pacs_008_001_08.GenericAccountIdentification1{
-							Id: pacs_008_001_08.Max34Text("88773702086235574"),
+			},
+			DbtrAcct: pacs_008_001_08.CashAccount38TCH{
+				Id: pacs_008_001_08.AccountIdentification4Choice{
+					Othr: &pacs_008_001_08.GenericAccountIdentification1{
+						Id: pacs_008_001_08.Max34Text("88773702086235574"),
+					},
+				},
+			},
+			DbtrAgt: pacs_008_001_08.BranchAndFinancialInstitutionIdentification6TCH{
+				FinInstnId: pacs_008_001_08.FinancialInstitutionIdentification18TCH{
+					ClrSysMmbId: pacs_008_001_08.ClearingSystemMemberIdentification2TCH{
+						MmbId: "000000032",
+					},
+				},
+			},
+			CdtrAgt: pacs_008_001_08.BranchAndFinancialInstitutionIdentification6TCH{
+				FinInstnId: pacs_008_001_08.FinancialInstitutionIdentification18TCH{
+					ClrSysMmbId: pacs_008_001_08.ClearingSystemMemberIdentification2TCH{
+						MmbId: "000000010",
+					},
+				},
+			},
+			Cdtr: pacs_008_001_08.PartyIdentification135TCH3{
+				Nm: pacs_008_001_08.Max140Text("000000010"),
+				PstlAdr: &pacs_008_001_08.PostalAddress24TCH{
+					StrtNm:      pacs_008_001_08.Max70Text("Mircea Voda"),
+					BldgNb:      rtp.Ptr(pacs_008_001_08.Max16Text("40")),
+					PstCd:       pacs_008_001_08.Max16Text("030669"),
+					TwnNm:       pacs_008_001_08.Max35Text("Bucuresti"),
+					CtrySubDvsn: pacs_008_001_08.Max35Text("NY"),
+					Ctry:        pacs_008_001_08.CountryCode("RO"),
+				},
+				Id: &pacs_008_001_08.Party38ChoiceTCH3{
+					PrvtId: &pacs_008_001_08.PersonIdentification13TCH2{
+						DtAndPlcOfBirth: pacs_008_001_08.DateAndPlaceOfBirth1{
+							BirthDt:     rtp.UnmarshalISODate("1976-02-14"),
+							CityOfBirth: "GL",
+							CtryOfBirth: "RO",
 						},
 					},
 				},
-				DbtrAgt: pacs_008_001_08.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: pacs_008_001_08.FinancialInstitutionIdentification18{
-						ClrSysMmbId: &pacs_008_001_08.ClearingSystemMemberIdentification2{
-							MmbId: "000000032",
-						},
+			},
+			CdtrAcct: pacs_008_001_08.CashAccount38TCH2{
+				Id: pacs_008_001_08.AccountIdentification4Choice{
+					Othr: &pacs_008_001_08.GenericAccountIdentification1{
+						Id: pacs_008_001_08.Max34Text("42341169728762787"),
 					},
 				},
-				CdtrAgt: pacs_008_001_08.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: pacs_008_001_08.FinancialInstitutionIdentification18{
-						ClrSysMmbId: &pacs_008_001_08.ClearingSystemMemberIdentification2{
-							MmbId: "000000010",
-						},
-					},
+			},
+			RltdRmtInf: &pacs_008_001_08.RemittanceLocation7TCH{
+				RmtId: rtp.Ptr(pacs_008_001_08.Max35Text("1234567890")),
+				RmtLctnDtls: &pacs_008_001_08.RemittanceLocationData1{
+					Mtd:        pacs_008_001_08.RemittanceLocationMethod2CodeEmal,
+					ElctrncAdr: rtp.Ptr(pacs_008_001_08.Max2048Text("address@company.com")),
 				},
-				Cdtr: pacs_008_001_08.PartyIdentification135{
-					Nm: rtp.Ptr(pacs_008_001_08.Max140Text("000000010")),
-					PstlAdr: &pacs_008_001_08.PostalAddress24{
-						StrtNm:      rtp.Ptr(pacs_008_001_08.Max70Text("Mircea Voda")),
-						BldgNb:      rtp.Ptr(pacs_008_001_08.Max16Text("40")),
-						PstCd:       rtp.Ptr(pacs_008_001_08.Max16Text("030669")),
-						TwnNm:       rtp.Ptr(pacs_008_001_08.Max35Text("Bucuresti")),
-						CtrySubDvsn: rtp.Ptr(pacs_008_001_08.Max35Text("NY")),
-						Ctry:        rtp.Ptr(pacs_008_001_08.CountryCode("RO")),
-					},
-					Id: &pacs_008_001_08.Party38Choice{
-						PrvtId: &pacs_008_001_08.PersonIdentification13{
-							DtAndPlcOfBirth: &pacs_008_001_08.DateAndPlaceOfBirth1{
-								BirthDt:     rtp.UnmarshalISODate("1976-02-14"),
-								CityOfBirth: "GL",
-								CtryOfBirth: "RO",
-							},
-						},
-					},
-				},
-				CdtrAcct: &pacs_008_001_08.CashAccount38{
-					Id: pacs_008_001_08.AccountIdentification4Choice{
-						Othr: &pacs_008_001_08.GenericAccountIdentification1{
-							Id: pacs_008_001_08.Max34Text("42341169728762787"),
-						},
-					},
-				},
-				RltdRmtInf: rtp.Arr(pacs_008_001_08.RemittanceLocation7{
-					RmtId: rtp.Ptr(pacs_008_001_08.Max35Text("1234567890")),
-					RmtLctnDtls: rtp.Arr(pacs_008_001_08.RemittanceLocationData1{
-						Mtd:        pacs_008_001_08.RemittanceLocationMethod2CodeEmal,
-						ElctrncAdr: rtp.Ptr(pacs_008_001_08.Max2048Text("address@company.com")),
-					}),
-				}),
 			},
 		},
 	},

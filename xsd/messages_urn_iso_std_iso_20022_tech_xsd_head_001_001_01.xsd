@@ -38,6 +38,7 @@
       <xs:element name="To" type="head:Party9ChoiceBAH"/>
       <xs:element name="BizMsgIdr" type="head:Max35Text"/>
       <xs:element name="MsgDefIdr" type="head:OrigMsgName"/>
+      <xs:element name="BizSvc" type="head:Max35Text" minOccurs="0"/>
       <xs:element name="CreDt" type="head:ISONormalisedDateTime"/>
       <xs:element name="CpyDplct" type="head:CopyDuplicate1Code" minOccurs="0"/>
       <xs:element name="Sgntr" type="head:SignatureEnvelope" minOccurs="0"/>
@@ -55,6 +56,7 @@
       <xs:element name="To" type="head:Party9ChoiceBAH_TCH"/>
       <xs:element name="BizMsgIdr" type="head:Max35Text_TCH"/>
       <xs:element name="MsgDefIdr" type="head:OrigMsgName"/>
+      <xs:element name="BizSvc" type="head:Max35Text" minOccurs="0"/>
       <xs:element name="CreDt" type="head:ISONormalisedDateTime"/>
       <xs:element name="CpyDplct" type="head:CopyDuplicate1Code" minOccurs="0"/>
       <xs:element name="Sgntr" type="head:SignatureEnvelope" minOccurs="0"/>

@@ -16,55 +16,49 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-var pacs002Constant = &pacs_002_001_10.Document{
-	FIToFIPmtStsRpt: pacs_002_001_10.FIToFIPaymentStatusReportV10{
-		GrpHdr: pacs_002_001_10.GroupHeader91{
+var pacs002Constant = &pacs_002_001_10.DocumentTCH{
+	FIToFIPmtStsRpt: pacs_002_001_10.FIToFIPaymentStatusReportV10TCH{
+		GrpHdr: pacs_002_001_10.GroupHeader91TCH{
 			MsgId:   "M20210701000000010B1B00000008088226",
 			CreDtTm: rtp.UnmarshalISODateTime("2021-07-01T10:58:02"),
 		},
-		OrgnlGrpInfAndSts: []*pacs_002_001_10.OriginalGroupHeader17{
-			{
-				OrgnlMsgId:   "M20210701000000032A1B00000008088224",
-				OrgnlMsgNmId: "pacs.008.001.08",
-				OrgnlCreDtTm: rtp.Ptr(rtp.UnmarshalISODateTime("2021-07-01T10:51:00")),
-				OrgnlNbOfTxs: rtp.Ptr(pacs_002_001_10.Max15NumericText("1")),
-			},
+		OrgnlGrpInfAndSts: pacs_002_001_10.OriginalGroupHeader17TCH{
+			OrgnlMsgId:   "M20210701000000032A1B00000008088224",
+			OrgnlMsgNmId: pacs_002_001_10.OrigMsgNamePacs00800108,
+			OrgnlCreDtTm: rtp.UnmarshalISODateTime("2021-07-01T10:51:00"),
+			OrgnlNbOfTxs: pacs_002_001_10.Max1NumericText("1"),
 		},
-		TxInfAndSts: []*pacs_002_001_10.PaymentTransaction110{
-			{
-				OrgnlInstrId: rtp.Ptr(pacs_002_001_10.Max35Text("20210701000000032A1B000000000047075")),
-				OrgnlTxId:    rtp.Ptr(pacs_002_001_10.Max35Text("20210701000000032A1B000000000047075")),
-				TxSts:        rtp.Ptr(pacs_002_001_10.ExternalPaymentTransactionStatus1Code("RJCT")),
-				StsRsnInf: []*pacs_002_001_10.StatusReasonInformation12{
-					{
-						Rsn: &pacs_002_001_10.StatusReason6Choice{
-							Cd: rtp.Ptr(pacs_002_001_10.ExternalStatusReason1Code("AC03")),
-						},
+		TxInfAndSts: pacs_002_001_10.PaymentTransaction110TCH{
+			OrgnlInstrId: pacs_002_001_10.Max35Text("20210701000000032A1B000000000047075"),
+			OrgnlTxId:    rtp.Ptr(pacs_002_001_10.Max35Text("20210701000000032A1B000000000047075")),
+			TxSts:        pacs_002_001_10.ExternalPaymentTransactionStatus1CodeRjct,
+			StsRsnInf: &pacs_002_001_10.StatusReasonInformation12TCH{
+				Rsn: &pacs_002_001_10.StatusReason6ChoiceTCH{
+					Cd: rtp.Ptr(pacs_002_001_10.ExternalStatusReason1CodeAc03),
+				},
+			},
+			AccptncDtTm: rtp.UnmarshalISODateTime("2021-07-01T10:58:02"),
+			ClrSysRef:   rtp.Ptr(pacs_002_001_10.Max35Text("002")),
+			InstgAgt: pacs_002_001_10.BranchAndFinancialInstitutionIdentification6TCH{
+				FinInstnId: pacs_002_001_10.FinancialInstitutionIdentification18TCH{
+					ClrSysMmbId: pacs_002_001_10.ClearingSystemMemberIdentification2TCH{
+						MmbId: "000000010",
 					},
 				},
-				AccptncDtTm: rtp.Ptr(rtp.UnmarshalISODateTime("2021-07-01T10:58:02")),
-				ClrSysRef:   rtp.Ptr(pacs_002_001_10.Max35Text("002")),
-				InstgAgt: &pacs_002_001_10.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: pacs_002_001_10.FinancialInstitutionIdentification18{
-						ClrSysMmbId: &pacs_002_001_10.ClearingSystemMemberIdentification2{
-							MmbId: "000000010",
-						},
+			},
+			InstdAgt: pacs_002_001_10.BranchAndFinancialInstitutionIdentification6TCH{
+				FinInstnId: pacs_002_001_10.FinancialInstitutionIdentification18TCH{
+					ClrSysMmbId: pacs_002_001_10.ClearingSystemMemberIdentification2TCH{
+						MmbId: "000000032",
 					},
 				},
-				InstdAgt: &pacs_002_001_10.BranchAndFinancialInstitutionIdentification6{
-					FinInstnId: pacs_002_001_10.FinancialInstitutionIdentification18{
-						ClrSysMmbId: &pacs_002_001_10.ClearingSystemMemberIdentification2{
-							MmbId: "000000032",
-						},
-					},
+			},
+			OrgnlTxRef: &pacs_002_001_10.OriginalTransactionReference28{
+				IntrBkSttlmAmt: &pacs_002_001_10.ActiveOrHistoricCurrencyAndAmount{
+					Value: 10.00,
+					Ccy:   pacs_002_001_10.ActiveOrHistoricCurrencyCodeUsd,
 				},
-				OrgnlTxRef: &pacs_002_001_10.OriginalTransactionReference28{
-					IntrBkSttlmAmt: &pacs_002_001_10.ActiveOrHistoricCurrencyAndAmount{
-						Value: 10.00,
-						Ccy:   "USD",
-					},
-					IntrBkSttlmDt: rtp.Ptr(rtp.UnmarshalISODate("2021-07-01")),
-				},
+				IntrBkSttlmDt: rtp.Ptr(rtp.UnmarshalISODate("2021-07-01")),
 			},
 		},
 	},

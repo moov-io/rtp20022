@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:a2="urn:iso:std:iso:20022:tech:xsd:acmt.022.001.02"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:iso:20022:tech:xsd:acmt.022.001.02"
+    elementFormDefault="qualified">
+  <xs:complexType name="AccountIdentification4Choice">
+    <xs:choice>
+      <xs:element name="Othr" type="a2:GenericAccountIdentification1"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification5">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="a2:FinancialInstitutionIdentification8"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification5_TCH">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="a2:FinancialInstitutionIdentification8_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2">
+    <xs:sequence>
+      <xs:element name="MmbId" type="a2:Max35Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2_TCH">
+    <xs:sequence>
+      <xs:element name="MmbId" type="a2:Max35Text_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="IdModAdvc" type="a2:IdentificationModificationAdviceV02"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document_TCH">
+    <xs:sequence>
+      <xs:element name="IdModAdvc" type="a2:IdentificationModificationAdviceV02_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification8">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="a2:ClearingSystemMemberIdentification2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification8_TCH">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="a2:ClearingSystemMemberIdentification2_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenericAccountIdentification1">
+    <xs:sequence>
+      <xs:element name="Id" type="a2:Max34Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationAssignment2">
+    <xs:sequence>
+      <xs:element name="MsgId" type="a2:Max35Text"/>
+      <xs:element name="CreDtTm" type="a2:ISODateTime"/>
+      <xs:element name="Assgnr" type="a2:Party12Choice"/>
+      <xs:element name="Assgne" type="a2:Party12Choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationAssignment2_TCH">
+    <xs:sequence>
+      <xs:element name="MsgId" type="a2:Max35Text"/>
+      <xs:element name="CreDtTm" type="a2:ISODateTime"/>
+      <xs:element name="Assgnr" type="a2:Party12Choice_TCH"/>
+      <xs:element name="Assgne" type="a2:Party12Choice_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationInformation2">
+    <xs:sequence>
+      <xs:element name="Acct" type="a2:AccountIdentification4Choice"/>
+      <xs:element name="Agt" type="a2:BranchAndFinancialInstitutionIdentification5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationInformation2_TCH">
+    <xs:sequence>
+      <xs:element name="Acct" type="a2:AccountIdentification4Choice"/>
+      <xs:element name="Agt" type="a2:BranchAndFinancialInstitutionIdentification5_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationModification2">
+    <xs:sequence>
+      <xs:element name="Id" type="a2:Max35Text"/>
+      <xs:element name="OrgnlPtyAndAcctId" type="a2:IdentificationInformation2" minOccurs="0"/>
+      <xs:element name="UpdtdPtyAndAcctId" type="a2:IdentificationInformation2"/>
+      <xs:element name="AddtlInf" type="a2:Max140Text" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationModification2_TCH">
+    <xs:sequence>
+      <xs:element name="Id" type="a2:Max35Text"/>
+      <xs:element name="OrgnlPtyAndAcctId" type="a2:IdentificationInformation2_TCH" minOccurs="0"/>
+      <xs:element name="UpdtdPtyAndAcctId" type="a2:IdentificationInformation2_TCH"/>
+      <xs:element name="AddtlInf" type="a2:Max140Text" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationModificationAdviceV02">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">New Message Type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Assgnmt" type="a2:IdentificationAssignment2">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="OrgnlTxRef" type="a2:OriginalTransactionReference18">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Mod" type="a2:IdentificationModification2">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationModificationAdviceV02_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">New Message Type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Assgnmt" type="a2:IdentificationAssignment2_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="OrgnlTxRef" type="a2:OriginalTransactionReference18_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Mod" type="a2:IdentificationModification2_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="Max140Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="140"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max34Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="34"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="9"/>
+      <xs:maxLength value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OriginalTransactionReference18">
+    <xs:sequence>
+      <xs:element name="MsgId" type="a2:Max35Text"/>
+      <xs:element name="MsgNmId" type="a2:OrigMsgName"/>
+      <xs:element name="CreDtTm" type="a2:ISODateTime"/>
+      <xs:element name="OrgnlTx" type="a2:PaymentIdentification4"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OriginalTransactionReference18_TCH">
+    <xs:sequence>
+      <xs:element name="MsgId" type="a2:Max35Text"/>
+      <xs:element name="MsgNmId" type="a2:OrigMsgName"/>
+      <xs:element name="CreDtTm" type="a2:ISODateTime"/>
+      <xs:element name="OrgnlTx" type="a2:PaymentIdentification4_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="OrigMsgName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pacs.008.001.08"/>
+      <xs:enumeration value="pain.013.001.07"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Party12Choice">
+    <xs:choice>
+      <xs:element name="Agt" type="a2:BranchAndFinancialInstitutionIdentification5"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party12Choice_TCH">
+    <xs:choice>
+      <xs:element name="Agt" type="a2:BranchAndFinancialInstitutionIdentification5_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="PaymentIdentification4">
+    <xs:sequence>
+      <xs:element name="InstrId" type="a2:Max35Text"/>
+      <xs:element name="EndToEndId" type="a2:Max35Text"/>
+      <xs:element name="TxId" type="a2:Max35Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentIdentification4_TCH">
+    <xs:sequence>
+      <xs:element name="InstrId" type="a2:Max35Text"/>
+      <xs:element name="EndToEndId" type="a2:Max35Text"/>
+      <xs:element name="TxId" type="a2:Max35Text"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

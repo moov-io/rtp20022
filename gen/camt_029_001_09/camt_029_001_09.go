@@ -8,21 +8,6 @@ import (
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
-// XSD Elements
-
-type Document struct {
-	XMLName         xml.Name
-	RsltnOfInvstgtn ResolutionOfInvestigationV09 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 RsltnOfInvstgtn"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.RsltnOfInvstgtn, xml.StartElement{Name: xml.Name{Local: "tr:RsltnOfInvstgtn"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 // XSD ComplexType declarations
 
 type ActiveOrHistoricCurrencyAndAmount struct {
@@ -219,6 +204,7 @@ func (v ClearingSystemMemberIdentification2TCH) MarshalXML(e *xml.Encoder, start
 }
 
 type DocumentTCH struct {
+	XMLName         xml.Name
 	RsltnOfInvstgtn ResolutionOfInvestigationV09TCH `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 RsltnOfInvstgtn"`
 }
 
@@ -331,14 +317,16 @@ func (v Party40ChoiceTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) err
 }
 
 type PaymentTransaction102 struct {
-	CxlStsId     *Max35Text       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 CxlStsId,omitempty"`
-	RsltnRltdInf *ResolutionData1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 RsltnRltdInf,omitempty"`
+	CxlStsId     *Max35Text        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 CxlStsId,omitempty"`
+	OrgnlUETR    *UUIDv4Identifier `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 OrgnlUETR,omitempty"`
+	RsltnRltdInf *ResolutionData1  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 RsltnRltdInf,omitempty"`
 }
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 func (v PaymentTransaction102) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.CxlStsId, xml.StartElement{Name: xml.Name{Local: "tr:CxlStsId"}})
+	e.EncodeElement(v.OrgnlUETR, xml.StartElement{Name: xml.Name{Local: "tr:OrgnlUETR"}})
 	e.EncodeElement(v.RsltnRltdInf, xml.StartElement{Name: xml.Name{Local: "tr:RsltnRltdInf"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
 	return nil
@@ -346,6 +334,7 @@ func (v PaymentTransaction102) MarshalXML(e *xml.Encoder, start xml.StartElement
 
 type PaymentTransaction102TCH struct {
 	CxlStsId     *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 CxlStsId,omitempty"`
+	OrgnlUETR    *UUIDv4Identifier   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 OrgnlUETR,omitempty"`
 	RsltnRltdInf *ResolutionData1TCH `xml:"urn:iso:std:iso:20022:tech:xsd:camt.029.001.09 RsltnRltdInf,omitempty"`
 }
 
@@ -353,6 +342,7 @@ type PaymentTransaction102TCH struct {
 func (v PaymentTransaction102TCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.CxlStsId, xml.StartElement{Name: xml.Name{Local: "tr:CxlStsId"}})
+	e.EncodeElement(v.OrgnlUETR, xml.StartElement{Name: xml.Name{Local: "tr:OrgnlUETR"}})
 	e.EncodeElement(v.RsltnRltdInf, xml.StartElement{Name: xml.Name{Local: "tr:RsltnRltdInf"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
 	return nil
@@ -508,3 +498,5 @@ type OrigMsgName string
 
 const OrigMsgNameCamt05600105 OrigMsgName = "camt.056.001.05"
 const OrigMsgNameCamt05600108 OrigMsgName = "camt.056.001.08"
+
+type UUIDv4Identifier string

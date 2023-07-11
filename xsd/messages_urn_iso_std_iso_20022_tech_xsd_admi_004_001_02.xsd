@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:ne="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02"
+    elementFormDefault="qualified">
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="SysEvtNtfctn" type="ne:SystemEventNotificationV02"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document_TCH">
+    <xs:sequence>
+      <xs:element name="SysEvtNtfctn" type="ne:SystemEventNotificationV02_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Event2">
+    <xs:sequence>
+      <xs:element name="EvtCd" type="ne:Max4AlphaNumericText"/>
+      <xs:element name="EvtParam" type="ne:Max35Text" maxOccurs="unbounded"/>
+      <xs:element name="EvtDesc" type="ne:Max1000Text" minOccurs="0"/>
+      <xs:element name="EvtTm" type="ne:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Event2_TCH">
+    <xs:sequence>
+      <xs:element name="EvtCd" type="ne:Max4AlphaNumericText">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.1</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EvtParam" type="ne:Max35Text" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.2</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EvtDesc" type="ne:Max1000Text" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.3</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EvtTm" type="ne:ISODateTime">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.4</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="Max1000Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="1000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max4AlphaNumericText">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="4"/>
+      <xs:pattern value="[a-zA-Z0-9]{1,4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SystemEventNotificationV02">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Updates according to Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EvtInf" type="ne:Event2">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SystemEventNotificationV02_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeId">Release 2.9</xs:documentation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeUser">VocaLink</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Updates according to Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EvtInf" type="ne:Event2_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:ac="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gefeg="http://www.gefeg.com/public"
+    targetNamespace="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05"
+    elementFormDefault="qualified">
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification6">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="ac:FinancialInstitutionIdentification18"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchAndFinancialInstitutionIdentification6_TCH">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="ac:FinancialInstitutionIdentification18_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Case5">
+    <xs:sequence>
+      <xs:element name="Id" type="ac:Max35Text"/>
+      <xs:element name="Cretr" type="ac:Party40Choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Case5_TCH">
+    <xs:sequence>
+      <xs:element name="Id" type="ac:Max35Text"/>
+      <xs:element name="Cretr" type="ac:Party40Choice_TCH_2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CaseAssignment5">
+    <xs:sequence>
+      <xs:element name="Id" type="ac:Max35Text"/>
+      <xs:element name="Assgnr" type="ac:Party40Choice"/>
+      <xs:element name="Assgne" type="ac:Party40Choice"/>
+      <xs:element name="CreDtTm" type="ac:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CaseAssignment5_TCH">
+    <xs:sequence>
+      <xs:element name="Id" type="ac:Max35Text_TCH"/>
+      <xs:element name="Assgnr" type="ac:Party40Choice_TCH"/>
+      <xs:element name="Assgne" type="ac:Party40Choice_TCH"/>
+      <xs:element name="CreDtTm" type="ac:ISODateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2">
+    <xs:sequence>
+      <xs:element name="MmbId" type="ac:Max35Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification2_TCH">
+    <xs:sequence>
+      <xs:element name="MmbId" type="ac:Max35Text_TCH_2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="PrtryFrmtInvstgtn" type="ac:ProprietaryFormatInvestigationV05"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document_TCH">
+    <xs:sequence>
+      <xs:element name="PrtryFrmtInvstgtn" type="ac:ProprietaryFormatInvestigationV05_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification18">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="ac:ClearingSystemMemberIdentification2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionIdentification18_TCH">
+    <xs:sequence>
+      <xs:element name="ClrSysMmbId" type="ac:ClearingSystemMemberIdentification2_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="Max140Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="140"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+      <xs:pattern value="M[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH_2">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="9"/>
+      <xs:maxLength value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text_TCH_3">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACK"/>
+      <xs:enumeration value="ACWP"/>
+      <xs:minLength value="1"/>
+      <xs:maxLength value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Party40Choice">
+    <xs:choice>
+      <xs:element name="Pty" type="ac:PartyIdentification135"/>
+      <xs:element name="Agt" type="ac:BranchAndFinancialInstitutionIdentification6"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party40Choice_TCH">
+    <xs:choice>
+      <xs:element name="Agt" type="ac:BranchAndFinancialInstitutionIdentification6_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="Party40Choice_TCH_2">
+    <xs:choice>
+      <xs:element name="Pty" type="ac:PartyIdentification135_TCH"/>
+      <xs:element name="Agt" type="ac:BranchAndFinancialInstitutionIdentification6_TCH"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification135">
+    <xs:sequence>
+      <xs:element name="Nm" type="ac:Max140Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification135_TCH">
+    <xs:sequence>
+      <xs:element name="Nm" type="ac:Max140Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProprietaryData6_reduced">
+    <xs:sequence>
+      <xs:element name="Ustrd" type="ac:Max140Text" minOccurs="0"/>
+      <xs:element name="OrigRefs" type="ac:TransactionReferences8_reduced"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProprietaryData6_reduced_TCH">
+    <xs:sequence>
+      <xs:element name="Ustrd" type="ac:Max140Text" minOccurs="0"/>
+      <xs:element name="OrigRefs" type="ac:TransactionReferences8_reduced_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProprietaryData7_TCH">
+    <xs:sequence>
+      <xs:element name="Tp" type="ac:Max35Text"/>
+      <xs:element name="Data" type="ac:ProprietaryData6_reduced"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProprietaryData7_TCH_TCH">
+    <xs:sequence>
+      <xs:element name="Tp" type="ac:Max35Text_TCH_3"/>
+      <xs:element name="Data" type="ac:ProprietaryData6_reduced_TCH"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProprietaryFormatInvestigationV05">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Assgnmt" type="ac:CaseAssignment5">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Case" type="ac:Case5">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PrtryData" type="ac:ProprietaryData7_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProprietaryFormatInvestigationV05_TCH">
+    <xs:annotation>
+      <xs:documentation gefeg:label="ChangeDate">April 2019</xs:documentation>
+      <xs:documentation gefeg:label="ChangeNote">Release 2.9 (2019)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Assgnmt" type="ac:CaseAssignment5_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">1.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Case" type="ac:Case5_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">2.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PrtryData" type="ac:ProprietaryData7_TCH_TCH">
+        <xs:annotation>
+          <xs:documentation gefeg:label="Index">3.0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransactionReferences8_reduced">
+    <xs:sequence>
+      <xs:element name="InstrId" type="ac:Max35Text"/>
+      <xs:element name="EndToEndId" type="ac:Max35Text"/>
+      <xs:element name="TxId" type="ac:Max35Text"/>
+      <xs:element name="UETR" type="ac:UUIDv4Identifier" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransactionReferences8_reduced_TCH">
+    <xs:sequence>
+      <xs:element name="InstrId" type="ac:Max35Text"/>
+      <xs:element name="EndToEndId" type="ac:Max35Text"/>
+      <xs:element name="TxId" type="ac:Max35Text"/>
+      <xs:element name="UETR" type="ac:UUIDv4Identifier" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="UUIDv4Identifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
