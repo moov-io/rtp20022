@@ -1,14 +1,12 @@
 #!/bin/bash
 set -e
 
-#../xsd2go/moovio_xsd2go convert \
-#   xsd/xmldsig-core-schema.xsd \
-#   github.com/moov-io/rtp20022 \
-#   gen \
-#   --template-name=internal/templates/rtp20022/signature.tmpl \
-#   --xmlns-override="http://www.w3.org/2000/09/xmldsig#=head_001_001_01"
-
-#mv gen/head_001_001_01/head_001_001_01.go gen/head_001_001_01/signature.go
+moovio_xsd2go convert \
+   xsd/xmldsig-core-schema.xsd \
+   github.com/moov-io/rtp20022 \
+   gen \
+   --template-name=internal/templates/rtp20022/signature.tmpl \
+   --xmlns-override="http://www.w3.org/2000/09/xmldsig#=xmldsig"
 
 moovio_xsd2go convert \
    xsd/messages.xsd \

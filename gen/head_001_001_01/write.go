@@ -1,26 +1,35 @@
 package head_001_001_01
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+
+	"github.com/moov-io/rtp20022/gen/xmldsig"
+	"github.com/moov-io/rtp20022/pkg/rtp"
+)
 
 func NewSignature() *Sgntr {
 	sgntr := &Sgntr{
-		Signature: &Signature{
-			XMLName: xml.Name{
-				Space: "http://www.w3.org/2000/09/xmldsig#",
-				Local: "Signature",
+		Signature: &xmldsig.Signature{
+			Xmlns: []xml.Attr{
+				{
+					Name: xml.Name{
+						Local: "xmlns:ds",
+					},
+					Value: "http://www.w3.org/2000/09/xmldsig#",
+				},
 			},
-			SignedInfo: SignedInfo{
-				CanonicalizationMethod: CanonicalizationMethod{
+			SignedInfo: xmldsig.SignedInfoType{
+				CanonicalizationMethod: xmldsig.CanonicalizationMethodType{
 					Algorithm: "http://www.w3.org/2001/10/xml-exc-c14n#",
 				},
-				SignatureMethod: SignatureMethod{
+				SignatureMethod: xmldsig.SignatureMethodType{
 					Algorithm: "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256",
 				},
-				References: []Reference{
+				Reference: []xmldsig.ReferenceType{
 					{
-						URI: "",
-						Transforms: Transforms{
-							Transforms: []Transform{
+						URI: rtp.Ptr(""),
+						Transforms: &xmldsig.TransformsType{
+							Transform: []xmldsig.TransformType{
 								{
 									Algorithm: "http://www.w3.org/2000/09/xmldsig#enveloped-signature",
 								},
@@ -29,14 +38,14 @@ func NewSignature() *Sgntr {
 								},
 							},
 						},
-						DigestMethod: DigestMethod{
+						DigestMethod: xmldsig.DigestMethodType{
 							Algorithm: "http://www.w3.org/2001/04/xmlenc#sha256",
 						},
 					},
 				},
 			},
-			SignatureValue: SignatureValue{},
-			KeyInfo:        KeyInfo{},
+			SignatureValue: xmldsig.SignatureValueType{},
+			KeyInfo:        &xmldsig.KeyInfoType{},
 		},
 	}
 	return sgntr

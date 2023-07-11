@@ -12,6 +12,7 @@ import (
 
 	"github.com/moov-io/rtp20022/gen/head_001_001_01"
 	"github.com/moov-io/rtp20022/gen/messages"
+	"github.com/moov-io/rtp20022/gen/xmldsig"
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
@@ -40,23 +41,27 @@ var head001Constant = head_001_001_01.BusinessApplicationHeaderV01TCH{
 	CpyDplct:  rtp.Ptr(head_001_001_01.CopyDuplicate1CodeDupl),
 }
 var head001Signature = &head_001_001_01.Sgntr{
-	Signature: &head_001_001_01.Signature{
-		XMLName: xml.Name{
-			Space: "http://www.w3.org/2000/09/xmldsig#",
-			Local: "Signature",
+	Signature: &xmldsig.Signature{
+		Xmlns: []xml.Attr{
+			{
+				Name: xml.Name{
+					Local: "xmlns:ds",
+				},
+				Value: "http://www.w3.org/2000/09/xmldsig#",
+			},
 		},
-		SignedInfo: head_001_001_01.SignedInfo{
-			CanonicalizationMethod: head_001_001_01.CanonicalizationMethod{
+		SignedInfo: xmldsig.SignedInfoType{
+			CanonicalizationMethod: xmldsig.CanonicalizationMethodType{
 				Algorithm: "http://www.w3.org/TR/2001/REC-xml-c14n-20010315",
 			},
-			SignatureMethod: head_001_001_01.SignatureMethod{
+			SignatureMethod: xmldsig.SignatureMethodType{
 				Algorithm: "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256",
 			},
-			References: []head_001_001_01.Reference{
+			Reference: []xmldsig.ReferenceType{
 				{
-					URI: "",
-					Transforms: head_001_001_01.Transforms{
-						Transforms: []head_001_001_01.Transform{
+					URI: rtp.Ptr(""),
+					Transforms: &xmldsig.TransformsType{
+						Transform: []xmldsig.TransformType{
 							{
 								Algorithm: "http://www.w3.org/2000/09/xmldsig#enveloped-signature",
 							},
@@ -65,22 +70,24 @@ var head001Signature = &head_001_001_01.Sgntr{
 							},
 						},
 					},
-					DigestMethod: head_001_001_01.DigestMethod{
+					DigestMethod: xmldsig.DigestMethodType{
 						Algorithm: "http://www.w3.org/2001/04/xmlenc#sha256",
 					},
 					DigestValue: "1WvBpJiQuDdiXBqQLqmysAw1W0b1E0vlzCqRReoCnxI=",
 				},
 			},
 		},
-		SignatureValue: head_001_001_01.SignatureValue{
+		SignatureValue: xmldsig.SignatureValueType{
 			Data: "GFkk2bhGHd7kbsRBa+s8HvADwsUTm6N2Mro06O2yCJxl7SkXp/l5OY8QBYw/NlRjBHQsQzpymoNz5+p7OPTu/YGZ5s29iYD8gCA55rbQjr+K+m4dzVAcZQoLs7vSe3QoqQlUugkzFlMwjAGLW0WHZQA9PvJFbVAMVbZk+mMIJH8pyP1kSd+iu3sccav5d9qkG/ESBXUzCzQwrg9OTwBZXop5bs2SIAlG90III0J31l6ARq4eUtzbHaDGKDlbcHkkwnKdev/uYkvvjx1yr/XzMuVvpwbbOfhmcgTlAxKsKpx7sM1Pxq5Jx66Vt7k9AzKX0W/PSPDdRJjQfolEW1Aptg==",
 		},
-		KeyInfo: head_001_001_01.KeyInfo{
-			X509Data: head_001_001_01.X509Data{
-				X509SubjectName: "CN=demo.tchbt.tchrtp.org,OU=Technology Integration Management,O=The Clearing House Payments Company LLC,L=New York,S=New York,C=US",
-				X509IssuerSerial: head_001_001_01.X509IssuerSerial{
-					X509IssuerName:   "CN=The Clearing House Enterprise Issuing CA 1, O=The Clearing House Payments Company, C=US",
-					X509SerialNumber: "303111756915795778601924",
+		KeyInfo: &xmldsig.KeyInfoType{
+			X509Data: []*xmldsig.X509DataType{
+				{
+					X509SubjectName: rtp.Ptr("CN=demo.tchbt.tchrtp.org,OU=Technology Integration Management,O=The Clearing House Payments Company LLC,L=New York,S=New York,C=US"),
+					X509IssuerSerial: &xmldsig.X509IssuerSerialType{
+						X509IssuerName:   "CN=The Clearing House Enterprise Issuing CA 1, O=The Clearing House Payments Company, C=US",
+						X509SerialNumber: "303111756915795778601924",
+					},
 				},
 			},
 		},

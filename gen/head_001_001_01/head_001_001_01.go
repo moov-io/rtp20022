@@ -5,6 +5,7 @@ package head_001_001_01
 import (
 	"encoding/xml"
 
+	"github.com/moov-io/rtp20022/gen/xmldsig"
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 
@@ -163,7 +164,15 @@ func (v Party9ChoiceBAHTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) e
 }
 
 type Sgntr struct {
-	Signature *Signature
+	Signature *xmldsig.Signature `xml:"http://www.w3.org/2000/09/xmldsig# Signature"`
+}
+
+// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
+func (v Sgntr) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
+	e.EncodeElement(v.Signature, xml.StartElement{Name: xml.Name{Local: "ds:Signature"}})
+	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
+	return nil
 }
 
 // XSD SimpleType declarations
