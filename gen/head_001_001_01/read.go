@@ -24,9 +24,15 @@ func (r BusinessApplicationHeaderV01TCH) CopyDuplicateCode() string {
 }
 
 func (r BusinessApplicationHeaderV01TCH) FromMemberID() string {
-	return string(r.Fr.FIId.FinInstnId.ClrSysMmbId.MmbId)
+	if r.Fr.FIId != nil {
+		return string(r.Fr.FIId.FinInstnId.ClrSysMmbId.MmbId)
+	}
+	return ""
 }
 
 func (r BusinessApplicationHeaderV01TCH) ToMemberID() string {
-	return string(r.To.FIId.FinInstnId.ClrSysMmbId.MmbId)
+	if r.To.FIId != nil {
+		return string(r.To.FIId.FinInstnId.ClrSysMmbId.MmbId)
+	}
+	return ""
 }
