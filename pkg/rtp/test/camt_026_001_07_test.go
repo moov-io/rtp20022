@@ -8,11 +8,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+
 	"github.com/moov-io/rtp20022/gen/camt_026_001_07"
 	"github.com/moov-io/rtp20022/gen/messages"
 	"github.com/moov-io/rtp20022/pkg/rtp"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 )
 
 var camt026Constant = &camt_026_001_07.DocumentTCH{

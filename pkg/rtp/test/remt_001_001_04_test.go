@@ -3,7 +3,6 @@ package test
 import (
 	"encoding/xml"
 	"fmt"
-	"github.com/moov-io/rtp20022/gen/remt_001_001_04"
 	"os"
 	"path/filepath"
 	"testing"
@@ -13,6 +12,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/moov-io/rtp20022/gen/messages"
+	"github.com/moov-io/rtp20022/gen/remt_001_001_04"
 	"github.com/moov-io/rtp20022/pkg/rtp"
 )
 

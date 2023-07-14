@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ut="urn:iso:std:ma:20022:tech:xsd:admn.007.001.01">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <ParticipantReport>
+        <ut:DBRptReq>
+            <ut:GrpHdr>
+                <ut:MsgId>20230714151738200000057A1ODZIGYJNED</ut:MsgId>
+                <ut:CreDtTm>2023-07-14T15:17:38</ut:CreDtTm>
+            </ut:GrpHdr>
+            <ut:DBRptInf>
+                <ut:RptCd>AVLBTY</ut:RptCd>
+                <ut:InstrId>20230714200000057A1B123872285226398</ut:InstrId>
+                <ut:InstgAgt>
+                    <ut:FinInstnId>
+                        <ut:ClrSysMmbId>
+                            <ut:MmbId>200000057A1</ut:MmbId>
+                        </ut:ClrSysMmbId>
+                    </ut:FinInstnId>
+                </ut:InstgAgt>
+                <ut:InstdAgt>
+                    <ut:FinInstnId>
+                        <ut:ClrSysMmbId>
+                            <ut:MmbId>990000001T1</ut:MmbId>
+                        </ut:ClrSysMmbId>
+                    </ut:FinInstnId>
+                </ut:InstdAgt>
+            </ut:DBRptInf>
+        </ut:DBRptReq>
+    </ParticipantReport>
+</Message>
