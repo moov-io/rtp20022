@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ar="urn:iso:std:iso:20022:tech:xsd:remt.001.001.04">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <StandaloneRemittance>
+        <ar:RmtAdvc>
+            <ar:GrpHdr>
+                <ar:MsgId>M20230713234567891T1BOTS01522107521</ar:MsgId>
+                <ar:CreDtTm>2023-07-13T15:29:36</ar:CreDtTm>
+                <ar:InitgPty>
+                    <ar:Id>
+                        <ar:OrgId>
+                            <ar:Othr>
+                                <ar:Id>234567891</ar:Id>
+                            </ar:Othr>
+                        </ar:OrgId>
+                    </ar:Id>
+                </ar:InitgPty>
+                <ar:MsgRcpt>
+                    <ar:Id>
+                        <ar:OrgId>
+                            <ar:Othr>
+                                <ar:Id>000000010</ar:Id>
+                            </ar:Othr>
+                        </ar:OrgId>
+                    </ar:Id>
+                </ar:MsgRcpt>
+            </ar:GrpHdr>
+            <ar:RmtInf>
+                <ar:RmtId>20230713152936OTS00752775034</ar:RmtId>
+                <ar:OrgnlPmtInf>
+                    <ar:Refs>
+                        <ar:InstrId>20230713234567891T1BCXIA01868416991</ar:InstrId>
+                        <ar:EndToEndId>EOTS</ar:EndToEndId>
+                        <ar:TxId>20230713234567891T1BCXIA01868416991</ar:TxId>
+                    </ar:Refs>
+                    <ar:Amt>
+                        <ar:InstdAmt Ccy="USD">46154.49</ar:InstdAmt>
+                    </ar:Amt>
+                    <ar:Dbtr>
+                        <ar:Nm>MRS. GREEN</ar:Nm>
+                    </ar:Dbtr>
+                    <ar:DbtrAcct>
+                        <ar:Id>
+                            <ar:Othr>
+                                <ar:Id>US88664715164441</ar:Id>
+                            </ar:Othr>
+                        </ar:Id>
+                    </ar:DbtrAcct>
+                    <ar:DbtrAgt>
+                        <ar:FinInstnId>
+                            <ar:ClrSysMmbId>
+                                <ar:MmbId>234567891</ar:MmbId>
+                            </ar:ClrSysMmbId>
+                        </ar:FinInstnId>
+                    </ar:DbtrAgt>
+                    <ar:Cdtr>
+                        <ar:Nm>Participant Valid model</ar:Nm>
+                    </ar:Cdtr>
+                </ar:OrgnlPmtInf>
+            </ar:RmtInf>
+        </ar:RmtAdvc>
+    </StandaloneRemittance>
+</Message>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:if="urn:iso:std:iso:20022:tech:xsd:camt.028.001.09">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <ResponseRequestForInformation>
+        <if:AddtlPmtInf>
+            <if:Assgnmt>
+                <if:Id>M20230713234567891T1BOTS01520718933</if:Id>
+                <if:Assgnr>
+                    <if:Agt>
+                        <if:FinInstnId>
+                            <if:ClrSysMmbId>
+                                <if:MmbId>234567891</if:MmbId>
+                            </if:ClrSysMmbId>
+                        </if:FinInstnId>
+                    </if:Agt>
+                </if:Assgnr>
+                <if:Assgne>
+                    <if:Agt>
+                        <if:FinInstnId>
+                            <if:ClrSysMmbId>
+                                <if:MmbId>000000010</if:MmbId>
+                            </if:ClrSysMmbId>
+                        </if:FinInstnId>
+                    </if:Agt>
+                </if:Assgne>
+                <if:CreDtTm>2023-07-13T15:28:05</if:CreDtTm>
+            </if:Assgnmt>
+            <if:Case>
+                <if:Id>M20230713BOTS00075450887</if:Id>
+                <if:Cretr>
+                    <if:Pty>
+                        <if:Nm>Participant Valid model</if:Nm>
+                    </if:Pty>
+                </if:Cretr>
+            </if:Case>
+            <if:Undrlyg>
+                <if:IntrBk>
+                    <if:OrgnlGrpInf>
+                        <if:OrgnlMsgId>M20230713200000057A1BOTS00781766046</if:OrgnlMsgId>
+                        <if:OrgnlMsgNmId>pacs.008.001.08</if:OrgnlMsgNmId>
+                    </if:OrgnlGrpInf>
+                    <if:OrgnlInstrId>20230713200000057A1BWLMG01424005165</if:OrgnlInstrId>
+                    <if:OrgnlEndToEndId>EOTS</if:OrgnlEndToEndId>
+                    <if:OrgnlTxId>20230713200000057A1BWLMG01424005165</if:OrgnlTxId>
+                    <if:OrgnlIntrBkSttlmAmt Ccy="USD">69622.06</if:OrgnlIntrBkSttlmAmt>
+                    <if:OrgnlIntrBkSttlmDt>2023-07-13</if:OrgnlIntrBkSttlmDt>
+                </if:IntrBk>
+            </if:Undrlyg>
+            <if:Inf>
+                <if:InstrId>20230713200000057A1BWLMG01424005165</if:InstrId>
+                <if:EndToEndId>EOTS</if:EndToEndId>
+                <if:TxId>20230713200000057A1BWLMG01424005165</if:TxId>
+            </if:Inf>
+        </if:AddtlPmtInf>
+    </ResponseRequestForInformation>
+</Message>

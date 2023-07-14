@@ -10,12 +10,12 @@
     <ResponseReturnOfFunds>
         <tr:RsltnOfInvstgtn>
             <tr:Assgnmt>
-                <tr:Id>M20210701000000032A1B00000008088704</tr:Id>
+                <tr:Id>M20230713234567891T1BOTS00670150991</tr:Id>
                 <tr:Assgnr>
                     <tr:Agt>
                         <tr:FinInstnId>
                             <tr:ClrSysMmbId>
-                                <tr:MmbId>000000032</tr:MmbId>
+                                <tr:MmbId>234567891</tr:MmbId>
                             </tr:ClrSysMmbId>
                         </tr:FinInstnId>
                     </tr:Agt>
@@ -29,7 +29,7 @@
                         </tr:FinInstnId>
                     </tr:Agt>
                 </tr:Assgne>
-                <tr:CreDtTm>2021-07-01T11:09:58</tr:CreDtTm>
+                <tr:CreDtTm>2023-07-13T15:49:09</tr:CreDtTm>
             </tr:Assgnmt>
             <tr:Sts>
                 <tr:Conf>IPAY</tr:Conf>
@@ -37,7 +37,7 @@
             <tr:CxlDtls>
                 <tr:OrgnlGrpInfAndSts>
                     <tr:RslvdCase>
-                        <tr:Id>M20210701000000010B1B00000008088677</tr:Id>
+                        <tr:Id>M20230713BOTS00856763956</tr:Id>
                         <tr:Cretr>
                             <tr:Agt>
                                 <tr:FinInstnId>
@@ -48,10 +48,16 @@
                             </tr:Agt>
                         </tr:Cretr>
                     </tr:RslvdCase>
-                    <tr:OrgnlMsgId>M20210701000000010B1B00000008088677</tr:OrgnlMsgId>
+                    <tr:OrgnlMsgId>M20230713BOTS00856763956</tr:OrgnlMsgId>
                     <tr:OrgnlMsgNmId>camt.056.001.08</tr:OrgnlMsgNmId>
-                    <tr:OrgnlCreDtTm>2021-06-21T11:09:58</tr:OrgnlCreDtTm>
+                    <tr:OrgnlCreDtTm>2023-07-13T15:49:09</tr:OrgnlCreDtTm>
                 </tr:OrgnlGrpInfAndSts>
+                <tr:TxInfAndSts>
+                    <tr:CxlStsId>M20230713234567891T1BOTS00893154088</tr:CxlStsId>
+                    <tr:RsltnRltdInf>
+                        <tr:IntrBkSttlmAmt Ccy="USD">17272.16</tr:IntrBkSttlmAmt>
+                    </tr:RsltnRltdInf>
+                </tr:TxInfAndSts>
             </tr:CxlDtls>
         </tr:RsltnOfInvstgtn>
     </ResponseReturnOfFunds>

@@ -19,12 +19,12 @@ import (
 var camt035Constant = &camt_035_001_05.DocumentTCH{
 	PrtryFrmtInvstgtn: camt_035_001_05.ProprietaryFormatInvestigationV05TCH{
 		Assgnmt: camt_035_001_05.CaseAssignment5TCH{
-			Id: "M20210701000000032A1B00000008088595",
+			Id: "M20230713234567891T1BOTS00251021992",
 			Assgnr: camt_035_001_05.Party40ChoiceTCH{
 				Agt: &camt_035_001_05.BranchAndFinancialInstitutionIdentification6TCH{
 					FinInstnId: camt_035_001_05.FinancialInstitutionIdentification18TCH{
 						ClrSysMmbId: camt_035_001_05.ClearingSystemMemberIdentification2TCH{
-							MmbId: "000000032",
+							MmbId: "234567891",
 						},
 					},
 				},
@@ -38,24 +38,23 @@ var camt035Constant = &camt_035_001_05.DocumentTCH{
 					},
 				},
 			},
-			CreDtTm: rtp.UnmarshalISODateTime("2021-07-01T11:07:14"),
+			CreDtTm: rtp.UnmarshalISODateTime("2023-07-13T15:48:38"),
 		},
 		Case: camt_035_001_05.Case5TCH{
-			Id: "M20210701000000032A1B00000008088595",
+			Id: "M20230713234567891T1BOTS00251021992",
 			Cretr: camt_035_001_05.Party40ChoiceTCH2{
 				Pty: &camt_035_001_05.PartyIdentification135TCH{
-					Nm: "TCH",
+					Nm: "MRS. GREEN",
 				},
 			},
 		},
 		PrtryData: camt_035_001_05.ProprietaryData7TCHTCH{
 			Tp: camt_035_001_05.Max35TextTCH3Ack,
 			Data: camt_035_001_05.ProprietaryData6ReducedTCH{
-				Ustrd: rtp.Ptr(camt_035_001_05.Max140Text("Information to the ACK")),
 				OrigRefs: camt_035_001_05.TransactionReferences8ReducedTCH{
-					InstrId:    "20210701000000032A1B000000000047075",
-					EndToEndId: "E2E-Ref001",
-					TxId:       "20210701000000032A1B000000000047075",
+					InstrId:    "20230713200000057A1BFSTF01198898349",
+					EndToEndId: "EOTS",
+					TxId:       "20230713200000057A1BFSTF01198898349",
 				},
 			},
 		},
@@ -63,7 +62,7 @@ var camt035Constant = &camt_035_001_05.DocumentTCH{
 }
 
 func TestReadCamt035(t *testing.T) {
-	input, err := os.ReadFile(filepath.Join("testdata", "camt035.RTP.xml"))
+	input, err := os.ReadFile(filepath.Join("testdata", "camt035.xml"))
 	require.NoError(t, err)
 
 	camt035 := &messages.Message{}
@@ -92,7 +91,7 @@ func TestWriteCamt035(t *testing.T) {
 	output, err := xml.MarshalIndent(input, "", "    ")
 	require.NoError(t, err)
 
-	expected, err := os.ReadFile(filepath.Join("testdata", "camt035.RTP.xml"))
+	expected, err := os.ReadFile(filepath.Join("testdata", "camt035.xml"))
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:rp="urn:iso:std:iso:20022:tech:xsd:pain.014.001.07">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <ResponsePaymentRequest>
+        <rp:CdtrPmtActvtnReqStsRpt>
+            <rp:GrpHdr>
+                <rp:MsgId>M20230713234567891T1BOTS01353800076</rp:MsgId>
+                <rp:CreDtTm>2023-07-13T15:23:33</rp:CreDtTm>
+                <rp:InitgPty>
+                    <rp:Id>
+                        <rp:OrgId>
+                            <rp:Othr>
+                                <rp:Id>234567891</rp:Id>
+                            </rp:Othr>
+                        </rp:OrgId>
+                    </rp:Id>
+                </rp:InitgPty>
+            </rp:GrpHdr>
+            <rp:OrgnlGrpInfAndSts>
+                <rp:OrgnlMsgId>M20230713200000057A1BOTS00812976160</rp:OrgnlMsgId>
+                <rp:OrgnlMsgNmId>pain.013.001.07</rp:OrgnlMsgNmId>
+                <rp:OrgnlCreDtTm>2023-07-13T15:23:33</rp:OrgnlCreDtTm>
+                <rp:OrgnlNbOfTxs>1</rp:OrgnlNbOfTxs>
+            </rp:OrgnlGrpInfAndSts>
+            <rp:OrgnlPmtInfAndSts>
+                <rp:OrgnlPmtInfId>20230713200000057A1BIWUY00608958679</rp:OrgnlPmtInfId>
+                <rp:TxInfAndSts>
+                    <rp:OrgnlEndToEndId>EOTS</rp:OrgnlEndToEndId>
+                    <rp:TxSts>ACTC</rp:TxSts>
+                    <rp:PmtCondSts>
+                        <rp:AccptdAmt Ccy="USD">8352.45</rp:AccptdAmt>
+                        <rp:GrntedPmt>true</rp:GrntedPmt>
+                        <rp:EarlyPmt>true</rp:EarlyPmt>
+                    </rp:PmtCondSts>
+                    <rp:OrgnlTxRef>
+                        <rp:Amt>
+                            <rp:InstdAmt Ccy="USD">8352.45</rp:InstdAmt>
+                        </rp:Amt>
+                        <rp:ReqdExctnDt>
+                            <rp:DtTm>2023-07-13T15:23:33</rp:DtTm>
+                        </rp:ReqdExctnDt>
+                        <rp:CdtrAgt>
+                            <rp:FinInstnId>
+                                <rp:ClrSysMmbId>
+                                    <rp:MmbId>000000010</rp:MmbId>
+                                </rp:ClrSysMmbId>
+                            </rp:FinInstnId>
+                        </rp:CdtrAgt>
+                        <rp:Cdtr>
+                            <rp:Nm>Participant Valid model</rp:Nm>
+                            <rp:Id>
+                                <rp:PrvtId>
+                                    <rp:DtAndPlcOfBirth>
+                                        <rp:BirthDt>1989-01-09</rp:BirthDt>
+                                        <rp:CityOfBirth>LOS ANGELES</rp:CityOfBirth>
+                                        <rp:CtryOfBirth>US</rp:CtryOfBirth>
+                                    </rp:DtAndPlcOfBirth>
+                                </rp:PrvtId>
+                            </rp:Id>
+                        </rp:Cdtr>
+                    </rp:OrgnlTxRef>
+                </rp:TxInfAndSts>
+            </rp:OrgnlPmtInfAndSts>
+        </rp:CdtrPmtActvtnReqStsRpt>
+    </ResponsePaymentRequest>
+</Message>

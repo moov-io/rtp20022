@@ -10,12 +10,12 @@
     <EchoRequest>
         <er:AdmnEchoReq>
             <er:GrpHdr>
-                <er:MsgId>20230125125943990000001T10589310786</er:MsgId>
-                <er:CreDtTm>2023-01-25T12:59:43</er:CreDtTm>
+                <er:MsgId>20230711100757990000001T11225307760</er:MsgId>
+                <er:CreDtTm>2023-07-11T10:07:57</er:CreDtTm>
             </er:GrpHdr>
             <er:EchoTxInf>
                 <er:FnctnCd>731</er:FnctnCd>
-                <er:InstrId>20230125990000001T1HQYBV00589310786</er:InstrId>
+                <er:InstrId>20230711990000001T1HYTUO01225307760</er:InstrId>
                 <er:InstgAgt>
                     <er:FinInstnId>
                         <er:ClrSysMmbId>

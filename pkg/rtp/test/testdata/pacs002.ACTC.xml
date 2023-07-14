@@ -10,43 +10,38 @@
     <MessageStatusReport>
         <ps:FIToFIPmtStsRpt>
             <ps:GrpHdr>
-                <ps:MsgId>M20210701000000010B1B00000008088226</ps:MsgId>
-                <ps:CreDtTm>2021-07-01T10:58:02</ps:CreDtTm>
+                <ps:MsgId>M20230711BOTS00162724540</ps:MsgId>
+                <ps:CreDtTm>2023-07-11T10:53:03</ps:CreDtTm>
             </ps:GrpHdr>
             <ps:OrgnlGrpInfAndSts>
-                <ps:OrgnlMsgId>M20210701000000032A1B00000008088224</ps:OrgnlMsgId>
+                <ps:OrgnlMsgId>M20230711200000057A1BFFF64928178098</ps:OrgnlMsgId>
                 <ps:OrgnlMsgNmId>pacs.008.001.08</ps:OrgnlMsgNmId>
-                <ps:OrgnlCreDtTm>2021-07-01T10:51:00</ps:OrgnlCreDtTm>
+                <ps:OrgnlCreDtTm>2023-07-11T10:53:02</ps:OrgnlCreDtTm>
                 <ps:OrgnlNbOfTxs>1</ps:OrgnlNbOfTxs>
             </ps:OrgnlGrpInfAndSts>
             <ps:TxInfAndSts>
-                <ps:OrgnlInstrId>20210701000000032A1B000000000047075</ps:OrgnlInstrId>
-                <ps:OrgnlTxId>20210701000000032A1B000000000047075</ps:OrgnlTxId>
-                <ps:TxSts>RJCT</ps:TxSts>
-                <ps:StsRsnInf>
-                    <ps:Rsn>
-                        <ps:Cd>AC03</ps:Cd>
-                    </ps:Rsn>
-                </ps:StsRsnInf>
-                <ps:AccptncDtTm>2021-07-01T10:58:02</ps:AccptncDtTm>
-                <ps:ClrSysRef>002</ps:ClrSysRef>
+                <ps:OrgnlInstrId>20230711200000057A1B123864928178098</ps:OrgnlInstrId>
+                <ps:OrgnlTxId>20230711200000057A1B123864928178098</ps:OrgnlTxId>
+                <ps:TxSts>ACTC</ps:TxSts>
+                <ps:AccptncDtTm>2023-07-11T10:53:03</ps:AccptncDtTm>
+                <ps:ClrSysRef>001</ps:ClrSysRef>
                 <ps:InstgAgt>
                     <ps:FinInstnId>
                         <ps:ClrSysMmbId>
-                            <ps:MmbId>000000010</ps:MmbId>
+                            <ps:MmbId>987654320</ps:MmbId>
                         </ps:ClrSysMmbId>
                     </ps:FinInstnId>
                 </ps:InstgAgt>
                 <ps:InstdAgt>
                     <ps:FinInstnId>
                         <ps:ClrSysMmbId>
-                            <ps:MmbId>000000032</ps:MmbId>
+                            <ps:MmbId>123456780</ps:MmbId>
                         </ps:ClrSysMmbId>
                     </ps:FinInstnId>
                 </ps:InstdAgt>
                 <ps:OrgnlTxRef>
-                    <ps:IntrBkSttlmAmt Ccy="USD">10.00</ps:IntrBkSttlmAmt>
-                    <ps:IntrBkSttlmDt>2021-07-01</ps:IntrBkSttlmDt>
+                    <ps:IntrBkSttlmAmt Ccy="USD">2000.00</ps:IntrBkSttlmAmt>
+                    <ps:IntrBkSttlmDt>2023-07-11</ps:IntrBkSttlmDt>
                 </ps:OrgnlTxRef>
             </ps:TxInfAndSts>
         </ps:FIToFIPmtStsRpt>
