@@ -6,7 +6,6 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
-	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -51,7 +50,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "960", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "Broadcast", string(sysEvent.EvtInf.EvtParam[1]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:46:03-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:46:03", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("960-UNAVAILABLE", func(t *testing.T) {
@@ -59,7 +58,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "960", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "UNAVAILABLE", string(sysEvent.EvtInf.EvtParam[4]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:45:58-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:45:58", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("971-SUSPENDED", func(t *testing.T) {
@@ -67,7 +66,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "971", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "SUSPENDED", string(sysEvent.EvtInf.EvtParam[2]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:47:01-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:47:01", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("971-NORMAL", func(t *testing.T) {
@@ -75,7 +74,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "971", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "NORMAL", string(sysEvent.EvtInf.EvtParam[2]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:47:06-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:47:06", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("972-DEFAULTBOTH", func(t *testing.T) {
@@ -83,7 +82,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "972", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "DEFAULTBOTH", string(sysEvent.EvtInf.EvtParam[5]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:48:07-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:48:07", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("972-NORMAL", func(t *testing.T) {
@@ -91,7 +90,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "972", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "NORMAL", string(sysEvent.EvtInf.EvtParam[5]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:48:12-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:48:12", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("975-ACTIVE", func(t *testing.T) {
@@ -99,7 +98,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "975", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "ACTIVE", string(sysEvent.EvtInf.EvtParam[3]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:49:08-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:49:08", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("976-ACTIVE", func(t *testing.T) {
@@ -107,7 +106,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "976", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "ACTIVE", string(sysEvent.EvtInf.EvtParam[4]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:49:18-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:49:18", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("976-INACTIVE", func(t *testing.T) {
@@ -115,7 +114,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "976", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "INACTIVE", string(sysEvent.EvtInf.EvtParam[4]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:49:08-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:49:08", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("981-Broadcast", func(t *testing.T) {
@@ -123,7 +122,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "981", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "Broadcast", string(sysEvent.EvtInf.EvtParam[1]))
 		require.Equal(t, "Broadcast Message", string(*sysEvent.EvtInf.EvtDesc))
-		require.Equal(t, "2023-07-11T10:50:38-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:50:38", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("981-Notification", func(t *testing.T) {
@@ -131,7 +130,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "981", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "Notification", string(sysEvent.EvtInf.EvtParam[1]))
 		require.Equal(t, "Notification Message", string(*sysEvent.EvtInf.EvtDesc))
-		require.Equal(t, "2023-07-11T10:51:24-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:51:24", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("982-SIGNON", func(t *testing.T) {
@@ -139,7 +138,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "982", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "SIGNON", string(sysEvent.EvtInf.EvtParam[4]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:52:04-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:52:04", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("982-SIGNOFF", func(t *testing.T) {
@@ -147,7 +146,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "982", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "SIGNOFF", string(sysEvent.EvtInf.EvtParam[4]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:52:09-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:52:09", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("993-EXCEEDED", func(t *testing.T) {
@@ -155,7 +154,7 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "993", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "EXCEEDED", string(sysEvent.EvtInf.EvtParam[5]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:53:05-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:53:05", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("993-NORMAL", func(t *testing.T) {
@@ -163,21 +162,35 @@ func TestReadAdmi004(t *testing.T) {
 		require.Equal(t, "993", string(sysEvent.EvtInf.EvtCd))
 		require.Equal(t, "NORMAL", string(sysEvent.EvtInf.EvtParam[5]))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:53:06-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:53:06", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
+	})
+
+	t.Run("994", func(t *testing.T) {
+		sysEvent := readSystemEventNotification(t, "admi004.994.xml")
+		require.Equal(t, "994", string(sysEvent.EvtInf.EvtCd))
+		require.Nil(t, sysEvent.EvtInf.EvtDesc)
+		require.Equal(t, "2023-07-14T13:52:40", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
+	})
+
+	t.Run("996", func(t *testing.T) {
+		sysEvent := readSystemEventNotification(t, "admi004.996.xml")
+		require.Equal(t, "996", string(sysEvent.EvtInf.EvtCd))
+		require.Nil(t, sysEvent.EvtInf.EvtDesc)
+		require.Equal(t, "2023-07-14T13:53:08", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("998", func(t *testing.T) {
 		sysEvent := readSystemEventNotification(t, "admi004.998.xml")
 		require.Equal(t, "998", string(sysEvent.EvtInf.EvtCd))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:53:06-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:53:06", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 
 	t.Run("999", func(t *testing.T) {
 		sysEvent := readSystemEventNotification(t, "admi004.999.xml")
 		require.Equal(t, "999", string(sysEvent.EvtInf.EvtCd))
 		require.Nil(t, sysEvent.EvtInf.EvtDesc)
-		require.Equal(t, "2023-07-11T10:53:01-04:00", time.Time(sysEvent.EvtInf.EvtTm).Format(time.RFC3339))
+		require.Equal(t, "2023-07-11T10:53:01", rtp.MarshalISODateTime(sysEvent.EvtInf.EvtTm))
 	})
 }
 
