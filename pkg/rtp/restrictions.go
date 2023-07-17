@@ -3,9 +3,11 @@ package rtp
 import (
 	"errors"
 	"fmt"
-	"github.com/moov-io/base"
 	"regexp"
 	"strings"
+	"unicode/utf8"
+
+	"github.com/moov-io/base"
 )
 
 func AddError(errs *base.ErrorList, err error) {
@@ -41,22 +43,25 @@ func ValidateEnumeration(value string, enumeration ...string) error {
 }
 
 func ValidateLength(value string, length int) error {
-	if len(value) != length {
-		return fmt.Errorf("%s fails validation with length %v != required length %v", value, len(value), length)
+	var strLength = utf8.RuneCountInString(value)
+	if strLength != length {
+		return fmt.Errorf("%s fails validation with length %v != required length %v", value, strLength, length)
 	}
 	return nil
 }
 
 func ValidateMinLength(value string, minLength int) error {
-	if len(value) < minLength {
-		return fmt.Errorf("%s fails validation with length %v >= required minLength %v", value, len(value), minLength)
+	var strLength = utf8.RuneCountInString(value)
+	if strLength < minLength {
+		return fmt.Errorf("%s fails validation with length %v >= required minLength %v", value, strLength, minLength)
 	}
 	return nil
 }
 
 func ValidateMaxLength(value string, maxLength int) error {
-	if len(value) > maxLength {
-		return fmt.Errorf("%s fails validation with length %v <= required maxLength %v", value, len(value), maxLength)
+	var strLength = utf8.RuneCountInString(value)
+	if strLength > maxLength {
+		return fmt.Errorf("%s fails validation with length %v <= required maxLength %v", value, strLength, maxLength)
 	}
 	return nil
 }
@@ -91,16 +96,20 @@ func ValidateMaxExclusive(value int, maxValue int) error {
 
 func ValidateFractionDigits(value string, maxValue int) error {
 	splt := strings.Split(value, ".")
-	if len(splt) > 1 && len(splt[1]) > maxValue {
-		return fmt.Errorf("%s fails validation with length %v <= required fractionDigits %v", value, len(splt[1]), maxValue)
+	if len(splt) > 1 {
+		var strLength = utf8.RuneCountInString(splt[1])
+		if strLength > maxValue {
+			return fmt.Errorf("%s fails validation with length %v <= required fractionDigits %v", value, strLength, maxValue)
+		}
 	}
 	return nil
 }
 
 func ValidateTotalDigits(value string, maxValue int) error {
 	str := strings.ReplaceAll(value, ".", "")
-	if len(str) > maxValue {
-		return fmt.Errorf("%s fails validation with length %v <= required totalDigits %v", value, len(str), maxValue)
+	var strLength = utf8.RuneCountInString(str)
+	if strLength > maxValue {
+		return fmt.Errorf("%s fails validation with length %v <= required totalDigits %v", value, strLength, maxValue)
 	}
 	return nil
 }
