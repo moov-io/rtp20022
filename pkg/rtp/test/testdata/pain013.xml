@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:pr="urn:iso:std:iso:20022:tech:xsd:pain.013.001.07">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <PaymentRequest>
+        <pr:CdtrPmtActvtnReq>
+            <pr:GrpHdr>
+                <pr:MsgId>M20230713234567891T1BOTS00361450681</pr:MsgId>
+                <pr:CreDtTm>2023-07-13T15:24:23</pr:CreDtTm>
+                <pr:NbOfTxs>1</pr:NbOfTxs>
+                <pr:InitgPty>
+                    <pr:Id>
+                        <pr:OrgId>
+                            <pr:Othr>
+                                <pr:Id>234567891</pr:Id>
+                            </pr:Othr>
+                        </pr:OrgId>
+                    </pr:Id>
+                </pr:InitgPty>
+            </pr:GrpHdr>
+            <pr:PmtInf>
+                <pr:PmtInfId>20230713234567891T1BBQKJ00227516029</pr:PmtInfId>
+                <pr:PmtMtd>TRF</pr:PmtMtd>
+                <pr:ReqdExctnDt>
+                    <pr:DtTm>2023-07-13T15:24:23</pr:DtTm>
+                </pr:ReqdExctnDt>
+                <pr:XpryDt>
+                    <pr:DtTm>2023-07-18T15:24:23</pr:DtTm>
+                </pr:XpryDt>
+                <pr:Dbtr>
+                    <pr:Nm>Participant Valid model</pr:Nm>
+                    <pr:PstlAdr>
+                        <pr:StrtNm>NORTH AVE</pr:StrtNm>
+                        <pr:BldgNb>1123</pr:BldgNb>
+                        <pr:PstCd>12344</pr:PstCd>
+                        <pr:TwnNm>LOS ANGELES</pr:TwnNm>
+                        <pr:CtrySubDvsn>LA</pr:CtrySubDvsn>
+                        <pr:Ctry>US</pr:Ctry>
+                    </pr:PstlAdr>
+                    <pr:Id>
+                        <pr:PrvtId>
+                            <pr:DtAndPlcOfBirth>
+                                <pr:BirthDt>1989-01-09</pr:BirthDt>
+                                <pr:CityOfBirth>LOS ANGELES</pr:CityOfBirth>
+                                <pr:CtryOfBirth>US</pr:CtryOfBirth>
+                            </pr:DtAndPlcOfBirth>
+                        </pr:PrvtId>
+                    </pr:Id>
+                </pr:Dbtr>
+                <pr:DbtrAcct>
+                    <pr:Id>
+                        <pr:Othr>
+                            <pr:Id>66906867108802622</pr:Id>
+                        </pr:Othr>
+                    </pr:Id>
+                </pr:DbtrAcct>
+                <pr:DbtrAgt>
+                    <pr:FinInstnId>
+                        <pr:ClrSysMmbId>
+                            <pr:MmbId>000000010</pr:MmbId>
+                        </pr:ClrSysMmbId>
+                    </pr:FinInstnId>
+                </pr:DbtrAgt>
+                <pr:CdtTrfTx>
+                    <pr:PmtId>
+                        <pr:InstrId>20230713234567891T1BBQKJ00227516029</pr:InstrId>
+                        <pr:EndToEndId>EOTS</pr:EndToEndId>
+                    </pr:PmtId>
+                    <pr:PmtTpInf>
+                        <pr:SvcLvl>
+                            <pr:Cd>SDVA</pr:Cd>
+                        </pr:SvcLvl>
+                        <pr:LclInstrm>
+                            <pr:Prtry>STANDARD</pr:Prtry>
+                        </pr:LclInstrm>
+                        <pr:CtgyPurp>
+                            <pr:Prtry>BUSINESS</pr:Prtry>
+                        </pr:CtgyPurp>
+                    </pr:PmtTpInf>
+                    <pr:Amt>
+                        <pr:InstdAmt Ccy="USD">21838.41</pr:InstdAmt>
+                    </pr:Amt>
+                    <pr:ChrgBr>SLEV</pr:ChrgBr>
+                    <pr:CdtrAgt>
+                        <pr:FinInstnId>
+                            <pr:ClrSysMmbId>
+                                <pr:MmbId>234567891</pr:MmbId>
+                            </pr:ClrSysMmbId>
+                        </pr:FinInstnId>
+                    </pr:CdtrAgt>
+                    <pr:Cdtr>
+                        <pr:Nm>MRS. GREEN</pr:Nm>
+                        <pr:PstlAdr>
+                            <pr:StrtNm>Broadway</pr:StrtNm>
+                            <pr:BldgNb>1500</pr:BldgNb>
+                            <pr:PstCd>NY 12345</pr:PstCd>
+                            <pr:TwnNm>New York</pr:TwnNm>
+                            <pr:CtrySubDvsn>NY</pr:CtrySubDvsn>
+                            <pr:Ctry>US</pr:Ctry>
+                        </pr:PstlAdr>
+                        <pr:Id>
+                            <pr:PrvtId>
+                                <pr:DtAndPlcOfBirth>
+                                    <pr:BirthDt>1984-01-01</pr:BirthDt>
+                                    <pr:CityOfBirth>New York</pr:CityOfBirth>
+                                    <pr:CtryOfBirth>US</pr:CtryOfBirth>
+                                </pr:DtAndPlcOfBirth>
+                            </pr:PrvtId>
+                        </pr:Id>
+                    </pr:Cdtr>
+                    <pr:CdtrAcct>
+                        <pr:Id>
+                            <pr:Othr>
+                                <pr:Id>US88664715164441</pr:Id>
+                            </pr:Othr>
+                        </pr:Id>
+                    </pr:CdtrAcct>
+                </pr:CdtTrfTx>
+            </pr:PmtInf>
+        </pr:CdtrPmtActvtnReq>
+    </PaymentRequest>
+</Message>

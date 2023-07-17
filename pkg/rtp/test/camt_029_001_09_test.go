@@ -19,12 +19,12 @@ import (
 var camt029Constant = &camt_029_001_09.DocumentTCH{
 	RsltnOfInvstgtn: camt_029_001_09.ResolutionOfInvestigationV09TCH{
 		Assgnmt: camt_029_001_09.CaseAssignment5TCH{
-			Id: "M20210701000000032A1B00000008088704",
+			Id: "M20230713234567891T1BOTS00670150991",
 			Assgnr: camt_029_001_09.Party40ChoiceTCH{
 				Agt: &camt_029_001_09.BranchAndFinancialInstitutionIdentification6TCH{
 					FinInstnId: camt_029_001_09.FinancialInstitutionIdentification18TCH{
 						ClrSysMmbId: camt_029_001_09.ClearingSystemMemberIdentification2TCH{
-							MmbId: "000000032",
+							MmbId: "234567891",
 						},
 					},
 				},
@@ -38,7 +38,7 @@ var camt029Constant = &camt_029_001_09.DocumentTCH{
 					},
 				},
 			},
-			CreDtTm: rtp.UnmarshalISODateTime("2021-07-01T11:09:58"),
+			CreDtTm: rtp.UnmarshalISODateTime("2023-07-13T15:49:09"),
 		},
 		Sts: camt_029_001_09.InvestigationStatus5Choice{
 			Conf: rtp.Ptr(camt_029_001_09.ExternalInvestigationExecutionConfirmation1CodeIpay),
@@ -46,7 +46,7 @@ var camt029Constant = &camt_029_001_09.DocumentTCH{
 		CxlDtls: camt_029_001_09.UnderlyingTransaction22TCH{
 			OrgnlGrpInfAndSts: camt_029_001_09.OriginalGroupHeader14TCH{
 				RslvdCase: camt_029_001_09.Case5TCH{
-					Id: "M20210701000000010B1B00000008088677",
+					Id: "M20230713BOTS00856763956",
 					Cretr: camt_029_001_09.Party40ChoiceTCH{
 						Agt: &camt_029_001_09.BranchAndFinancialInstitutionIdentification6TCH{
 							FinInstnId: camt_029_001_09.FinancialInstitutionIdentification18TCH{
@@ -57,16 +57,25 @@ var camt029Constant = &camt_029_001_09.DocumentTCH{
 						},
 					},
 				},
-				OrgnlMsgId:   "M20210701000000010B1B00000008088677",
+				OrgnlMsgId:   "M20230713BOTS00856763956",
 				OrgnlMsgNmId: camt_029_001_09.OrigMsgNameCamt05600108,
-				OrgnlCreDtTm: rtp.UnmarshalISODateTime("2021-06-21T11:09:58"),
+				OrgnlCreDtTm: rtp.UnmarshalISODateTime("2023-07-13T15:49:09"),
+			},
+			TxInfAndSts: &camt_029_001_09.PaymentTransaction102TCH{
+				CxlStsId: rtp.Ptr(camt_029_001_09.Max35Text("M20230713234567891T1BOTS00893154088")),
+				RsltnRltdInf: &camt_029_001_09.ResolutionData1TCH{
+					IntrBkSttlmAmt: camt_029_001_09.ActiveOrHistoricCurrencyAndAmount{
+						Value: 17272.16,
+						Ccy:   camt_029_001_09.ActiveOrHistoricCurrencyCodeUsd,
+					},
+				},
 			},
 		},
 	},
 }
 
 func TestReadCamt029(t *testing.T) {
-	input, err := os.ReadFile(filepath.Join("testdata", "camt029.RTP.xml"))
+	input, err := os.ReadFile(filepath.Join("testdata", "camt029.xml"))
 	require.NoError(t, err)
 
 	camt029 := &messages.Message{}
@@ -95,7 +104,7 @@ func TestWriteCamt029(t *testing.T) {
 	output, err := xml.MarshalIndent(input, "", "    ")
 	require.NoError(t, err)
 
-	expected, err := os.ReadFile(filepath.Join("testdata", "camt029.RTP.xml"))
+	expected, err := os.ReadFile(filepath.Join("testdata", "camt029.xml"))
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ac="urn:iso:std:iso:20022:tech:xsd:camt.035.001.05">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <Acknowledgement>
+        <ac:PrtryFrmtInvstgtn>
+            <ac:Assgnmt>
+                <ac:Id>M20230713234567891T1BOTS00251021992</ac:Id>
+                <ac:Assgnr>
+                    <ac:Agt>
+                        <ac:FinInstnId>
+                            <ac:ClrSysMmbId>
+                                <ac:MmbId>234567891</ac:MmbId>
+                            </ac:ClrSysMmbId>
+                        </ac:FinInstnId>
+                    </ac:Agt>
+                </ac:Assgnr>
+                <ac:Assgne>
+                    <ac:Agt>
+                        <ac:FinInstnId>
+                            <ac:ClrSysMmbId>
+                                <ac:MmbId>000000010</ac:MmbId>
+                            </ac:ClrSysMmbId>
+                        </ac:FinInstnId>
+                    </ac:Agt>
+                </ac:Assgne>
+                <ac:CreDtTm>2023-07-13T15:48:38</ac:CreDtTm>
+            </ac:Assgnmt>
+            <ac:Case>
+                <ac:Id>M20230713234567891T1BOTS00251021992</ac:Id>
+                <ac:Cretr>
+                    <ac:Pty>
+                        <ac:Nm>MRS. GREEN</ac:Nm>
+                    </ac:Pty>
+                </ac:Cretr>
+            </ac:Case>
+            <ac:PrtryData>
+                <ac:Tp>ACK</ac:Tp>
+                <ac:Data>
+                    <ac:OrigRefs>
+                        <ac:InstrId>20230713200000057A1BFSTF01198898349</ac:InstrId>
+                        <ac:EndToEndId>EOTS</ac:EndToEndId>
+                        <ac:TxId>20230713200000057A1BFSTF01198898349</ac:TxId>
+                    </ac:OrigRefs>
+                </ac:Data>
+            </ac:PrtryData>
+        </ac:PrtryFrmtInvstgtn>
+    </Acknowledgement>
+</Message>

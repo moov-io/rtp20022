@@ -13,6 +13,11 @@ func UnmarshalISODate(text string) ISODate {
 	return dateTime
 }
 
+func MarshalISODate(t ISODate) string {
+	txt, _ := t.MarshalText()
+	return string(txt)
+}
+
 func (t *ISODate) UnmarshalText(text []byte) error {
 	return (*xsdDate)(t).UnmarshalText(text)
 }
@@ -32,6 +37,11 @@ func UnmarshalISODateTime(text string) ISODateTime {
 	dateTime := ISODateTime{}
 	_ = dateTime.UnmarshalText([]byte(text))
 	return dateTime
+}
+
+func MarshalISODateTime(t ISODateTime) string {
+	txt, _ := t.MarshalText()
+	return string(txt)
 }
 
 func (t *ISODateTime) UnmarshalText(text []byte) error {
@@ -55,6 +65,11 @@ func UnmarshalISONormalisedDateTime(text string) ISONormalisedDateTime {
 	return dateTime
 }
 
+func MarshalISONormalisedDateTime(t ISONormalisedDateTime) string {
+	txt, _ := t.MarshalText()
+	return string(txt)
+}
+
 func (t *ISONormalisedDateTime) UnmarshalText(text []byte) error {
 	return (*xsdDateTime)(t).UnmarshalText(text)
 }
@@ -74,6 +89,11 @@ func UnmarshalISOTime(text string) ISOTime {
 	dateTime := ISOTime{}
 	_ = dateTime.UnmarshalText([]byte(text))
 	return dateTime
+}
+
+func MarshalISOTime(t ISOTime) string {
+	txt, _ := t.MarshalText()
+	return string(txt)
 }
 
 func (t *ISOTime) UnmarshalText(text []byte) error {

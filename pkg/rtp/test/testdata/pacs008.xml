@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ct="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <CreditTransfer>
+        <ct:FIToFICstmrCdtTrf>
+            <ct:GrpHdr>
+                <ct:MsgId>M20230713234567891T1BOTS02083825666</ct:MsgId>
+                <ct:CreDtTm>2023-07-13T15:29:36</ct:CreDtTm>
+                <ct:NbOfTxs>1</ct:NbOfTxs>
+                <ct:TtlIntrBkSttlmAmt Ccy="USD">46154.49</ct:TtlIntrBkSttlmAmt>
+                <ct:IntrBkSttlmDt>2023-07-13</ct:IntrBkSttlmDt>
+                <ct:SttlmInf>
+                    <ct:SttlmMtd>CLRG</ct:SttlmMtd>
+                    <ct:ClrSys>
+                        <ct:Cd>TCH</ct:Cd>
+                    </ct:ClrSys>
+                </ct:SttlmInf>
+            </ct:GrpHdr>
+            <ct:CdtTrfTxInf>
+                <ct:PmtId>
+                    <ct:InstrId>20230713234567891T1BCXIA01868416991</ct:InstrId>
+                    <ct:EndToEndId>EOTS</ct:EndToEndId>
+                    <ct:TxId>20230713234567891T1BCXIA01868416991</ct:TxId>
+                    <ct:ClrSysRef>001</ct:ClrSysRef>
+                </ct:PmtId>
+                <ct:PmtTpInf>
+                    <ct:SvcLvl>
+                        <ct:Cd>SDVA</ct:Cd>
+                    </ct:SvcLvl>
+                    <ct:LclInstrm>
+                        <ct:Prtry>STANDARD</ct:Prtry>
+                    </ct:LclInstrm>
+                    <ct:CtgyPurp>
+                        <ct:Prtry>BUSINESS</ct:Prtry>
+                    </ct:CtgyPurp>
+                </ct:PmtTpInf>
+                <ct:IntrBkSttlmAmt Ccy="USD">46154.49</ct:IntrBkSttlmAmt>
+                <ct:ChrgBr>SLEV</ct:ChrgBr>
+                <ct:InstgAgt>
+                    <ct:FinInstnId>
+                        <ct:ClrSysMmbId>
+                            <ct:MmbId>234567891</ct:MmbId>
+                        </ct:ClrSysMmbId>
+                    </ct:FinInstnId>
+                </ct:InstgAgt>
+                <ct:InstdAgt>
+                    <ct:FinInstnId>
+                        <ct:ClrSysMmbId>
+                            <ct:MmbId>000000010</ct:MmbId>
+                        </ct:ClrSysMmbId>
+                    </ct:FinInstnId>
+                </ct:InstdAgt>
+                <ct:Dbtr>
+                    <ct:Nm>MRS. GREEN</ct:Nm>
+                    <ct:PstlAdr>
+                        <ct:StrtNm>Broadway</ct:StrtNm>
+                        <ct:BldgNb>1500</ct:BldgNb>
+                        <ct:PstCd>NY 12345</ct:PstCd>
+                        <ct:TwnNm>New York</ct:TwnNm>
+                        <ct:CtrySubDvsn>NY</ct:CtrySubDvsn>
+                        <ct:Ctry>US</ct:Ctry>
+                    </ct:PstlAdr>
+                    <ct:Id>
+                        <ct:PrvtId>
+                            <ct:DtAndPlcOfBirth>
+                                <ct:BirthDt>1984-01-01</ct:BirthDt>
+                                <ct:CityOfBirth>New York</ct:CityOfBirth>
+                                <ct:CtryOfBirth>US</ct:CtryOfBirth>
+                            </ct:DtAndPlcOfBirth>
+                        </ct:PrvtId>
+                    </ct:Id>
+                </ct:Dbtr>
+                <ct:DbtrAcct>
+                    <ct:Id>
+                        <ct:Othr>
+                            <ct:Id>US88664715164441</ct:Id>
+                        </ct:Othr>
+                    </ct:Id>
+                </ct:DbtrAcct>
+                <ct:DbtrAgt>
+                    <ct:FinInstnId>
+                        <ct:ClrSysMmbId>
+                            <ct:MmbId>234567891</ct:MmbId>
+                        </ct:ClrSysMmbId>
+                    </ct:FinInstnId>
+                </ct:DbtrAgt>
+                <ct:CdtrAgt>
+                    <ct:FinInstnId>
+                        <ct:ClrSysMmbId>
+                            <ct:MmbId>000000010</ct:MmbId>
+                        </ct:ClrSysMmbId>
+                    </ct:FinInstnId>
+                </ct:CdtrAgt>
+                <ct:Cdtr>
+                    <ct:Nm>Participant Valid model</ct:Nm>
+                    <ct:PstlAdr>
+                        <ct:StrtNm>NORTH AVE</ct:StrtNm>
+                        <ct:BldgNb>1123</ct:BldgNb>
+                        <ct:PstCd>12344</ct:PstCd>
+                        <ct:TwnNm>LOS ANGELES</ct:TwnNm>
+                        <ct:CtrySubDvsn>LA</ct:CtrySubDvsn>
+                        <ct:Ctry>US</ct:Ctry>
+                    </ct:PstlAdr>
+                    <ct:Id>
+                        <ct:PrvtId>
+                            <ct:DtAndPlcOfBirth>
+                                <ct:BirthDt>1989-01-09</ct:BirthDt>
+                                <ct:CityOfBirth>LOS ANGELES</ct:CityOfBirth>
+                                <ct:CtryOfBirth>US</ct:CtryOfBirth>
+                            </ct:DtAndPlcOfBirth>
+                        </ct:PrvtId>
+                    </ct:Id>
+                </ct:Cdtr>
+                <ct:CdtrAcct>
+                    <ct:Id>
+                        <ct:Othr>
+                            <ct:Id>42341169728762787</ct:Id>
+                        </ct:Othr>
+                    </ct:Id>
+                </ct:CdtrAcct>
+                <ct:RltdRmtInf>
+                    <ct:RmtId>20230713152936OTS00752775034</ct:RmtId>
+                </ct:RltdRmtInf>
+            </ct:CdtTrfTxInf>
+        </ct:FIToFICstmrCdtTrf>
+    </CreditTransfer>
+</Message>

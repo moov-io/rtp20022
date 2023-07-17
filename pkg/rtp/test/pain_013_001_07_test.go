@@ -19,15 +19,15 @@ import (
 var pain013Constant = &pain_013_001_07.DocumentTCH{
 	CdtrPmtActvtnReq: pain_013_001_07.CreditorPaymentActivationRequestV07TCH{
 		GrpHdr: pain_013_001_07.GroupHeader78TCH{
-			MsgId:   "M20210701000000032A1B00000008088839",
-			CreDtTm: rtp.UnmarshalISODateTime("2021-07-01T11:13:14"),
+			MsgId:   "M20230713234567891T1BOTS00361450681",
+			CreDtTm: rtp.UnmarshalISODateTime("2023-07-13T15:24:23"),
 			NbOfTxs: "1",
 			InitgPty: pain_013_001_07.PartyIdentification135TCH{
 				Id: pain_013_001_07.Party38ChoiceTCH{
 					OrgId: &pain_013_001_07.OrganisationIdentification29TCH{
 						Othr: []pain_013_001_07.GenericOrganisationIdentification1TCH{
 							{
-								Id: "000000032",
+								Id: "234567891",
 							},
 						},
 					},
@@ -35,21 +35,29 @@ var pain013Constant = &pain_013_001_07.DocumentTCH{
 			},
 		},
 		PmtInf: pain_013_001_07.PaymentInstruction31TCH{
-			PmtInfId: pain_013_001_07.Max35TextTCH3("20210701000000032A1B000000000047080"),
+			PmtInfId: pain_013_001_07.Max35TextTCH3("20230713234567891T1BBQKJ00227516029"),
 			PmtMtd:   pain_013_001_07.PaymentMethod7CodeTrf,
 			ReqdExctnDt: pain_013_001_07.DateAndDateTime2Choice{
-				Dt: rtp.Ptr(rtp.UnmarshalISODate("2021-07-01")),
+				DtTm: rtp.Ptr(rtp.UnmarshalISODateTime("2023-07-13T15:24:23")),
 			},
 			XpryDt: pain_013_001_07.DateAndDateTime2Choice{
-				Dt: rtp.Ptr(rtp.UnmarshalISODate("2021-07-01")),
+				DtTm: rtp.Ptr(rtp.UnmarshalISODateTime("2023-07-18T15:24:23")),
 			},
 			Dbtr: pain_013_001_07.PartyIdentification135TCH2{
-				Nm: pain_013_001_07.Max140Text("000000010"),
+				Nm: pain_013_001_07.Max140Text("Participant Valid model"),
+				PstlAdr: &pain_013_001_07.PostalAddress24TCH{
+					StrtNm:      "NORTH AVE",
+					BldgNb:      rtp.Ptr(pain_013_001_07.Max16Text("1123")),
+					PstCd:       "12344",
+					TwnNm:       "LOS ANGELES",
+					CtrySubDvsn: "LA",
+					Ctry:        "US",
+				},
 				Id: &pain_013_001_07.Party38ChoiceTCH2{
 					PrvtId: &pain_013_001_07.PersonIdentification13TCH{
 						DtAndPlcOfBirth: pain_013_001_07.DateAndPlaceOfBirth1{
-							BirthDt:     rtp.UnmarshalISODate("1980-12-06"),
-							CityOfBirth: "NY",
+							BirthDt:     rtp.UnmarshalISODate("1989-01-09"),
+							CityOfBirth: "LOS ANGELES",
 							CtryOfBirth: "US",
 						},
 					},
@@ -71,8 +79,8 @@ var pain013Constant = &pain_013_001_07.DocumentTCH{
 			},
 			CdtTrfTx: pain_013_001_07.CreditTransferTransaction35TCH{
 				PmtId: pain_013_001_07.PaymentIdentification6{
-					InstrId:    rtp.Ptr(pain_013_001_07.Max35Text("20210701000000032A1B000000000047080")),
-					EndToEndId: "E2E-Ref001",
+					InstrId:    rtp.Ptr(pain_013_001_07.Max35Text("20230713234567891T1BBQKJ00227516029")),
+					EndToEndId: "EOTS",
 				},
 				PmtTpInf: pain_013_001_07.PaymentTypeInformation26TCH{
 					SvcLvl: pain_013_001_07.ServiceLevel8Choice{
@@ -82,12 +90,12 @@ var pain013Constant = &pain_013_001_07.DocumentTCH{
 						Prtry: rtp.Ptr(pain_013_001_07.LocalPropTCHStandard),
 					},
 					CtgyPurp: pain_013_001_07.CategoryPurpose1Choice{
-						Prtry: rtp.Ptr(pain_013_001_07.CatePurpPropConsumer),
+						Prtry: rtp.Ptr(pain_013_001_07.CatePurpPropBusiness),
 					},
 				},
 				Amt: pain_013_001_07.AmountType4Choice{
 					InstdAmt: &pain_013_001_07.ActiveOrHistoricCurrencyAndAmount{
-						Value: 15.00,
+						Value: 21838.41,
 						Ccy:   pain_013_001_07.ActiveOrHistoricCurrencyCodeUsd,
 					},
 				},
@@ -95,18 +103,26 @@ var pain013Constant = &pain_013_001_07.DocumentTCH{
 				CdtrAgt: pain_013_001_07.BranchAndFinancialInstitutionIdentification6TCH{
 					FinInstnId: pain_013_001_07.FinancialInstitutionIdentification18TCH{
 						ClrSysMmbId: pain_013_001_07.ClearingSystemMemberIdentification2TCH{
-							MmbId: pain_013_001_07.Max35TextTCH2("000000032"),
+							MmbId: pain_013_001_07.Max35TextTCH2("234567891"),
 						},
 					},
 				},
 				Cdtr: pain_013_001_07.PartyIdentification135TCH4{
-					Nm: pain_013_001_07.Max140Text("000000032"),
+					Nm: pain_013_001_07.Max140Text("MRS. GREEN"),
+					PstlAdr: &pain_013_001_07.PostalAddress24TCH{
+						StrtNm:      "Broadway",
+						BldgNb:      rtp.Ptr(pain_013_001_07.Max16Text("1500")),
+						PstCd:       "NY 12345",
+						TwnNm:       "New York",
+						CtrySubDvsn: "NY",
+						Ctry:        "US",
+					},
 					Id: &pain_013_001_07.Party38ChoiceTCH2{
 						PrvtId: &pain_013_001_07.PersonIdentification13TCH{
 							DtAndPlcOfBirth: pain_013_001_07.DateAndPlaceOfBirth1{
-								BirthDt:     rtp.UnmarshalISODate("1976-02-14"),
-								CityOfBirth: "GL",
-								CtryOfBirth: "RO",
+								BirthDt:     rtp.UnmarshalISODate("1984-01-01"),
+								CityOfBirth: "New York",
+								CtryOfBirth: "US",
 							},
 						},
 					},
@@ -114,14 +130,8 @@ var pain013Constant = &pain_013_001_07.DocumentTCH{
 				CdtrAcct: pain_013_001_07.CashAccount38TCH2{
 					Id: pain_013_001_07.AccountIdentification4Choice{
 						Othr: &pain_013_001_07.GenericAccountIdentification1{
-							Id: pain_013_001_07.Max34Text("46684938893141836"),
+							Id: pain_013_001_07.Max34Text("US88664715164441"),
 						},
-					},
-				},
-				InstrForCdtrAgt: []*pain_013_001_07.InstructionForCreditorAgent1TCH{
-					{
-						Cd:       pain_013_001_07.Instruction3CodeTCHReci,
-						InstrInf: pain_013_001_07.Max140Text("VLTK"),
 					},
 				},
 			},
@@ -130,7 +140,7 @@ var pain013Constant = &pain_013_001_07.DocumentTCH{
 }
 
 func TestReadPain013(t *testing.T) {
-	input, err := os.ReadFile(filepath.Join("testdata", "pain013.RTP.xml"))
+	input, err := os.ReadFile(filepath.Join("testdata", "pain013.xml"))
 	require.NoError(t, err)
 
 	pain013 := &messages.Message{}
@@ -159,7 +169,7 @@ func TestWritePain013(t *testing.T) {
 	output, err := xml.MarshalIndent(input, "", "    ")
 	require.NoError(t, err)
 
-	expected, err := os.ReadFile(filepath.Join("testdata", "pain013.RTP.xml"))
+	expected, err := os.ReadFile(filepath.Join("testdata", "pain013.xml"))
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))

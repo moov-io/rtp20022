@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:sr="urn:iso:std:iso:20022:tech:xsd:admn.001.001.01">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <SignOnRequest>
+        <sr:AdmnSignOnReq>
+            <sr:GrpHdr>
+                <sr:MsgId>20230713142246200000057A1QD4EHWRNKD</sr:MsgId>
+                <sr:CreDtTm>2023-07-13T14:22:46</sr:CreDtTm>
+            </sr:GrpHdr>
+            <sr:SignOnReq>
+                <sr:InstrId>20230713200000057A1BDCBA88966527298</sr:InstrId>
+                <sr:InstgAgt>
+                    <sr:FinInstnId>
+                        <sr:ClrSysMmbId>
+                            <sr:MmbId>200000057A1</sr:MmbId>
+                        </sr:ClrSysMmbId>
+                    </sr:FinInstnId>
+                </sr:InstgAgt>
+                <sr:InstdAgt>
+                    <sr:FinInstnId>
+                        <sr:ClrSysMmbId>
+                            <sr:MmbId>990000001T1</sr:MmbId>
+                        </sr:ClrSysMmbId>
+                    </sr:FinInstnId>
+                </sr:InstdAgt>
+            </sr:SignOnReq>
+        </sr:AdmnSignOnReq>
+    </SignOnRequest>
+</Message>

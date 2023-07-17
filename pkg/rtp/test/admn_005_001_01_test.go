@@ -19,12 +19,12 @@ import (
 var admn005Constant = &admn_005_001_01.DocumentTCH{
 	AdmnEchoReq: admn_005_001_01.EchoRequestTCH{
 		GrpHdr: admn_005_001_01.GrpHdrTCH{
-			MsgId:   "20230125125943990000001T10589310786",
-			CreDtTm: rtp.UnmarshalISODateTime("2023-01-25T12:59:43"),
+			MsgId:   "20230711100757990000001T11225307760",
+			CreDtTm: rtp.UnmarshalISODateTime("2023-07-11T10:07:57"),
 		},
 		EchoTxInf: admn_005_001_01.EchoTxInfTCH{
 			FnctnCd: admn_005_001_01.EchoCode731,
-			InstrId: "20230125990000001T1HQYBV00589310786",
+			InstrId: "20230711990000001T1HYTUO01225307760",
 			InstgAgt: admn_005_001_01.BranchAndFinancialInstitutionIdentification4ADMN{
 				FinInstnId: admn_005_001_01.FinancialInstitutionIdentification7ADMN{
 					ClrSysMmbId: admn_005_001_01.ClearingSystemMemberIdentification2ADMN{
@@ -44,7 +44,7 @@ var admn005Constant = &admn_005_001_01.DocumentTCH{
 }
 
 func TestReadAdmn005(t *testing.T) {
-	input, err := os.ReadFile(filepath.Join("testdata", "admn005.RTP.xml"))
+	input, err := os.ReadFile(filepath.Join("testdata", "admn005.xml"))
 	require.NoError(t, err)
 
 	admn005 := &messages.Message{}
@@ -73,7 +73,7 @@ func TestWriteAdmn005(t *testing.T) {
 	output, err := xml.MarshalIndent(input, "", "    ")
 	require.NoError(t, err)
 
-	expected, err := os.ReadFile(filepath.Join("testdata", "admn005.RTP.xml"))
+	expected, err := os.ReadFile(filepath.Join("testdata", "admn005.xml"))
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))

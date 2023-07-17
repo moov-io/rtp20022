@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:fr="urn:iso:std:iso:20022:tech:xsd:admn.003.001.01">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <SignOffRequest>
+        <fr:AdmnSignOffReq>
+            <fr:GrpHdr>
+                <fr:MsgId>20230711100610200000057A1ADYAGRZNGD</fr:MsgId>
+                <fr:CreDtTm>2023-07-11T10:06:10</fr:CreDtTm>
+            </fr:GrpHdr>
+            <fr:SignOffReq>
+                <fr:InstrId>20230711200000057A1B123800017348098</fr:InstrId>
+                <fr:InstgAgt>
+                    <fr:FinInstnId>
+                        <fr:ClrSysMmbId>
+                            <fr:MmbId>990000001T1</fr:MmbId>
+                        </fr:ClrSysMmbId>
+                    </fr:FinInstnId>
+                </fr:InstgAgt>
+                <fr:InstdAgt>
+                    <fr:FinInstnId>
+                        <fr:ClrSysMmbId>
+                            <fr:MmbId>200000057A1</fr:MmbId>
+                        </fr:ClrSysMmbId>
+                    </fr:FinInstnId>
+                </fr:InstdAgt>
+            </fr:SignOffReq>
+        </fr:AdmnSignOffReq>
+    </SignOffRequest>
+</Message>

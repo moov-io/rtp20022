@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:fi="urn:iso:std:iso:20022:tech:xsd:camt.026.001.07">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <RequestForInformation>
+        <fi:UblToApply>
+            <fi:Assgnmt>
+                <fi:Id>M20230713234567891T1BOTS02112879685</fi:Id>
+                <fi:Assgnr>
+                    <fi:Agt>
+                        <fi:FinInstnId>
+                            <fi:ClrSysMmbId>
+                                <fi:MmbId>234567891</fi:MmbId>
+                            </fi:ClrSysMmbId>
+                        </fi:FinInstnId>
+                    </fi:Agt>
+                </fi:Assgnr>
+                <fi:Assgne>
+                    <fi:Agt>
+                        <fi:FinInstnId>
+                            <fi:ClrSysMmbId>
+                                <fi:MmbId>000000010</fi:MmbId>
+                            </fi:ClrSysMmbId>
+                        </fi:FinInstnId>
+                    </fi:Agt>
+                </fi:Assgne>
+                <fi:CreDtTm>2023-07-13T15:25:46</fi:CreDtTm>
+            </fi:Assgnmt>
+            <fi:Case>
+                <fi:Id>M20230713234567891T1BOTS02112879685</fi:Id>
+                <fi:Cretr>
+                    <fi:Pty>
+                        <fi:Nm>MRS. GREEN</fi:Nm>
+                    </fi:Pty>
+                </fi:Cretr>
+            </fi:Case>
+            <fi:Undrlyg>
+                <fi:IntrBk>
+                    <fi:OrgnlGrpInf>
+                        <fi:OrgnlMsgId>M20230713234567891T1BOTS01225082200</fi:OrgnlMsgId>
+                        <fi:OrgnlMsgNmId>pacs.008.001.08</fi:OrgnlMsgNmId>
+                        <fi:OrgnlCreDtTm>2023-07-13T15:25:46</fi:OrgnlCreDtTm>
+                    </fi:OrgnlGrpInf>
+                    <fi:OrgnlInstrId>20230713234567891T1BKHAH00545741922</fi:OrgnlInstrId>
+                    <fi:OrgnlEndToEndId>EOTS</fi:OrgnlEndToEndId>
+                    <fi:OrgnlTxId>20230713234567891T1BKHAH00545741922</fi:OrgnlTxId>
+                    <fi:OrgnlIntrBkSttlmAmt Ccy="USD">53468.47</fi:OrgnlIntrBkSttlmAmt>
+                    <fi:OrgnlIntrBkSttlmDt>2023-07-13</fi:OrgnlIntrBkSttlmDt>
+                </fi:IntrBk>
+            </fi:Undrlyg>
+            <fi:Justfn>
+                <fi:MssngOrIncrrctInf>
+                    <fi:MssngInf>
+                        <fi:Cd>MS01</fi:Cd>
+                    </fi:MssngInf>
+                </fi:MssngOrIncrrctInf>
+            </fi:Justfn>
+        </fi:UblToApply>
+    </RequestForInformation>
+</Message>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ps="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <MessageStatusReport>
+        <ps:FIToFIPmtStsRpt>
+            <ps:GrpHdr>
+                <ps:MsgId>M20230711BOTS00714217617</ps:MsgId>
+                <ps:CreDtTm>2023-07-11T10:53:06</ps:CreDtTm>
+            </ps:GrpHdr>
+            <ps:OrgnlGrpInfAndSts>
+                <ps:OrgnlMsgId>M20230711200000057A1BFFF88058178098</ps:OrgnlMsgId>
+                <ps:OrgnlMsgNmId>pacs.008.001.08</ps:OrgnlMsgNmId>
+                <ps:OrgnlCreDtTm>2023-07-11T10:53:05</ps:OrgnlCreDtTm>
+                <ps:OrgnlNbOfTxs>1</ps:OrgnlNbOfTxs>
+            </ps:OrgnlGrpInfAndSts>
+            <ps:TxInfAndSts>
+                <ps:OrgnlInstrId>20230711200000057A1B123888058178098</ps:OrgnlInstrId>
+                <ps:OrgnlTxId>20230711200000057A1B123888058178098</ps:OrgnlTxId>
+                <ps:TxSts>RJCT</ps:TxSts>
+                <ps:StsRsnInf>
+                    <ps:Rsn>
+                        <ps:Cd>AC03</ps:Cd>
+                    </ps:Rsn>
+                </ps:StsRsnInf>
+                <ps:AccptncDtTm>2023-07-11T10:53:06</ps:AccptncDtTm>
+                <ps:InstgAgt>
+                    <ps:FinInstnId>
+                        <ps:ClrSysMmbId>
+                            <ps:MmbId>987654320</ps:MmbId>
+                        </ps:ClrSysMmbId>
+                    </ps:FinInstnId>
+                </ps:InstgAgt>
+                <ps:InstdAgt>
+                    <ps:FinInstnId>
+                        <ps:ClrSysMmbId>
+                            <ps:MmbId>123456780</ps:MmbId>
+                        </ps:ClrSysMmbId>
+                    </ps:FinInstnId>
+                </ps:InstdAgt>
+                <ps:OrgnlTxRef>
+                    <ps:IntrBkSttlmAmt Ccy="USD">10000.00</ps:IntrBkSttlmAmt>
+                    <ps:IntrBkSttlmDt>2023-07-11</ps:IntrBkSttlmDt>
+                </ps:OrgnlTxRef>
+            </ps:TxInfAndSts>
+        </ps:FIToFIPmtStsRpt>
+    </MessageStatusReport>
+</Message>
