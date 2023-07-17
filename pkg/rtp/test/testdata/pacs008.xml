@@ -10,11 +10,11 @@
     <CreditTransfer>
         <ct:FIToFICstmrCdtTrf>
             <ct:GrpHdr>
-                <ct:MsgId>M20210701000000032A1B00000008088224</ct:MsgId>
-                <ct:CreDtTm>2021-07-01T10:51:00</ct:CreDtTm>
+                <ct:MsgId>M20230713234567891T1BOTS02083825666</ct:MsgId>
+                <ct:CreDtTm>2023-07-13T15:29:36</ct:CreDtTm>
                 <ct:NbOfTxs>1</ct:NbOfTxs>
-                <ct:TtlIntrBkSttlmAmt Ccy="USD">10.00</ct:TtlIntrBkSttlmAmt>
-                <ct:IntrBkSttlmDt>2021-07-01</ct:IntrBkSttlmDt>
+                <ct:TtlIntrBkSttlmAmt Ccy="USD">46154.49</ct:TtlIntrBkSttlmAmt>
+                <ct:IntrBkSttlmDt>2023-07-13</ct:IntrBkSttlmDt>
                 <ct:SttlmInf>
                     <ct:SttlmMtd>CLRG</ct:SttlmMtd>
                     <ct:ClrSys>
@@ -24,10 +24,10 @@
             </ct:GrpHdr>
             <ct:CdtTrfTxInf>
                 <ct:PmtId>
-                    <ct:InstrId>20210701000000032A1B000000000047075</ct:InstrId>
-                    <ct:EndToEndId>MYREF123</ct:EndToEndId>
-                    <ct:TxId>20210701000000032A1B000000000047075</ct:TxId>
-                    <ct:ClrSysRef>002</ct:ClrSysRef>
+                    <ct:InstrId>20230713234567891T1BCXIA01868416991</ct:InstrId>
+                    <ct:EndToEndId>EOTS</ct:EndToEndId>
+                    <ct:TxId>20230713234567891T1BCXIA01868416991</ct:TxId>
+                    <ct:ClrSysRef>001</ct:ClrSysRef>
                 </ct:PmtId>
                 <ct:PmtTpInf>
                     <ct:SvcLvl>
@@ -40,12 +40,12 @@
                         <ct:Prtry>BUSINESS</ct:Prtry>
                     </ct:CtgyPurp>
                 </ct:PmtTpInf>
-                <ct:IntrBkSttlmAmt Ccy="USD">10.00</ct:IntrBkSttlmAmt>
+                <ct:IntrBkSttlmAmt Ccy="USD">46154.49</ct:IntrBkSttlmAmt>
                 <ct:ChrgBr>SLEV</ct:ChrgBr>
                 <ct:InstgAgt>
                     <ct:FinInstnId>
                         <ct:ClrSysMmbId>
-                            <ct:MmbId>000000032</ct:MmbId>
+                            <ct:MmbId>234567891</ct:MmbId>
                         </ct:ClrSysMmbId>
                     </ct:FinInstnId>
                 </ct:InstgAgt>
@@ -56,24 +56,21 @@
                         </ct:ClrSysMmbId>
                     </ct:FinInstnId>
                 </ct:InstdAgt>
-                <ct:InitgPty>
-                    <ct:Nm>1234</ct:Nm>
-                </ct:InitgPty>
                 <ct:Dbtr>
-                    <ct:Nm>000000032</ct:Nm>
+                    <ct:Nm>MRS. GREEN</ct:Nm>
                     <ct:PstlAdr>
-                        <ct:StrtNm>Route</ct:StrtNm>
-                        <ct:BldgNb>66</ct:BldgNb>
-                        <ct:PstCd>123456</ct:PstCd>
-                        <ct:TwnNm>LA</ct:TwnNm>
+                        <ct:StrtNm>Broadway</ct:StrtNm>
+                        <ct:BldgNb>1500</ct:BldgNb>
+                        <ct:PstCd>NY 12345</ct:PstCd>
+                        <ct:TwnNm>New York</ct:TwnNm>
                         <ct:CtrySubDvsn>NY</ct:CtrySubDvsn>
                         <ct:Ctry>US</ct:Ctry>
                     </ct:PstlAdr>
                     <ct:Id>
                         <ct:PrvtId>
                             <ct:DtAndPlcOfBirth>
-                                <ct:BirthDt>1980-12-06</ct:BirthDt>
-                                <ct:CityOfBirth>NY</ct:CityOfBirth>
+                                <ct:BirthDt>1984-01-01</ct:BirthDt>
+                                <ct:CityOfBirth>New York</ct:CityOfBirth>
                                 <ct:CtryOfBirth>US</ct:CtryOfBirth>
                             </ct:DtAndPlcOfBirth>
                         </ct:PrvtId>
@@ -82,14 +79,14 @@
                 <ct:DbtrAcct>
                     <ct:Id>
                         <ct:Othr>
-                            <ct:Id>88773702086235574</ct:Id>
+                            <ct:Id>US88664715164441</ct:Id>
                         </ct:Othr>
                     </ct:Id>
                 </ct:DbtrAcct>
                 <ct:DbtrAgt>
                     <ct:FinInstnId>
                         <ct:ClrSysMmbId>
-                            <ct:MmbId>000000032</ct:MmbId>
+                            <ct:MmbId>234567891</ct:MmbId>
                         </ct:ClrSysMmbId>
                     </ct:FinInstnId>
                 </ct:DbtrAgt>
@@ -101,21 +98,21 @@
                     </ct:FinInstnId>
                 </ct:CdtrAgt>
                 <ct:Cdtr>
-                    <ct:Nm>000000010</ct:Nm>
+                    <ct:Nm>Participant Valid model</ct:Nm>
                     <ct:PstlAdr>
-                        <ct:StrtNm>Mircea Voda</ct:StrtNm>
-                        <ct:BldgNb>40</ct:BldgNb>
-                        <ct:PstCd>030669</ct:PstCd>
-                        <ct:TwnNm>Bucuresti</ct:TwnNm>
-                        <ct:CtrySubDvsn>NY</ct:CtrySubDvsn>
-                        <ct:Ctry>RO</ct:Ctry>
+                        <ct:StrtNm>NORTH AVE</ct:StrtNm>
+                        <ct:BldgNb>1123</ct:BldgNb>
+                        <ct:PstCd>12344</ct:PstCd>
+                        <ct:TwnNm>LOS ANGELES</ct:TwnNm>
+                        <ct:CtrySubDvsn>LA</ct:CtrySubDvsn>
+                        <ct:Ctry>US</ct:Ctry>
                     </ct:PstlAdr>
                     <ct:Id>
                         <ct:PrvtId>
                             <ct:DtAndPlcOfBirth>
-                                <ct:BirthDt>1976-02-14</ct:BirthDt>
-                                <ct:CityOfBirth>GL</ct:CityOfBirth>
-                                <ct:CtryOfBirth>RO</ct:CtryOfBirth>
+                                <ct:BirthDt>1989-01-09</ct:BirthDt>
+                                <ct:CityOfBirth>LOS ANGELES</ct:CityOfBirth>
+                                <ct:CtryOfBirth>US</ct:CtryOfBirth>
                             </ct:DtAndPlcOfBirth>
                         </ct:PrvtId>
                     </ct:Id>
@@ -128,11 +125,7 @@
                     </ct:Id>
                 </ct:CdtrAcct>
                 <ct:RltdRmtInf>
-                    <ct:RmtId>1234567890</ct:RmtId>
-                    <ct:RmtLctnDtls>
-                        <ct:Mtd>EMAL</ct:Mtd>
-                        <ct:ElctrncAdr>address@company.com</ct:ElctrncAdr>
-                    </ct:RmtLctnDtls>
+                    <ct:RmtId>20230713152936OTS00752775034</ct:RmtId>
                 </ct:RltdRmtInf>
             </ct:CdtTrfTxInf>
         </ct:FIToFICstmrCdtTrf>

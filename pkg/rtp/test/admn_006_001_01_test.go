@@ -19,25 +19,25 @@ import (
 var admn006Constant = &admn_006_001_01.DocumentTCH{
 	AdmnEchoResp: admn_006_001_01.EchoResponseTCH{
 		GrpHdr: admn_006_001_01.GrpHdrTCH{
-			MsgId:   "20230125125943990000001T10589310786",
-			CreDtTm: rtp.UnmarshalISODateTime("2023-01-25T12:59:43"),
+			MsgId:   "20230711100855XXXXXXXXXXXP0ZVKOR6OH",
+			CreDtTm: rtp.UnmarshalISODateTime("2023-07-11T10:08:55"),
 		},
 		EchoResponse: admn_006_001_01.EchoResp{
 			InstgAgt: admn_006_001_01.BranchAndFinancialInstitutionIdentification4ADMN{
 				FinInstnId: admn_006_001_01.FinancialInstitutionIdentification7ADMN{
 					ClrSysMmbId: admn_006_001_01.ClearingSystemMemberIdentification2ADMN{
-						MmbId: "990000001T1",
+						MmbId: "XXXXXXXXXXX",
 					},
 				},
 			},
 			InstdAgt: admn_006_001_01.BranchAndFinancialInstitutionIdentification4ADMN{
 				FinInstnId: admn_006_001_01.FinancialInstitutionIdentification7ADMN{
 					ClrSysMmbId: admn_006_001_01.ClearingSystemMemberIdentification2ADMN{
-						MmbId: "200000057A1",
+						MmbId: "990000001T1",
 					},
 				},
 			},
-			OrgnlInstrId: "20230125990000001T1HQYBV00589310786",
+			OrgnlInstrId: "20230711200000057A1B123825053548098",
 			FnctnCd:      admn_006_001_01.EchoCode731,
 			TxSts:        admn_006_001_01.TransactionIndividualStatus3CodeEchoActc,
 		},
@@ -45,7 +45,7 @@ var admn006Constant = &admn_006_001_01.DocumentTCH{
 }
 
 func TestReadAdmn006(t *testing.T) {
-	input, err := os.ReadFile(filepath.Join("testdata", "admn006.RTP.xml"))
+	input, err := os.ReadFile(filepath.Join("testdata", "admn006.xml"))
 	require.NoError(t, err)
 
 	admn006 := &messages.Message{}
@@ -74,7 +74,7 @@ func TestWriteAdmn006(t *testing.T) {
 	output, err := xml.MarshalIndent(input, "", "    ")
 	require.NoError(t, err)
 
-	expected, err := os.ReadFile(filepath.Join("testdata", "admn006.RTP.xml"))
+	expected, err := os.ReadFile(filepath.Join("testdata", "admn006.xml"))
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))

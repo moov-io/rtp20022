@@ -10,35 +10,43 @@
     <PaymentRequest>
         <pr:CdtrPmtActvtnReq>
             <pr:GrpHdr>
-                <pr:MsgId>M20210701000000032A1B00000008088839</pr:MsgId>
-                <pr:CreDtTm>2021-07-01T11:13:14</pr:CreDtTm>
+                <pr:MsgId>M20230713234567891T1BOTS00361450681</pr:MsgId>
+                <pr:CreDtTm>2023-07-13T15:24:23</pr:CreDtTm>
                 <pr:NbOfTxs>1</pr:NbOfTxs>
                 <pr:InitgPty>
                     <pr:Id>
                         <pr:OrgId>
                             <pr:Othr>
-                                <pr:Id>000000032</pr:Id>
+                                <pr:Id>234567891</pr:Id>
                             </pr:Othr>
                         </pr:OrgId>
                     </pr:Id>
                 </pr:InitgPty>
             </pr:GrpHdr>
             <pr:PmtInf>
-                <pr:PmtInfId>20210701000000032A1B000000000047080</pr:PmtInfId>
+                <pr:PmtInfId>20230713234567891T1BBQKJ00227516029</pr:PmtInfId>
                 <pr:PmtMtd>TRF</pr:PmtMtd>
                 <pr:ReqdExctnDt>
-                    <pr:Dt>2021-07-01</pr:Dt>
+                    <pr:DtTm>2023-07-13T15:24:23</pr:DtTm>
                 </pr:ReqdExctnDt>
                 <pr:XpryDt>
-                    <pr:Dt>2021-07-01</pr:Dt>
+                    <pr:DtTm>2023-07-18T15:24:23</pr:DtTm>
                 </pr:XpryDt>
                 <pr:Dbtr>
-                    <pr:Nm>000000010</pr:Nm>
+                    <pr:Nm>Participant Valid model</pr:Nm>
+                    <pr:PstlAdr>
+                        <pr:StrtNm>NORTH AVE</pr:StrtNm>
+                        <pr:BldgNb>1123</pr:BldgNb>
+                        <pr:PstCd>12344</pr:PstCd>
+                        <pr:TwnNm>LOS ANGELES</pr:TwnNm>
+                        <pr:CtrySubDvsn>LA</pr:CtrySubDvsn>
+                        <pr:Ctry>US</pr:Ctry>
+                    </pr:PstlAdr>
                     <pr:Id>
                         <pr:PrvtId>
                             <pr:DtAndPlcOfBirth>
-                                <pr:BirthDt>1980-12-06</pr:BirthDt>
-                                <pr:CityOfBirth>NY</pr:CityOfBirth>
+                                <pr:BirthDt>1989-01-09</pr:BirthDt>
+                                <pr:CityOfBirth>LOS ANGELES</pr:CityOfBirth>
                                 <pr:CtryOfBirth>US</pr:CtryOfBirth>
                             </pr:DtAndPlcOfBirth>
                         </pr:PrvtId>
@@ -60,8 +68,8 @@
                 </pr:DbtrAgt>
                 <pr:CdtTrfTx>
                     <pr:PmtId>
-                        <pr:InstrId>20210701000000032A1B000000000047080</pr:InstrId>
-                        <pr:EndToEndId>E2E-Ref001</pr:EndToEndId>
+                        <pr:InstrId>20230713234567891T1BBQKJ00227516029</pr:InstrId>
+                        <pr:EndToEndId>EOTS</pr:EndToEndId>
                     </pr:PmtId>
                     <pr:PmtTpInf>
                         <pr:SvcLvl>
@@ -71,28 +79,36 @@
                             <pr:Prtry>STANDARD</pr:Prtry>
                         </pr:LclInstrm>
                         <pr:CtgyPurp>
-                            <pr:Prtry>CONSUMER</pr:Prtry>
+                            <pr:Prtry>BUSINESS</pr:Prtry>
                         </pr:CtgyPurp>
                     </pr:PmtTpInf>
                     <pr:Amt>
-                        <pr:InstdAmt Ccy="USD">15.00</pr:InstdAmt>
+                        <pr:InstdAmt Ccy="USD">21838.41</pr:InstdAmt>
                     </pr:Amt>
                     <pr:ChrgBr>SLEV</pr:ChrgBr>
                     <pr:CdtrAgt>
                         <pr:FinInstnId>
                             <pr:ClrSysMmbId>
-                                <pr:MmbId>000000032</pr:MmbId>
+                                <pr:MmbId>234567891</pr:MmbId>
                             </pr:ClrSysMmbId>
                         </pr:FinInstnId>
                     </pr:CdtrAgt>
                     <pr:Cdtr>
-                        <pr:Nm>000000032</pr:Nm>
+                        <pr:Nm>MRS. GREEN</pr:Nm>
+                        <pr:PstlAdr>
+                            <pr:StrtNm>Broadway</pr:StrtNm>
+                            <pr:BldgNb>1500</pr:BldgNb>
+                            <pr:PstCd>NY 12345</pr:PstCd>
+                            <pr:TwnNm>New York</pr:TwnNm>
+                            <pr:CtrySubDvsn>NY</pr:CtrySubDvsn>
+                            <pr:Ctry>US</pr:Ctry>
+                        </pr:PstlAdr>
                         <pr:Id>
                             <pr:PrvtId>
                                 <pr:DtAndPlcOfBirth>
-                                    <pr:BirthDt>1976-02-14</pr:BirthDt>
-                                    <pr:CityOfBirth>GL</pr:CityOfBirth>
-                                    <pr:CtryOfBirth>RO</pr:CtryOfBirth>
+                                    <pr:BirthDt>1984-01-01</pr:BirthDt>
+                                    <pr:CityOfBirth>New York</pr:CityOfBirth>
+                                    <pr:CtryOfBirth>US</pr:CtryOfBirth>
                                 </pr:DtAndPlcOfBirth>
                             </pr:PrvtId>
                         </pr:Id>
@@ -100,14 +116,10 @@
                     <pr:CdtrAcct>
                         <pr:Id>
                             <pr:Othr>
-                                <pr:Id>46684938893141836</pr:Id>
+                                <pr:Id>US88664715164441</pr:Id>
                             </pr:Othr>
                         </pr:Id>
                     </pr:CdtrAcct>
-                    <pr:InstrForCdtrAgt>
-                        <pr:Cd>RECI</pr:Cd>
-                        <pr:InstrInf>VLTK</pr:InstrInf>
-                    </pr:InstrForCdtrAgt>
                 </pr:CdtTrfTx>
             </pr:PmtInf>
         </pr:CdtrPmtActvtnReq>

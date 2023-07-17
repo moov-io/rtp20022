@@ -10,11 +10,11 @@
     <SignOffResponse>
         <rf:AdmnSignOffResp>
             <rf:GrpHdr>
-                <rf:MsgId>20230113125830990000001T11296198522</rf:MsgId>
-                <rf:CreDtTm>2023-01-13T12:58:30</rf:CreDtTm>
+                <rf:MsgId>20230711100706990000001T11713135631</rf:MsgId>
+                <rf:CreDtTm>2023-07-11T10:07:06</rf:CreDtTm>
             </rf:GrpHdr>
             <rf:SignOffResp>
-                <rf:OrgnlInstrId>20230113200000057A1B123862501723637</rf:OrgnlInstrId>
+                <rf:OrgnlInstrId>20230711200000057A1B123857452448098</rf:OrgnlInstrId>
                 <rf:InstgAgt>
                     <rf:FinInstnId>
                         <rf:ClrSysMmbId>
@@ -29,7 +29,12 @@
                         </rf:ClrSysMmbId>
                     </rf:FinInstnId>
                 </rf:InstdAgt>
-                <rf:Sts>ACTC</rf:Sts>
+                <rf:Sts>RJCT</rf:Sts>
+                <rf:StsRsnInf>
+                    <rf:Rsn>
+                        <rf:Prtry>9948</rf:Prtry>
+                    </rf:Rsn>
+                </rf:StsRsnInf>
             </rf:SignOffResp>
         </rf:AdmnSignOffResp>
     </SignOffResponse>

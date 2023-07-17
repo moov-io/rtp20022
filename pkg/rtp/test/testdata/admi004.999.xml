@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Message xmlns="urn:tch" xmlns:head="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ne="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02">
+    <AppHdr>
+        <head:Fr></head:Fr>
+        <head:To></head:To>
+        <head:BizMsgIdr></head:BizMsgIdr>
+        <head:MsgDefIdr></head:MsgDefIdr>
+        <head:CreDt>0001-01-01T00:00:00</head:CreDt>
+    </AppHdr>
+    <SystemNotificationEvent>
+        <ne:SysEvtNtfctn>
+            <ne:EvtInf>
+                <ne:EvtCd>999</ne:EvtCd>
+                <ne:EvtParam>20230711105301200000057A10463587229</ne:EvtParam>
+                <ne:EvtParam>Notification</ne:EvtParam>
+                <ne:EvtParam>2023-07-10</ne:EvtParam>
+                <ne:EvtParam>001</ne:EvtParam>
+                <ne:EvtParam>COMPLETE</ne:EvtParam>
+                <ne:EvtParam>2023-07-11T10:53:01</ne:EvtParam>
+                <ne:EvtParam>2023-07-11</ne:EvtParam>
+                <ne:EvtParam>002</ne:EvtParam>
+                <ne:EvtParam>INPROGRESS</ne:EvtParam>
+                <ne:EvtParam>USD</ne:EvtParam>
+                <ne:EvtParam>200000057A1</ne:EvtParam>
+                <ne:EvtParam>Unit Under Test</ne:EvtParam>
+                <ne:EvtParam>25000000</ne:EvtParam>
+                <ne:EvtParam>25000000</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtParam>0</ne:EvtParam>
+                <ne:EvtTm>2023-07-11T10:53:01</ne:EvtTm>
+            </ne:EvtInf>
+        </ne:SysEvtNtfctn>
+    </SystemNotificationEvent>
+</Message>

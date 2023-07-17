@@ -10,13 +10,13 @@
     <SystemNotificationEvent>
         <ne:SysEvtNtfctn>
             <ne:EvtInf>
-                <ne:EvtCd>960</ne:EvtCd>
-                <ne:EvtParam>202301181054430BROADCAST01104022138</ne:EvtParam>
+                <ne:EvtCd>982</ne:EvtCd>
+                <ne:EvtParam>202307111052040BROADCAST00362089602</ne:EvtParam>
                 <ne:EvtParam>Broadcast</ne:EvtParam>
-                <ne:EvtParam>123456789T1</ne:EvtParam>
-                <ne:EvtParam>1234567890101</ne:EvtParam>
-                <ne:EvtParam>AVAILABLE</ne:EvtParam>
-                <ne:EvtTm>2023-01-18T10:54:48</ne:EvtTm>
+                <ne:EvtParam>11141286888</ne:EvtParam>
+                <ne:EvtParam>BankofStefan</ne:EvtParam>
+                <ne:EvtParam>SIGNON</ne:EvtParam>
+                <ne:EvtTm>2023-07-11T10:52:04</ne:EvtTm>
             </ne:EvtInf>
         </ne:SysEvtNtfctn>
     </SystemNotificationEvent>

@@ -10,12 +10,12 @@
     <Acknowledgement>
         <ac:PrtryFrmtInvstgtn>
             <ac:Assgnmt>
-                <ac:Id>M20210701000000032A1B00000008088595</ac:Id>
+                <ac:Id>M20230713234567891T1BOTS00251021992</ac:Id>
                 <ac:Assgnr>
                     <ac:Agt>
                         <ac:FinInstnId>
                             <ac:ClrSysMmbId>
-                                <ac:MmbId>000000032</ac:MmbId>
+                                <ac:MmbId>234567891</ac:MmbId>
                             </ac:ClrSysMmbId>
                         </ac:FinInstnId>
                     </ac:Agt>
@@ -29,24 +29,23 @@
                         </ac:FinInstnId>
                     </ac:Agt>
                 </ac:Assgne>
-                <ac:CreDtTm>2021-07-01T11:07:14</ac:CreDtTm>
+                <ac:CreDtTm>2023-07-13T15:48:38</ac:CreDtTm>
             </ac:Assgnmt>
             <ac:Case>
-                <ac:Id>M20210701000000032A1B00000008088595</ac:Id>
+                <ac:Id>M20230713234567891T1BOTS00251021992</ac:Id>
                 <ac:Cretr>
                     <ac:Pty>
-                        <ac:Nm>TCH</ac:Nm>
+                        <ac:Nm>MRS. GREEN</ac:Nm>
                     </ac:Pty>
                 </ac:Cretr>
             </ac:Case>
             <ac:PrtryData>
                 <ac:Tp>ACK</ac:Tp>
                 <ac:Data>
-                    <ac:Ustrd>Information to the ACK</ac:Ustrd>
                     <ac:OrigRefs>
-                        <ac:InstrId>20210701000000032A1B000000000047075</ac:InstrId>
-                        <ac:EndToEndId>E2E-Ref001</ac:EndToEndId>
-                        <ac:TxId>20210701000000032A1B000000000047075</ac:TxId>
+                        <ac:InstrId>20230713200000057A1BFSTF01198898349</ac:InstrId>
+                        <ac:EndToEndId>EOTS</ac:EndToEndId>
+                        <ac:TxId>20230713200000057A1BFSTF01198898349</ac:TxId>
                     </ac:OrigRefs>
                 </ac:Data>
             </ac:PrtryData>

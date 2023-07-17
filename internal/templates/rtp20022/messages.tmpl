@@ -7,6 +7,7 @@ package {{ .GoPackageName }}
 
 import (
 	"fmt"
+	"github.com/moov-io/base"
 	"github.com/moov-io/rtp20022/gen/xmldsig"
 	"github.com/moov-io/rtp20022/pkg/rtp"
 	{{- range .GoImportsNeeded }}
@@ -61,10 +62,25 @@ import (
 
 	{{ if eq .GoName "Message" }}
 		var NamespacePrefixMap = map[string]string{
-		    {{- range $allXmlns }}
-	    		"{{ .Uri }}": "{{ .Prefix }}",
+			{{- range $allXmlns }}
+				{{- if and (ne .Prefix "xs") (ne .Prefix "gefeg") }}
+					"{{ .Uri }}": "{{ .Prefix }}",
+				{{- end }}
 			{{- end }}
 		}
+
+		{{- range $allXmlns }}
+			{{- if and (ne .Prefix "xs") (ne .Prefix "gefeg") (ne .Prefix "head") }}
+				{{- $l := len .Uri }}
+				{{- $l1 := len (slice (printf "%*s" $l "") 15) }}
+				{{- $l2 := len (slice (printf "%*s" $l "") 11) }}
+				{{- $l3 := len (slice (printf "%*s" $l "") 10) }}
+				{{- $l4 := len (slice (printf "%*s" $l "") 7) }}
+				func New{{ title (slice .Uri $l1 $l2) }}{{ slice .Uri $l3 $l4 }}Message() *Message {
+					return newMessageForNS("{{ .Uri }}")
+				}
+			{{ end }}
+		{{- end }}
 
 		// UnmarshalXML is a custom unmarshaller that allows us to capture the xmlns attributes
 		func (v *{{ .GoName }}) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -141,7 +157,7 @@ import (
 			{{- end }}
 		}
 
-		{{ $elemLen := len .Elements }}{{ if gt $elemLen 0 }}{{ if ne $nsPrefix "" }}
+		{{ $elemLen := len .Elements }}{{ if and (gt $elemLen 0) (ne $nsPrefix "") }}
 			// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
 			func (v {{ .GoName }}) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 				{{- if .Attributes }}
@@ -164,7 +180,7 @@ import (
 				e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
 				return nil
 			}
-		{{ end }}{{ end }}
+		{{ end }}
 	{{ end }}
 {{ end }}
 

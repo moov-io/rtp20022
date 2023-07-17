@@ -95,7 +95,7 @@ var head001Signature = &head_001_001_01.Sgntr{
 }
 
 func TestReadHead001_signature(t *testing.T) {
-	input, err := os.ReadFile(filepath.Join("testdata", "head001.RTP.signature.xml"))
+	input, err := os.ReadFile(filepath.Join("testdata", "head001.signature.xml"))
 	require.NoError(t, err)
 
 	head001 := &messages.Message{}
@@ -114,7 +114,7 @@ func TestReadHead001_signature(t *testing.T) {
 }
 
 func TestReadHead001_nosignature(t *testing.T) {
-	input, err := os.ReadFile(filepath.Join("testdata", "head001.RTP.nosignature.xml"))
+	input, err := os.ReadFile(filepath.Join("testdata", "head001.nosignature.xml"))
 	require.NoError(t, err)
 
 	head001 := &messages.Message{}
@@ -139,7 +139,7 @@ func TestWriteHead001_signature(t *testing.T) {
 	output, err := xml.MarshalIndent(input, "", "    ")
 	require.NoError(t, err)
 
-	expected, err := os.ReadFile(filepath.Join("testdata", "head001.RTP.signature.xml"))
+	expected, err := os.ReadFile(filepath.Join("testdata", "head001.signature.xml"))
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))
@@ -152,7 +152,7 @@ func TestWriteHead001_nosignature(t *testing.T) {
 	output, err := xml.MarshalIndent(input, "", "    ")
 	require.NoError(t, err)
 
-	expected, err := os.ReadFile(filepath.Join("testdata", "head001.RTP.nosignature.xml"))
+	expected, err := os.ReadFile(filepath.Join("testdata", "head001.nosignature.xml"))
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))

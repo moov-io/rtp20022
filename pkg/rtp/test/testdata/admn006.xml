@@ -10,25 +10,25 @@
     <EchoResponse>
         <re:AdmnEchoResp>
             <re:GrpHdr>
-                <re:MsgId>20230125125943990000001T10589310786</re:MsgId>
-                <re:CreDtTm>2023-01-25T12:59:43</re:CreDtTm>
+                <re:MsgId>20230711100855XXXXXXXXXXXP0ZVKOR6OH</re:MsgId>
+                <re:CreDtTm>2023-07-11T10:08:55</re:CreDtTm>
             </re:GrpHdr>
             <re:EchoResponse>
                 <re:InstgAgt>
                     <re:FinInstnId>
                         <re:ClrSysMmbId>
-                            <re:MmbId>990000001T1</re:MmbId>
+                            <re:MmbId>XXXXXXXXXXX</re:MmbId>
                         </re:ClrSysMmbId>
                     </re:FinInstnId>
                 </re:InstgAgt>
                 <re:InstdAgt>
                     <re:FinInstnId>
                         <re:ClrSysMmbId>
-                            <re:MmbId>200000057A1</re:MmbId>
+                            <re:MmbId>990000001T1</re:MmbId>
                         </re:ClrSysMmbId>
                     </re:FinInstnId>
                 </re:InstdAgt>
-                <re:OrgnlInstrId>20230125990000001T1HQYBV00589310786</re:OrgnlInstrId>
+                <re:OrgnlInstrId>20230711200000057A1B123825053548098</re:OrgnlInstrId>
                 <re:FnctnCd>731</re:FnctnCd>
                 <re:TxSts>ACTC</re:TxSts>
             </re:EchoResponse>

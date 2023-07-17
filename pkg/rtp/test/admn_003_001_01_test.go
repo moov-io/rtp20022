@@ -19,11 +19,11 @@ import (
 var admn003Constant = &admn_003_001_01.DocumentTCH{
 	AdmnSignOffReq: admn_003_001_01.SignOffRequestTCH{
 		GrpHdr: admn_003_001_01.GrpHdrTCH{
-			MsgId:   "2016021810064302120020101B61NHTCSG6",
-			CreDtTm: rtp.UnmarshalISODateTime("2016-02-18T10:06:43"),
+			MsgId:   "20230711100610200000057A1ADYAGRZNGD",
+			CreDtTm: rtp.UnmarshalISODateTime("2023-07-11T10:06:10"),
 		},
 		SignOffReq: admn_003_001_01.SignOffReqTCH{
-			InstrId: "2016021812345678901BD61U00000000006",
+			InstrId: "20230711200000057A1B123800017348098",
 			InstgAgt: admn_003_001_01.BranchAndFinancialInstitutionIdentification4ADMN{
 				FinInstnId: admn_003_001_01.FinancialInstitutionIdentification7ADMN{
 					ClrSysMmbId: admn_003_001_01.ClearingSystemMemberIdentification2ADMN{
@@ -34,7 +34,7 @@ var admn003Constant = &admn_003_001_01.DocumentTCH{
 			InstdAgt: admn_003_001_01.BranchAndFinancialInstitutionIdentification4ADMN{
 				FinInstnId: admn_003_001_01.FinancialInstitutionIdentification7ADMN{
 					ClrSysMmbId: admn_003_001_01.ClearingSystemMemberIdentification2ADMN{
-						MmbId: "XXXXXXXXXXX",
+						MmbId: "200000057A1",
 					},
 				},
 			},
@@ -43,7 +43,7 @@ var admn003Constant = &admn_003_001_01.DocumentTCH{
 }
 
 func TestReadAdmn003(t *testing.T) {
-	input, err := os.ReadFile(filepath.Join("testdata", "admn003.RTP.xml"))
+	input, err := os.ReadFile(filepath.Join("testdata", "admn003.xml"))
 	require.NoError(t, err)
 
 	admn003 := &messages.Message{}
@@ -72,7 +72,7 @@ func TestWriteAdmn003(t *testing.T) {
 	output, err := xml.MarshalIndent(input, "", "    ")
 	require.NoError(t, err)
 
-	expected, err := os.ReadFile(filepath.Join("testdata", "admn003.RTP.xml"))
+	expected, err := os.ReadFile(filepath.Join("testdata", "admn003.xml"))
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))
