@@ -27,8 +27,8 @@ func (t ISODate) MarshalText() ([]byte, error) {
 }
 
 func (t ISODate) Validate() error {
-	// TODO JB:
-	return nil
+	_, err := t.MarshalText()
+	return err
 }
 
 type ISODateTime time.Time
@@ -53,8 +53,8 @@ func (t ISODateTime) MarshalText() ([]byte, error) {
 }
 
 func (t ISODateTime) Validate() error {
-	// TODO JB:
-	return nil
+	_, err := t.MarshalText()
+	return err
 }
 
 type ISONormalisedDateTime time.Time
@@ -79,8 +79,8 @@ func (t ISONormalisedDateTime) MarshalText() ([]byte, error) {
 }
 
 func (t ISONormalisedDateTime) Validate() error {
-	// TODO JB:
-	return nil
+	_, err := t.MarshalText()
+	return err
 }
 
 type ISOTime time.Time
@@ -105,8 +105,8 @@ func (t ISOTime) MarshalText() ([]byte, error) {
 }
 
 func (t ISOTime) Validate() error {
-	// TODO JB:
-	return nil
+	_, err := t.MarshalText()
+	return err
 }
 
 type xsdDate time.Time

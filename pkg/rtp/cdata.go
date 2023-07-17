@@ -5,6 +5,5 @@ type Cdata struct {
 }
 
 func (c Cdata) Validate() error {
-	// TODO JB:
 	return nil
 }
