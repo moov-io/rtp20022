@@ -1,6 +1,6 @@
 module github.com/moov-io/rtp20022
 
-go 1.19
+go 1.20
 
 require (
 	github.com/moov-io/base v0.45.1
