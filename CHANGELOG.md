@@ -1,3 +1,20 @@
+## v0.8.0 (Released 2023-07-21)
+
+ADDITIONS
+
+- feat: generate the struct for the signature from XSD
+- feat: rename schemas to match 3.0 versions
+- feat: XSD version 3.0
+- feat: add and update unit tests for models
+- feat: add Context method for some models
+- feat: auto-generate Validate functions
+- feat: add test coverage for validation
+
+BUILD
+
+- fix(deps): use the latest stable Go release
+- fix(deps): update module github.com/moov-io/base to v0.45.1
+
 ## v0.7.0 (Released 2023-07-06)
 
 ADDITIONS
