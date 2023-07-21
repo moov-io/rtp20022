@@ -24,3 +24,8 @@ func TestAmountFormat(t *testing.T) {
 	require.NoError(t, err)
 	require.Equal(t, amt, read)
 }
+
+func TestAmountValidate(t *testing.T) {
+	var amt = rtp.Amount(634)
+	require.NoError(t, amt.Validate())
+}

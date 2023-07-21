@@ -1,7 +1,6 @@
 package rtp
 
 import (
-	"errors"
 	"fmt"
 	"regexp"
 	"strings"
@@ -12,9 +11,9 @@ import (
 
 func AddError(errs *base.ErrorList, err error) {
 	if err != nil {
-		if el, ok := err.(*base.ErrorList); ok {
-			if !el.Empty() {
-				errs.Add(errors.New(el.Error()))
+		if el, ok := err.(base.ErrorList); ok {
+			for indx := range el {
+				errs.Add(el[indx])
 			}
 		} else {
 			errs.Add(err)

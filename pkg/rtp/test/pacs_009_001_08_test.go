@@ -130,4 +130,5 @@ func TestWritePacs009(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))
+	assert.NoError(t, input.FICreditTransfer.Validate())
 }

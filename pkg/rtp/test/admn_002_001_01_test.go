@@ -109,6 +109,7 @@ func TestWriteAdmn002ACTC(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))
+	assert.NoError(t, input.SignOnResponse.Validate())
 }
 
 func TestReadAdmn002RJCT(t *testing.T) {
@@ -145,4 +146,5 @@ func TestWriteAdmn002RJCT(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))
+	assert.NoError(t, input.SignOnResponse.Validate())
 }

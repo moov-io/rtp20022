@@ -185,6 +185,7 @@ func TestWritePain014ACTC(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))
+	assert.NoError(t, input.ResponsePaymentRequest.Validate())
 }
 
 func TestReadPain014RJCT(t *testing.T) {
@@ -221,4 +222,5 @@ func TestWritePain014RJCT(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))
+	assert.NoError(t, input.ResponsePaymentRequest.Validate())
 }
