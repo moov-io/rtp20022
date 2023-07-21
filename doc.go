@@ -2,5 +2,4 @@
 package rtp20022
 
 type Document interface {
-	Validate() error
 }

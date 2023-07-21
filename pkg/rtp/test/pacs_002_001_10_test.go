@@ -140,6 +140,7 @@ func TestWritePacs002ACTC(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))
+	assert.NoError(t, input.MessageStatusReport.Validate())
 }
 
 func TestReadPacs002RJCT(t *testing.T) {
@@ -176,4 +177,5 @@ func TestWritePacs002RJCT(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, string(expected), fmt.Sprintf("%s%s\n", xml.Header, string(output)))
+	assert.NoError(t, input.MessageStatusReport.Validate())
 }
