@@ -1,6 +1,7 @@
 package rtp_test
 
 import (
+	"cloud.google.com/go/civil"
 	"encoding/xml"
 	"testing"
 	"time"
@@ -11,8 +12,11 @@ import (
 )
 
 func TestISODateFormat(t *testing.T) {
-	loc, _ := time.LoadLocation("America/New_York")
-	when := time.Date(2019, time.March, 21, 0, 0, 0, 0, loc)
+	when := civil.Date{
+		Year:  2019,
+		Month: time.March,
+		Day:   21,
+	}
 
 	require.Equal(t, rtp.ISODate(when), rtp.UnmarshalISODate("2019-03-21"))
 
@@ -27,7 +31,7 @@ func TestISODateFormat(t *testing.T) {
 	var read rtp.ISODate
 	err = xml.Unmarshal([]byte("<ISODate>2019-03-21</ISODate>"), &read)
 	require.NoError(t, err)
-	require.True(t, when.Equal(time.Time(read)))
+	require.True(t, when == (civil.Date)(read))
 }
 
 func TestISODateTimeFormat(t *testing.T) {

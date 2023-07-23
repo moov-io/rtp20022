@@ -2,10 +2,11 @@ package rtp
 
 import (
 	"bytes"
+	"cloud.google.com/go/civil"
 	"time"
 )
 
-type ISODate time.Time
+type ISODate civil.Date
 
 func UnmarshalISODate(text string) ISODate {
 	dateTime := ISODate{}
@@ -109,14 +110,22 @@ func (t ISOTime) Validate() error {
 	return err
 }
 
-type xsdDate time.Time
+type xsdDate civil.Date
 
 func (t *xsdDate) UnmarshalText(text []byte) error {
-	return _unmarshalTime(text, (*time.Time)(t), "2006-01-02")
+	s := string(bytes.TrimSpace(text))
+	d := (*civil.Date)(t)
+	var err error
+	*d, err = civil.ParseDate(s)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func (t xsdDate) MarshalText() ([]byte, error) {
-	return _marshalTime((time.Time)(t), "2006-01-02")
+	d := (civil.Date)(t)
+	return d.MarshalText()
 }
 
 func _unmarshalTime(text []byte, t *time.Time, format string) (err error) {
