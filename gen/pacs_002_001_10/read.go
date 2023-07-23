@@ -1,8 +1,7 @@
 package pacs_002_001_10
 
 import (
-	"time"
-
+	"cloud.google.com/go/civil"
 	"github.com/moov-io/base/log"
 )
 
@@ -58,11 +57,11 @@ func (d DocumentTCH) IntrBkSttlmAmt() float64 {
 	return 0.0
 }
 
-func (d DocumentTCH) IntrBkSttlmDt() time.Time {
+func (d DocumentTCH) IntrBkSttlmDt() civil.Date {
 	if d.FIToFIPmtStsRpt.TxInfAndSts.OrgnlTxRef != nil {
 		if d.FIToFIPmtStsRpt.TxInfAndSts.OrgnlTxRef.IntrBkSttlmDt != nil {
-			return time.Time(*d.FIToFIPmtStsRpt.TxInfAndSts.OrgnlTxRef.IntrBkSttlmDt)
+			return civil.Date(*d.FIToFIPmtStsRpt.TxInfAndSts.OrgnlTxRef.IntrBkSttlmDt)
 		}
 	}
-	return time.Time{}
+	return civil.Date{}
 }
