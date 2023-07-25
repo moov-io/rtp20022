@@ -55,7 +55,7 @@ func TestReadAdmn001(t *testing.T) {
 		Space: "urn:tch",
 		Local: "Message",
 	}
-	expected.AppHdr.CreDt = rtp.ISONormalisedDateTime(time.Date(1, time.January, 1, 0, 0, 0, 0, rtp.Eastern()))
+	expected.AppHdr.CreDt = rtp.ISODateTime(time.Date(1, time.January, 1, 0, 0, 0, 0, rtp.Eastern()))
 	expected.SignOnRequest = admn001Constant
 	expected.SignOnRequest.XMLName = xml.Name{
 		Space: "urn:tch",
