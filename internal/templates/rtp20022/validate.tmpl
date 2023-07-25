@@ -88,7 +88,6 @@ import (
 	{{ else if eq .GoName "ISODate" }}
 	{{ else if eq .GoName "ISODateTime" }}
 	{{ else if eq .GoName "ISONormalisedDateTime" }}
-	{{ else if eq .GoName "ISOTime" }}
 	{{ else if eq .GoName "Max20000Text" }}
 	{{ else }}
 		func (v {{ .GoName }}) Validate() error {
