@@ -64,14 +64,14 @@ func (v BranchData2BAHTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) er
 }
 
 type BusinessApplicationHeaderV01 struct {
-	Fr        Party9ChoiceBAH           `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Fr"`
-	To        Party9ChoiceBAH           `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 To"`
-	BizMsgIdr Max35Text                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizMsgIdr"`
-	MsgDefIdr OrigMsgName               `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 MsgDefIdr"`
-	BizSvc    *Max35Text                `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizSvc,omitempty"`
-	CreDt     rtp.ISONormalisedDateTime `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CreDt"`
-	CpyDplct  *CopyDuplicate1Code       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CpyDplct,omitempty"`
-	Sgntr     *Sgntr                    `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Sgntr,omitempty"`
+	Fr        Party9ChoiceBAH     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Fr"`
+	To        Party9ChoiceBAH     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 To"`
+	BizMsgIdr Max35Text           `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizMsgIdr"`
+	MsgDefIdr OrigMsgName         `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 MsgDefIdr"`
+	BizSvc    *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizSvc,omitempty"`
+	CreDt     rtp.ISODateTime     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CreDt"`
+	CpyDplct  *CopyDuplicate1Code `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CpyDplct,omitempty"`
+	Sgntr     *Sgntr              `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Sgntr,omitempty"`
 }
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
@@ -90,14 +90,14 @@ func (v BusinessApplicationHeaderV01) MarshalXML(e *xml.Encoder, start xml.Start
 }
 
 type BusinessApplicationHeaderV01TCH struct {
-	Fr        Party9ChoiceBAHTCH        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Fr"`
-	To        Party9ChoiceBAHTCH        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 To"`
-	BizMsgIdr Max35TextTCH              `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizMsgIdr"`
-	MsgDefIdr OrigMsgName               `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 MsgDefIdr"`
-	BizSvc    *Max35Text                `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizSvc,omitempty"`
-	CreDt     rtp.ISONormalisedDateTime `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CreDt"`
-	CpyDplct  *CopyDuplicate1Code       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CpyDplct,omitempty"`
-	Sgntr     *Sgntr                    `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Sgntr,omitempty"`
+	Fr        Party9ChoiceBAHTCH  `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Fr"`
+	To        Party9ChoiceBAHTCH  `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 To"`
+	BizMsgIdr Max35TextTCH        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizMsgIdr"`
+	MsgDefIdr OrigMsgName         `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 MsgDefIdr"`
+	BizSvc    *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 BizSvc,omitempty"`
+	CreDt     rtp.ISODateTime     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CreDt"`
+	CpyDplct  *CopyDuplicate1Code `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 CpyDplct,omitempty"`
+	Sgntr     *Sgntr              `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 Sgntr,omitempty"`
 }
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
