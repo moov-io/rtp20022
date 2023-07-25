@@ -139,8 +139,11 @@ import (
 			{{- range .Elements }}
 				{{- $elemGoForeignModule := .GoForeignModule -}}
 				{{- $elemGoTypeName := .GoTypeName -}}
-				{{- if or (eq .GoTypeName "ISODate") (eq .GoTypeName "ISODateTime") (eq .GoTypeName "ISONormalisedDateTime") (eq .GoTypeName "ISOTime") -}}
+				{{- if or (eq .GoTypeName "ISODate") (eq .GoTypeName "ISODateTime") -}}
 					{{- $elemGoForeignModule = "rtp." -}}
+				{{- else if eq .GoTypeName "ISONormalisedDateTime" -}}
+					{{- $elemGoForeignModule = "rtp." -}}
+					{{- $elemGoTypeName = "ISODateTime" -}}
 				{{- else if eq .GoTypeName "Max20000Text" -}}
 					{{- $elemGoForeignModule = "rtp." -}}
 					{{- $elemGoTypeName = "Cdata" -}}
@@ -195,7 +198,6 @@ import (
 	{{ else if eq .GoName "ISODate" }}
 	{{ else if eq .GoName "ISODateTime" }}
 	{{ else if eq .GoName "ISONormalisedDateTime" }}
-	{{ else if eq .GoName "ISOTime" }}
 	{{ else if eq .GoName "Max20000Text" }}
 	{{ else }}
 		type {{ .GoName }} {{ .GoTypeName }}

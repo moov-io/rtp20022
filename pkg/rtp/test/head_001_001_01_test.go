@@ -37,7 +37,7 @@ var head001Constant = head_001_001_01.BusinessApplicationHeaderV01TCH{
 	},
 	BizMsgIdr: "B20221221990000001T1HOTS01101645161",
 	MsgDefIdr: head_001_001_01.OrigMsgNameAdmn00200101,
-	CreDt:     rtp.UnmarshalISONormalisedDateTime("2022-12-21T15:31:19"),
+	CreDt:     rtp.UnmarshalISODateTime("2022-12-21T15:31:19"),
 	CpyDplct:  rtp.Ptr(head_001_001_01.CopyDuplicate1CodeDupl),
 }
 var head001Signature = &head_001_001_01.Sgntr{

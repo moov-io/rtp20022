@@ -88,7 +88,7 @@ func TestReadAdmn004ACTC(t *testing.T) {
 		Space: "urn:tch",
 		Local: "Message",
 	}
-	expected.AppHdr.CreDt = rtp.ISONormalisedDateTime(time.Date(1, time.January, 1, 0, 0, 0, 0, rtp.Eastern()))
+	expected.AppHdr.CreDt = rtp.ISODateTime(time.Date(1, time.January, 1, 0, 0, 0, 0, rtp.Eastern()))
 	expected.SignOffResponse = admn004ACTCConstant
 	expected.SignOffResponse.XMLName = xml.Name{
 		Space: "urn:tch",
@@ -125,7 +125,7 @@ func TestReadAdmn004RJCT(t *testing.T) {
 		Space: "urn:tch",
 		Local: "Message",
 	}
-	expected.AppHdr.CreDt = rtp.ISONormalisedDateTime(time.Date(1, time.January, 1, 0, 0, 0, 0, rtp.Eastern()))
+	expected.AppHdr.CreDt = rtp.ISODateTime(time.Date(1, time.January, 1, 0, 0, 0, 0, rtp.Eastern()))
 	expected.SignOffResponse = admn004RJCTConstant
 	expected.SignOffResponse.XMLName = xml.Name{
 		Space: "urn:tch",

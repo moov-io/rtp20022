@@ -2,15 +2,16 @@ package rtp
 
 import (
 	"bytes"
+	"cloud.google.com/go/civil"
 	"time"
 )
 
-type ISODate time.Time
+type ISODate civil.Date
 
 func UnmarshalISODate(text string) ISODate {
-	dateTime := ISODate{}
-	_ = dateTime.UnmarshalText([]byte(text))
-	return dateTime
+	date := ISODate{}
+	_ = date.UnmarshalText([]byte(text))
+	return date
 }
 
 func MarshalISODate(t ISODate) string {
@@ -57,66 +58,21 @@ func (t ISODateTime) Validate() error {
 	return err
 }
 
-type ISONormalisedDateTime time.Time
-
-func UnmarshalISONormalisedDateTime(text string) ISONormalisedDateTime {
-	dateTime := ISONormalisedDateTime{}
-	_ = dateTime.UnmarshalText([]byte(text))
-	return dateTime
-}
-
-func MarshalISONormalisedDateTime(t ISONormalisedDateTime) string {
-	txt, _ := t.MarshalText()
-	return string(txt)
-}
-
-func (t *ISONormalisedDateTime) UnmarshalText(text []byte) error {
-	return (*xsdDateTime)(t).UnmarshalText(text)
-}
-
-func (t ISONormalisedDateTime) MarshalText() ([]byte, error) {
-	return xsdDateTime(t).MarshalText()
-}
-
-func (t ISONormalisedDateTime) Validate() error {
-	_, err := t.MarshalText()
-	return err
-}
-
-type ISOTime time.Time
-
-func UnmarshalISOTime(text string) ISOTime {
-	dateTime := ISOTime{}
-	_ = dateTime.UnmarshalText([]byte(text))
-	return dateTime
-}
-
-func MarshalISOTime(t ISOTime) string {
-	txt, _ := t.MarshalText()
-	return string(txt)
-}
-
-func (t *ISOTime) UnmarshalText(text []byte) error {
-	return (*xsdTime)(t).UnmarshalText(text)
-}
-
-func (t ISOTime) MarshalText() ([]byte, error) {
-	return xsdTime(t).MarshalText()
-}
-
-func (t ISOTime) Validate() error {
-	_, err := t.MarshalText()
-	return err
-}
-
-type xsdDate time.Time
+type xsdDate civil.Date
 
 func (t *xsdDate) UnmarshalText(text []byte) error {
-	return _unmarshalTime(text, (*time.Time)(t), "2006-01-02")
+	s := string(bytes.TrimSpace(text))
+	d := (*civil.Date)(t)
+	var err error
+	*d, err = civil.ParseDate(s)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func (t xsdDate) MarshalText() ([]byte, error) {
-	return _marshalTime((time.Time)(t), "2006-01-02")
+	return (civil.Date)(t).MarshalText()
 }
 
 func _unmarshalTime(text []byte, t *time.Time, format string) (err error) {
@@ -140,14 +96,4 @@ func (t *xsdDateTime) UnmarshalText(text []byte) error {
 
 func (t xsdDateTime) MarshalText() ([]byte, error) {
 	return _marshalTime((time.Time)(t), "2006-01-02T15:04:05")
-}
-
-type xsdTime time.Time
-
-func (t *xsdTime) UnmarshalText(text []byte) error {
-	return _unmarshalTime(text, (*time.Time)(t), "15:04:05.999999999")
-}
-
-func (t xsdTime) MarshalText() ([]byte, error) {
-	return _marshalTime((time.Time)(t), "15:04:05.999999999")
 }
