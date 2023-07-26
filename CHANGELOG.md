@@ -1,4 +1,4 @@
-## v0.9.0 (Released 2023-07-25)
+## v0.9.0 v0.9.1 (Released 2023-07-25)
 
 - feat: convert ISODate types underlying type to civil.Date
 - feat: Remove unnecessary types ISOTime and ISONormalisedDateTime
