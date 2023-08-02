@@ -5,6 +5,27 @@ import (
 	"fmt"
 )
 
+// UnmarshalXML is a custom unmarshaller that allows us to capture the xmlns attributes
+func (v *Message) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+	for _, attr := range start.Attr {
+		if (attr.Name.Space == "" && attr.Name.Local == "xmlns") || (attr.Name.Space == "xmlns") {
+			newAttr := xml.Attr{}
+			newAttr.Value = attr.Value
+			newAttr.Name = xml.Name{}
+			if attr.Name.Space == "" {
+				newAttr.Name.Local = attr.Name.Local
+			} else {
+				newAttr.Name.Local = fmt.Sprintf("%s:%s", attr.Name.Space, attr.Name.Local)
+			}
+			v.Xmlns = append(v.Xmlns, newAttr)
+		}
+	}
+
+	// Go on with unmarshalling.
+	type vv Message
+	return d.DecodeElement((*vv)(v), &start)
+}
+
 func newMessage() *Message {
 	message := &Message{}
 	message.Xmlns = append(message.Xmlns, xml.Attr{

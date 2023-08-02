@@ -4,7 +4,6 @@ package messages
 
 import (
 	"encoding/xml"
-	"fmt"
 
 	"github.com/moov-io/rtp20022/gen/acmt_022_001_02"
 	"github.com/moov-io/rtp20022/gen/admi_002_001_01"
@@ -88,27 +87,6 @@ var NamespacePrefixMap = map[string]string{
 	"urn:iso:std:iso:20022:tech:xsd:pain.013.001.07": "pr",
 	"urn:iso:std:iso:20022:tech:xsd:pain.014.001.07": "rp",
 	"urn:iso:std:iso:20022:tech:xsd:remt.001.001.04": "ar",
-}
-
-// UnmarshalXML is a custom unmarshaller that allows us to capture the xmlns attributes
-func (v *Message) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-	for _, attr := range start.Attr {
-		if (attr.Name.Space == "" && attr.Name.Local == "xmlns") || (attr.Name.Space == "xmlns") {
-			newAttr := xml.Attr{}
-			newAttr.Value = attr.Value
-			newAttr.Name = xml.Name{}
-			if attr.Name.Space == "" {
-				newAttr.Name.Local = attr.Name.Local
-			} else {
-				newAttr.Name.Local = fmt.Sprintf("%s:%s", attr.Name.Space, attr.Name.Local)
-			}
-			v.Xmlns = append(v.Xmlns, newAttr)
-		}
-	}
-
-	// Go on with unmarshalling.
-	type vv Message
-	return d.DecodeElement((*vv)(v), &start)
 }
 
 func (v *Message) Body() interface{} {
