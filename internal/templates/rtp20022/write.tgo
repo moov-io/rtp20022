@@ -7,8 +7,6 @@ package {{ .GoPackageName }}
 
 import (
 	"fmt"
-	"github.com/moov-io/base"
-	"github.com/moov-io/rtp20022/gen/xmldsig"
 	"github.com/moov-io/rtp20022/pkg/rtp"
 	{{- range .GoImportsNeeded }}
 		"{{ . }}"
