@@ -35,31 +35,6 @@ import (
 		{{- end }}
 	}
 
-	{{ $elemLen := len .Elements }}{{ if and (gt $elemLen 0) (ne $nsPrefix "") }}
-		// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-		func (v {{ .GoName }}) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-			{{- if .Attributes }}
-				var attr = []xml.Attr{}
-				{{- range .Attributes }}
-				{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
-					attr = append(attr, xml.Attr{Name: xml.Name{Local: "{{ .XmlName }}"}, Value: {{ if eq .Use "optional" }}*{{ end }}v.{{ .GoName }}},)
-				{{ if eq .Use "optional" }} } {{ end }}
-				{{- end }}
-				e.EncodeToken(xml.StartElement{
-					Name: xml.Name{Local: start.Name.Local},
-					Attr: attr,
-				})
-			{{- else }}
-				e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-			{{- end }}
-			{{- range .Elements }}
-				e.EncodeElement(v.{{ .GoFieldName }}, xml.StartElement{Name: xml.Name{Local: "{{ $nsPrefix }}:{{ .Name }}"}})
-			{{- end }}
-			e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-			return nil
-		}
-	{{ end }}
-
 	{{ if eq .GoName "Message" }}
 		var NamespacePrefixMap = map[string]string{
 			{{- range $allXmlns }}
@@ -68,19 +43,6 @@ import (
 				{{- end }}
 			{{- end }}
 		}
-
-		{{- range $allXmlns }}
-			{{- if and (ne .Prefix "xs") (ne .Prefix "gefeg") (ne .Prefix "head") }}
-				{{- $l := len .Uri }}
-				{{- $l1 := len (slice (printf "%*s" $l "") 15) }}
-				{{- $l2 := len (slice (printf "%*s" $l "") 11) }}
-				{{- $l3 := len (slice (printf "%*s" $l "") 10) }}
-				{{- $l4 := len (slice (printf "%*s" $l "") 7) }}
-				func New{{ title (slice .Uri $l1 $l2) }}{{ slice .Uri $l3 $l4 }}Message() *Message {
-					return newMessageForNS("{{ .Uri }}")
-				}
-			{{ end }}
-		{{- end }}
 
 		// UnmarshalXML is a custom unmarshaller that allows us to capture the xmlns attributes
 		func (v *{{ .GoName }}) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -159,31 +121,6 @@ import (
 				{{- end }}
 			{{- end }}
 		}
-
-		{{ $elemLen := len .Elements }}{{ if and (gt $elemLen 0) (ne $nsPrefix "") }}
-			// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-			func (v {{ .GoName }}) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-				{{- if .Attributes }}
-					var attr = []xml.Attr{}
-					{{- range .Attributes }}
-					{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
-						attr = append(attr, xml.Attr{Name: xml.Name{Local: "{{ .XmlName }}"}, Value: {{ if eq .Use "optional" }}*{{ end }}v.{{ .GoName }}},)
-					{{ if eq .Use "optional" }} } {{ end }}
-					{{- end }}
-					e.EncodeToken(xml.StartElement{
-						Name: xml.Name{Local: start.Name.Local},
-						Attr: attr,
-					})
-				{{- else }}
-					e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-				{{- end }}
-				{{- range .Elements }}
-					e.EncodeElement(v.{{ .GoFieldName }}, xml.StartElement{Name: xml.Name{Local: "{{ $nsPrefix }}:{{ .Name }}"}})
-				{{- end }}
-				e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-				return nil
-			}
-		{{ end }}
 	{{ end }}
 {{ end }}
 
@@ -212,32 +149,16 @@ import (
 {{ define "ActiveCurrencyAndAmountSimpleType" }}
 
 	type ActiveCurrencyAndAmountSimpleType rtp.Amount
-
-	func (a ActiveCurrencyAndAmountSimpleType) MarshalText() ([]byte, error) {
-		return rtp.Amount(a).MarshalText()
-	}
 {{ end }}
 
 {{ define "ActiveOrHistoricCurrencyAndAmountSimpleType" }}
 
 	type ActiveOrHistoricCurrencyAndAmountSimpleType rtp.Amount
-
-	func (a ActiveOrHistoricCurrencyAndAmountSimpleType) MarshalText() ([]byte, error) {
-		return rtp.Amount(a).MarshalText()
-	}
 {{ end }}
 
 {{ define "SignatureEnvelope" }}
 
 	type Sgntr struct {
 		Signature *xmldsig.Signature `xml:"http://www.w3.org/2000/09/xmldsig# Signature"`
-	}
-
-	// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-	func (v Sgntr) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-		e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-		e.EncodeElement(v.Signature, xml.StartElement{Name: xml.Name{Local: "ds:Signature"}})
-		e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-		return nil
 	}
 {{ end }}

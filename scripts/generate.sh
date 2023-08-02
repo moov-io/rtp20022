@@ -13,6 +13,7 @@ moovio_xsd2go convert \
    github.com/moov-io/rtp20022 \
    gen \
    --template-name=internal/templates/rtp20022/model.tgo \
+   --template-name=internal/templates/rtp20022/write.tgo \
    --template-name=internal/templates/rtp20022/validate.tgo \
    --xmlns-override="urn:iso:std:ma:20022:tech:xsd:admn.007.001.01=admn_007_001_01" \
    --xmlns-override="urn:iso:std:ma:20022:tech:xsd:admn.008.001.01=admn_008_001_01" \

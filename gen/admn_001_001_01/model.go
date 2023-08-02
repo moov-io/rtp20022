@@ -14,24 +14,8 @@ type BranchAndFinancialInstitutionIdentification4ADMN struct {
 	FinInstnId FinancialInstitutionIdentification7ADMN `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 FinInstnId"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v BranchAndFinancialInstitutionIdentification4ADMN) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.FinInstnId, xml.StartElement{Name: xml.Name{Local: "sr:FinInstnId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type ClearingSystemMemberIdentification2ADMN struct {
 	MmbId Min11Max11Text `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 MmbId"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v ClearingSystemMemberIdentification2ADMN) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.MmbId, xml.StartElement{Name: xml.Name{Local: "sr:MmbId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type DocumentTCH struct {
@@ -39,24 +23,8 @@ type DocumentTCH struct {
 	AdmnSignOnReq SignOnRequestTCH `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 AdmnSignOnReq"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DocumentTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.AdmnSignOnReq, xml.StartElement{Name: xml.Name{Local: "sr:AdmnSignOnReq"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type FinancialInstitutionIdentification7ADMN struct {
 	ClrSysMmbId ClearingSystemMemberIdentification2ADMN `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 ClrSysMmbId"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v FinancialInstitutionIdentification7ADMN) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.ClrSysMmbId, xml.StartElement{Name: xml.Name{Local: "sr:ClrSysMmbId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type GrpHdr struct {
@@ -64,27 +32,9 @@ type GrpHdr struct {
 	CreDtTm rtp.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 CreDtTm"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v GrpHdr) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.MsgId, xml.StartElement{Name: xml.Name{Local: "sr:MsgId"}})
-	e.EncodeElement(v.CreDtTm, xml.StartElement{Name: xml.Name{Local: "sr:CreDtTm"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type GrpHdrTCH struct {
 	MsgId   Max35TextTCH    `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 MsgId"`
 	CreDtTm rtp.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 CreDtTm"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v GrpHdrTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.MsgId, xml.StartElement{Name: xml.Name{Local: "sr:MsgId"}})
-	e.EncodeElement(v.CreDtTm, xml.StartElement{Name: xml.Name{Local: "sr:CreDtTm"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type SignOnReq struct {
@@ -93,28 +43,9 @@ type SignOnReq struct {
 	InstdAgt BranchAndFinancialInstitutionIdentification4ADMN `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 InstdAgt"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v SignOnReq) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.InstrId, xml.StartElement{Name: xml.Name{Local: "sr:InstrId"}})
-	e.EncodeElement(v.InstgAgt, xml.StartElement{Name: xml.Name{Local: "sr:InstgAgt"}})
-	e.EncodeElement(v.InstdAgt, xml.StartElement{Name: xml.Name{Local: "sr:InstdAgt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type SignOnRequest struct {
 	GrpHdr    GrpHdr    `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 GrpHdr"`
 	SignOnReq SignOnReq `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 SignOnReq"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v SignOnRequest) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.GrpHdr, xml.StartElement{Name: xml.Name{Local: "sr:GrpHdr"}})
-	e.EncodeElement(v.SignOnReq, xml.StartElement{Name: xml.Name{Local: "sr:SignOnReq"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type SignOnRequestTCH struct {
@@ -122,29 +53,10 @@ type SignOnRequestTCH struct {
 	SignOnReq SignOnReqTCH `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 SignOnReq"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v SignOnRequestTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.GrpHdr, xml.StartElement{Name: xml.Name{Local: "sr:GrpHdr"}})
-	e.EncodeElement(v.SignOnReq, xml.StartElement{Name: xml.Name{Local: "sr:SignOnReq"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type SignOnReqTCH struct {
 	InstrId  Max35TextTCH2                                    `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 InstrId"`
 	InstgAgt BranchAndFinancialInstitutionIdentification4ADMN `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 InstgAgt"`
 	InstdAgt BranchAndFinancialInstitutionIdentification4ADMN `xml:"urn:iso:std:iso:20022:tech:xsd:admn.001.001.01 InstdAgt"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v SignOnReqTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.InstrId, xml.StartElement{Name: xml.Name{Local: "sr:InstrId"}})
-	e.EncodeElement(v.InstgAgt, xml.StartElement{Name: xml.Name{Local: "sr:InstgAgt"}})
-	e.EncodeElement(v.InstdAgt, xml.StartElement{Name: xml.Name{Local: "sr:InstdAgt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 // XSD SimpleType declarations

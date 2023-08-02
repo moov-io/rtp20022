@@ -15,27 +15,9 @@ type AvailabilityParticipant struct {
 	PtcptSspd   *ParticipantSuspended `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 PtcptSspd,omitempty"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v AvailabilityParticipant) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.PtcptSgnOff, xml.StartElement{Name: xml.Name{Local: "tu:PtcptSgnOff"}})
-	e.EncodeElement(v.PtcptSspd, xml.StartElement{Name: xml.Name{Local: "tu:PtcptSspd"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type AvailabilityParticipantTCH struct {
 	PtcptSgnOff *ParticipantSignOffTCH   `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 PtcptSgnOff,omitempty"`
 	PtcptSspd   *ParticipantSuspendedTCH `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 PtcptSspd,omitempty"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v AvailabilityParticipantTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.PtcptSgnOff, xml.StartElement{Name: xml.Name{Local: "tu:PtcptSgnOff"}})
-	e.EncodeElement(v.PtcptSspd, xml.StartElement{Name: xml.Name{Local: "tu:PtcptSspd"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type AvailabilityReport struct {
@@ -43,75 +25,25 @@ type AvailabilityReport struct {
 	AvlbtyPtcpt *AvailabilityParticipant `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 AvlbtyPtcpt,omitempty"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v AvailabilityReport) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.Cnnctn, xml.StartElement{Name: xml.Name{Local: "tu:Cnnctn"}})
-	e.EncodeElement(v.AvlbtyPtcpt, xml.StartElement{Name: xml.Name{Local: "tu:AvlbtyPtcpt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type AvailabilityReportTCH struct {
 	Cnnctn      *ConnectionTCH              `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 Cnnctn,omitempty"`
 	AvlbtyPtcpt *AvailabilityParticipantTCH `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 AvlbtyPtcpt,omitempty"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v AvailabilityReportTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.Cnnctn, xml.StartElement{Name: xml.Name{Local: "tu:Cnnctn"}})
-	e.EncodeElement(v.AvlbtyPtcpt, xml.StartElement{Name: xml.Name{Local: "tu:AvlbtyPtcpt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type BranchAndFinancialInstitutionIdentification4ADMN struct {
 	FinInstnId FinancialInstitutionIdentification7ADMN `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 FinInstnId"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v BranchAndFinancialInstitutionIdentification4ADMN) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.FinInstnId, xml.StartElement{Name: xml.Name{Local: "tu:FinInstnId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type ClearingSystemMemberIdentification2ADMN struct {
 	MmbId Min11Max11Text `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 MmbId"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v ClearingSystemMemberIdentification2ADMN) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.MmbId, xml.StartElement{Name: xml.Name{Local: "tu:MmbId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type Connection struct {
 	CnnctnId []Max20AlphaNumericText `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 CnnctnId"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Connection) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.CnnctnId, xml.StartElement{Name: xml.Name{Local: "tu:CnnctnId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type ConnectionTCH struct {
 	CnnctnId []Max20AlphaNumericText `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 CnnctnId"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v ConnectionTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.CnnctnId, xml.StartElement{Name: xml.Name{Local: "tu:CnnctnId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type DatabaseAvailabilityReport struct {
@@ -120,30 +52,10 @@ type DatabaseAvailabilityReport struct {
 	AvlbtyRpt AvailabilityReport    `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 AvlbtyRpt"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DatabaseAvailabilityReport) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.GrpHdr, xml.StartElement{Name: xml.Name{Local: "tu:GrpHdr"}})
-	e.EncodeElement(v.DBRptRspn, xml.StartElement{Name: xml.Name{Local: "tu:DBRptRspn"}})
-	e.EncodeElement(v.AvlbtyRpt, xml.StartElement{Name: xml.Name{Local: "tu:AvlbtyRpt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DatabaseAvailabilityReportTCH struct {
 	GrpHdr    GrpHdr                   `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 GrpHdr"`
 	DBRptRspn DatabaseReportReponseTCH `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 DBRptRspn"`
 	AvlbtyRpt AvailabilityReportTCH    `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 AvlbtyRpt"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DatabaseAvailabilityReportTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.GrpHdr, xml.StartElement{Name: xml.Name{Local: "tu:GrpHdr"}})
-	e.EncodeElement(v.DBRptRspn, xml.StartElement{Name: xml.Name{Local: "tu:DBRptRspn"}})
-	e.EncodeElement(v.AvlbtyRpt, xml.StartElement{Name: xml.Name{Local: "tu:AvlbtyRpt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type DatabaseReportReponse struct {
@@ -154,18 +66,6 @@ type DatabaseReportReponse struct {
 	TxSts        TransactionIndividualStatus3CodeEcho             `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 TxSts"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DatabaseReportReponse) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.OrgnlInstrId, xml.StartElement{Name: xml.Name{Local: "tu:OrgnlInstrId"}})
-	e.EncodeElement(v.RptCd, xml.StartElement{Name: xml.Name{Local: "tu:RptCd"}})
-	e.EncodeElement(v.InstgAgt, xml.StartElement{Name: xml.Name{Local: "tu:InstgAgt"}})
-	e.EncodeElement(v.InstdAgt, xml.StartElement{Name: xml.Name{Local: "tu:InstdAgt"}})
-	e.EncodeElement(v.TxSts, xml.StartElement{Name: xml.Name{Local: "tu:TxSts"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DatabaseReportReponseTCH struct {
 	OrgnlInstrId Max35Text                                        `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 OrgnlInstrId"`
 	RptCd        ReportCodeTCH                                    `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 RptCd"`
@@ -174,41 +74,13 @@ type DatabaseReportReponseTCH struct {
 	TxSts        TransactionIndividualStatus3CodeEcho             `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 TxSts"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DatabaseReportReponseTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.OrgnlInstrId, xml.StartElement{Name: xml.Name{Local: "tu:OrgnlInstrId"}})
-	e.EncodeElement(v.RptCd, xml.StartElement{Name: xml.Name{Local: "tu:RptCd"}})
-	e.EncodeElement(v.InstgAgt, xml.StartElement{Name: xml.Name{Local: "tu:InstgAgt"}})
-	e.EncodeElement(v.InstdAgt, xml.StartElement{Name: xml.Name{Local: "tu:InstdAgt"}})
-	e.EncodeElement(v.TxSts, xml.StartElement{Name: xml.Name{Local: "tu:TxSts"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName     xml.Name
 	DBAvlbtyRpt DatabaseAvailabilityReportTCH `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 DBAvlbtyRpt"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DocumentTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.DBAvlbtyRpt, xml.StartElement{Name: xml.Name{Local: "tu:DBAvlbtyRpt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type FinancialInstitutionIdentification7ADMN struct {
 	ClrSysMmbId ClearingSystemMemberIdentification2ADMN `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 ClrSysMmbId"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v FinancialInstitutionIdentification7ADMN) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.ClrSysMmbId, xml.StartElement{Name: xml.Name{Local: "tu:ClrSysMmbId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type GrpHdr struct {
@@ -216,61 +88,20 @@ type GrpHdr struct {
 	CreDtTm rtp.ISODateTime `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 CreDtTm"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v GrpHdr) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.MsgId, xml.StartElement{Name: xml.Name{Local: "tu:MsgId"}})
-	e.EncodeElement(v.CreDtTm, xml.StartElement{Name: xml.Name{Local: "tu:CreDtTm"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type ParticipantSignOff struct {
 	PtcptId []Min11Max11Text `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 PtcptId"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v ParticipantSignOff) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.PtcptId, xml.StartElement{Name: xml.Name{Local: "tu:PtcptId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type ParticipantSignOffTCH struct {
 	PtcptId []Min11Max11Text `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 PtcptId"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v ParticipantSignOffTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.PtcptId, xml.StartElement{Name: xml.Name{Local: "tu:PtcptId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type ParticipantSuspended struct {
 	PtcptId []Min11Max11Text `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 PtcptId"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v ParticipantSuspended) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.PtcptId, xml.StartElement{Name: xml.Name{Local: "tu:PtcptId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type ParticipantSuspendedTCH struct {
 	PtcptId []Min11Max11Text `xml:"urn:iso:std:ma:20022:tech:xsd:admn.008.001.01 PtcptId"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v ParticipantSuspendedTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.PtcptId, xml.StartElement{Name: xml.Name{Local: "tu:PtcptId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 // XSD SimpleType declarations

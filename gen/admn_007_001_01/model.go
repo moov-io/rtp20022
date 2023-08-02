@@ -14,24 +14,8 @@ type BranchAndFinancialInstitutionIdentification4ADMN struct {
 	FinInstnId FinancialInstitutionIdentification7ADMN `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 FinInstnId"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v BranchAndFinancialInstitutionIdentification4ADMN) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.FinInstnId, xml.StartElement{Name: xml.Name{Local: "ut:FinInstnId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type ClearingSystemMemberIdentification2ADMN struct {
 	MmbId Min11Max11Text `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 MmbId"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v ClearingSystemMemberIdentification2ADMN) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.MmbId, xml.StartElement{Name: xml.Name{Local: "ut:MmbId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type DatabaseReportInformation struct {
@@ -41,17 +25,6 @@ type DatabaseReportInformation struct {
 	InstdAgt BranchAndFinancialInstitutionIdentification4ADMN `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 InstdAgt"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DatabaseReportInformation) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.RptCd, xml.StartElement{Name: xml.Name{Local: "ut:RptCd"}})
-	e.EncodeElement(v.InstrId, xml.StartElement{Name: xml.Name{Local: "ut:InstrId"}})
-	e.EncodeElement(v.InstgAgt, xml.StartElement{Name: xml.Name{Local: "ut:InstgAgt"}})
-	e.EncodeElement(v.InstdAgt, xml.StartElement{Name: xml.Name{Local: "ut:InstdAgt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DatabaseReportInformationTCH struct {
 	RptCd    ReportCodeTCH                                    `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 RptCd"`
 	InstrId  Max35TextTCH2                                    `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 InstrId"`
@@ -59,29 +32,9 @@ type DatabaseReportInformationTCH struct {
 	InstdAgt BranchAndFinancialInstitutionIdentification4ADMN `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 InstdAgt"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DatabaseReportInformationTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.RptCd, xml.StartElement{Name: xml.Name{Local: "ut:RptCd"}})
-	e.EncodeElement(v.InstrId, xml.StartElement{Name: xml.Name{Local: "ut:InstrId"}})
-	e.EncodeElement(v.InstgAgt, xml.StartElement{Name: xml.Name{Local: "ut:InstgAgt"}})
-	e.EncodeElement(v.InstdAgt, xml.StartElement{Name: xml.Name{Local: "ut:InstdAgt"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DatabaseReportRequest struct {
 	GrpHdr   GrpHdr                    `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 GrpHdr"`
 	DBRptInf DatabaseReportInformation `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 DBRptInf"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DatabaseReportRequest) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.GrpHdr, xml.StartElement{Name: xml.Name{Local: "ut:GrpHdr"}})
-	e.EncodeElement(v.DBRptInf, xml.StartElement{Name: xml.Name{Local: "ut:DBRptInf"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type DatabaseReportRequestTCH struct {
@@ -89,38 +42,13 @@ type DatabaseReportRequestTCH struct {
 	DBRptInf DatabaseReportInformationTCH `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 DBRptInf"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DatabaseReportRequestTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.GrpHdr, xml.StartElement{Name: xml.Name{Local: "ut:GrpHdr"}})
-	e.EncodeElement(v.DBRptInf, xml.StartElement{Name: xml.Name{Local: "ut:DBRptInf"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type DocumentTCH struct {
 	XMLName  xml.Name
 	DBRptReq DatabaseReportRequestTCH `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 DBRptReq"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v DocumentTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.DBRptReq, xml.StartElement{Name: xml.Name{Local: "ut:DBRptReq"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type FinancialInstitutionIdentification7ADMN struct {
 	ClrSysMmbId ClearingSystemMemberIdentification2ADMN `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 ClrSysMmbId"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v FinancialInstitutionIdentification7ADMN) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.ClrSysMmbId, xml.StartElement{Name: xml.Name{Local: "ut:ClrSysMmbId"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 type GrpHdr struct {
@@ -128,27 +56,9 @@ type GrpHdr struct {
 	CreDtTm rtp.ISODateTime `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 CreDtTm"`
 }
 
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v GrpHdr) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.MsgId, xml.StartElement{Name: xml.Name{Local: "ut:MsgId"}})
-	e.EncodeElement(v.CreDtTm, xml.StartElement{Name: xml.Name{Local: "ut:CreDtTm"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
-}
-
 type GrpHdrTCH struct {
 	MsgId   Max35TextTCH    `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 MsgId"`
 	CreDtTm rtp.ISODateTime `xml:"urn:iso:std:ma:20022:tech:xsd:admn.007.001.01 CreDtTm"`
-}
-
-// MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v GrpHdrTCH) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
-	e.EncodeElement(v.MsgId, xml.StartElement{Name: xml.Name{Local: "ut:MsgId"}})
-	e.EncodeElement(v.CreDtTm, xml.StartElement{Name: xml.Name{Local: "ut:CreDtTm"}})
-	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
-	return nil
 }
 
 // XSD SimpleType declarations
