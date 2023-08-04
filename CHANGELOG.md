@@ -1,3 +1,9 @@
+## v0.9.2 (Released 2023-08-04)
+
+ADDITIONS
+
+- feat: Generated code improvements (no functional changes)
+
 ## v0.9.0 v0.9.1 (Released 2023-07-25)
 
 - feat: convert ISODate types underlying type to civil.Date
