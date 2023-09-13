@@ -20,6 +20,7 @@ func Eastern() *time.Location {
 	locationSetup.Do(func() {
 		loc, err := time.LoadLocation("America/New_York")
 		if err != nil {
+			//nolint:forbidigo // We want to panic in this case
 			panic(fmt.Sprintf("Unable to load America/New_York from tzdata: %v", err))
 		}
 		eastern = loc
