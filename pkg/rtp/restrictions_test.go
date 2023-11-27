@@ -1,6 +1,8 @@
 package rtp_test
 
 import (
+	"fmt"
+	"sync"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -20,6 +22,24 @@ func TestValidatePattern(t *testing.T) {
 	pattern := `[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))((([0-1][0-9])|(2[0-3]))(([0-5][0-9])){2})[A-Z0-9]{11}.*`
 	require.NoError(t, rtp.ValidatePattern("20230713145322200000057A11712044729", pattern))
 	require.Error(t, rtp.ValidatePattern("20230931145322200000057A11712044729", pattern)) // invalid MMDD
+
+	t.Run("concurrent", func(t *testing.T) {
+		iterations := 1000
+
+		var wg sync.WaitGroup
+		wg.Add(iterations)
+
+		for i := 0; i < iterations; i++ {
+			go func(idx int) {
+				wg.Done()
+
+				patern := fmt.Sprintf("[0-9]{0,%d}", idx/5) // add/get regexes from cache
+				require.NoError(t, rtp.ValidatePattern("4", patern))
+			}(i)
+		}
+
+		wg.Wait()
+	})
 }
 
 func TestValidateEnumeration(t *testing.T) {
