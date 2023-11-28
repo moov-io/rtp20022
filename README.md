@@ -1,10 +1,6 @@
 [![Moov Banner Logo](https://user-images.githubusercontent.com/20115216/104214617-885b3c80-53ec-11eb-8ce0-9fc745fb5bfc.png)](https://github.com/moov-io)
 
 <p align="center">
-  <a href="https://github.com/moov-io/rtp20022/tree/master/docs">Project Documentation</a>
-  ·
-  <a href="https://moov-io.github.io/rtp20022/api/">API Endpoints</a>
-  ·
   <a href="https://slack.moov.io/">Community</a>
   ·
   <a href="https://moov.io/blog/">Blog</a>
@@ -44,7 +40,6 @@ This project offers Go structures which can read and write XML encoded ISO 20022
 
  channel | info
  ------- | -------
-[Project Documentation](https://github.com/moov-io/rtp20022/tree/master/docs) | Our project documentation available online.
 Twitter [@moov](https://twitter.com/moov) | You can follow Moov.io's Twitter feed to get updates on our project(s). You can also tweet us questions or just share blogs or stories.
 [GitHub Issue](https://github.com/moov-io/rtp20022/issues/new) | If you are able to reproduce a problem please open a GitHub Issue under the specific project that caused the error.
 [moov-io slack](https://slack.moov.io/) | Join our slack channel (`#rtp20022`) to have an interactive discussion about the development of the project.
