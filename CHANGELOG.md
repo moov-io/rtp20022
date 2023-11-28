@@ -1,3 +1,14 @@
+## v0.9.3 (Released 2023-11-28)
+
+IMPROVEMENTS
+
+- rtp: cache regexes in memory for reuse
+
+BUILD
+
+- fix(deps): update module cloud.google.com/go to v0.110.10
+- fix(deps): update module github.com/moov-io/base to v0.48.2
+
 ## v0.9.2 (Released 2023-08-04)
 
 ADDITIONS
