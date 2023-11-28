@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"sync"
 	"unicode/utf8"
 
 	"github.com/moov-io/base"
@@ -21,12 +22,28 @@ func AddError(errs *base.ErrorList, err error) {
 	}
 }
 
+var (
+	compiledRegexeLock sync.RWMutex
+	compiledRegexes    = make(map[string]*regexp.Regexp)
+)
+
 func ValidatePattern(value string, regex string) error {
-	pat, err := regexp.Compile(regex)
-	if err != nil {
-		return err
+	compiledRegexeLock.RLock()
+	rr, exists := compiledRegexes[regex]
+	compiledRegexeLock.RUnlock()
+	if !exists {
+		r, err := regexp.Compile(regex)
+		if err != nil {
+			return err
+		}
+
+		compiledRegexeLock.Lock()
+		compiledRegexes[regex] = r
+		compiledRegexeLock.Unlock()
+
+		rr = r
 	}
-	if !pat.MatchString(value) {
+	if !rr.MatchString(value) {
 		return fmt.Errorf("%s fails validation with pattern %s", value, regex)
 	}
 	return nil
