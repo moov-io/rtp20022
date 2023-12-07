@@ -1,3 +1,14 @@
+## v0.9.4 (Released 2023-12-07)
+
+IMPROVEMENTS
+
+- feat: include field names in Validate() errors
+- tests: add pacs.008 invalid check
+
+BUILD
+
+- fix(deps): update module cloud.google.com/go to v0.111.0
+
 ## v0.9.3 (Released 2023-11-28)
 
 IMPROVEMENTS
