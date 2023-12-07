@@ -11,9 +11,10 @@ import (
 
 func (v BranchAndFinancialInstitutionIdentification5BAH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.FinInstnId.Validate())
+	baseName := "BranchAndFinancialInstitutionIdentification5BAH"
+	rtp.AddError(&errs, baseName+".FinInstnId", v.FinInstnId.Validate())
 	if v.BrnchId != nil {
-		rtp.AddError(&errs, v.BrnchId.Validate())
+		rtp.AddError(&errs, baseName+".BrnchId", v.BrnchId.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -23,9 +24,10 @@ func (v BranchAndFinancialInstitutionIdentification5BAH) Validate() error {
 
 func (v BranchAndFinancialInstitutionIdentification5BAHTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.FinInstnId.Validate())
+	baseName := "BranchAndFinancialInstitutionIdentification5BAHTCH"
+	rtp.AddError(&errs, baseName+".FinInstnId", v.FinInstnId.Validate())
 	if v.BrnchId != nil {
-		rtp.AddError(&errs, v.BrnchId.Validate())
+		rtp.AddError(&errs, baseName+".BrnchId", v.BrnchId.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -35,7 +37,8 @@ func (v BranchAndFinancialInstitutionIdentification5BAHTCH) Validate() error {
 
 func (v BranchData2BAH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Id.Validate())
+	baseName := "BranchData2BAH"
+	rtp.AddError(&errs, baseName+".Id", v.Id.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -44,7 +47,8 @@ func (v BranchData2BAH) Validate() error {
 
 func (v BranchData2BAHTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Id.Validate())
+	baseName := "BranchData2BAHTCH"
+	rtp.AddError(&errs, baseName+".Id", v.Id.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -53,16 +57,17 @@ func (v BranchData2BAHTCH) Validate() error {
 
 func (v BusinessApplicationHeaderV01) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Fr.Validate())
-	rtp.AddError(&errs, v.To.Validate())
-	rtp.AddError(&errs, v.BizMsgIdr.Validate())
-	rtp.AddError(&errs, v.MsgDefIdr.Validate())
+	baseName := "BusinessApplicationHeaderV01"
+	rtp.AddError(&errs, baseName+".Fr", v.Fr.Validate())
+	rtp.AddError(&errs, baseName+".To", v.To.Validate())
+	rtp.AddError(&errs, baseName+".BizMsgIdr", v.BizMsgIdr.Validate())
+	rtp.AddError(&errs, baseName+".MsgDefIdr", v.MsgDefIdr.Validate())
 	if v.BizSvc != nil {
-		rtp.AddError(&errs, v.BizSvc.Validate())
+		rtp.AddError(&errs, baseName+".BizSvc", v.BizSvc.Validate())
 	}
-	rtp.AddError(&errs, v.CreDt.Validate())
+	rtp.AddError(&errs, baseName+".CreDt", v.CreDt.Validate())
 	if v.CpyDplct != nil {
-		rtp.AddError(&errs, v.CpyDplct.Validate())
+		rtp.AddError(&errs, baseName+".CpyDplct", v.CpyDplct.Validate())
 	}
 	if v.Sgntr != nil {
 	}
@@ -74,16 +79,17 @@ func (v BusinessApplicationHeaderV01) Validate() error {
 
 func (v BusinessApplicationHeaderV01TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Fr.Validate())
-	rtp.AddError(&errs, v.To.Validate())
-	rtp.AddError(&errs, v.BizMsgIdr.Validate())
-	rtp.AddError(&errs, v.MsgDefIdr.Validate())
+	baseName := "BusinessApplicationHeaderV01TCH"
+	rtp.AddError(&errs, baseName+".Fr", v.Fr.Validate())
+	rtp.AddError(&errs, baseName+".To", v.To.Validate())
+	rtp.AddError(&errs, baseName+".BizMsgIdr", v.BizMsgIdr.Validate())
+	rtp.AddError(&errs, baseName+".MsgDefIdr", v.MsgDefIdr.Validate())
 	if v.BizSvc != nil {
-		rtp.AddError(&errs, v.BizSvc.Validate())
+		rtp.AddError(&errs, baseName+".BizSvc", v.BizSvc.Validate())
 	}
-	rtp.AddError(&errs, v.CreDt.Validate())
+	rtp.AddError(&errs, baseName+".CreDt", v.CreDt.Validate())
 	if v.CpyDplct != nil {
-		rtp.AddError(&errs, v.CpyDplct.Validate())
+		rtp.AddError(&errs, baseName+".CpyDplct", v.CpyDplct.Validate())
 	}
 	if v.Sgntr != nil {
 	}
@@ -95,7 +101,8 @@ func (v BusinessApplicationHeaderV01TCH) Validate() error {
 
 func (v ClearingSystemMemberIdentification2ADMN) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.MmbId.Validate())
+	baseName := "ClearingSystemMemberIdentification2ADMN"
+	rtp.AddError(&errs, baseName+".MmbId", v.MmbId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -104,7 +111,8 @@ func (v ClearingSystemMemberIdentification2ADMN) Validate() error {
 
 func (v FinancialInstitutionIdentification8BAH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.ClrSysMmbId.Validate())
+	baseName := "FinancialInstitutionIdentification8BAH"
+	rtp.AddError(&errs, baseName+".ClrSysMmbId", v.ClrSysMmbId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -113,8 +121,9 @@ func (v FinancialInstitutionIdentification8BAH) Validate() error {
 
 func (v Party9ChoiceBAH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "Party9ChoiceBAH"
 	if v.FIId != nil {
-		rtp.AddError(&errs, v.FIId.Validate())
+		rtp.AddError(&errs, baseName+".FIId", v.FIId.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -124,8 +133,9 @@ func (v Party9ChoiceBAH) Validate() error {
 
 func (v Party9ChoiceBAHTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "Party9ChoiceBAHTCH"
 	if v.FIId != nil {
-		rtp.AddError(&errs, v.FIId.Validate())
+		rtp.AddError(&errs, baseName+".FIId", v.FIId.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -136,52 +146,54 @@ func (v Party9ChoiceBAHTCH) Validate() error {
 // XSD SimpleType validations
 
 func (v CopyDuplicate1Code) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateEnumeration(string(v), "COPY", "DUPL"))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateEnumeration(string(v), "COPY", "DUPL"); err != nil {
+		return err
 	}
-	return errs
+	return nil
 }
 
 func (v Max35Text) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Max35TextTCH) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidatePattern(string(v), `B[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*`))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidatePattern(string(v), `B[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*`); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Min11Max11Text) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 11))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 11))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateMinLength(string(v), 11); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMaxLength(string(v), 11); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v OrigMsgName) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateEnumeration(string(v), "acmt.022.001.02", "admi.002.001.01", "admi.004.001.02", "admn.001.001.01", "admn.002.001.01", "admn.003.001.01", "admn.004.001.01", "admn.005.001.01", "admn.006.001.01", "admn.007.001.01", "admn.008.001.01", "camt.026.001.07", "camt.028.001.09", "camt.029.001.09", "camt.035.001.05", "camt.056.001.08", "pacs.002.001.10", "pacs.008.001.08", "pacs.009.001.08", "pacs.028.001.03", "pain.013.001.07", "pain.014.001.07", "remt.001.001.04"))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateEnumeration(string(v), "acmt.022.001.02", "admi.002.001.01", "admi.004.001.02", "admn.001.001.01", "admn.002.001.01", "admn.003.001.01", "admn.004.001.01", "admn.005.001.01", "admn.006.001.01", "admn.007.001.01", "admn.008.001.01", "camt.026.001.07", "camt.028.001.09", "camt.029.001.09", "camt.035.001.05", "camt.056.001.08", "pacs.002.001.10", "pacs.008.001.08", "pacs.009.001.08", "pacs.028.001.03", "pain.013.001.07", "pain.014.001.07", "remt.001.001.04"); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }

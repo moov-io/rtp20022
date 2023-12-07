@@ -18,20 +18,23 @@ import (
 {{ range .ExportableElements }}
 	func (v {{ .GoName }}) Validate() error {
 		var errs base.ErrorList = base.ErrorList{}
+                {{- if or (gt (len .Attributes) 0) (gt (len .Elements) 0) }}
+                baseName := "{{ .GoName }}"
+                {{- end }}
 		{{- range .Attributes }}
 			{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
-				rtp.AddError(&errs, v.{{ .GoName }}.Validate())
+				rtp.AddError(&errs, baseName+".{{ .GoName }}", v.{{ .GoName }}.Validate())
 			{{ if eq .Use "optional" }} } {{ end }}
-		{{- end }}
+                {{- end }}
 		{{- range .Elements }}
 			{{ if eq .MinOccurs "0" }}if v.{{ .GoName }} != nil { {{ end }}
 				{{- if eq .GoTypeName "SignatureEnvelope" -}}
 				{{- else if .Array -}}
 					for indx := range v.{{ .GoFieldName }} {
-						rtp.AddError(&errs, v.{{ .GoFieldName }}[indx].Validate())
+						rtp.AddError(&errs, baseName+".{{ .GoName }}", v.{{ .GoFieldName }}[indx].Validate())
 					}
 				{{- else -}}
-					rtp.AddError(&errs, v.{{ .GoFieldName }}.Validate())
+					rtp.AddError(&errs, baseName+".{{ .GoName }}", v.{{ .GoFieldName }}.Validate())
 				{{- end -}}
 			{{ if eq .MinOccurs "0" }} } {{ end }}
 		{{- end }}
@@ -53,9 +56,12 @@ import (
 	{{ else }}
 		func (v {{ .GoName }}) Validate() error {
 			var errs base.ErrorList = base.ErrorList{}
+                        {{- if or (gt (len .Attributes) 0) (gt (len .Elements) 0) }}
+                        baseName := "{{ .GoName }}"
+                        {{- end }}
 			{{- range .Attributes }}
 				{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
-					rtp.AddError(&errs, v.{{ .GoName }}.Validate())
+					rtp.AddError(&errs, baseName+".{{ .GoName }}", v.{{ .GoName }}.Validate())
 				{{ if eq .Use "optional" }} } {{ end }}
 			{{- end }}
 			{{- range .Elements }}
@@ -63,10 +69,10 @@ import (
 					{{- if eq .GoTypeName "SignatureEnvelope" -}}
 					{{- else if .Array -}}
 						for indx := range v.{{ .GoFieldName }} {
-							rtp.AddError(&errs, v.{{ .GoFieldName }}[indx].Validate())
+							rtp.AddError(&errs, baseName+".{{ .GoName }}", v.{{ .GoFieldName }}[indx].Validate())
 						}
 					{{- else -}}
-						rtp.AddError(&errs, v.{{ .GoFieldName }}.Validate())
+						rtp.AddError(&errs, baseName+".{{ .GoName }}", v.{{ .GoFieldName }}.Validate())
 					{{- end -}}
 				{{ if eq .MinOccurs "0" }} } {{ end }}
 			{{- end }}
@@ -90,48 +96,62 @@ import (
 	{{ else if eq .GoName "Max20000Text" }}
 	{{ else }}
 		func (v {{ .GoName }}) Validate() error {
-			var errs base.ErrorList = base.ErrorList{}
 			{{- if .Restriction.Pattern }}
-				rtp.AddError(&errs, rtp.ValidatePattern(string(v), `{{ .Restriction.Pattern.Value }}`))
+				if err := rtp.ValidatePattern(string(v), `{{ .Restriction.Pattern.Value }}`); err != nil {
+                                	return err
+                                }
 			{{- end }}
-
 			{{- if .Restriction.Enums }}
-				rtp.AddError(&errs, rtp.ValidateEnumeration(string(v), {{ range .Restriction.Enums }}"{{ .Value }}", {{ end }}))
+				if err := rtp.ValidateEnumeration(string(v), {{ range .Restriction.Enums }}"{{ .Value }}", {{ end }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
-
 			{{- if .Restriction.MinInclusive }}
-				rtp.AddError(&errs, rtp.ValidateMinInclusive({{ .GoTypeName }}(v), {{ .Restriction.MinInclusive.Value }}))
+				if err := rtp.ValidateMinInclusive({{ .GoTypeName }}(v), {{ .Restriction.MinInclusive.Value }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
 			{{- if .Restriction.MaxInclusive }}
-				rtp.AddError(&errs, rtp.ValidateMaxInclusive({{ .GoTypeName }}(v), {{ .Restriction.MaxInclusive.Value }}))
+				if err := rtp.ValidateMaxInclusive({{ .GoTypeName }}(v), {{ .Restriction.MaxInclusive.Value }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
 			{{- if .Restriction.MinExclusive }}
-				rtp.AddError(&errs, rtp.ValidateMinExclusive({{ .GoTypeName }}(v), {{ .Restriction.MinExclusive.Value }}))
+				if err := rtp.ValidateMinExclusive({{ .GoTypeName }}(v), {{ .Restriction.MinExclusive.Value }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
 			{{- if .Restriction.MaxExclusive }}
-				rtp.AddError(&errs, rtp.ValidateMaxExclusive({{ .GoTypeName }}(v), {{ .Restriction.MaxExclusive.Value }}))
+				if err := rtp.ValidateMaxExclusive({{ .GoTypeName }}(v), {{ .Restriction.MaxExclusive.Value }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
-
 			{{- if .Restriction.FractionDigits }}
-				rtp.AddError(&errs, rtp.ValidateFractionDigits(fmt.Sprintf("%v", v), {{ .Restriction.FractionDigits.Value }}))
+				if err := rtp.ValidateFractionDigits(fmt.Sprintf("%v", v), {{ .Restriction.FractionDigits.Value }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
 			{{- if .Restriction.TotalDigits }}
-				rtp.AddError(&errs, rtp.ValidateTotalDigits(fmt.Sprintf("%v", v), {{ .Restriction.TotalDigits.Value }}))
+				if err := rtp.ValidateTotalDigits(fmt.Sprintf("%v", v), {{ .Restriction.TotalDigits.Value }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
-
 			{{- if .Restriction.Length }}
-				rtp.AddError(&errs, rtp.ValidateLength(string(v), {{ .Restriction.MinLength.Value }}))
+				if err := rtp.ValidateLength(string(v), {{ .Restriction.MinLength.Value }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
 			{{- if .Restriction.MinLength }}
-				rtp.AddError(&errs, rtp.ValidateMinLength(string(v), {{ .Restriction.MinLength.Value }}))
+				if err := rtp.ValidateMinLength(string(v), {{ .Restriction.MinLength.Value }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
 			{{- if .Restriction.MaxLength }}
-				rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), {{ .Restriction.MaxLength.Value }}))
+				if err := rtp.ValidateMaxLength(string(v), {{ .Restriction.MaxLength.Value }}); err != nil {
+                                	return err
+                                }
 			{{- end }}
-			if errs.Empty() {
-				return nil
-			}
-			return errs
+			return nil
 		}
 	{{ end }}
 {{ end }}

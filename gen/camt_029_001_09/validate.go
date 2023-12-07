@@ -11,8 +11,9 @@ import (
 
 func (v ActiveOrHistoricCurrencyAndAmount) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "ActiveOrHistoricCurrencyAndAmount"
 
-	rtp.AddError(&errs, v.Ccy.Validate())
+	rtp.AddError(&errs, baseName+".Ccy", v.Ccy.Validate())
 
 	if errs.Empty() {
 		return nil
@@ -22,7 +23,8 @@ func (v ActiveOrHistoricCurrencyAndAmount) Validate() error {
 
 func (v BranchAndFinancialInstitutionIdentification6) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.FinInstnId.Validate())
+	baseName := "BranchAndFinancialInstitutionIdentification6"
+	rtp.AddError(&errs, baseName+".FinInstnId", v.FinInstnId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -31,7 +33,8 @@ func (v BranchAndFinancialInstitutionIdentification6) Validate() error {
 
 func (v BranchAndFinancialInstitutionIdentification6TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.FinInstnId.Validate())
+	baseName := "BranchAndFinancialInstitutionIdentification6TCH"
+	rtp.AddError(&errs, baseName+".FinInstnId", v.FinInstnId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -40,8 +43,9 @@ func (v BranchAndFinancialInstitutionIdentification6TCH) Validate() error {
 
 func (v CancellationStatusReason3Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "CancellationStatusReason3Choice"
 	if v.Cd != nil {
-		rtp.AddError(&errs, v.Cd.Validate())
+		rtp.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -51,8 +55,9 @@ func (v CancellationStatusReason3Choice) Validate() error {
 
 func (v CancellationStatusReason3ChoiceTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "CancellationStatusReason3ChoiceTCH"
 	if v.Cd != nil {
-		rtp.AddError(&errs, v.Cd.Validate())
+		rtp.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -62,7 +67,8 @@ func (v CancellationStatusReason3ChoiceTCH) Validate() error {
 
 func (v CancellationStatusReason4) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Rsn.Validate())
+	baseName := "CancellationStatusReason4"
+	rtp.AddError(&errs, baseName+".Rsn", v.Rsn.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -71,7 +77,8 @@ func (v CancellationStatusReason4) Validate() error {
 
 func (v CancellationStatusReason4TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Rsn.Validate())
+	baseName := "CancellationStatusReason4TCH"
+	rtp.AddError(&errs, baseName+".Rsn", v.Rsn.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -80,8 +87,9 @@ func (v CancellationStatusReason4TCH) Validate() error {
 
 func (v Case5) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Id.Validate())
-	rtp.AddError(&errs, v.Cretr.Validate())
+	baseName := "Case5"
+	rtp.AddError(&errs, baseName+".Id", v.Id.Validate())
+	rtp.AddError(&errs, baseName+".Cretr", v.Cretr.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -90,8 +98,9 @@ func (v Case5) Validate() error {
 
 func (v Case5TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Id.Validate())
-	rtp.AddError(&errs, v.Cretr.Validate())
+	baseName := "Case5TCH"
+	rtp.AddError(&errs, baseName+".Id", v.Id.Validate())
+	rtp.AddError(&errs, baseName+".Cretr", v.Cretr.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -100,10 +109,11 @@ func (v Case5TCH) Validate() error {
 
 func (v CaseAssignment5) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Id.Validate())
-	rtp.AddError(&errs, v.Assgnr.Validate())
-	rtp.AddError(&errs, v.Assgne.Validate())
-	rtp.AddError(&errs, v.CreDtTm.Validate())
+	baseName := "CaseAssignment5"
+	rtp.AddError(&errs, baseName+".Id", v.Id.Validate())
+	rtp.AddError(&errs, baseName+".Assgnr", v.Assgnr.Validate())
+	rtp.AddError(&errs, baseName+".Assgne", v.Assgne.Validate())
+	rtp.AddError(&errs, baseName+".CreDtTm", v.CreDtTm.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -112,10 +122,11 @@ func (v CaseAssignment5) Validate() error {
 
 func (v CaseAssignment5TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Id.Validate())
-	rtp.AddError(&errs, v.Assgnr.Validate())
-	rtp.AddError(&errs, v.Assgne.Validate())
-	rtp.AddError(&errs, v.CreDtTm.Validate())
+	baseName := "CaseAssignment5TCH"
+	rtp.AddError(&errs, baseName+".Id", v.Id.Validate())
+	rtp.AddError(&errs, baseName+".Assgnr", v.Assgnr.Validate())
+	rtp.AddError(&errs, baseName+".Assgne", v.Assgne.Validate())
+	rtp.AddError(&errs, baseName+".CreDtTm", v.CreDtTm.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -124,8 +135,9 @@ func (v CaseAssignment5TCH) Validate() error {
 
 func (v Charges7) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Amt.Validate())
-	rtp.AddError(&errs, v.Agt.Validate())
+	baseName := "Charges7"
+	rtp.AddError(&errs, baseName+".Amt", v.Amt.Validate())
+	rtp.AddError(&errs, baseName+".Agt", v.Agt.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -134,8 +146,9 @@ func (v Charges7) Validate() error {
 
 func (v Charges7TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Amt.Validate())
-	rtp.AddError(&errs, v.Agt.Validate())
+	baseName := "Charges7TCH"
+	rtp.AddError(&errs, baseName+".Amt", v.Amt.Validate())
+	rtp.AddError(&errs, baseName+".Agt", v.Agt.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -144,7 +157,8 @@ func (v Charges7TCH) Validate() error {
 
 func (v ClearingSystemMemberIdentification2) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.MmbId.Validate())
+	baseName := "ClearingSystemMemberIdentification2"
+	rtp.AddError(&errs, baseName+".MmbId", v.MmbId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -153,7 +167,8 @@ func (v ClearingSystemMemberIdentification2) Validate() error {
 
 func (v ClearingSystemMemberIdentification2TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.MmbId.Validate())
+	baseName := "ClearingSystemMemberIdentification2TCH"
+	rtp.AddError(&errs, baseName+".MmbId", v.MmbId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -162,7 +177,8 @@ func (v ClearingSystemMemberIdentification2TCH) Validate() error {
 
 func (v DocumentTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.RsltnOfInvstgtn.Validate())
+	baseName := "DocumentTCH"
+	rtp.AddError(&errs, baseName+".RsltnOfInvstgtn", v.RsltnOfInvstgtn.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -171,7 +187,8 @@ func (v DocumentTCH) Validate() error {
 
 func (v FinancialInstitutionIdentification18) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.ClrSysMmbId.Validate())
+	baseName := "FinancialInstitutionIdentification18"
+	rtp.AddError(&errs, baseName+".ClrSysMmbId", v.ClrSysMmbId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -180,7 +197,8 @@ func (v FinancialInstitutionIdentification18) Validate() error {
 
 func (v FinancialInstitutionIdentification18TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.ClrSysMmbId.Validate())
+	baseName := "FinancialInstitutionIdentification18TCH"
+	rtp.AddError(&errs, baseName+".ClrSysMmbId", v.ClrSysMmbId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -189,8 +207,9 @@ func (v FinancialInstitutionIdentification18TCH) Validate() error {
 
 func (v InvestigationStatus5Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "InvestigationStatus5Choice"
 	if v.Conf != nil {
-		rtp.AddError(&errs, v.Conf.Validate())
+		rtp.AddError(&errs, baseName+".Conf", v.Conf.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -200,12 +219,13 @@ func (v InvestigationStatus5Choice) Validate() error {
 
 func (v OriginalGroupHeader14) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.RslvdCase.Validate())
-	rtp.AddError(&errs, v.OrgnlMsgId.Validate())
-	rtp.AddError(&errs, v.OrgnlMsgNmId.Validate())
-	rtp.AddError(&errs, v.OrgnlCreDtTm.Validate())
+	baseName := "OriginalGroupHeader14"
+	rtp.AddError(&errs, baseName+".RslvdCase", v.RslvdCase.Validate())
+	rtp.AddError(&errs, baseName+".OrgnlMsgId", v.OrgnlMsgId.Validate())
+	rtp.AddError(&errs, baseName+".OrgnlMsgNmId", v.OrgnlMsgNmId.Validate())
+	rtp.AddError(&errs, baseName+".OrgnlCreDtTm", v.OrgnlCreDtTm.Validate())
 	if v.CxlStsRsnInf != nil {
-		rtp.AddError(&errs, v.CxlStsRsnInf.Validate())
+		rtp.AddError(&errs, baseName+".CxlStsRsnInf", v.CxlStsRsnInf.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -215,12 +235,13 @@ func (v OriginalGroupHeader14) Validate() error {
 
 func (v OriginalGroupHeader14TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.RslvdCase.Validate())
-	rtp.AddError(&errs, v.OrgnlMsgId.Validate())
-	rtp.AddError(&errs, v.OrgnlMsgNmId.Validate())
-	rtp.AddError(&errs, v.OrgnlCreDtTm.Validate())
+	baseName := "OriginalGroupHeader14TCH"
+	rtp.AddError(&errs, baseName+".RslvdCase", v.RslvdCase.Validate())
+	rtp.AddError(&errs, baseName+".OrgnlMsgId", v.OrgnlMsgId.Validate())
+	rtp.AddError(&errs, baseName+".OrgnlMsgNmId", v.OrgnlMsgNmId.Validate())
+	rtp.AddError(&errs, baseName+".OrgnlCreDtTm", v.OrgnlCreDtTm.Validate())
 	if v.CxlStsRsnInf != nil {
-		rtp.AddError(&errs, v.CxlStsRsnInf.Validate())
+		rtp.AddError(&errs, baseName+".CxlStsRsnInf", v.CxlStsRsnInf.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -230,8 +251,9 @@ func (v OriginalGroupHeader14TCH) Validate() error {
 
 func (v Party40Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "Party40Choice"
 	if v.Agt != nil {
-		rtp.AddError(&errs, v.Agt.Validate())
+		rtp.AddError(&errs, baseName+".Agt", v.Agt.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -241,8 +263,9 @@ func (v Party40Choice) Validate() error {
 
 func (v Party40ChoiceTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "Party40ChoiceTCH"
 	if v.Agt != nil {
-		rtp.AddError(&errs, v.Agt.Validate())
+		rtp.AddError(&errs, baseName+".Agt", v.Agt.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -252,14 +275,15 @@ func (v Party40ChoiceTCH) Validate() error {
 
 func (v PaymentTransaction102) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "PaymentTransaction102"
 	if v.CxlStsId != nil {
-		rtp.AddError(&errs, v.CxlStsId.Validate())
+		rtp.AddError(&errs, baseName+".CxlStsId", v.CxlStsId.Validate())
 	}
 	if v.OrgnlUETR != nil {
-		rtp.AddError(&errs, v.OrgnlUETR.Validate())
+		rtp.AddError(&errs, baseName+".OrgnlUETR", v.OrgnlUETR.Validate())
 	}
 	if v.RsltnRltdInf != nil {
-		rtp.AddError(&errs, v.RsltnRltdInf.Validate())
+		rtp.AddError(&errs, baseName+".RsltnRltdInf", v.RsltnRltdInf.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -269,14 +293,15 @@ func (v PaymentTransaction102) Validate() error {
 
 func (v PaymentTransaction102TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
+	baseName := "PaymentTransaction102TCH"
 	if v.CxlStsId != nil {
-		rtp.AddError(&errs, v.CxlStsId.Validate())
+		rtp.AddError(&errs, baseName+".CxlStsId", v.CxlStsId.Validate())
 	}
 	if v.OrgnlUETR != nil {
-		rtp.AddError(&errs, v.OrgnlUETR.Validate())
+		rtp.AddError(&errs, baseName+".OrgnlUETR", v.OrgnlUETR.Validate())
 	}
 	if v.RsltnRltdInf != nil {
-		rtp.AddError(&errs, v.RsltnRltdInf.Validate())
+		rtp.AddError(&errs, baseName+".RsltnRltdInf", v.RsltnRltdInf.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -286,15 +311,16 @@ func (v PaymentTransaction102TCH) Validate() error {
 
 func (v ResolutionData1) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.IntrBkSttlmAmt.Validate())
+	baseName := "ResolutionData1"
+	rtp.AddError(&errs, baseName+".IntrBkSttlmAmt", v.IntrBkSttlmAmt.Validate())
 	if v.IntrBkSttlmDt != nil {
-		rtp.AddError(&errs, v.IntrBkSttlmDt.Validate())
+		rtp.AddError(&errs, baseName+".IntrBkSttlmDt", v.IntrBkSttlmDt.Validate())
 	}
 	if v.ClrChanl != nil {
-		rtp.AddError(&errs, v.ClrChanl.Validate())
+		rtp.AddError(&errs, baseName+".ClrChanl", v.ClrChanl.Validate())
 	}
 	if v.Chrgs != nil {
-		rtp.AddError(&errs, v.Chrgs.Validate())
+		rtp.AddError(&errs, baseName+".Chrgs", v.Chrgs.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -304,15 +330,16 @@ func (v ResolutionData1) Validate() error {
 
 func (v ResolutionData1TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.IntrBkSttlmAmt.Validate())
+	baseName := "ResolutionData1TCH"
+	rtp.AddError(&errs, baseName+".IntrBkSttlmAmt", v.IntrBkSttlmAmt.Validate())
 	if v.IntrBkSttlmDt != nil {
-		rtp.AddError(&errs, v.IntrBkSttlmDt.Validate())
+		rtp.AddError(&errs, baseName+".IntrBkSttlmDt", v.IntrBkSttlmDt.Validate())
 	}
 	if v.ClrChanl != nil {
-		rtp.AddError(&errs, v.ClrChanl.Validate())
+		rtp.AddError(&errs, baseName+".ClrChanl", v.ClrChanl.Validate())
 	}
 	if v.Chrgs != nil {
-		rtp.AddError(&errs, v.Chrgs.Validate())
+		rtp.AddError(&errs, baseName+".Chrgs", v.Chrgs.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -322,9 +349,10 @@ func (v ResolutionData1TCH) Validate() error {
 
 func (v ResolutionOfInvestigationV09) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Assgnmt.Validate())
-	rtp.AddError(&errs, v.Sts.Validate())
-	rtp.AddError(&errs, v.CxlDtls.Validate())
+	baseName := "ResolutionOfInvestigationV09"
+	rtp.AddError(&errs, baseName+".Assgnmt", v.Assgnmt.Validate())
+	rtp.AddError(&errs, baseName+".Sts", v.Sts.Validate())
+	rtp.AddError(&errs, baseName+".CxlDtls", v.CxlDtls.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -333,9 +361,10 @@ func (v ResolutionOfInvestigationV09) Validate() error {
 
 func (v ResolutionOfInvestigationV09TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Assgnmt.Validate())
-	rtp.AddError(&errs, v.Sts.Validate())
-	rtp.AddError(&errs, v.CxlDtls.Validate())
+	baseName := "ResolutionOfInvestigationV09TCH"
+	rtp.AddError(&errs, baseName+".Assgnmt", v.Assgnmt.Validate())
+	rtp.AddError(&errs, baseName+".Sts", v.Sts.Validate())
+	rtp.AddError(&errs, baseName+".CxlDtls", v.CxlDtls.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -344,9 +373,10 @@ func (v ResolutionOfInvestigationV09TCH) Validate() error {
 
 func (v UnderlyingTransaction22) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.OrgnlGrpInfAndSts.Validate())
+	baseName := "UnderlyingTransaction22"
+	rtp.AddError(&errs, baseName+".OrgnlGrpInfAndSts", v.OrgnlGrpInfAndSts.Validate())
 	if v.TxInfAndSts != nil {
-		rtp.AddError(&errs, v.TxInfAndSts.Validate())
+		rtp.AddError(&errs, baseName+".TxInfAndSts", v.TxInfAndSts.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -356,9 +386,10 @@ func (v UnderlyingTransaction22) Validate() error {
 
 func (v UnderlyingTransaction22TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.OrgnlGrpInfAndSts.Validate())
+	baseName := "UnderlyingTransaction22TCH"
+	rtp.AddError(&errs, baseName+".OrgnlGrpInfAndSts", v.OrgnlGrpInfAndSts.Validate())
 	if v.TxInfAndSts != nil {
-		rtp.AddError(&errs, v.TxInfAndSts.Validate())
+		rtp.AddError(&errs, baseName+".TxInfAndSts", v.TxInfAndSts.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -369,104 +400,110 @@ func (v UnderlyingTransaction22TCH) Validate() error {
 // XSD SimpleType validations
 
 func (v ActiveOrHistoricCurrencyCode) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidatePattern(string(v), `[A-Z]{3,3}`))
-	rtp.AddError(&errs, rtp.ValidateEnumeration(string(v), "USD"))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidatePattern(string(v), `[A-Z]{3,3}`); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateEnumeration(string(v), "USD"); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v ClearingChannel2Code) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateEnumeration(string(v), "MPNS", "RTGS", "RTNS"))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateEnumeration(string(v), "MPNS", "RTGS", "RTNS"); err != nil {
+		return err
 	}
-	return errs
+	return nil
 }
 
 func (v ExternalInvestigationExecutionConfirmation1Code) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateEnumeration(string(v), "IPAY", "PECR", "RJCR"))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 4))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateEnumeration(string(v), "IPAY", "PECR", "RJCR"); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 4); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v ExternalPaymentCancellationRejection1Code) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateEnumeration(string(v), "AC04", "AM04", "ARDT", "CUST", "LEGL", "NOAS", "NOOR"))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 4))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateEnumeration(string(v), "AC04", "AM04", "ARDT", "CUST", "LEGL", "NOAS", "NOOR"); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 4); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v ExternalPaymentCancellationRejection1CodeTCH) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateEnumeration(string(v), "AC04", "AM04", "ARDT", "CUST", "LEGL", "NOAS", "NOOR"))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 4))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateEnumeration(string(v), "AC04", "AM04", "ARDT", "CUST", "LEGL", "NOAS", "NOOR"); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 4); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Max35Text) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Max35TextTCH) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidatePattern(string(v), `M[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*`))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidatePattern(string(v), `M[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*`); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Max35TextTCH2) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 9))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 9))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateMinLength(string(v), 9); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMaxLength(string(v), 9); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v OrigMsgName) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateEnumeration(string(v), "camt.056.001.05", "camt.056.001.08"))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateEnumeration(string(v), "camt.056.001.05", "camt.056.001.08"); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v UUIDv4Identifier) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidatePattern(string(v), `[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}`))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidatePattern(string(v), `[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}`); err != nil {
+		return err
 	}
-	return errs
+	return nil
 }
