@@ -11,7 +11,8 @@ import (
 
 func (v BranchAndFinancialInstitutionIdentification4ADMN) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.FinInstnId.Validate())
+	baseName := "BranchAndFinancialInstitutionIdentification4ADMN"
+	rtp.AddError(&errs, baseName+".FinInstnId", v.FinInstnId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -20,7 +21,8 @@ func (v BranchAndFinancialInstitutionIdentification4ADMN) Validate() error {
 
 func (v ClearingSystemMemberIdentification2ADMN) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.MmbId.Validate())
+	baseName := "ClearingSystemMemberIdentification2ADMN"
+	rtp.AddError(&errs, baseName+".MmbId", v.MmbId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -29,7 +31,8 @@ func (v ClearingSystemMemberIdentification2ADMN) Validate() error {
 
 func (v DocumentTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.AdmnSignOnReq.Validate())
+	baseName := "DocumentTCH"
+	rtp.AddError(&errs, baseName+".AdmnSignOnReq", v.AdmnSignOnReq.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -38,7 +41,8 @@ func (v DocumentTCH) Validate() error {
 
 func (v FinancialInstitutionIdentification7ADMN) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.ClrSysMmbId.Validate())
+	baseName := "FinancialInstitutionIdentification7ADMN"
+	rtp.AddError(&errs, baseName+".ClrSysMmbId", v.ClrSysMmbId.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -47,8 +51,9 @@ func (v FinancialInstitutionIdentification7ADMN) Validate() error {
 
 func (v GrpHdr) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.MsgId.Validate())
-	rtp.AddError(&errs, v.CreDtTm.Validate())
+	baseName := "GrpHdr"
+	rtp.AddError(&errs, baseName+".MsgId", v.MsgId.Validate())
+	rtp.AddError(&errs, baseName+".CreDtTm", v.CreDtTm.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -57,8 +62,9 @@ func (v GrpHdr) Validate() error {
 
 func (v GrpHdrTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.MsgId.Validate())
-	rtp.AddError(&errs, v.CreDtTm.Validate())
+	baseName := "GrpHdrTCH"
+	rtp.AddError(&errs, baseName+".MsgId", v.MsgId.Validate())
+	rtp.AddError(&errs, baseName+".CreDtTm", v.CreDtTm.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -67,9 +73,10 @@ func (v GrpHdrTCH) Validate() error {
 
 func (v SignOnReq) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.InstrId.Validate())
-	rtp.AddError(&errs, v.InstgAgt.Validate())
-	rtp.AddError(&errs, v.InstdAgt.Validate())
+	baseName := "SignOnReq"
+	rtp.AddError(&errs, baseName+".InstrId", v.InstrId.Validate())
+	rtp.AddError(&errs, baseName+".InstgAgt", v.InstgAgt.Validate())
+	rtp.AddError(&errs, baseName+".InstdAgt", v.InstdAgt.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -78,8 +85,9 @@ func (v SignOnReq) Validate() error {
 
 func (v SignOnRequest) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.GrpHdr.Validate())
-	rtp.AddError(&errs, v.SignOnReq.Validate())
+	baseName := "SignOnRequest"
+	rtp.AddError(&errs, baseName+".GrpHdr", v.GrpHdr.Validate())
+	rtp.AddError(&errs, baseName+".SignOnReq", v.SignOnReq.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -88,8 +96,9 @@ func (v SignOnRequest) Validate() error {
 
 func (v SignOnRequestTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.GrpHdr.Validate())
-	rtp.AddError(&errs, v.SignOnReq.Validate())
+	baseName := "SignOnRequestTCH"
+	rtp.AddError(&errs, baseName+".GrpHdr", v.GrpHdr.Validate())
+	rtp.AddError(&errs, baseName+".SignOnReq", v.SignOnReq.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -98,9 +107,10 @@ func (v SignOnRequestTCH) Validate() error {
 
 func (v SignOnReqTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.InstrId.Validate())
-	rtp.AddError(&errs, v.InstgAgt.Validate())
-	rtp.AddError(&errs, v.InstdAgt.Validate())
+	baseName := "SignOnReqTCH"
+	rtp.AddError(&errs, baseName+".InstrId", v.InstrId.Validate())
+	rtp.AddError(&errs, baseName+".InstgAgt", v.InstgAgt.Validate())
+	rtp.AddError(&errs, baseName+".InstdAgt", v.InstdAgt.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -110,43 +120,47 @@ func (v SignOnReqTCH) Validate() error {
 // XSD SimpleType validations
 
 func (v Max35Text) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Max35TextTCH) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidatePattern(string(v), `[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))((([0-1][0-9])|(2[0-3]))(([0-5][0-9])){2})[A-Z0-9]{11}.*`))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidatePattern(string(v), `[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))((([0-1][0-9])|(2[0-3]))(([0-5][0-9])){2})[A-Z0-9]{11}.*`); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Max35TextTCH2) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidatePattern(string(v), `[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*`))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidatePattern(string(v), `[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*`); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Min11Max11Text) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 11))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 11))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateMinLength(string(v), 11); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMaxLength(string(v), 11); err != nil {
+		return err
+	}
+	return nil
 }

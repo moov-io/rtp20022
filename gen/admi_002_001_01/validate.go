@@ -11,7 +11,8 @@ import (
 
 func (v DocumentTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Admi00200101.Validate())
+	baseName := "DocumentTCH"
+	rtp.AddError(&errs, baseName+".Admi00200101", v.Admi00200101.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -20,7 +21,8 @@ func (v DocumentTCH) Validate() error {
 
 func (v MessageReference) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Ref.Validate())
+	baseName := "MessageReference"
+	rtp.AddError(&errs, baseName+".Ref", v.Ref.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -29,7 +31,8 @@ func (v MessageReference) Validate() error {
 
 func (v MessageReferenceTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.Ref.Validate())
+	baseName := "MessageReferenceTCH"
+	rtp.AddError(&errs, baseName+".Ref", v.Ref.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -38,8 +41,9 @@ func (v MessageReferenceTCH) Validate() error {
 
 func (v MessageRejectV01) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.RltdRef.Validate())
-	rtp.AddError(&errs, v.Rsn.Validate())
+	baseName := "MessageRejectV01"
+	rtp.AddError(&errs, baseName+".RltdRef", v.RltdRef.Validate())
+	rtp.AddError(&errs, baseName+".Rsn", v.Rsn.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -48,8 +52,9 @@ func (v MessageRejectV01) Validate() error {
 
 func (v MessageRejectV01TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.RltdRef.Validate())
-	rtp.AddError(&errs, v.Rsn.Validate())
+	baseName := "MessageRejectV01TCH"
+	rtp.AddError(&errs, baseName+".RltdRef", v.RltdRef.Validate())
+	rtp.AddError(&errs, baseName+".Rsn", v.Rsn.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -58,9 +63,10 @@ func (v MessageRejectV01TCH) Validate() error {
 
 func (v RejectionReason2) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.RjctgPtyRsn.Validate())
+	baseName := "RejectionReason2"
+	rtp.AddError(&errs, baseName+".RjctgPtyRsn", v.RjctgPtyRsn.Validate())
 	if v.AddtlData != nil {
-		rtp.AddError(&errs, v.AddtlData.Validate())
+		rtp.AddError(&errs, baseName+".AddtlData", v.AddtlData.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -70,9 +76,10 @@ func (v RejectionReason2) Validate() error {
 
 func (v RejectionReason2TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.RjctgPtyRsn.Validate())
+	baseName := "RejectionReason2TCH"
+	rtp.AddError(&errs, baseName+".RjctgPtyRsn", v.RjctgPtyRsn.Validate())
 	if v.AddtlData != nil {
-		rtp.AddError(&errs, v.AddtlData.Validate())
+		rtp.AddError(&errs, baseName+".AddtlData", v.AddtlData.Validate())
 	}
 	if errs.Empty() {
 		return nil
@@ -83,22 +90,24 @@ func (v RejectionReason2TCH) Validate() error {
 // XSD SimpleType validations
 
 func (v Max35Text) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Max35TextTCH) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidatePattern(string(v), `[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))((([0-1][0-9])|(2[0-3]))(([0-5][0-9])){2})[A-Z0-9]{11}.*`))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidatePattern(string(v), `[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))((([0-1][0-9])|(2[0-3]))(([0-5][0-9])){2})[A-Z0-9]{11}.*`); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }

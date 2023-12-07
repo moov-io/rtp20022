@@ -11,7 +11,8 @@ import (
 
 func (v DocumentTCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.SysEvtNtfctn.Validate())
+	baseName := "DocumentTCH"
+	rtp.AddError(&errs, baseName+".SysEvtNtfctn", v.SysEvtNtfctn.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -20,14 +21,15 @@ func (v DocumentTCH) Validate() error {
 
 func (v Event2) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.EvtCd.Validate())
+	baseName := "Event2"
+	rtp.AddError(&errs, baseName+".EvtCd", v.EvtCd.Validate())
 	for indx := range v.EvtParam {
-		rtp.AddError(&errs, v.EvtParam[indx].Validate())
+		rtp.AddError(&errs, baseName+".EvtParam", v.EvtParam[indx].Validate())
 	}
 	if v.EvtDesc != nil {
-		rtp.AddError(&errs, v.EvtDesc.Validate())
+		rtp.AddError(&errs, baseName+".EvtDesc", v.EvtDesc.Validate())
 	}
-	rtp.AddError(&errs, v.EvtTm.Validate())
+	rtp.AddError(&errs, baseName+".EvtTm", v.EvtTm.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -36,14 +38,15 @@ func (v Event2) Validate() error {
 
 func (v Event2TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.EvtCd.Validate())
+	baseName := "Event2TCH"
+	rtp.AddError(&errs, baseName+".EvtCd", v.EvtCd.Validate())
 	for indx := range v.EvtParam {
-		rtp.AddError(&errs, v.EvtParam[indx].Validate())
+		rtp.AddError(&errs, baseName+".EvtParam", v.EvtParam[indx].Validate())
 	}
 	if v.EvtDesc != nil {
-		rtp.AddError(&errs, v.EvtDesc.Validate())
+		rtp.AddError(&errs, baseName+".EvtDesc", v.EvtDesc.Validate())
 	}
-	rtp.AddError(&errs, v.EvtTm.Validate())
+	rtp.AddError(&errs, baseName+".EvtTm", v.EvtTm.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -52,7 +55,8 @@ func (v Event2TCH) Validate() error {
 
 func (v SystemEventNotificationV02) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.EvtInf.Validate())
+	baseName := "SystemEventNotificationV02"
+	rtp.AddError(&errs, baseName+".EvtInf", v.EvtInf.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -61,7 +65,8 @@ func (v SystemEventNotificationV02) Validate() error {
 
 func (v SystemEventNotificationV02TCH) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, v.EvtInf.Validate())
+	baseName := "SystemEventNotificationV02TCH"
+	rtp.AddError(&errs, baseName+".EvtInf", v.EvtInf.Validate())
 	if errs.Empty() {
 		return nil
 	}
@@ -71,32 +76,34 @@ func (v SystemEventNotificationV02TCH) Validate() error {
 // XSD SimpleType validations
 
 func (v Max1000Text) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 1000))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMaxLength(string(v), 1000); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Max35Text) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 35))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMaxLength(string(v), 35); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (v Max4AlphaNumericText) Validate() error {
-	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, rtp.ValidatePattern(string(v), `[a-zA-Z0-9]{1,4}`))
-	rtp.AddError(&errs, rtp.ValidateMinLength(string(v), 1))
-	rtp.AddError(&errs, rtp.ValidateMaxLength(string(v), 4))
-	if errs.Empty() {
-		return nil
+	if err := rtp.ValidatePattern(string(v), `[a-zA-Z0-9]{1,4}`); err != nil {
+		return err
 	}
-	return errs
+	if err := rtp.ValidateMinLength(string(v), 1); err != nil {
+		return err
+	}
+	if err := rtp.ValidateMaxLength(string(v), 4); err != nil {
+		return err
+	}
+	return nil
 }

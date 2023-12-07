@@ -14,8 +14,9 @@ import (
 
 func TestValidateMultipleErrors(t *testing.T) {
 	var errs base.ErrorList = base.ErrorList{}
-	rtp.AddError(&errs, pacs_008_001_08.Max35TextTCH("B20230931145322200000057A11712044729M").Validate())
-	require.Len(t, errs, 2)
+	rtp.AddError(&errs, "Max35TextTCH", pacs_008_001_08.Max35TextTCH("B20230931145322200000057A11712044729M").Validate())
+	require.Len(t, errs, 1)
+	require.ErrorContains(t, errs.Err(), "Max35TextTCH: B20230931145322200000057A11712044729M fails validation with pattern M[0-9]{4}(((01|03|05|07|08|10|12)((0[1-9])|([1-2][0-9])|(3[0-1])))|((04|06|09|11)((0[1-9])|([1-2][0-9])|30))|((02)((0[1-9])|([1-2][0-9]))))[A-Z0-9]{11}.*")
 }
 
 func TestValidatePattern(t *testing.T) {

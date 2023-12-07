@@ -10,14 +10,14 @@ import (
 	"github.com/moov-io/base"
 )
 
-func AddError(errs *base.ErrorList, err error) {
+func AddError(errs *base.ErrorList, fieldName string, err error) {
 	if err != nil {
 		if el, ok := err.(base.ErrorList); ok {
 			for indx := range el {
 				errs.Add(el[indx])
 			}
 		} else {
-			errs.Add(err)
+			errs.Add(fmt.Errorf("%v: %v", fieldName, err))
 		}
 	}
 }
