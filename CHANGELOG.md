@@ -1,3 +1,9 @@
+## v0.9.5 (Released 2023-12-14)
+
+IMPROVEMENTS
+
+- fix: pad bankField in InstructionID when short
+
 ## v0.9.4 (Released 2023-12-07)
 
 IMPROVEMENTS
