@@ -18,7 +18,7 @@ import (
 func InstructionID(ts time.Time, participantID, bankField string) string {
 	timestamp := ts.Format("20060102")
 	partID := fmt.Sprintf("%011.11s", participantID)
-	bank := fmt.Sprintf("%4.4s", bankField)
+	bank := fmt.Sprintf("%04.4s", bankField)
 	serial := NumericSerialNumber(11)
 
 	return fmt.Sprintf("%s%sB%s%011.11s", timestamp, partID, bank, serial)

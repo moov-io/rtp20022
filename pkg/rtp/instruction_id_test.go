@@ -16,4 +16,12 @@ func TestInstructionID(t *testing.T) {
 	}
 	require.Equal(t, 35, len(instID))
 	require.Contains(t, instID, "44445566667B1238")
+
+	// Short bankField
+	instID = rtp.InstructionID(time.Now(), "44445566667", "238")
+	if testing.Verbose() {
+		t.Log(instID)
+	}
+	require.Equal(t, 35, len(instID))
+	require.Contains(t, instID, "44445566667B0238")
 }
