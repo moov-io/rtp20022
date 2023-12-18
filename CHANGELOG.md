@@ -1,3 +1,13 @@
+## v0.10.0 (Released 2023-12-18)
+
+IMPROVEMENTS
+
+- feat: add camt.029 Case Assignment ID
+
+BUILD
+
+- fix(deps): update module github.com/moov-io/base to v0.48.3
+
 ## v0.9.5 (Released 2023-12-14)
 
 IMPROVEMENTS
