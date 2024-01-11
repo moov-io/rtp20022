@@ -1,3 +1,13 @@
+## v0.10.1 (Released 2024-01-11)
+
+IMPROVEMENTS
+
+- fix: make ValidateLength error more clear
+
+BUILD
+
+- fix(deps): update module github.com/moov-io/base to v0.48.4
+
 ## v0.10.0 (Released 2023-12-18)
 
 IMPROVEMENTS
