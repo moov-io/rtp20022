@@ -61,7 +61,7 @@ func ValidateEnumeration(value string, enumeration ...string) error {
 func ValidateLength(value string, length int) error {
 	var strLength = utf8.RuneCountInString(value)
 	if strLength != length {
-		return fmt.Errorf("%s fails validation with length %v != required length %v", value, strLength, length)
+		return fmt.Errorf("%s fails validation with length %v, length %v required", value, strLength, length)
 	}
 	return nil
 }
