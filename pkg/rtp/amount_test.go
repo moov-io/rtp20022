@@ -2,9 +2,11 @@ package rtp_test
 
 import (
 	"encoding/xml"
-	"github.com/moov-io/rtp20022/pkg/rtp"
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/moov-io/rtp20022/pkg/rtp"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestAmountFormat(t *testing.T) {
@@ -23,6 +25,13 @@ func TestAmountFormat(t *testing.T) {
 	err = xml.Unmarshal([]byte(amtTag), &read)
 	require.NoError(t, err)
 	require.Equal(t, amt, read)
+
+	t.Run("large", func(t *testing.T) {
+		amt = rtp.Amount(1_252_363.25)
+		bs, err := xml.Marshal(amt)
+		require.NoError(t, err)
+		require.Equal(t, "<Amount>1252363.25</Amount>", string(bs))
+	})
 }
 
 func TestAmountValidate(t *testing.T) {
