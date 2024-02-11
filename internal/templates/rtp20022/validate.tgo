@@ -137,7 +137,7 @@ import (
                                 }
 			{{- end }}
 			{{- if .Restriction.Length }}
-				if err := rtp.ValidateLength(string(v), {{ .Restriction.MinLength.Value }}); err != nil {
+				if err := rtp.ValidateLength(string(v), {{ .Restriction.Length.Value }}); err != nil {
                                 	return err
                                 }
 			{{- end }}
