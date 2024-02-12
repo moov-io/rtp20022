@@ -1,3 +1,15 @@
+## v0.10.2 (Released 2024-02-12)
+
+IMPROVEMENTS
+
+- fix: correct typo in the validate template for length restrictions
+- test: verify rtp.Amount marshals large amounts in decimal notation
+
+BUILD
+
+- fix(deps): update module cloud.google.com/go to v0.112.0
+- fix(deps): update module github.com/moov-io/base to v0.48.5
+
 ## v0.10.1 (Released 2024-01-11)
 
 IMPROVEMENTS
