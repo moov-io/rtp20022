@@ -5,7 +5,7 @@ go 1.20
 require (
 	cloud.google.com/go v0.112.1
 	github.com/moov-io/base v0.48.5
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 )
 
 require (
