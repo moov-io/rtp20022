@@ -14,7 +14,7 @@ func TestMessageID(t *testing.T) {
 	eastern, _ := time.LoadLocation("America/New_York")
 	when := time.Date(2015, time.November, 15, 0, 30, 0, 0, eastern)
 	participantID := "11021200201"
-	messageID := rtp.MessageID(when, participantID, "FFF")
+	messageID := rtp.MessageID(when, participantID, "FFF", nil)
 
 	require.Contains(t, messageID, "M2015111511021200201BFFF")
 	require.Len(t, messageID, 35)
@@ -24,7 +24,7 @@ func TestMessageID(t *testing.T) {
 }
 
 func TestAdmnMessageID(t *testing.T) {
-	messageID := rtp.AdmnMessageID(time.Now(), "44445566667")
+	messageID := rtp.AdmnMessageID(time.Now(), "44445566667", nil)
 	if testing.Verbose() {
 		t.Log(messageID)
 	}

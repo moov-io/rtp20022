@@ -10,7 +10,7 @@ import (
 )
 
 func TestInstructionID(t *testing.T) {
-	instID := rtp.InstructionID(time.Now(), "44445566667", "1238")
+	instID := rtp.InstructionID(time.Now(), "44445566667", "1238", nil)
 	if testing.Verbose() {
 		t.Log(instID)
 	}
@@ -18,7 +18,7 @@ func TestInstructionID(t *testing.T) {
 	require.Contains(t, instID, "44445566667B1238")
 
 	// Short bankField
-	instID = rtp.InstructionID(time.Now(), "44445566667", "238")
+	instID = rtp.InstructionID(time.Now(), "44445566667", "238", nil)
 	if testing.Verbose() {
 		t.Log(instID)
 	}
