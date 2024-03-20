@@ -1,3 +1,28 @@
+## v0.11.0 (Released 2024-03-20)
+
+This release of moov-io/signedxml changes how IDs are generated. Previously IDs were generated with the current time
+being used as randomness. Now IDs have their serial numbers generated with functions. The previous behavior can be
+restored by passing `NumericSerialNumber` to each instance of an ID function.
+
+**Before**
+```go
+messageID := rtp.MessageID(time.Now(), participantID, serial)
+```
+
+**After**
+```go
+messageID := rtp.MessageID(time.Now(), participantID, serial, rtp.NumericSerialNumber)
+```
+
+BREAKNIG CHANGES
+
+- rtp: expose serial generator as a function, with helpers
+
+BUILD
+
+- fix(deps): update module cloud.google.com/go to v0.112.1
+- fix(deps): update module github.com/stretchr/testify to v1.9.0
+
 ## v0.10.2 (Released 2024-02-12)
 
 IMPROVEMENTS
