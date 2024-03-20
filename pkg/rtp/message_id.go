@@ -16,9 +16,9 @@ import (
 // Pos. 25-35 - Message serial number (11 numeric characters)
 //
 // Example: M2015111511021200201BFFF00000000001
-func MessageID(ts time.Time, participantID string, serial string) string {
+func MessageID(ts time.Time, participantID string, serial string, messageSerialFunc SerialGenerator) string {
 	creationDate := ts.Format("20060102")
-	messageSerial := NumericSerialNumber(11)
+	messageSerial := pickGenerator(messageSerialFunc, NumericSerialNumber)(11)
 
 	return fmt.Sprintf("M%s%11.11sB%3.3s%s", creationDate, participantID, serial, messageSerial)
 }
@@ -31,10 +31,10 @@ func MessageID(ts time.Time, participantID string, serial string) string {
 // Pos. 26-35 - Participant specific Message serial number (up to 10 characters)
 //
 // Example: 2016021810064302120020101B61NHTCSG6
-func AdmnMessageID(ts time.Time, participantID string) string {
+func AdmnMessageID(ts time.Time, participantID string, serialFunc SerialGenerator) string {
 	timestamp := ts.Format("20060102150405")
 	partID := fmt.Sprintf("%011.11s", participantID)
-	serial := AlphaSerialNumber(10)
+	serial := pickGenerator(serialFunc, AlphaSerialNumber)(10)
 
 	return fmt.Sprintf("%s%s%010.10s", timestamp, partID, serial)
 }

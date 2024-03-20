@@ -15,11 +15,11 @@ import (
 // Pos. 25-35 - Message serial number (11 numeric characters)
 //
 // Example: 2016021812345678901BD61U00000000006
-func InstructionID(ts time.Time, participantID, bankField string) string {
+func InstructionID(ts time.Time, participantID, bankField string, serialFunc SerialGenerator) string {
 	timestamp := ts.Format("20060102")
 	partID := fmt.Sprintf("%011.11s", participantID)
 	bank := fmt.Sprintf("%04.4s", bankField)
-	serial := NumericSerialNumber(11)
+	serial := pickGenerator(serialFunc, NumericSerialNumber)(11)
 
 	return fmt.Sprintf("%s%sB%s%011.11s", timestamp, partID, bank, serial)
 }

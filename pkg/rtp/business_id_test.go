@@ -11,7 +11,7 @@ import (
 )
 
 func TestBusinessID(t *testing.T) {
-	businessID := rtp.BusinessID(time.Now(), "44445566667", "128")
+	businessID := rtp.BusinessID(time.Now(), "44445566667", "128", nil)
 	if testing.Verbose() {
 		t.Log(businessID)
 	}

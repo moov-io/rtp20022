@@ -14,7 +14,7 @@ func TestTransactionID(t *testing.T) {
 	eastern, _ := time.LoadLocation("America/New_York")
 	when := time.Date(2015, time.November, 15, 0, 30, 0, 0, eastern)
 	participantID := "11021200201"
-	transactionID := rtp.TransactionID(when, participantID, "FFFF")
+	transactionID := rtp.TransactionID(when, participantID, "FFFF", nil)
 
 	require.Contains(t, transactionID, "2015111511021200201BFFF")
 	require.Len(t, transactionID, 35)
