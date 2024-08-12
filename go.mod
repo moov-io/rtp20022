@@ -2,7 +2,7 @@ module github.com/moov-io/rtp20022
 
 go 1.21
 
-toolchain go1.22.5
+toolchain go1.22.6
 
 require (
 	cloud.google.com/go v0.115.0
