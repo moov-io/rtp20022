@@ -14,7 +14,7 @@ func AddError(errs *base.ErrorList, fieldName string, err error) {
 	if err != nil {
 		if el, ok := err.(base.ErrorList); ok {
 			for indx := range el {
-				errs.Add(el[indx])
+				errs.Add(fmt.Errorf("%s -> %v", fieldName, el[indx]))
 			}
 		} else {
 			errs.Add(fmt.Errorf("%v: %v", fieldName, err))

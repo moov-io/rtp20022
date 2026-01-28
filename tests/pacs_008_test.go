@@ -27,7 +27,9 @@ func TestPacs008(t *testing.T) {
 		require.Len(t, el, 5)
 
 		// Check each error
-		require.ErrorContains(t, el[0], "PostalAddress24TCH.StrtNm:  fails validation with length 0 >= required minLength 1")
+		require.ErrorContains(t, el[0], "Message.CreditTransfer -> DocumentTCH.FIToFICstmrCdtTrf -> FIToFICustomerCreditTransferV08TCH.CdtTrfTxInf -> CreditTransferTransaction39TCH.Dbtr -> PartyIdentification135TCH3.PstlAdr -> PostalAddress24TCH.StrtNm:  fails validation with length 0 >= required minLength 1")
+
+		// each error has the full path
 		require.ErrorContains(t, el[1], "PostalAddress24TCH.PstCd:  fails validation with length 0 >= required minLength 1")
 		require.ErrorContains(t, el[2], "PostalAddress24TCH.TwnNm:  fails validation with length 0 >= required minLength 1")
 		require.ErrorContains(t, el[3], "PostalAddress24TCH.CtrySubDvsn:  fails validation with length 0 >= required minLength 1")
