@@ -2,11 +2,11 @@ module github.com/moov-io/rtp20022
 
 go 1.25.0
 
-toolchain go1.26.3
+toolchain go1.26.4
 
 require (
 	cloud.google.com/go v0.123.0
-	github.com/moov-io/base v0.61.2
+	github.com/moov-io/base v0.61.3
 	github.com/stretchr/testify v1.11.1
 )
 
