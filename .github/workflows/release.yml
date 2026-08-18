@@ -1,3 +1,4 @@
+# Use https://app.stepsecurity.io/ to improve workflow security
 name: Create Release
 
 on:
@@ -5,7 +6,7 @@ on:
     tags: [ "v*.*.*" ]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   testing:
@@ -16,15 +17,17 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
     - name: Set up Go 1.x
-      uses: actions/setup-go@v7
+      uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
       with:
         go-version: stable
+        cache: false
       id: go
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         fetch-depth: 0
+        persist-credentials: false
 
     - name: Install
       run: make install
@@ -33,6 +36,8 @@ jobs:
       run: make check
 
   create_release:
+    permissions:
+      contents: write
     name: Create Release
     needs: [testing]
     runs-on: ubuntu-latest
@@ -43,14 +48,15 @@ jobs:
     - name: Ensure GitHub Release
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAG: ${{ github.ref_name }}
+        REPO: ${{ github.repository }}
       run: |
         set -euo pipefail
-        TAG="${{ github.ref_name }}"
-        if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+        if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
           echo "Release $TAG already exists — nothing to do"
         else
           gh release create "$TAG" \
-            --repo "${{ github.repository }}" \
+            --repo "$REPO" \
             --title "$TAG" \
             --generate-notes
         fi
