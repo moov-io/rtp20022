@@ -1,3 +1,37 @@
+## Unreleased
+
+IMPROVEMENTS
+
+- docs: add parse and generate library examples, document go mod tidy, and list supported message constructors
+- docs: document regeneration with moov-io/xsd2go and clarify XML namespace prefix handling
+
+## v0.12.1 (Released 2026-08-07)
+
+IMPROVEMENTS
+
+- test(fuzz): add TCH RTP Message and type fuzzers
+
+BUILD
+
+- fix(ci): make tag release job idempotent
+- fix(deps): update module github.com/moov-io/base to v0.62.1
+- chore(deps): update Go to 1.25.7 through 1.26.5 (go 1.25.8 in go.mod)
+- chore(deps): update GitHub Actions (including major action upgrades)
+
+## v0.12.0 (Released 2026-01-28)
+
+IMPROVEMENTS
+
+- rtp: include the full XML path with Validate() errors
+
+BUILD
+
+- chore(deps): update Go from 1.22 through 1.25.6
+- fix(deps): update module github.com/moov-io/base to v0.59.0
+- fix(deps): update module cloud.google.com/go to v0.123.0
+- fix(deps): update module github.com/stretchr/testify to v1.11.1
+- chore(deps): update GitHub Actions (checkout v4, setup-go v5, codeql-action v3)
+
 ## v0.11.0 (Released 2024-03-20)
 
 This release of moov-io/signedxml changes how IDs are generated. Previously IDs were generated with the current time
