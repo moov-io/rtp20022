@@ -83,29 +83,29 @@ func ValidateMaxLength(value string, maxLength int) error {
 }
 
 func ValidateMinInclusive(value int, minValue int) error {
-	if value <= minValue {
-		return fmt.Errorf("%v fails validation as it is > minInclusive %v", value, minValue)
+	if value < minValue {
+		return fmt.Errorf("%v fails validation as it is < minInclusive %v", value, minValue)
 	}
 	return nil
 }
 
 func ValidateMaxInclusive(value int, maxValue int) error {
-	if value >= maxValue {
-		return fmt.Errorf("%v fails validation as it is < maxInclusive %v", value, maxValue)
+	if value > maxValue {
+		return fmt.Errorf("%v fails validation as it is > maxInclusive %v", value, maxValue)
 	}
 	return nil
 }
 
 func ValidateMinExclusive(value int, minValue int) error {
-	if value < minValue {
-		return fmt.Errorf("%v fails validation as it is >= minExclusive %v", value, minValue)
+	if value <= minValue {
+		return fmt.Errorf("%v fails validation as it is <= minExclusive %v", value, minValue)
 	}
 	return nil
 }
 
 func ValidateMaxExclusive(value int, maxValue int) error {
-	if value > maxValue {
-		return fmt.Errorf("%v fails validation as it is <= maxExclusive %v", value, maxValue)
+	if value >= maxValue {
+		return fmt.Errorf("%v fails validation as it is >= maxExclusive %v", value, maxValue)
 	}
 	return nil
 }
