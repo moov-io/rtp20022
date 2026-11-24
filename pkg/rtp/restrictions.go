@@ -32,7 +32,8 @@ func ValidatePattern(value string, regex string) error {
 	rr, exists := compiledRegexes[regex]
 	compiledRegexeLock.RUnlock()
 	if !exists {
-		r, err := regexp.Compile(regex)
+		// XSD patterns must match the entire value, so anchor the expression.
+		r, err := regexp.Compile("^(?:" + regex + ")$")
 		if err != nil {
 			return err
 		}
