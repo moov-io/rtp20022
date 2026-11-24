@@ -13,5 +13,5 @@ func TransactionID(ts time.Time, participantID string, serial string, messageSer
 	creationDate := ts.Format("20060102")
 	messageSerial := pickGenerator(messageSerialFunc, NumericSerialNumber)(11)
 
-	return fmt.Sprintf("%s%11.11sB%4.4s%s", creationDate, participantID, serial, messageSerial)
+	return fmt.Sprintf("%s%011.11sB%04.4s%011.11s", creationDate, participantID, serial, messageSerial)
 }
