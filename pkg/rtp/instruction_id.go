@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// InstructionID generates a Instruction Identification value.
+// InstructionID generates an Instruction Identification value.
 //
 // Format: YYYYMMDDbbbbbbbbbbbBAAAAnnnnnnnnnnn
 // Pos. 01-08 - File creation date in format YYYYMMDD

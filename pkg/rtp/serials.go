@@ -26,7 +26,7 @@ func AlphaSerialNumber(length int) string {
 	return serialNumber
 }
 
-// NumericSerialNumber will generate an numeric serial number from the current timestamp
+// NumericSerialNumber will generate a numeric serial number from the current timestamp
 func NumericSerialNumber(length int) string {
 	ss := fmt.Sprint(time.Now().UnixMilli())
 	var serial string
