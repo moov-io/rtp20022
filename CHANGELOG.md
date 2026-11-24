@@ -5,6 +5,10 @@ IMPROVEMENTS
 - docs: add parse and generate library examples, document go mod tidy, and list supported message constructors
 - docs: document regeneration with moov-io/xsd2go and clarify XML namespace prefix handling
 
+BUG FIXES
+
+- rtp: convert ISODateTime to US Eastern time before writing it
+
 ## v0.12.1 (Released 2026-08-07)
 
 IMPROVEMENTS
