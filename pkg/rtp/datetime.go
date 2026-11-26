@@ -94,6 +94,13 @@ func (t *xsdDateTime) UnmarshalText(text []byte) error {
 	return _unmarshalTime(text, (*time.Time)(t), "2006-01-02T15:04:05")
 }
 
+// MarshalText writes the timestamp in US Eastern time, which RTP requires.
+// The output has no UTC offset, so values in other locations are converted
+// first. The zero time is written unchanged.
 func (t xsdDateTime) MarshalText() ([]byte, error) {
-	return _marshalTime((time.Time)(t), "2006-01-02T15:04:05")
+	tt := time.Time(t)
+	if !tt.IsZero() {
+		tt = tt.In(Eastern())
+	}
+	return _marshalTime(tt, "2006-01-02T15:04:05")
 }
