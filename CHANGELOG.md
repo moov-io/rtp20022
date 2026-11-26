@@ -5,6 +5,10 @@ IMPROVEMENTS
 - docs: add parse and generate library examples, document go mod tidy, and list supported message constructors
 - docs: document regeneration with moov-io/xsd2go and clarify XML namespace prefix handling
 
+BUG FIXES
+
+- rtp: fix typos in the FF02 and 9952 error code descriptions
+
 ## v0.12.1 (Released 2026-08-07)
 
 IMPROVEMENTS
@@ -34,7 +38,7 @@ BUILD
 
 ## v0.11.0 (Released 2024-03-20)
 
-This release of moov-io/signedxml changes how IDs are generated. Previously IDs were generated with the current time
+This release of moov-io/rtp20022 changes how IDs are generated. Previously IDs were generated with the current time
 being used as randomness. Now IDs have their serial numbers generated with functions. The previous behavior can be
 restored by passing `NumericSerialNumber` to each instance of an ID function.
 
@@ -48,7 +52,7 @@ messageID := rtp.MessageID(time.Now(), participantID, serial)
 messageID := rtp.MessageID(time.Now(), participantID, serial, rtp.NumericSerialNumber)
 ```
 
-BREAKNIG CHANGES
+BREAKING CHANGES
 
 - rtp: expose serial generator as a function, with helpers
 

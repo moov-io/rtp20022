@@ -56,7 +56,7 @@ var errorCodes = map[string]ErrorCode{
 	"9946": {Description: "TCH Instructing Agent Suspended", Level: ErrFatal},       // Debtor
 	"9947": {Description: "TCH Instructed Agent Suspended", Level: ErrAccountFatal}, // Creditor
 	"9948": {Description: "TCH Central Switch Suspended", Level: ErrFatal},
-	"9952": {Description: "Mapping Incompaibility Between Versions", Level: ErrLogic},
+	"9952": {Description: "Mapping Incompatibility Between Versions", Level: ErrLogic},
 	"9953": {Description: "Missing Code FULL", Level: ErrLogic},
 	"9954": {Description: "Missing Instructions For Creditor Agent Code In Zelle RFP", Level: ErrLogic},
 	"9956": {Description: "Instructing Agent Funding Account Suspended", Level: ErrFatal},       // Debtor
@@ -97,7 +97,7 @@ var errorCodes = map[string]ErrorCode{
 	"DS24": {Description: "Waiting Time Expired", Level: ErrTemporary},
 	"DT04": {Description: "Future Date Not Supported", Level: ErrLogic},
 	"DUPL": {Description: "Duplicate Payment", Level: ErrTemporary},
-	"FF02": {Description: "Syntax Erorr", Level: ErrFatal},
+	"FF02": {Description: "Syntax Error", Level: ErrFatal},
 	"FF03": {Description: "Invalid Payment Type", Level: ErrFatal},
 	"FF08": {Description: "End To End Id Missing", Level: ErrFatal},
 	"MD07": {Description: "Customer Deceased", Level: ErrAccountFatal},
