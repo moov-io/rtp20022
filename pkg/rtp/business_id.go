@@ -19,8 +19,8 @@ import (
 func BusinessID(ts time.Time, participantID, bankField string, serialFunc SerialGenerator) string {
 	timestamp := ts.Format("20060102")
 	partID := fmt.Sprintf("%011.11s", participantID)
-	bank := fmt.Sprintf("%3.3s", bankField)
+	bank := fmt.Sprintf("%03.3s", bankField)
 	serial := pickGenerator(serialFunc, NumericSerialNumber)(11)
 
-	return fmt.Sprintf("B%s%sB%s%11.11s", timestamp, partID, bank, serial)
+	return fmt.Sprintf("B%s%sB%s%011.11s", timestamp, partID, bank, serial)
 }

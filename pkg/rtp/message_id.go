@@ -20,7 +20,7 @@ func MessageID(ts time.Time, participantID string, serial string, messageSerialF
 	creationDate := ts.Format("20060102")
 	messageSerial := pickGenerator(messageSerialFunc, NumericSerialNumber)(11)
 
-	return fmt.Sprintf("M%s%11.11sB%3.3s%s", creationDate, participantID, serial, messageSerial)
+	return fmt.Sprintf("M%s%011.11sB%03.3s%011.11s", creationDate, participantID, serial, messageSerial)
 }
 
 // AdmnMessageID generates a Message Identification value.
