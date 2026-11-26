@@ -24,6 +24,19 @@ func TestValidatePattern(t *testing.T) {
 	require.NoError(t, rtp.ValidatePattern("20230713145322200000057A11712044729", pattern))
 	require.Error(t, rtp.ValidatePattern("20230931145322200000057A11712044729", pattern)) // invalid MMDD
 
+	t.Run("full match", func(t *testing.T) {
+		require.NoError(t, rtp.ValidatePattern("US", "[A-Z]{2,2}"))
+		require.Error(t, rtp.ValidatePattern("USA", "[A-Z]{2,2}"))
+		require.Error(t, rtp.ValidatePattern("xx US xx", "[A-Z]{2,2}"))
+		require.Error(t, rtp.ValidatePattern("", "[A-Z]{2,2}"))
+
+		// alternations must be anchored as a whole
+		require.NoError(t, rtp.ValidatePattern("AB", "AB|CD"))
+		require.NoError(t, rtp.ValidatePattern("CD", "AB|CD"))
+		require.Error(t, rtp.ValidatePattern("ABX", "AB|CD"))
+		require.Error(t, rtp.ValidatePattern("XCD", "AB|CD"))
+	})
+
 	t.Run("concurrent", func(t *testing.T) {
 		iterations := 1000
 
@@ -34,7 +47,7 @@ func TestValidatePattern(t *testing.T) {
 			go func(idx int) {
 				wg.Done()
 
-				patern := fmt.Sprintf("[0-9]{0,%d}", idx/5) // add/get regexes from cache
+				patern := fmt.Sprintf("[0-9]{0,%d}", idx/5+1) // add/get regexes from cache
 				require.NoError(t, rtp.ValidatePattern("4", patern))
 			}(i)
 		}
