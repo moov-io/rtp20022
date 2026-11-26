@@ -75,28 +75,28 @@ func TestValidateMaxLength(t *testing.T) {
 
 func TestValidateMinInclusive(t *testing.T) {
 	minVal := 3
-	require.Error(t, rtp.ValidateMinInclusive(3, minVal))
+	require.NoError(t, rtp.ValidateMinInclusive(3, minVal))
 	require.NoError(t, rtp.ValidateMinInclusive(5, minVal))
-	require.Error(t, rtp.ValidateMinInclusive(2, minVal))
+	require.ErrorContains(t, rtp.ValidateMinInclusive(2, minVal), "2 fails validation as it is < minInclusive 3")
 }
 
 func TestValidateMaxInclusive(t *testing.T) {
 	maxVal := 3
-	require.Error(t, rtp.ValidateMaxInclusive(3, maxVal))
+	require.NoError(t, rtp.ValidateMaxInclusive(3, maxVal))
 	require.NoError(t, rtp.ValidateMaxInclusive(2, maxVal))
-	require.Error(t, rtp.ValidateMaxInclusive(5, maxVal))
+	require.ErrorContains(t, rtp.ValidateMaxInclusive(5, maxVal), "5 fails validation as it is > maxInclusive 3")
 }
 
 func TestValidateMinExclusive(t *testing.T) {
 	minVal := 3
-	require.NoError(t, rtp.ValidateMinExclusive(3, minVal))
+	require.ErrorContains(t, rtp.ValidateMinExclusive(3, minVal), "3 fails validation as it is <= minExclusive 3")
 	require.NoError(t, rtp.ValidateMinExclusive(5, minVal))
 	require.Error(t, rtp.ValidateMinExclusive(2, minVal))
 }
 
 func TestValidateMaxExclusive(t *testing.T) {
 	maxVal := 3
-	require.NoError(t, rtp.ValidateMaxExclusive(3, maxVal))
+	require.ErrorContains(t, rtp.ValidateMaxExclusive(3, maxVal), "3 fails validation as it is >= maxExclusive 3")
 	require.NoError(t, rtp.ValidateMaxExclusive(2, maxVal))
 	require.Error(t, rtp.ValidateMaxExclusive(5, maxVal))
 }
